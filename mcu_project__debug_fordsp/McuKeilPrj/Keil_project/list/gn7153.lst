@@ -1,0 +1,1987 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gn7153.c"
+	.section	.text.gn7153_init,"ax",%progbits
+	.hidden	gn7153_init                     @ -- Begin function gn7153_init
+	.globl	gn7153_init
+	.p2align	2
+	.type	gn7153_init,%function
+	.code	16                              @ @gn7153_init
+	.thumb_func
+gn7153_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	gn7153_gpio_init
+	bl	gn7153_reset
+	movs	r0, #1
+	bl	gn7153_soft_txdsbl_ctrl
+	bl	gn7153_normal_setting
+	movs	r0, #0
+	bl	gn7153_soft_txdsbl_ctrl
+	bl	gn7153_adc
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	gn7153_init, .Lfunc_end0-gn7153_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_soft_txdsbl_ctrl,"ax",%progbits
+	.hidden	gn7153_soft_txdsbl_ctrl         @ -- Begin function gn7153_soft_txdsbl_ctrl
+	.globl	gn7153_soft_txdsbl_ctrl
+	.p2align	2
+	.type	gn7153_soft_txdsbl_ctrl,%function
+	.code	16                              @ @gn7153_soft_txdsbl_ctrl
+	.thumb_func
+gn7153_soft_txdsbl_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	movs	r0, #96
+	strb.w	r0, [sp, #5]
+	movs	r0, #52
+	strb.w	r0, [sp, #6]
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	b	.LBB1_3
+.LBB1_2:
+	movs	r0, #96
+	strb.w	r0, [sp, #3]
+	movs	r0, #48
+	strb.w	r0, [sp, #4]
+	movs	r0, #72
+	add.w	r1, sp, #3
+	movs	r2, #2
+	bl	master_reg_byte_write
+	b	.LBB1_3
+.LBB1_3:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	gn7153_soft_txdsbl_ctrl, .Lfunc_end1-gn7153_soft_txdsbl_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_gpio_init,"ax",%progbits
+	.hidden	gn7153_gpio_init                @ -- Begin function gn7153_gpio_init
+	.globl	gn7153_gpio_init
+	.p2align	2
+	.type	gn7153_gpio_init,%function
+	.code	16                              @ @gn7153_gpio_init
+	.thumb_func
+gn7153_gpio_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	mov.w	r0, #1207959552
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #20]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	movs	r3, #8
+	str	r3, [sp]                        @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #24]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	mov.w	r3, #256
+	str	r3, [sp, #12]                   @ 4-byte Spill
+	mov	r1, r2
+	bl	gpio_mode_set
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r3, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	mov.w	r3, #8192
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	mov	r1, r2
+	bl	gpio_mode_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	gn7153_gpio_init, .Lfunc_end2-gn7153_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_reset,"ax",%progbits
+	.hidden	gn7153_reset                    @ -- Begin function gn7153_reset
+	.globl	gn7153_reset
+	.p2align	2
+	.type	gn7153_reset,%function
+	.code	16                              @ @gn7153_reset
+	.thumb_func
+gn7153_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #1207959552
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #8
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_bit_reset
+	movs	r0, #10
+	bl	system_delay_ms
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	gn7153_reset, .Lfunc_end3-gn7153_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_normal_setting,"ax",%progbits
+	.hidden	gn7153_normal_setting           @ -- Begin function gn7153_normal_setting
+	.globl	gn7153_normal_setting
+	.p2align	2
+	.type	gn7153_normal_setting,%function
+	.code	16                              @ @gn7153_normal_setting
+	.thumb_func
+gn7153_normal_setting:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+	movs	r0, #1
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	strb.w	r0, [sp, #63]
+	bl	gn7153_source_sink_select
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	bl	gn7153_apc_ctrl
+	movs	r0, #87
+	strb.w	r0, [sp, #61]
+	movs	r2, #2
+	strb.w	r2, [sp, #62]
+	movs	r0, #72
+	add.w	r1, sp, #61
+	bl	master_reg_byte_write
+	ldrb.w	r0, [sp, #63]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	movs	r0, #0
+	bl	gn7153_override_ctrl
+	movs	r0, #15
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	strb.w	r0, [sp, #59]
+	movs	r0, #95
+	strb.w	r0, [sp, #60]
+	movs	r0, #72
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	add.w	r1, sp, #59
+	movs	r2, #2
+	str	r2, [sp, #28]                   @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	movs	r3, #6
+	strb.w	r3, [sp, #57]
+	strb.w	r1, [sp, #58]
+	add.w	r1, sp, #57
+	bl	master_reg_byte_write
+	b	.LBB4_3
+.LBB4_2:
+	movs	r0, #1
+	bl	gn7153_override_ctrl
+	movs	r0, #13
+	strb.w	r0, [sp, #55]
+	movs	r0, #14
+	strb.w	r0, [sp, #53]
+	movs	r0, #0
+	strb.w	r0, [sp, #56]
+	movs	r0, #72
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	add.w	r1, sp, #55
+	movs	r2, #2
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #4
+	strb.w	r1, [sp, #54]
+	add.w	r1, sp, #53
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #6
+	strb.w	r1, [sp, #51]
+	movs	r1, #31
+	strb.w	r1, [sp, #52]
+	add.w	r1, sp, #51
+	bl	master_reg_byte_write
+	b	.LBB4_3
+.LBB4_3:
+	movs	r0, #0
+	str	r0, [sp, #44]
+	vldr	s0, [sp, #44]
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	bl	gn7153_set_ld_imod
+	movw	r0, #16482
+	strh.w	r0, [sp, #42]
+	movs	r0, #72
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	add.w	r1, sp, #42
+	movs	r2, #2
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movw	r1, #19571
+	strh.w	r1, [sp, #40]
+	add	r1, sp, #40
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movw	r1, #1147
+	strh.w	r1, [sp, #38]
+	add.w	r1, sp, #38
+	bl	master_reg_byte_write
+	add	sp, #64
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	gn7153_normal_setting, .Lfunc_end4-gn7153_normal_setting
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_source_sink_select,"ax",%progbits
+	.hidden	gn7153_source_sink_select       @ -- Begin function gn7153_source_sink_select
+	.globl	gn7153_source_sink_select
+	.p2align	2
+	.type	gn7153_source_sink_select,%function
+	.code	16                              @ @gn7153_source_sink_select
+	.thumb_func
+gn7153_source_sink_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #97
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	movs	r0, #9
+	strb.w	r0, [sp, #6]
+	b	.LBB5_3
+.LBB5_2:
+	movs	r0, #17
+	strb.w	r0, [sp, #6]
+	b	.LBB5_3
+.LBB5_3:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	gn7153_source_sink_select, .Lfunc_end5-gn7153_source_sink_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_apc_ctrl,"ax",%progbits
+	.hidden	gn7153_apc_ctrl                 @ -- Begin function gn7153_apc_ctrl
+	.globl	gn7153_apc_ctrl
+	.p2align	2
+	.type	gn7153_apc_ctrl,%function
+	.code	16                              @ @gn7153_apc_ctrl
+	.thumb_func
+gn7153_apc_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #11
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #6]
+	b	.LBB6_3
+.LBB6_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #6]
+	b	.LBB6_3
+.LBB6_3:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	gn7153_apc_ctrl, .Lfunc_end6-gn7153_apc_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_override_ctrl,"ax",%progbits
+	.hidden	gn7153_override_ctrl            @ -- Begin function gn7153_override_ctrl
+	.globl	gn7153_override_ctrl
+	.p2align	2
+	.type	gn7153_override_ctrl,%function
+	.code	16                              @ @gn7153_override_ctrl
+	.thumb_func
+gn7153_override_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #14
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	movs	r0, #4
+	strb.w	r0, [sp, #6]
+	b	.LBB7_3
+.LBB7_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #6]
+	b	.LBB7_3
+.LBB7_3:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	gn7153_override_ctrl, .Lfunc_end7-gn7153_override_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_ld_imod,"ax",%progbits
+	.hidden	gn7153_set_ld_imod              @ -- Begin function gn7153_set_ld_imod
+	.globl	gn7153_set_ld_imod
+	.p2align	3
+	.type	gn7153_set_ld_imod,%function
+	.code	16                              @ @gn7153_set_ld_imod
+	.thumb_func
+gn7153_set_ld_imod:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+	movs	r0, #89
+	strb.w	r0, [sp, #12]
+	movs	r0, #90
+	strb.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI8_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #8]
+	strb.w	r0, [sp, #13]
+	ldrb.w	r0, [sp, #9]
+	strb.w	r0, [sp, #11]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add	r1, sp, #12
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add.w	r1, sp, #10
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI8_0:
+	.long	3435973837                      @ double 3.8500000000000001
+	.long	1074711756
+.Lfunc_end8:
+	.size	gn7153_set_ld_imod, .Lfunc_end8-gn7153_set_ld_imod
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_adc,"ax",%progbits
+	.hidden	gn7153_adc                      @ -- Begin function gn7153_adc
+	.globl	gn7153_adc
+	.p2align	2
+	.type	gn7153_adc,%function
+	.code	16                              @ @gn7153_adc
+	.thumb_func
+gn7153_adc:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movs	r0, #52
+	strb.w	r0, [sp, #14]
+	movs	r0, #3
+	strb.w	r0, [sp, #15]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #14
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r2, #2
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movs	r3, #20
+	strb.w	r3, [sp, #14]
+	movs	r3, #12
+	strb.w	r3, [sp, #15]
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movs	r3, #22
+	strb.w	r3, [sp, #14]
+	movs	r3, #27
+	strb.w	r3, [sp, #15]
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movs	r3, #21
+	strb.w	r3, [sp, #14]
+	strb.w	r2, [sp, #15]
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movs	r3, #23
+	strb.w	r3, [sp, #14]
+	movs	r3, #1
+	strb.w	r3, [sp, #15]
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end9:
+	.size	gn7153_adc, .Lfunc_end9-gn7153_adc
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_temperature_monitor_ctrl,"ax",%progbits
+	.hidden	gn7153_temperature_monitor_ctrl @ -- Begin function gn7153_temperature_monitor_ctrl
+	.globl	gn7153_temperature_monitor_ctrl
+	.p2align	2
+	.type	gn7153_temperature_monitor_ctrl,%function
+	.code	16                              @ @gn7153_temperature_monitor_ctrl
+	.thumb_func
+gn7153_temperature_monitor_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #21
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB10_2
+	b	.LBB10_1
+.LBB10_1:
+	movs	r0, #4
+	strb.w	r0, [sp, #6]
+	b	.LBB10_6
+.LBB10_2:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #2
+	bne	.LBB10_4
+	b	.LBB10_3
+.LBB10_3:
+	movs	r0, #5
+	strb.w	r0, [sp, #6]
+	b	.LBB10_5
+.LBB10_4:
+	movs	r0, #6
+	strb.w	r0, [sp, #6]
+	b	.LBB10_5
+.LBB10_5:
+	b	.LBB10_6
+.LBB10_6:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end10:
+	.size	gn7153_temperature_monitor_ctrl, .Lfunc_end10-gn7153_temperature_monitor_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_get_temperature,"ax",%progbits
+	.hidden	gn7153_get_temperature          @ -- Begin function gn7153_get_temperature
+	.globl	gn7153_get_temperature
+	.p2align	3
+	.type	gn7153_get_temperature,%function
+	.code	16                              @ @gn7153_get_temperature
+	.thumb_func
+gn7153_get_temperature:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+	str	r0, [sp, #52]
+	movs	r0, #0
+	strh.w	r0, [sp, #46]
+	movs	r0, #1
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	bl	gn7153_temperature_monitor_ctrl
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	movs	r1, #23
+	strb.w	r1, [sp, #48]
+	strb.w	r0, [sp, #49]
+	movs	r0, #72
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	add	r1, sp, #48
+	movs	r2, #2
+	bl	master_reg_byte_write
+	mov.w	r0, #1000
+	bl	fh_delay_us
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r3, [sp, #36]                   @ 4-byte Reload
+	movs	r1, #24
+	add.w	r2, sp, #45
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #45]
+	cmp	r0, #1
+	bne	.LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+	movs	r0, #72
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r1, #25
+	add.w	r2, sp, #51
+	movs	r3, #1
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	movs	r1, #26
+	add.w	r2, sp, #50
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #50]
+	ldrb.w	r0, [sp, #51]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #46]
+	b	.LBB11_2
+.LBB11_2:
+	movs	r0, #0
+	strh.w	r0, [sp, #42]
+	movs	r0, #2
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	gn7153_temperature_monitor_ctrl
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	movs	r0, #23
+	strb.w	r0, [sp, #48]
+	movs	r0, #1
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	strb.w	r0, [sp, #49]
+	movs	r0, #72
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	add	r1, sp, #48
+	bl	master_reg_byte_write
+	mov.w	r0, #1000
+	bl	fh_delay_us
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	movs	r1, #24
+	add.w	r2, sp, #45
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #45]
+	cmp	r0, #1
+	bne	.LBB11_4
+	b	.LBB11_3
+.LBB11_3:
+	movs	r0, #72
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #25
+	add.w	r2, sp, #51
+	movs	r3, #1
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #26
+	add.w	r2, sp, #50
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #50]
+	ldrb.w	r0, [sp, #51]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #42]
+	b	.LBB11_4
+.LBB11_4:
+	ldrh.w	r0, [sp, #46]
+	ldrh.w	r1, [sp, #42]
+	subs	r0, r0, r1
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI11_0
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI11_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #52]
+	str	r0, [r1]
+	add	sp, #56
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.5:
+.LCPI11_0:
+	.long	0                               @ double 3.5
+	.long	1074528256
+.LCPI11_1:
+	.long	343597384                       @ double -301.98000000000002
+	.long	3228753838
+.Lfunc_end11:
+	.size	gn7153_get_temperature, .Lfunc_end11-gn7153_get_temperature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_voltage_monitor_ctrl,"ax",%progbits
+	.hidden	gn7153_voltage_monitor_ctrl     @ -- Begin function gn7153_voltage_monitor_ctrl
+	.globl	gn7153_voltage_monitor_ctrl
+	.p2align	2
+	.type	gn7153_voltage_monitor_ctrl,%function
+	.code	16                              @ @gn7153_voltage_monitor_ctrl
+	.thumb_func
+gn7153_voltage_monitor_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #21
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	movs	r0, #6
+	strb.w	r0, [sp, #6]
+	b	.LBB12_2
+.LBB12_2:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	gn7153_voltage_monitor_ctrl, .Lfunc_end12-gn7153_voltage_monitor_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_get_voltage,"ax",%progbits
+	.hidden	gn7153_get_voltage              @ -- Begin function gn7153_get_voltage
+	.globl	gn7153_get_voltage
+	.p2align	3
+	.type	gn7153_get_voltage,%function
+	.code	16                              @ @gn7153_get_voltage
+	.thumb_func
+gn7153_get_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	movs	r0, #0
+	strh.w	r0, [sp, #22]
+	movs	r0, #1
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	gn7153_voltage_monitor_ctrl
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #23
+	strb.w	r1, [sp, #24]
+	strb.w	r0, [sp, #25]
+	movs	r0, #72
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	add	r1, sp, #24
+	movs	r2, #2
+	bl	master_reg_byte_write
+	mov.w	r0, #1000
+	bl	fh_delay_us
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #24
+	add.w	r2, sp, #21
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #21]
+	cmp	r0, #1
+	bne	.LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	movs	r0, #72
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #25
+	add.w	r2, sp, #27
+	movs	r3, #1
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #26
+	add.w	r2, sp, #26
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #26]
+	ldrb.w	r0, [sp, #27]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	b	.LBB13_2
+.LBB13_2:
+	ldrh.w	r0, [sp, #22]
+	cbnz	r0, .LBB13_4
+	b	.LBB13_3
+.LBB13_3:
+	ldr	r1, [sp, #28]
+	movs	r0, #0
+	str	r0, [r1]
+	b	.LBB13_5
+.LBB13_4:
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI13_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI13_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #28]
+	str	r0, [r1]
+	b	.LBB13_5
+.LBB13_5:
+	ldrh.w	r0, [sp, #22]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #10]
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.6:
+.LCPI13_0:
+	.long	1963727767                      @ double 0.0055859999999999998
+	.long	1064755544
+.LCPI13_1:
+	.long	104453605                       @ double -0.023130000000000001
+	.long	3214389092
+.Lfunc_end13:
+	.size	gn7153_get_voltage, .Lfunc_end13-gn7153_get_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_ld_ibias_monitor_ctrl,"ax",%progbits
+	.hidden	gn7153_ld_ibias_monitor_ctrl    @ -- Begin function gn7153_ld_ibias_monitor_ctrl
+	.globl	gn7153_ld_ibias_monitor_ctrl
+	.p2align	2
+	.type	gn7153_ld_ibias_monitor_ctrl,%function
+	.code	16                              @ @gn7153_ld_ibias_monitor_ctrl
+	.thumb_func
+gn7153_ld_ibias_monitor_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #21
+	strb.w	r0, [sp, #13]
+	movs	r0, #88
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #1
+	bne	.LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #14]
+	movs	r0, #5
+	strb.w	r0, [sp, #12]
+	b	.LBB14_3
+.LBB14_2:
+	movs	r0, #6
+	strb.w	r0, [sp, #14]
+	movs	r0, #1
+	strb.w	r0, [sp, #12]
+	b	.LBB14_3
+.LBB14_3:
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #13
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add.w	r1, sp, #11
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	gn7153_ld_ibias_monitor_ctrl, .Lfunc_end14-gn7153_ld_ibias_monitor_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_get_ld_ibias,"ax",%progbits
+	.hidden	gn7153_get_ld_ibias             @ -- Begin function gn7153_get_ld_ibias
+	.globl	gn7153_get_ld_ibias
+	.p2align	2
+	.type	gn7153_get_ld_ibias,%function
+	.code	16                              @ @gn7153_get_ld_ibias
+	.thumb_func
+gn7153_get_ld_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	movs	r0, #0
+	strh.w	r0, [sp, #22]
+	movs	r0, #1
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	gn7153_ld_ibias_monitor_ctrl
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #23
+	strb.w	r1, [sp, #24]
+	strb.w	r0, [sp, #25]
+	movs	r0, #72
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	add	r1, sp, #24
+	movs	r2, #2
+	bl	master_reg_byte_write
+	mov.w	r0, #1000
+	bl	fh_delay_us
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #24
+	add.w	r2, sp, #21
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #21]
+	cmp	r0, #1
+	bne	.LBB15_2
+	b	.LBB15_1
+.LBB15_1:
+	movs	r0, #72
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #25
+	add.w	r2, sp, #27
+	movs	r3, #1
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #26
+	add.w	r2, sp, #26
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #26]
+	ldrb.w	r0, [sp, #27]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	b	.LBB15_2
+.LBB15_2:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	vldr	s0, [r0, #92]
+	ldrh.w	r1, [sp, #22]
+	vmov	s2, r1
+	vcvt.f32.s32	s4, s2
+	vldr	s2, [r0, #96]
+	vmul.f32	s0, s0, s4
+	vadd.f32	s0, s0, s2
+	ldr	r0, [sp, #28]
+	vstr	s0, [r0]
+	ldrh.w	r0, [sp, #22]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #12]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end15:
+	.size	gn7153_get_ld_ibias, .Lfunc_end15-gn7153_get_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_ld_ibias,"ax",%progbits
+	.hidden	gn7153_set_ld_ibias             @ -- Begin function gn7153_set_ld_ibias
+	.globl	gn7153_set_ld_ibias
+	.p2align	2
+	.type	gn7153_set_ld_ibias,%function
+	.code	16                              @ @gn7153_set_ld_ibias
+	.thumb_func
+gn7153_set_ld_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r1, [sp, #14]
+	add	r0, sp, #12
+	bl	set_u16
+	movs	r0, #13
+	strb.w	r0, [sp, #10]
+	movs	r0, #14
+	strb.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #13]
+	strb.w	r0, [sp, #11]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #10
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [sp, #12]
+	orr	r1, r1, #4
+	strb.w	r1, [sp, #9]
+	add	r1, sp, #8
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end16:
+	.size	gn7153_set_ld_ibias, .Lfunc_end16-gn7153_set_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_mpd_ibias_monitor_ctrl,"ax",%progbits
+	.hidden	gn7153_mpd_ibias_monitor_ctrl   @ -- Begin function gn7153_mpd_ibias_monitor_ctrl
+	.globl	gn7153_mpd_ibias_monitor_ctrl
+	.p2align	2
+	.type	gn7153_mpd_ibias_monitor_ctrl,%function
+	.code	16                              @ @gn7153_mpd_ibias_monitor_ctrl
+	.thumb_func
+gn7153_mpd_ibias_monitor_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #21
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	movs	r0, #2
+	strb.w	r0, [sp, #6]
+	b	.LBB17_3
+.LBB17_2:
+	movs	r0, #6
+	strb.w	r0, [sp, #6]
+	b	.LBB17_3
+.LBB17_3:
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end17:
+	.size	gn7153_mpd_ibias_monitor_ctrl, .Lfunc_end17-gn7153_mpd_ibias_monitor_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_get_mpd_ibias,"ax",%progbits
+	.hidden	gn7153_get_mpd_ibias            @ -- Begin function gn7153_get_mpd_ibias
+	.globl	gn7153_get_mpd_ibias
+	.p2align	3
+	.type	gn7153_get_mpd_ibias,%function
+	.code	16                              @ @gn7153_get_mpd_ibias
+	.thumb_func
+gn7153_get_mpd_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	movs	r0, #0
+	strh.w	r0, [sp, #22]
+	movs	r0, #1
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	gn7153_mpd_ibias_monitor_ctrl
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #23
+	strb.w	r1, [sp, #24]
+	strb.w	r0, [sp, #25]
+	movs	r0, #72
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	add	r1, sp, #24
+	movs	r2, #2
+	bl	master_reg_byte_write
+	mov.w	r0, #1000
+	bl	fh_delay_us
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #24
+	add.w	r2, sp, #21
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #21]
+	cmp	r0, #1
+	bne	.LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	movs	r0, #72
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #25
+	add.w	r2, sp, #27
+	movs	r3, #1
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #26
+	add.w	r2, sp, #26
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #26]
+	ldrb.w	r0, [sp, #27]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	b	.LBB18_2
+.LBB18_2:
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI18_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #28]
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #22]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #14]
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.3:
+.LCPI18_0:
+	.long	2658619116                      @ double 3.48E-4
+	.long	1060556408
+.LCPI18_1:
+	.long	729800843                       @ double 0.00108
+	.long	1062318553
+.Lfunc_end18:
+	.size	gn7153_get_mpd_ibias, .Lfunc_end18-gn7153_get_mpd_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_tx_ld_cpa,"ax",%progbits
+	.hidden	gn7153_set_tx_ld_cpa            @ -- Begin function gn7153_set_tx_ld_cpa
+	.globl	gn7153_set_tx_ld_cpa
+	.p2align	2
+	.type	gn7153_set_tx_ld_cpa,%function
+	.code	16                              @ @gn7153_set_tx_ld_cpa
+	.thumb_func
+gn7153_set_tx_ld_cpa:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #51
+	strb.w	r0, [sp, #13]
+	movs	r0, #91
+	strb.w	r0, [sp, #11]
+	movs	r0, #0
+	strb.w	r0, [sp, #14]
+	ldrb.w	r0, [sp, #15]
+	strb.w	r0, [sp, #12]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #13
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add.w	r1, sp, #11
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end19:
+	.size	gn7153_set_tx_ld_cpa, .Lfunc_end19-gn7153_set_tx_ld_cpa
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_tx_eq_boost,"ax",%progbits
+	.hidden	gn7153_set_tx_eq_boost          @ -- Begin function gn7153_set_tx_eq_boost
+	.globl	gn7153_set_tx_eq_boost
+	.p2align	2
+	.type	gn7153_set_tx_eq_boost,%function
+	.code	16                              @ @gn7153_set_tx_eq_boost
+	.thumb_func
+gn7153_set_tx_eq_boost:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #72
+	strb.w	r0, [sp, #5]
+	ldrb.w	r1, [sp, #7]
+	strb.w	r1, [sp, #6]
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end20:
+	.size	gn7153_set_tx_eq_boost, .Lfunc_end20-gn7153_set_tx_eq_boost
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_rx_eq_boost,"ax",%progbits
+	.hidden	gn7153_set_rx_eq_boost          @ -- Begin function gn7153_set_rx_eq_boost
+	.globl	gn7153_set_rx_eq_boost
+	.p2align	2
+	.type	gn7153_set_rx_eq_boost,%function
+	.code	16                              @ @gn7153_set_rx_eq_boost
+	.thumb_func
+gn7153_set_rx_eq_boost:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #6]
+	movs	r0, #128
+	strb.w	r0, [sp, #4]
+	ldrb.w	r0, [sp, #6]
+	strb.w	r0, [sp, #5]
+	movs	r0, #72
+	add	r1, sp, #4
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end21:
+	.size	gn7153_set_rx_eq_boost, .Lfunc_end21-gn7153_set_rx_eq_boost
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_rx_swing,"ax",%progbits
+	.hidden	gn7153_set_rx_swing             @ -- Begin function gn7153_set_rx_swing
+	.globl	gn7153_set_rx_swing
+	.p2align	2
+	.type	gn7153_set_rx_swing,%function
+	.code	16                              @ @gn7153_set_rx_swing
+	.thumb_func
+gn7153_set_rx_swing:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #6]
+	movs	r0, #119
+	strb.w	r0, [sp, #4]
+	ldrb.w	r0, [sp, #6]
+	strb.w	r0, [sp, #5]
+	movs	r0, #72
+	add	r1, sp, #4
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end22:
+	.size	gn7153_set_rx_swing, .Lfunc_end22-gn7153_set_rx_swing
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_tx_ld_preemph,"ax",%progbits
+	.hidden	gn7153_set_tx_ld_preemph        @ -- Begin function gn7153_set_tx_ld_preemph
+	.globl	gn7153_set_tx_ld_preemph
+	.p2align	2
+	.type	gn7153_set_tx_ld_preemph,%function
+	.code	16                              @ @gn7153_set_tx_ld_preemph
+	.thumb_func
+gn7153_set_tx_ld_preemph:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #51
+	strb.w	r0, [sp, #13]
+	movs	r0, #93
+	strb.w	r0, [sp, #11]
+	movs	r0, #0
+	strb.w	r0, [sp, #14]
+	ldrb.w	r0, [sp, #15]
+	strb.w	r0, [sp, #12]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #13
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add.w	r1, sp, #11
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end23:
+	.size	gn7153_set_tx_ld_preemph, .Lfunc_end23-gn7153_set_tx_ld_preemph
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_rx_drv_preemph,"ax",%progbits
+	.hidden	gn7153_set_rx_drv_preemph       @ -- Begin function gn7153_set_rx_drv_preemph
+	.globl	gn7153_set_rx_drv_preemph
+	.p2align	2
+	.type	gn7153_set_rx_drv_preemph,%function
+	.code	16                              @ @gn7153_set_rx_drv_preemph
+	.thumb_func
+gn7153_set_rx_drv_preemph:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+	movs	r0, #121
+	strb.w	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #13]
+	movs	r0, #120
+	strb.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #14]
+	strb.w	r0, [sp, #11]
+	movs	r0, #72
+	str	r0, [sp]                        @ 4-byte Spill
+	add	r1, sp, #12
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add.w	r1, sp, #10
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end24:
+	.size	gn7153_set_rx_drv_preemph, .Lfunc_end24-gn7153_set_rx_drv_preemph
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_rx_los_threshold,"ax",%progbits
+	.hidden	gn7153_set_rx_los_threshold     @ -- Begin function gn7153_set_rx_los_threshold
+	.globl	gn7153_set_rx_los_threshold
+	.p2align	2
+	.type	gn7153_set_rx_los_threshold,%function
+	.code	16                              @ @gn7153_set_rx_los_threshold
+	.thumb_func
+gn7153_set_rx_los_threshold:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #145
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end25:
+	.size	gn7153_set_rx_los_threshold, .Lfunc_end25-gn7153_set_rx_los_threshold
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_set_rx_los_hyst,"ax",%progbits
+	.hidden	gn7153_set_rx_los_hyst          @ -- Begin function gn7153_set_rx_los_hyst
+	.globl	gn7153_set_rx_los_hyst
+	.p2align	2
+	.type	gn7153_set_rx_los_hyst,%function
+	.code	16                              @ @gn7153_set_rx_los_hyst
+	.thumb_func
+gn7153_set_rx_los_hyst:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #146
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movs	r0, #72
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end26:
+	.size	gn7153_set_rx_los_hyst, .Lfunc_end26-gn7153_set_rx_los_hyst
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_temperaturel_Sample_Average,"ax",%progbits
+	.hidden	gn7153_temperaturel_Sample_Average @ -- Begin function gn7153_temperaturel_Sample_Average
+	.globl	gn7153_temperaturel_Sample_Average
+	.p2align	2
+	.type	gn7153_temperaturel_Sample_Average,%function
+	.code	16                              @ @gn7153_temperaturel_Sample_Average
+	.thumb_func
+gn7153_temperaturel_Sample_Average:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	movs	r1, #3
+	strb.w	r1, [sp, #11]
+	str	r0, [sp, #4]
+	b	.LBB27_1
+.LBB27_1:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #4]
+	ldrb.w	r2, [sp, #11]
+	movs	r1, #1
+	lsls	r1, r2
+	cmp	r0, r1
+	bge	.LBB27_4
+	b	.LBB27_2
+.LBB27_2:                               @   in Loop: Header=BB27_1 Depth=1
+	add	r0, sp, #16
+	bl	gn7153_get_temperature
+	vldr	s2, [sp, #16]
+	vldr	s0, [sp, #12]
+	vadd.f32	s0, s0, s2
+	vstr	s0, [sp, #12]
+	movs	r0, #1
+	bl	system_delay_ms
+	b	.LBB27_3
+.LBB27_3:                               @   in Loop: Header=BB27_1 Depth=1
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	b	.LBB27_1
+.LBB27_4:
+	vldr	s0, [sp, #12]
+	vmov.f32	s2, #8.000000e+00
+	vdiv.f32	s0, s0, s2
+	ldr	r0, [sp, #20]
+	vstr	s0, [r0]
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end27:
+	.size	gn7153_temperaturel_Sample_Average, .Lfunc_end27-gn7153_temperaturel_Sample_Average
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_apc_auto_enable_ctrl,"ax",%progbits
+	.hidden	gn7153_apc_auto_enable_ctrl     @ -- Begin function gn7153_apc_auto_enable_ctrl
+	.globl	gn7153_apc_auto_enable_ctrl
+	.p2align	2
+	.type	gn7153_apc_auto_enable_ctrl,%function
+	.code	16                              @ @gn7153_apc_auto_enable_ctrl
+	.thumb_func
+gn7153_apc_auto_enable_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #63]
+	movs	r0, #0
+	strb.w	r0, [sp, #51]
+	movs	r1, #11
+	strb.w	r1, [sp, #50]
+	strb.w	r0, [sp, #49]
+	strb.w	r0, [sp, #48]
+	strb.w	r0, [sp, #47]
+	strh.w	r0, [sp, #60]
+	str	r0, [sp, #56]
+	str	r0, [sp, #52]
+	ldrb.w	r1, [sp, #50]
+	movs	r0, #72
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	add.w	r2, sp, #49
+	movs	r3, #1
+	str	r3, [sp, #40]                   @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	ldr	r3, [sp, #40]                   @ 4-byte Reload
+	movs	r1, #6
+	strb.w	r1, [sp, #50]
+	ldrb.w	r1, [sp, #50]
+	add	r2, sp, #48
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	ldr	r3, [sp, #40]                   @ 4-byte Reload
+	movs	r1, #14
+	strb.w	r1, [sp, #50]
+	ldrb.w	r1, [sp, #50]
+	add.w	r2, sp, #47
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #63]
+	cmp	r0, #1
+	bne	.LBB28_2
+	b	.LBB28_1
+.LBB28_1:
+	movs	r0, #0
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	strh.w	r0, [sp, #60]
+	str	r0, [sp, #56]
+	str	r0, [sp, #52]
+	movs	r0, #6
+	strb.w	r0, [sp, #50]
+	ldrb.w	r0, [sp, #48]
+	and	r0, r0, #239
+	strb.w	r0, [sp, #48]
+	ldrb.w	r0, [sp, #48]
+	strb.w	r0, [sp, #51]
+	ldrb.w	r0, [sp, #50]
+	strb.w	r0, [sp, #52]
+	ldrb.w	r0, [sp, #51]
+	strb.w	r0, [sp, #53]
+	movs	r0, #72
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	add	r1, sp, #52
+	str	r1, [sp, #28]                   @ 4-byte Spill
+	movs	r2, #2
+	str	r2, [sp, #32]                   @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	ldr	r2, [sp, #32]                   @ 4-byte Reload
+	strh.w	r3, [sp, #60]
+	str	r3, [sp, #56]
+	str	r3, [sp, #52]
+	movs	r3, #14
+	strb.w	r3, [sp, #50]
+	ldrb.w	r3, [sp, #47]
+	and	r3, r3, #251
+	strb.w	r3, [sp, #51]
+	ldrb.w	r3, [sp, #50]
+	strb.w	r3, [sp, #52]
+	ldrb.w	r3, [sp, #51]
+	strb.w	r3, [sp, #53]
+	bl	master_reg_byte_write
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	ldr	r2, [sp, #32]                   @ 4-byte Reload
+	ldrb.w	r12, [sp, #49]
+	orr	r12, r12, #1
+	strb.w	r12, [sp, #49]
+	mov.w	r12, #11
+	strb.w	r12, [sp, #50]
+	strh.w	r3, [sp, #60]
+	str	r3, [sp, #56]
+	str	r3, [sp, #52]
+	ldrb.w	r3, [sp, #50]
+	strb.w	r3, [sp, #52]
+	ldrb.w	r3, [sp, #49]
+	strb.w	r3, [sp, #53]
+	bl	master_reg_byte_write
+	b	.LBB28_3
+.LBB28_2:
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	strh.w	r0, [sp, #60]
+	str	r0, [sp, #56]
+	str	r0, [sp, #52]
+	movs	r0, #14
+	strb.w	r0, [sp, #50]
+	ldrb.w	r0, [sp, #47]
+	orr	r0, r0, #4
+	strb.w	r0, [sp, #51]
+	ldrb.w	r0, [sp, #50]
+	strb.w	r0, [sp, #52]
+	ldrb.w	r0, [sp, #51]
+	strb.w	r0, [sp, #53]
+	movs	r0, #72
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	add	r1, sp, #52
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	movs	r2, #2
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	strh.w	r3, [sp, #60]
+	str	r3, [sp, #56]
+	str	r3, [sp, #52]
+	movs	r3, #6
+	strb.w	r3, [sp, #50]
+	ldrb.w	r3, [sp, #48]
+	orr	r3, r3, #16
+	strb.w	r3, [sp, #48]
+	ldrb.w	r3, [sp, #48]
+	strb.w	r3, [sp, #51]
+	ldrb.w	r3, [sp, #50]
+	strb.w	r3, [sp, #52]
+	ldrb.w	r3, [sp, #51]
+	strb.w	r3, [sp, #53]
+	bl	master_reg_byte_write
+	b	.LBB28_3
+.LBB28_3:
+	movw	r0, #16482
+	strh.w	r0, [sp, #44]
+	movs	r0, #72
+	add	r1, sp, #44
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #64
+	pop	{r7, pc}
+.Lfunc_end28:
+	.size	gn7153_apc_auto_enable_ctrl, .Lfunc_end28-gn7153_apc_auto_enable_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gn7153_apc_target_voltage,"ax",%progbits
+	.hidden	gn7153_apc_target_voltage       @ -- Begin function gn7153_apc_target_voltage
+	.globl	gn7153_apc_target_voltage
+	.p2align	3
+	.type	gn7153_apc_target_voltage,%function
+	.code	16                              @ @gn7153_apc_target_voltage
+	.thumb_func
+gn7153_apc_target_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	vstr	s0, [sp, #28]
+	movs	r0, #15
+	strb.w	r0, [sp, #15]
+	movs	r0, #0
+	strb.w	r0, [sp, #14]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #28]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI29_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmple
+	cbnz	r0, .LBB29_2
+	b	.LBB29_1
+.LBB29_1:
+	vldr	d0, .LCPI29_0
+	vstr	d0, [sp]                        @ 8-byte Spill
+	b	.LBB29_3
+.LBB29_2:
+	ldr	r0, [sp, #28]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vstr	d0, [sp]                        @ 8-byte Spill
+	b	.LBB29_3
+.LBB29_3:
+	vldr	d0, [sp]                        @ 8-byte Reload
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	vldr	s0, [sp, #8]
+	vmov.f32	s2, #4.000000e+00
+	vdiv.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strb.w	r0, [sp, #14]
+	movs	r0, #0
+	strh.w	r0, [sp, #24]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	ldrb.w	r0, [sp, #15]
+	strb.w	r0, [sp, #16]
+	ldrb.w	r0, [sp, #14]
+	strb.w	r0, [sp, #17]
+	movs	r0, #72
+	add	r1, sp, #16
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.4:
+.LCPI29_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end29:
+	.size	gn7153_apc_target_voltage, .Lfunc_end29-gn7153_apc_target_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L__const.gn7153_normal_setting.txflt_reg,%object @ @__const.gn7153_normal_setting.txflt_reg
+	.section	.rodata..L__const.gn7153_normal_setting.txflt_reg,"a",%progbits
+.L__const.gn7153_normal_setting.txflt_reg:
+	.ascii	"b@"
+	.size	.L__const.gn7153_normal_setting.txflt_reg, 2
+
+	.type	.L__const.gn7153_normal_setting.rxtop_reg1,%object @ @__const.gn7153_normal_setting.rxtop_reg1
+	.section	.rodata..L__const.gn7153_normal_setting.rxtop_reg1,"a",%progbits
+.L__const.gn7153_normal_setting.rxtop_reg1:
+	.ascii	"sL"
+	.size	.L__const.gn7153_normal_setting.rxtop_reg1, 2
+
+	.type	.L__const.gn7153_normal_setting.pulse_gen_reg1,%object @ @__const.gn7153_normal_setting.pulse_gen_reg1
+	.section	.rodata..L__const.gn7153_normal_setting.pulse_gen_reg1,"a",%progbits
+.L__const.gn7153_normal_setting.pulse_gen_reg1:
+	.ascii	"{\004"
+	.size	.L__const.gn7153_normal_setting.pulse_gen_reg1, 2
+
+	.type	.L__const.gn7153_apc_auto_enable_ctrl.txflt_reg,%object @ @__const.gn7153_apc_auto_enable_ctrl.txflt_reg
+	.section	.rodata..L__const.gn7153_apc_auto_enable_ctrl.txflt_reg,"a",%progbits
+.L__const.gn7153_apc_auto_enable_ctrl.txflt_reg:
+	.ascii	"b@"
+	.size	.L__const.gn7153_apc_auto_enable_ctrl.txflt_reg, 2
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

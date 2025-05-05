@@ -1,0 +1,1320 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"ip_op.c"
+	.section	.text.SRE_McuEnable,"ax",%progbits
+	.hidden	SRE_McuEnable                   @ -- Begin function SRE_McuEnable
+	.globl	SRE_McuEnable
+	.p2align	2
+	.type	SRE_McuEnable,%function
+	.code	16                              @ @SRE_McuEnable
+	.thumb_func
+SRE_McuEnable:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	ldrb.w	r1, [sp, #7]
+	bl	dsp_fsl_reg_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	SRE_McuEnable, .Lfunc_end0-SRE_McuEnable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_WriteBuff2Sram,"ax",%progbits
+	.hidden	SRE_WriteBuff2Sram              @ -- Begin function SRE_WriteBuff2Sram
+	.globl	SRE_WriteBuff2Sram
+	.p2align	2
+	.type	SRE_WriteBuff2Sram,%function
+	.code	16                              @ @SRE_WriteBuff2Sram
+	.thumb_func
+SRE_WriteBuff2Sram:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bhs	.LBB1_6
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #8]
+	add.w	r0, r0, #260
+	ldr	r1, [sp, #20]
+	ldr	r2, [sp, #4]
+	add.w	r1, r1, r2, lsl #2
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #4]
+	movw	r1, :lower16:g_regMaxOpNum
+	movt	r1, :upper16:g_regMaxOpNum
+	ldr	r1, [r1]
+	add	r0, r1
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bls	.LBB1_4
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	subs	r0, r0, r1
+	str	r0, [sp]
+	b	.LBB1_5
+.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
+	movw	r0, :lower16:g_regMaxOpNum
+	movt	r0, :upper16:g_regMaxOpNum
+	ldr	r0, [r0]
+	str	r0, [sp]
+	b	.LBB1_5
+.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #8]
+	add.w	r0, r0, #264
+	ldr	r1, [sp, #16]
+	ldr	r2, [sp, #4]
+	add.w	r1, r1, r2, lsl #2
+	ldr	r2, [sp]
+	lsls	r2, r2, #2
+	bl	dsp_fsl_continue_write
+	ldr	r1, [sp]
+	ldr	r0, [sp, #4]
+	add	r0, r1
+	str	r0, [sp, #4]
+	b	.LBB1_1
+.LBB1_6:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	SRE_WriteBuff2Sram, .Lfunc_end1-SRE_WriteBuff2Sram
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_DownloadFirmware,"ax",%progbits
+	.hidden	SRE_DownloadFirmware            @ -- Begin function SRE_DownloadFirmware
+	.globl	SRE_DownloadFirmware
+	.p2align	2
+	.type	SRE_DownloadFirmware,%function
+	.code	16                              @ @SRE_DownloadFirmware
+	.thumb_func
+SRE_DownloadFirmware:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	movs	r1, #0
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #272
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #268
+	movs	r1, #1
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	dsp_fsl_reg_write
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #272
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #20]
+	adds	r0, #100
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #16]
+	cmp	r0, #8
+	blo	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	b	.LBB2_7
+.LBB2_2:
+	movs	r0, #0
+	str	r0, [sp, #12]
+	b	.LBB2_3
+.LBB2_3:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #20]
+	ldr	r1, [r1, #16]
+	cmp	r0, r1
+	bhs	.LBB2_6
+	b	.LBB2_4
+.LBB2_4:                                @   in Loop: Header=BB2_3 Depth=1
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #12]
+	add.w	r2, r0, r1, lsl #3
+	ldr	r1, [sp, #8]
+	ldr	r0, [r2, #20]
+	ldr	r2, [r2, #24]
+	lsrs	r2, r2, #2
+	bl	SRE_WriteBuff2Sram
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #12]
+	add.w	r0, r0, r1, lsl #3
+	ldr	r1, [r0, #24]
+	ldr	r0, [sp, #8]
+	add	r0, r1
+	str	r0, [sp, #8]
+	b	.LBB2_5
+.LBB2_5:                                @   in Loop: Header=BB2_3 Depth=1
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #12]
+	b	.LBB2_3
+.LBB2_6:
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #272
+	movs	r1, #0
+	str	r1, [sp]                        @ 4-byte Spill
+	bl	dsp_fsl_reg_write
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #268
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #16]
+	add.w	r0, r0, #272
+	movs	r1, #1
+	bl	dsp_fsl_reg_write
+	b	.LBB2_7
+.LBB2_7:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	SRE_DownloadFirmware, .Lfunc_end2-SRE_DownloadFirmware
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_GetSramBuff,"ax",%progbits
+	.hidden	SRE_GetSramBuff                 @ -- Begin function SRE_GetSramBuff
+	.globl	SRE_GetSramBuff
+	.p2align	2
+	.type	SRE_GetSramBuff,%function
+	.code	16                              @ @SRE_GetSramBuff
+	.thumb_func
+SRE_GetSramBuff:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bhs	.LBB3_6
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #8]
+	add.w	r0, r0, #260
+	ldr	r1, [sp, #20]
+	ldr	r2, [sp, #4]
+	add.w	r1, r1, r2, lsl #2
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #4]
+	movw	r1, :lower16:g_regMaxOpNum
+	movt	r1, :upper16:g_regMaxOpNum
+	ldr	r1, [r1]
+	add	r0, r1
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bls	.LBB3_4
+	b	.LBB3_3
+.LBB3_3:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	subs	r0, r0, r1
+	str	r0, [sp]
+	b	.LBB3_5
+.LBB3_4:                                @   in Loop: Header=BB3_1 Depth=1
+	movw	r0, :lower16:g_regMaxOpNum
+	movt	r0, :upper16:g_regMaxOpNum
+	ldr	r0, [r0]
+	str	r0, [sp]
+	b	.LBB3_5
+.LBB3_5:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #8]
+	add.w	r0, r0, #264
+	ldr	r1, [sp, #16]
+	ldr	r2, [sp, #4]
+	add.w	r1, r1, r2, lsl #2
+	ldr	r2, [sp]
+	lsls	r2, r2, #2
+	bl	dsp_fsl_continue_read
+	ldr	r1, [sp]
+	ldr	r0, [sp, #4]
+	add	r0, r1
+	str	r0, [sp, #4]
+	b	.LBB3_1
+.LBB3_6:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	SRE_GetSramBuff, .Lfunc_end3-SRE_GetSramBuff
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_CmdSend,"ax",%progbits
+	.hidden	SRE_CmdSend                     @ -- Begin function SRE_CmdSend
+	.globl	SRE_CmdSend
+	.p2align	2
+	.type	SRE_CmdSend,%function
+	.code	16                              @ @SRE_CmdSend
+	.thumb_func
+SRE_CmdSend:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+	mov	r12, r0
+	ldr	r0, [sp, #72]
+	str.w	r12, [sp, #56]
+	str	r1, [sp, #52]
+	str	r2, [sp, #48]
+	str	r3, [sp, #44]
+	strb.w	r0, [sp, #43]
+	movs	r0, #0
+	str	r0, [sp, #36]
+	ldr	r2, [sp, #56]
+	movw	r1, :lower16:g_sreFuncArr
+	movt	r1, :upper16:g_sreFuncArr
+	ldr.w	r1, [r1, r2, lsl #2]
+	str	r1, [sp, #28]
+	str	r0, [sp, #20]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #52]
+	add.w	r0, r0, r1, lsl #4
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #36]
+	ldr	r2, [sp, #56]
+	ldr	r1, [sp, #52]
+	orr.w	r1, r1, r2, lsl #16
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #24]
+	ldrh	r0, [r0, #8]
+	cbz	r0, .LBB4_3
+	b	.LBB4_1
+.LBB4_1:
+	ldr	r0, [sp, #48]
+	cbnz	r0, .LBB4_3
+	b	.LBB4_2
+.LBB4_2:
+	movs	r0, #30
+	movt	r0, #4352
+	str	r0, [sp, #60]
+	b	.LBB4_24
+.LBB4_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #35]
+	b	.LBB4_4
+.LBB4_4:                                @ =>This Inner Loop Header: Depth=1
+	ldrb.w	r0, [sp, #35]
+	ldr	r1, [sp, #24]
+	ldrh	r1, [r1, #8]
+	cmp	r0, r1
+	bge	.LBB4_7
+	b	.LBB4_5
+.LBB4_5:                                @   in Loop: Header=BB4_4 Depth=1
+	ldr	r0, [sp, #36]
+	ldrb.w	r2, [sp, #35]
+	add.w	r0, r0, r2, lsl #2
+	adds	r0, #4
+	ldr	r1, [sp, #48]
+	ldr.w	r1, [r1, r2, lsl #2]
+	bl	dsp_fsl_reg_write
+	b	.LBB4_6
+.LBB4_6:                                @   in Loop: Header=BB4_4 Depth=1
+	ldrb.w	r0, [sp, #35]
+	adds	r0, #1
+	strb.w	r0, [sp, #35]
+	b	.LBB4_4
+.LBB4_7:
+	ldr	r0, [sp, #36]
+	adds	r0, #252
+	movw	r1, #23130
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #43]
+	cbnz	r0, .LBB4_9
+	b	.LBB4_8
+.LBB4_8:
+	movs	r0, #0
+	str	r0, [sp, #60]
+	b	.LBB4_24
+.LBB4_9:
+	ldr	r0, [sp, #24]
+	ldr	r0, [r0, #12]
+	str	r0, [sp, #16]
+	movw	r0, #15000
+	str	r0, [sp, #16]
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	str	r0, [sp, #4]
+	b	.LBB4_10
+.LBB4_10:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #36]
+	adds	r0, #252
+	add	r1, sp, #12
+	bl	dsp_fsl_reg_read
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	ldr	r1, [sp, #4]
+	subs	r0, r0, r1
+	str	r0, [sp, #20]
+	b	.LBB4_11
+.LBB4_11:                               @   in Loop: Header=BB4_10 Depth=1
+	ldrh.w	r1, [sp, #14]
+	movs	r0, #0
+	movw	r2, #42405
+	cmp	r1, r2
+	str	r0, [sp]                        @ 4-byte Spill
+	beq	.LBB4_13
+	b	.LBB4_12
+.LBB4_12:                               @   in Loop: Header=BB4_10 Depth=1
+	ldr	r1, [sp, #20]
+	ldr	r2, [sp, #16]
+	movs	r0, #0
+	cmp	r1, r2
+	it	lo
+	movlo	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB4_13
+.LBB4_13:                               @   in Loop: Header=BB4_10 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB4_10
+	b	.LBB4_14
+.LBB4_14:
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #16]
+	cmp	r0, r1
+	blo	.LBB4_16
+	b	.LBB4_15
+.LBB4_15:
+	movs	r0, #28
+	movt	r0, #4352
+	str	r0, [sp, #60]
+	b	.LBB4_24
+.LBB4_16:
+	ldr	r0, [sp, #36]
+	adds	r0, #4
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #24]
+	ldrh	r0, [r0, #10]
+	cbz	r0, .LBB4_19
+	b	.LBB4_17
+.LBB4_17:
+	ldr	r0, [sp, #44]
+	cbnz	r0, .LBB4_19
+	b	.LBB4_18
+.LBB4_18:
+	movs	r0, #29
+	movt	r0, #4352
+	str	r0, [sp, #60]
+	b	.LBB4_24
+.LBB4_19:
+	movs	r0, #0
+	strb.w	r0, [sp, #35]
+	b	.LBB4_20
+.LBB4_20:                               @ =>This Inner Loop Header: Depth=1
+	ldrb.w	r0, [sp, #35]
+	ldr	r1, [sp, #24]
+	ldrh	r1, [r1, #10]
+	cmp	r0, r1
+	bge	.LBB4_23
+	b	.LBB4_21
+.LBB4_21:                               @   in Loop: Header=BB4_20 Depth=1
+	ldr	r0, [sp, #36]
+	ldrb.w	r2, [sp, #35]
+	add.w	r0, r0, r2, lsl #2
+	adds	r0, #8
+	ldr	r1, [sp, #44]
+	add.w	r1, r1, r2, lsl #2
+	bl	dsp_fsl_reg_read
+	b	.LBB4_22
+.LBB4_22:                               @   in Loop: Header=BB4_20 Depth=1
+	ldrb.w	r0, [sp, #35]
+	adds	r0, #1
+	strb.w	r0, [sp, #35]
+	b	.LBB4_20
+.LBB4_23:
+	ldr	r0, [sp, #8]
+	str	r0, [sp, #60]
+	b	.LBB4_24
+.LBB4_24:
+	ldr	r0, [sp, #60]
+	add	sp, #64
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	SRE_CmdSend, .Lfunc_end4-SRE_CmdSend
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_GetCmdResult,"ax",%progbits
+	.hidden	SRE_GetCmdResult                @ -- Begin function SRE_GetCmdResult
+	.globl	SRE_GetCmdResult
+	.p2align	2
+	.type	SRE_GetCmdResult,%function
+	.code	16                              @ @SRE_GetCmdResult
+	.thumb_func
+SRE_GetCmdResult:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	str	r0, [sp, #40]
+	str	r1, [sp, #36]
+	str	r2, [sp, #32]
+	str	r3, [sp, #28]
+	movs	r0, #0
+	str	r0, [sp, #24]
+	ldr	r1, [sp, #40]
+	movw	r0, :lower16:g_sreFuncArr
+	movt	r0, :upper16:g_sreFuncArr
+	ldr.w	r0, [r0, r1, lsl #2]
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	ldr	r1, [sp, #36]
+	add.w	r0, r0, r1, lsl #4
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #24]
+	adds	r0, #252
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldrh.w	r0, [sp, #10]
+	movw	r1, #42405
+	cmp	r0, r1
+	beq	.LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	ldr	r1, [sp, #28]
+	movs	r0, #0
+	str	r0, [r1]
+	str	r0, [sp, #44]
+	b	.LBB5_10
+.LBB5_2:
+	ldr	r1, [sp, #28]
+	movs	r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	adds	r0, #4
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #12]
+	ldrh	r0, [r0, #10]
+	cbz	r0, .LBB5_5
+	b	.LBB5_3
+.LBB5_3:
+	ldr	r0, [sp, #32]
+	cbnz	r0, .LBB5_5
+	b	.LBB5_4
+.LBB5_4:
+	movs	r0, #29
+	movt	r0, #4352
+	str	r0, [sp, #44]
+	b	.LBB5_10
+.LBB5_5:
+	movs	r0, #0
+	strb.w	r0, [sp, #23]
+	b	.LBB5_6
+.LBB5_6:                                @ =>This Inner Loop Header: Depth=1
+	ldrb.w	r0, [sp, #23]
+	ldr	r1, [sp, #12]
+	ldrh	r1, [r1, #10]
+	cmp	r0, r1
+	bge	.LBB5_9
+	b	.LBB5_7
+.LBB5_7:                                @   in Loop: Header=BB5_6 Depth=1
+	ldr	r0, [sp, #24]
+	ldrb.w	r2, [sp, #23]
+	add.w	r0, r0, r2, lsl #2
+	adds	r0, #8
+	ldr	r1, [sp, #32]
+	add.w	r1, r1, r2, lsl #2
+	bl	dsp_fsl_reg_read
+	b	.LBB5_8
+.LBB5_8:                                @   in Loop: Header=BB5_6 Depth=1
+	ldrb.w	r0, [sp, #23]
+	adds	r0, #1
+	strb.w	r0, [sp, #23]
+	b	.LBB5_6
+.LBB5_9:
+	ldr	r0, [sp, #4]
+	str	r0, [sp, #44]
+	b	.LBB5_10
+.LBB5_10:
+	ldr	r0, [sp, #44]
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	SRE_GetCmdResult, .Lfunc_end5-SRE_GetCmdResult
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_DspSetUp,"ax",%progbits
+	.hidden	SRE_DspSetUp                    @ -- Begin function SRE_DspSetUp
+	.globl	SRE_DspSetUp
+	.p2align	2
+	.type	SRE_DspSetUp,%function
+	.code	16                              @ @SRE_DspSetUp
+	.thumb_func
+SRE_DspSetUp:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#208
+	sub	sp, #208
+	.cfi_def_cfa_offset 216
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #203]
+	str	r1, [sp, #196]
+	movs	r0, #0
+	str	r0, [sp, #76]                   @ 4-byte Spill
+	str	r0, [sp, #112]
+	str	r0, [sp, #108]
+	str	r0, [sp, #104]
+	mov.w	r1, #-1
+	str	r1, [sp, #100]
+	str	r0, [sp, #96]
+	str	r0, [sp, #92]
+	str	r0, [sp, #88]
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #72]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r2, [sp, #72]                   @ 4-byte Reload
+	ldr	r0, [sp, #76]                   @ 4-byte Reload
+	movs	r1, #116
+	strh	r1, [r2, #4]
+	movw	r1, #26950
+	movt	r1, #29554
+	str	r1, [r2]
+	movw	r1, :lower16:g_dsp_pll
+	movt	r1, :upper16:g_dsp_pll
+	str	r0, [r1, #16]
+	str	r0, [r1, #12]
+	str	r0, [r1, #8]
+	str	r0, [r1, #4]
+	str	r0, [r1]
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	str	r0, [sp, #96]
+	b	.LBB6_1
+.LBB6_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	ldr	r1, [sp, #96]
+	subs	r0, r0, r1
+	str	r0, [sp, #92]
+	ldrb.w	r0, [sp, #203]
+	bl	SRE_HpllSetup
+	str	r0, [sp, #112]
+	b	.LBB6_2
+.LBB6_2:                                @   in Loop: Header=BB6_1 Depth=1
+	ldr	r1, [sp, #112]
+	movs	r0, #0
+	str	r0, [sp, #68]                   @ 4-byte Spill
+	cbz	r1, .LBB6_4
+	b	.LBB6_3
+.LBB6_3:                                @   in Loop: Header=BB6_1 Depth=1
+	ldr	r1, [sp, #92]
+	movs	r0, #0
+	cmp	r1, #100
+	it	lo
+	movlo	r0, #1
+	str	r0, [sp, #68]                   @ 4-byte Spill
+	b	.LBB6_4
+.LBB6_4:                                @   in Loop: Header=BB6_1 Depth=1
+	ldr	r0, [sp, #68]                   @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB6_1
+	b	.LBB6_5
+.LBB6_5:
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_7
+	b	.LBB6_6
+.LBB6_6:
+	movw	r0, :lower16:g_dsp_pll
+	movt	r0, :upper16:g_dsp_pll
+	str	r0, [sp, #64]                   @ 4-byte Spill
+	movs	r1, #0
+	str	r1, [r0, #16]
+	str	r1, [r0, #12]
+	str	r1, [r0, #8]
+	str	r1, [r0, #4]
+	str	r1, [r0]
+	strb	r1, [r0, #4]
+	movw	r1, #19536
+	movt	r1, #14924
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #6
+	bl	set_u32
+	ldr	r0, [sp, #112]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_7:
+	movw	r1, :lower16:g_dsp_pll
+	movt	r1, :upper16:g_dsp_pll
+	movw	r0, #19279
+	movt	r0, #58
+	str.w	r0, [r1, #3]
+	movw	r0, #19536
+	movt	r0, #20300
+	str	r0, [r1]
+	b	.LBB6_8
+.LBB6_8:
+	movs	r0, #100
+	bl	system_delay_ms
+	ldr	r0, [sp, #196]
+	bl	SRE_DownloadFirmware
+	mov.w	r0, #-1
+	str	r0, [sp, #100]
+	ldr	r0, [sp, #88]
+	add.w	r0, r0, #272
+	add	r1, sp, #100
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #100]
+	cbnz	r0, .LBB6_10
+	b	.LBB6_9
+.LBB6_9:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #60]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #25453
+	movt	r1, #12917
+	str	r1, [r0]
+	ldr	r1, [sp, #100]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #100]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_10:
+	mov	r1, sp
+	movs	r0, #1
+	str	r0, [r1]
+	movs	r0, #5
+	movs	r1, #0
+	add	r2, sp, #156
+	add	r3, sp, #116
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_12
+	b	.LBB6_11
+.LBB6_11:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #56]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #56]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #26964
+	movt	r1, #27491
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #112]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_12:
+	mov.w	r0, #-1
+	str	r0, [sp, #100]
+	ldr	r0, [sp, #88]
+	add.w	r0, r0, #272
+	add	r1, sp, #100
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #100]
+	cbnz	r0, .LBB6_14
+	b	.LBB6_13
+.LBB6_13:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #52]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #52]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #25453
+	movt	r1, #13173
+	str	r1, [r0]
+	ldr	r1, [sp, #100]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #100]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_14:
+	mov	r1, sp
+	movs	r0, #9
+	str	r0, [r1]
+	movs	r0, #5
+	movs	r1, #2
+	add	r2, sp, #156
+	add	r3, sp, #116
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_16
+	b	.LBB6_15
+.LBB6_15:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #48]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #48]                   @ 4-byte Reload
+	movw	r1, #28521
+	movt	r1, #14958
+	str	r1, [r0, #4]
+	movw	r1, #25942
+	movt	r1, #29554
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	b	.LBB6_16
+.LBB6_16:
+	mov.w	r0, #-1
+	str	r0, [sp, #100]
+	ldr	r0, [sp, #88]
+	add.w	r0, r0, #272
+	add	r1, sp, #100
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #100]
+	cbnz	r0, .LBB6_18
+	b	.LBB6_17
+.LBB6_17:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #44]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #44]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #25453
+	movt	r1, #13429
+	str	r1, [r0]
+	ldr	r1, [sp, #100]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #100]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_18:
+	add	r0, sp, #116
+	str	r0, [sp, #40]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr4
+	ldr	r3, [sp, #40]                   @ 4-byte Reload
+	add	r2, sp, #156
+	str	r2, [sp, #84]
+	ldr	r1, [sp, #84]
+	movs	r0, #1
+	str	r0, [r1]
+	ldr.w	r12, [sp, #84]
+	movs	r1, #3
+	str.w	r1, [r12, #8]
+	ldr.w	r12, [sp, #84]
+	str.w	r1, [r12, #4]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #12]
+	and	r1, r1, #192
+	adds	r1, #18
+	strb.w	r1, [r12, #12]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #12]
+	orr	r1, r1, #192
+	strb.w	r1, [r12, #12]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #13]
+	and	r1, r1, #192
+	adds	r1, #11
+	strb.w	r1, [r12, #13]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #13]
+	mov.w	lr, #2
+	bfi	r1, lr, #6, #26
+	strb.w	r1, [r12, #13]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #14]
+	and	r1, r1, #192
+	strb.w	r1, [r12, #14]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #14]
+	and	r1, r1, #63
+	strb.w	r1, [r12, #14]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #15]
+	and	r1, r1, #192
+	strb.w	r1, [r12, #15]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #15]
+	and	r1, r1, #63
+	strb.w	r1, [r12, #15]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #19]
+	and	r1, r1, #192
+	adds	r1, #17
+	strb.w	r1, [r12, #19]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #19]
+	orr	r1, r1, #192
+	strb.w	r1, [r12, #19]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #16]
+	and	r1, r1, #192
+	adds	r1, #11
+	strb.w	r1, [r12, #16]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #16]
+	bfi	r1, lr, #6, #26
+	strb.w	r1, [r12, #16]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #17]
+	and	r1, r1, #192
+	strb.w	r1, [r12, #17]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #17]
+	and	r1, r1, #63
+	strb.w	r1, [r12, #17]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #18]
+	and	r1, r1, #192
+	strb.w	r1, [r12, #18]
+	ldr.w	r12, [sp, #84]
+	ldrb.w	r1, [r12, #18]
+	and	r1, r1, #63
+	strb.w	r1, [r12, #18]
+	mov	r12, sp
+	movs	r1, #9
+	str.w	r1, [r12]
+	movs	r1, #0
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_20
+	b	.LBB6_19
+.LBB6_19:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	movw	r1, #14897
+	strh	r1, [r0, #4]
+	movw	r1, #24944
+	movt	r1, #24946
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #112]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_20:
+	mov.w	r0, #-1
+	str	r0, [sp, #100]
+	ldr	r0, [sp, #88]
+	add.w	r0, r0, #272
+	add	r1, sp, #100
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #100]
+	cbnz	r0, .LBB6_22
+	b	.LBB6_21
+.LBB6_21:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #25453
+	movt	r1, #13685
+	str	r1, [r0]
+	ldr	r1, [sp, #100]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #100]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_22:
+	movs	r0, #0
+	str	r0, [sp, #168]
+	str	r0, [sp, #164]
+	str	r0, [sp, #160]
+	str	r0, [sp, #156]
+	add	r0, sp, #116
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr4
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	add	r2, sp, #156
+	str	r2, [sp, #80]
+	ldr	r0, [sp, #80]
+	movs	r1, #1
+	str	r1, [r0]
+	ldr.w	r12, [sp, #80]
+	movs	r0, #3
+	str.w	r0, [r12, #4]
+	ldr.w	r12, [sp, #80]
+	str.w	r0, [r12, #8]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #12]
+	and	r0, r0, #247
+	strb.w	r0, [r12, #12]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #12]
+	and	r0, r0, #239
+	strb.w	r0, [r12, #12]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #14]
+	and	r0, r0, #247
+	strb.w	r0, [r12, #14]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #14]
+	and	r0, r0, #239
+	strb.w	r0, [r12, #14]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #15]
+	and	r0, r0, #223
+	strb.w	r0, [r12, #15]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #15]
+	orr	r0, r0, #192
+	strb.w	r0, [r12, #15]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #13]
+	and	r0, r0, #223
+	strb.w	r0, [r12, #13]
+	ldr.w	r12, [sp, #80]
+	ldrb.w	r0, [r12, #13]
+	orr	r0, r0, #192
+	strb.w	r0, [r12, #13]
+	mov	r12, sp
+	movs	r0, #9
+	str.w	r0, [r12]
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_24
+	b	.LBB6_23
+.LBB6_23:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movw	r1, #28233
+	movt	r1, #58
+	str	r1, [r0, #4]
+	movw	r1, #24944
+	movt	r1, #24946
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	b	.LBB6_24
+.LBB6_24:
+	add	r0, sp, #116
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr4
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	movs	r0, #1
+	str	r0, [sp, #156]
+	movs	r0, #2
+	str	r0, [sp, #160]
+	mov	r1, sp
+	movs	r0, #9
+	str	r0, [r1]
+	movs	r1, #0
+	add	r2, sp, #156
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_26
+	b	.LBB6_25
+.LBB6_25:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r1, #58
+	strb	r1, [r0, #4]
+	movw	r1, #30066
+	movt	r1, #12654
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	b	.LBB6_26
+.LBB6_26:
+	mov.w	r0, #-1
+	str	r0, [sp, #100]
+	ldr	r0, [sp, #88]
+	add.w	r0, r0, #272
+	add	r1, sp, #100
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #100]
+	cbnz	r0, .LBB6_28
+	b	.LBB6_27
+.LBB6_27:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	movs	r1, #58
+	strh	r1, [r0, #4]
+	movw	r1, #25453
+	movt	r1, #13941
+	str	r1, [r0]
+	ldr	r1, [sp, #100]
+	adds	r0, #10
+	bl	set_u32
+	ldr	r0, [sp, #100]
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_28:
+	movs	r0, #2
+	str	r0, [sp, #156]
+	movs	r0, #1
+	str	r0, [sp, #160]
+	mov	r1, sp
+	movs	r0, #9
+	str	r0, [r1]
+	movs	r1, #0
+	add	r2, sp, #156
+	add	r3, sp, #116
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #112]
+	ldr	r0, [sp, #112]
+	cbz	r0, .LBB6_30
+	b	.LBB6_29
+.LBB6_29:
+	movw	r0, :lower16:g_dsp_info
+	movt	r0, :upper16:g_dsp_info
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movs	r1, #40
+	bl	__aeabi_memclr
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #0
+	strb	r1, [r0, #4]
+	movw	r1, #28757
+	movt	r1, #58
+	str	r1, [r0]
+	ldr	r1, [sp, #112]
+	adds	r0, #10
+	bl	set_u32
+	b	.LBB6_30
+.LBB6_30:
+	movs	r0, #0
+	str	r0, [sp, #204]
+	b	.LBB6_31
+.LBB6_31:
+	ldr	r0, [sp, #204]
+	add	sp, #208
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	SRE_DspSetUp, .Lfunc_end6-SRE_DspSetUp
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"First"
+	.size	.L.str, 6
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"PLL:"
+	.size	.L.str.1, 5
+
+	.type	.L.str.2,%object                @ @.str.2
+.L.str.2:
+	.asciz	"PLLOK:"
+	.size	.L.str.2, 7
+
+	.type	.L.str.3,%object                @ @.str.3
+.L.str.3:
+	.asciz	"mcu2:"
+	.size	.L.str.3, 6
+
+	.type	.L.str.4,%object                @ @.str.4
+.L.str.4:
+	.asciz	"Tick:"
+	.size	.L.str.4, 6
+
+	.type	.L.str.5,%object                @ @.str.5
+.L.str.5:
+	.asciz	"mcu3:"
+	.size	.L.str.5, 6
+
+	.type	.L.str.6,%object                @ @.str.6
+.L.str.6:
+	.asciz	"Version:"
+	.size	.L.str.6, 9
+
+	.type	.L.str.7,%object                @ @.str.7
+.L.str.7:
+	.asciz	"mcu4:"
+	.size	.L.str.7, 6
+
+	.type	.L.str.8,%object                @ @.str.8
+.L.str.8:
+	.asciz	"para1:"
+	.size	.L.str.8, 7
+
+	.type	.L.str.9,%object                @ @.str.9
+.L.str.9:
+	.asciz	"mcu5:"
+	.size	.L.str.9, 6
+
+	.type	.L.str.10,%object               @ @.str.10
+.L.str.10:
+	.asciz	"paraIn:"
+	.size	.L.str.10, 8
+
+	.type	.L.str.11,%object               @ @.str.11
+.L.str.11:
+	.asciz	"run1:"
+	.size	.L.str.11, 6
+
+	.type	.L.str.12,%object               @ @.str.12
+.L.str.12:
+	.asciz	"mcu6:"
+	.size	.L.str.12, 6
+
+	.type	.L.str.13,%object               @ @.str.13
+.L.str.13:
+	.asciz	"Up:"
+	.size	.L.str.13, 4
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,241 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"sgm2508_ea.c"
+	.section	.text.sgm2508_init,"ax",%progbits
+	.hidden	sgm2508_init                    @ -- Begin function sgm2508_init
+	.globl	sgm2508_init
+	.p2align	2
+	.type	sgm2508_init,%function
+	.code	16                              @ @sgm2508_init
+	.thumb_func
+sgm2508_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	bl	sgm2508_gpio_init
+	movs	r0, #0
+	str	r0, [sp, #4]
+	vldr	s0, [sp, #4]
+	bl	sgm2508_set_vea_10g
+	vldr	s0, [sp, #4]
+	bl	sgm2508_set_vea_50g
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	sgm2508_init, .Lfunc_end0-sgm2508_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm2508_set_vea_10g,"ax",%progbits
+	.hidden	sgm2508_set_vea_10g             @ -- Begin function sgm2508_set_vea_10g
+	.globl	sgm2508_set_vea_10g
+	.p2align	3
+	.type	sgm2508_set_vea_10g,%function
+	.code	16                              @ @sgm2508_set_vea_10g
+	.thumb_func
+sgm2508_set_vea_10g:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vstr	s0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI1_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI1_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #2]
+	ldrh.w	r3, [sp, #2]
+	movw	r0, #52224
+	movt	r0, #16384
+	movs	r1, #1
+	movs	r2, #0
+	bl	dac_data_set
+	add	sp, #8
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI1_0:
+	.long	0                               @ double 2.5
+	.long	1074003968
+.LCPI1_1:
+	.long	0                               @ double 4096
+	.long	1085276160
+.Lfunc_end1:
+	.size	sgm2508_set_vea_10g, .Lfunc_end1-sgm2508_set_vea_10g
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm2508_set_vea_50g,"ax",%progbits
+	.hidden	sgm2508_set_vea_50g             @ -- Begin function sgm2508_set_vea_50g
+	.globl	sgm2508_set_vea_50g
+	.p2align	3
+	.type	sgm2508_set_vea_50g,%function
+	.code	16                              @ @sgm2508_set_vea_50g
+	.thumb_func
+sgm2508_set_vea_50g:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vstr	s0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI2_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI2_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #2]
+	ldrh.w	r3, [sp, #2]
+	movw	r0, #53248
+	movt	r0, #16384
+	movs	r1, #1
+	movs	r2, #0
+	bl	dac_data_set
+	add	sp, #8
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI2_0:
+	.long	0                               @ double 2.5
+	.long	1074003968
+.LCPI2_1:
+	.long	0                               @ double 4096
+	.long	1085276160
+.Lfunc_end2:
+	.size	sgm2508_set_vea_50g, .Lfunc_end2-sgm2508_set_vea_50g
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm2508_gpio_init,"ax",%progbits
+	.hidden	sgm2508_gpio_init               @ -- Begin function sgm2508_gpio_init
+	.globl	sgm2508_gpio_init
+	.p2align	2
+	.type	sgm2508_gpio_init,%function
+	.code	16                              @ @sgm2508_gpio_init
+	.thumb_func
+sgm2508_gpio_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	mov.w	r3, #256
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #12]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	mov.w	r3, #16384
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	sgm2508_gpio_init, .Lfunc_end3-sgm2508_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

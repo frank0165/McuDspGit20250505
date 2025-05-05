@@ -1,0 +1,184 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"do_cmd_struct.c"
+	.hidden	g_funcCat0Para                  @ @g_funcCat0Para
+	.type	g_funcCat0Para,%object
+	.section	.data.g_funcCat0Para,"aw",%progbits
+	.globl	g_funcCat0Para
+	.p2align	2, 0x0
+g_funcCat0Para:
+	.long	0                               @ 0x0
+	.long	0                               @ 0x0
+	.short	2                               @ 0x2
+	.short	0                               @ 0x0
+	.long	60000                           @ 0xea60
+	.long	0                               @ 0x0
+	.long	1                               @ 0x1
+	.short	0                               @ 0x0
+	.short	0                               @ 0x0
+	.long	60000                           @ 0xea60
+	.long	0                               @ 0x0
+	.long	2                               @ 0x2
+	.short	0                               @ 0x0
+	.short	0                               @ 0x0
+	.long	60000                           @ 0xea60
+	.size	g_funcCat0Para, 48
+
+	.hidden	g_funcCat1Para                  @ @g_funcCat1Para
+	.type	g_funcCat1Para,%object
+	.section	.data.g_funcCat1Para,"aw",%progbits
+	.globl	g_funcCat1Para
+	.p2align	2, 0x0
+g_funcCat1Para:
+	.long	1                               @ 0x1
+	.long	0                               @ 0x0
+	.short	5                               @ 0x5
+	.short	4                               @ 0x4
+	.long	100                             @ 0x64
+	.long	1                               @ 0x1
+	.long	1                               @ 0x1
+	.short	4                               @ 0x4
+	.short	3                               @ 0x3
+	.long	100                             @ 0x64
+	.long	1                               @ 0x1
+	.long	2                               @ 0x2
+	.short	3                               @ 0x3
+	.short	2                               @ 0x2
+	.long	100                             @ 0x64
+	.size	g_funcCat1Para, 48
+
+	.hidden	g_funcCat2Para                  @ @g_funcCat2Para
+	.type	g_funcCat2Para,%object
+	.section	.data.g_funcCat2Para,"aw",%progbits
+	.globl	g_funcCat2Para
+	.p2align	2, 0x0
+g_funcCat2Para:
+	.long	2                               @ 0x2
+	.long	0                               @ 0x0
+	.short	3                               @ 0x3
+	.short	0                               @ 0x0
+	.long	5000                            @ 0x1388
+	.long	2                               @ 0x2
+	.long	1                               @ 0x1
+	.short	33                              @ 0x21
+	.short	0                               @ 0x0
+	.long	200                             @ 0xc8
+	.zero	16
+	.size	g_funcCat2Para, 48
+
+	.hidden	g_funcCat3Para                  @ @g_funcCat3Para
+	.type	g_funcCat3Para,%object
+	.section	.data.g_funcCat3Para,"aw",%progbits
+	.globl	g_funcCat3Para
+	.p2align	2, 0x0
+g_funcCat3Para:
+	.long	3                               @ 0x3
+	.long	0                               @ 0x0
+	.short	0                               @ 0x0
+	.short	1                               @ 0x1
+	.long	100                             @ 0x64
+	.long	3                               @ 0x3
+	.long	1                               @ 0x1
+	.short	1                               @ 0x1
+	.short	0                               @ 0x0
+	.long	200                             @ 0xc8
+	.size	g_funcCat3Para, 32
+
+	.hidden	g_funcCat4Para                  @ @g_funcCat4Para
+	.type	g_funcCat4Para,%object
+	.section	.data.g_funcCat4Para,"aw",%progbits
+	.globl	g_funcCat4Para
+	.p2align	2, 0x0
+g_funcCat4Para:
+	.long	4                               @ 0x4
+	.long	0                               @ 0x0
+	.short	2                               @ 0x2
+	.short	0                               @ 0x0
+	.long	100                             @ 0x64
+	.size	g_funcCat4Para, 16
+
+	.hidden	g_funcCat5Para                  @ @g_funcCat5Para
+	.type	g_funcCat5Para,%object
+	.section	.data.g_funcCat5Para,"aw",%progbits
+	.globl	g_funcCat5Para
+	.p2align	2, 0x0
+g_funcCat5Para:
+	.long	5                               @ 0x5
+	.long	0                               @ 0x0
+	.short	0                               @ 0x0
+	.short	1                               @ 0x1
+	.long	100                             @ 0x64
+	.long	5                               @ 0x5
+	.long	1                               @ 0x1
+	.short	1                               @ 0x1
+	.short	5                               @ 0x5
+	.long	100                             @ 0x64
+	.long	5                               @ 0x5
+	.long	2                               @ 0x2
+	.short	1                               @ 0x1
+	.short	9                               @ 0x9
+	.long	100                             @ 0x64
+	.long	5                               @ 0x5
+	.long	3                               @ 0x3
+	.short	4                               @ 0x4
+	.short	5                               @ 0x5
+	.long	100                             @ 0x64
+	.long	5                               @ 0x5
+	.long	4                               @ 0x4
+	.short	2                               @ 0x2
+	.short	1                               @ 0x1
+	.long	100                             @ 0x64
+	.size	g_funcCat5Para, 80
+
+	.hidden	g_funcCat6Para                  @ @g_funcCat6Para
+	.type	g_funcCat6Para,%object
+	.section	.data.g_funcCat6Para,"aw",%progbits
+	.globl	g_funcCat6Para
+	.p2align	2, 0x0
+g_funcCat6Para:
+	.long	6                               @ 0x6
+	.long	0                               @ 0x0
+	.short	0                               @ 0x0
+	.short	1                               @ 0x1
+	.long	100                             @ 0x64
+	.size	g_funcCat6Para, 16
+
+	.hidden	g_sreFuncArr                    @ @g_sreFuncArr
+	.type	g_sreFuncArr,%object
+	.section	.data.g_sreFuncArr,"aw",%progbits
+	.globl	g_sreFuncArr
+	.p2align	2, 0x0
+g_sreFuncArr:
+	.long	g_funcCat0Para
+	.long	g_funcCat1Para
+	.long	g_funcCat2Para
+	.long	g_funcCat3Para
+	.long	g_funcCat4Para
+	.long	g_funcCat5Para
+	.long	g_funcCat6Para
+	.size	g_sreFuncArr, 28
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.ARM_attribute	16, 1	@ Tag_AV_eba

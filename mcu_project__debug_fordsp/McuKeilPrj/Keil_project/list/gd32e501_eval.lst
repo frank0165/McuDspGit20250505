@@ -1,0 +1,505 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_eval.c"
+	.section	.text.gd_eval_led_init,"ax",%progbits
+	.hidden	gd_eval_led_init                @ -- Begin function gd_eval_led_init
+	.globl	gd_eval_led_init
+	.p2align	2
+	.type	gd_eval_led_init,%function
+	.code	16                              @ @gd_eval_led_init
+	.thumb_func
+gd_eval_led_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	ldrb.w	r1, [sp, #15]
+	movw	r0, :lower16:GPIO_CLK
+	movt	r0, :upper16:GPIO_CLK
+	ldrh.w	r0, [r0, r1, lsl #1]
+	bl	rcu_periph_clock_enable
+	ldrb.w	r2, [sp, #15]
+	movw	r0, :lower16:GPIO_PORT
+	movt	r0, :upper16:GPIO_PORT
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:GPIO_PIN
+	movt	r1, :upper16:GPIO_PIN
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr.w	r3, [r1, r2, lsl #2]
+	movs	r1, #1
+	movs	r2, #0
+	str	r2, [sp]                        @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldrb.w	r3, [sp, #15]
+	ldr.w	r0, [r0, r3, lsl #2]
+	ldr.w	r3, [r2, r3, lsl #2]
+	movs	r2, #3
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldrb.w	r2, [sp, #15]
+	ldr.w	r0, [r0, r2, lsl #2]
+	ldr.w	r1, [r1, r2, lsl #2]
+	str	r0, [r1, #40]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	gd_eval_led_init, .Lfunc_end0-gd_eval_led_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_led_on,"ax",%progbits
+	.hidden	gd_eval_led_on                  @ -- Begin function gd_eval_led_on
+	.globl	gd_eval_led_on
+	.p2align	2
+	.type	gd_eval_led_on,%function
+	.code	16                              @ @gd_eval_led_on
+	.thumb_func
+gd_eval_led_on:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	movw	r0, :lower16:GPIO_PIN
+	movt	r0, :upper16:GPIO_PIN
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:GPIO_PORT
+	movt	r1, :upper16:GPIO_PORT
+	ldr.w	r1, [r1, r2, lsl #2]
+	str	r0, [r1, #24]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	gd_eval_led_on, .Lfunc_end1-gd_eval_led_on
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_led_off,"ax",%progbits
+	.hidden	gd_eval_led_off                 @ -- Begin function gd_eval_led_off
+	.globl	gd_eval_led_off
+	.p2align	2
+	.type	gd_eval_led_off,%function
+	.code	16                              @ @gd_eval_led_off
+	.thumb_func
+gd_eval_led_off:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	movw	r0, :lower16:GPIO_PIN
+	movt	r0, :upper16:GPIO_PIN
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:GPIO_PORT
+	movt	r1, :upper16:GPIO_PORT
+	ldr.w	r1, [r1, r2, lsl #2]
+	str	r0, [r1, #40]
+	add	sp, #4
+	bx	lr
+.Lfunc_end2:
+	.size	gd_eval_led_off, .Lfunc_end2-gd_eval_led_off
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_led_toggle,"ax",%progbits
+	.hidden	gd_eval_led_toggle              @ -- Begin function gd_eval_led_toggle
+	.globl	gd_eval_led_toggle
+	.p2align	2
+	.type	gd_eval_led_toggle,%function
+	.code	16                              @ @gd_eval_led_toggle
+	.thumb_func
+gd_eval_led_toggle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	movw	r0, :lower16:GPIO_PIN
+	movt	r0, :upper16:GPIO_PIN
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:GPIO_PORT
+	movt	r1, :upper16:GPIO_PORT
+	ldr.w	r1, [r1, r2, lsl #2]
+	str	r0, [r1, #44]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	gd_eval_led_toggle, .Lfunc_end3-gd_eval_led_toggle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_key_init,"ax",%progbits
+	.hidden	gd_eval_key_init                @ -- Begin function gd_eval_key_init
+	.globl	gd_eval_key_init
+	.p2align	2
+	.type	gd_eval_key_init,%function
+	.code	16                              @ @gd_eval_key_init
+	.thumb_func
+gd_eval_key_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #15]
+	strb.w	r1, [sp, #14]
+	ldrb.w	r1, [sp, #15]
+	movw	r0, :lower16:KEY_CLK
+	movt	r0, :upper16:KEY_CLK
+	ldrh.w	r0, [r0, r1, lsl #1]
+	bl	rcu_periph_clock_enable
+	mov.w	r0, #1536
+	bl	rcu_periph_clock_enable
+	ldrb.w	r2, [sp, #15]
+	movw	r0, :lower16:KEY_PORT
+	movt	r0, :upper16:KEY_PORT
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:KEY_PIN
+	movt	r1, :upper16:KEY_PIN
+	ldr.w	r3, [r1, r2, lsl #2]
+	movs	r2, #0
+	mov	r1, r2
+	bl	gpio_mode_set
+	ldrb.w	r0, [sp, #14]
+	cmp	r0, #1
+	bne	.LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	ldrb.w	r1, [sp, #15]
+	movw	r0, :lower16:KEY_IRQn
+	movt	r0, :upper16:KEY_IRQn
+	ldrb	r0, [r0, r1]
+	movs	r1, #2
+	movs	r2, #0
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	nvic_irq_enable
+	ldrb.w	r2, [sp, #15]
+	movw	r0, :lower16:KEY_PORT_SOURCE
+	movt	r0, :upper16:KEY_PORT_SOURCE
+	ldrb	r0, [r0, r2]
+	movw	r1, :lower16:KEY_PIN_SOURCE
+	movt	r1, :upper16:KEY_PIN_SOURCE
+	ldrb	r1, [r1, r2]
+	bl	syscfg_exti_line_config
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r2, [sp, #15]
+	movw	r0, :lower16:KEY_EXTI_LINE
+	movt	r0, :upper16:KEY_EXTI_LINE
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	ldr.w	r0, [r0, r2, lsl #2]
+	movs	r2, #1
+	bl	exti_init
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldrb.w	r1, [sp, #15]
+	ldr.w	r0, [r0, r1, lsl #2]
+	bl	exti_interrupt_flag_clear
+	b	.LBB4_2
+.LBB4_2:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	gd_eval_key_init, .Lfunc_end4-gd_eval_key_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_key_state_get,"ax",%progbits
+	.hidden	gd_eval_key_state_get           @ -- Begin function gd_eval_key_state_get
+	.globl	gd_eval_key_state_get
+	.p2align	2
+	.type	gd_eval_key_state_get,%function
+	.code	16                              @ @gd_eval_key_state_get
+	.thumb_func
+gd_eval_key_state_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r2, [sp, #7]
+	movw	r0, :lower16:KEY_PORT
+	movt	r0, :upper16:KEY_PORT
+	ldr.w	r0, [r0, r2, lsl #2]
+	movw	r1, :lower16:KEY_PIN
+	movt	r1, :upper16:KEY_PIN
+	ldr.w	r1, [r1, r2, lsl #2]
+	bl	gpio_input_bit_get
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	gd_eval_key_state_get, .Lfunc_end5-gd_eval_key_state_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gd_eval_com_init,"ax",%progbits
+	.hidden	gd_eval_com_init                @ -- Begin function gd_eval_com_init
+	.globl	gd_eval_com_init
+	.p2align	2
+	.type	gd_eval_com_init,%function
+	.code	16                              @ @gd_eval_com_init
+	.thumb_func
+gd_eval_com_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	movs	r0, #0
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	str	r0, [sp, #24]
+	movw	r0, #1297
+	bl	rcu_periph_clock_enable
+	ldr	r1, [sp, #24]
+	movw	r0, :lower16:COM_CLK
+	movt	r0, :upper16:COM_CLK
+	ldrh.w	r0, [r0, r1, lsl #1]
+	bl	rcu_periph_clock_enable
+	ldr	r1, [sp, #24]
+	movw	r0, :lower16:COM_TX_PIN
+	movt	r0, :upper16:COM_TX_PIN
+	str	r0, [sp]                        @ 4-byte Spill
+	ldr.w	r2, [r0, r1, lsl #2]
+	mov.w	r0, #1207959552
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_af_set
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r3, [sp, #24]
+	movw	r2, :lower16:COM_RX_PIN
+	movt	r2, :upper16:COM_RX_PIN
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	ldr.w	r2, [r2, r3, lsl #2]
+	bl	gpio_af_set
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	ldr	r3, [sp, #24]
+	ldr.w	r3, [r1, r3, lsl #2]
+	movs	r1, #2
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	ldr.w	r12, [sp, #24]
+	ldr.w	r3, [r3, r12, lsl #2]
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	ldr.w	r12, [sp, #24]
+	ldr.w	r3, [r3, r12, lsl #2]
+	bl	gpio_mode_set
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	ldr.w	r12, [sp, #24]
+	ldr.w	r3, [r3, r12, lsl #2]
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #28]
+	bl	usart_deinit
+	ldr	r0, [sp, #28]
+	mov.w	r1, #115200
+	bl	usart_baudrate_set
+	ldr	r0, [sp, #28]
+	movs	r1, #4
+	bl	usart_receive_config
+	ldr	r0, [sp, #28]
+	movs	r1, #8
+	bl	usart_transmit_config
+	ldr	r0, [sp, #28]
+	bl	usart_enable
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	gd_eval_com_init, .Lfunc_end6-gd_eval_com_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	GPIO_CLK,%object                @ @GPIO_CLK
+	.section	.rodata.GPIO_CLK,"a",%progbits
+	.p2align	1, 0x0
+GPIO_CLK:
+	.short	1297                            @ 0x511
+	.short	1297                            @ 0x511
+	.short	1297                            @ 0x511
+	.short	1297                            @ 0x511
+	.size	GPIO_CLK, 8
+
+	.type	GPIO_PORT,%object               @ @GPIO_PORT
+	.section	.rodata.GPIO_PORT,"a",%progbits
+	.p2align	2, 0x0
+GPIO_PORT:
+	.long	1207959552                      @ 0x48000000
+	.long	1207959552                      @ 0x48000000
+	.long	1207959552                      @ 0x48000000
+	.long	1207959552                      @ 0x48000000
+	.size	GPIO_PORT, 16
+
+	.type	GPIO_PIN,%object                @ @GPIO_PIN
+	.section	.rodata.GPIO_PIN,"a",%progbits
+	.p2align	2, 0x0
+GPIO_PIN:
+	.long	2                               @ 0x2
+	.long	4                               @ 0x4
+	.long	4096                            @ 0x1000
+	.long	32768                           @ 0x8000
+	.size	GPIO_PIN, 16
+
+	.type	KEY_CLK,%object                 @ @KEY_CLK
+	.section	.rodata.KEY_CLK,"a",%progbits
+	.p2align	1, 0x0
+KEY_CLK:
+	.short	1297                            @ 0x511
+	.short	1299                            @ 0x513
+	.size	KEY_CLK, 4
+
+	.type	KEY_PORT,%object                @ @KEY_PORT
+	.section	.rodata.KEY_PORT,"a",%progbits
+	.p2align	2, 0x0
+KEY_PORT:
+	.long	1207959552                      @ 0x48000000
+	.long	1207961600                      @ 0x48000800
+	.size	KEY_PORT, 8
+
+	.type	KEY_PIN,%object                 @ @KEY_PIN
+	.section	.rodata.KEY_PIN,"a",%progbits
+	.p2align	2, 0x0
+KEY_PIN:
+	.long	1                               @ 0x1
+	.long	8192                            @ 0x2000
+	.size	KEY_PIN, 8
+
+	.type	KEY_IRQn,%object                @ @KEY_IRQn
+	.section	.rodata.KEY_IRQn,"a",%progbits
+KEY_IRQn:
+	.ascii	"\005\007"
+	.size	KEY_IRQn, 2
+
+	.type	KEY_PORT_SOURCE,%object         @ @KEY_PORT_SOURCE
+	.section	.rodata.KEY_PORT_SOURCE,"a",%progbits
+KEY_PORT_SOURCE:
+	.ascii	"\000\002"
+	.size	KEY_PORT_SOURCE, 2
+
+	.type	KEY_PIN_SOURCE,%object          @ @KEY_PIN_SOURCE
+	.section	.rodata.KEY_PIN_SOURCE,"a",%progbits
+KEY_PIN_SOURCE:
+	.ascii	"\000\r"
+	.size	KEY_PIN_SOURCE, 2
+
+	.type	KEY_EXTI_LINE,%object           @ @KEY_EXTI_LINE
+	.section	.rodata.KEY_EXTI_LINE,"a",%progbits
+	.p2align	2, 0x0
+KEY_EXTI_LINE:
+	.long	1                               @ 0x1
+	.long	8192                            @ 0x2000
+	.size	KEY_EXTI_LINE, 8
+
+	.type	COM_CLK,%object                 @ @COM_CLK
+	.section	.rodata.COM_CLK,"a",%progbits
+	.p2align	1, 0x0
+COM_CLK:
+	.short	1550                            @ 0x60e
+	.size	COM_CLK, 2
+
+	.type	COM_TX_PIN,%object              @ @COM_TX_PIN
+	.section	.rodata.COM_TX_PIN,"a",%progbits
+	.p2align	2, 0x0
+COM_TX_PIN:
+	.long	512                             @ 0x200
+	.size	COM_TX_PIN, 4
+
+	.type	COM_RX_PIN,%object              @ @COM_RX_PIN
+	.section	.rodata.COM_RX_PIN,"a",%progbits
+	.p2align	2, 0x0
+COM_RX_PIN:
+	.long	1024                            @ 0x400
+	.size	COM_RX_PIN, 4
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

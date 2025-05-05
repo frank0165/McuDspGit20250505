@@ -1,0 +1,564 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"mailbox_i2c_interface.c"
+	.section	.text.mailbox_i2c_dsp_ticks_reg_read,"ax",%progbits
+	.hidden	mailbox_i2c_dsp_ticks_reg_read  @ -- Begin function mailbox_i2c_dsp_ticks_reg_read
+	.globl	mailbox_i2c_dsp_ticks_reg_read
+	.p2align	2
+	.type	mailbox_i2c_dsp_ticks_reg_read,%function
+	.code	16                              @ @mailbox_i2c_dsp_ticks_reg_read
+	.thumb_func
+mailbox_i2c_dsp_ticks_reg_read:
+.Lfunc_begin0:
+	.file	1 "D:\\E\\code\\\347\211\210\346\234\254\344\273\243\347\240\201\\\350\260\203\350\257\225\347\211\210\346\234\254--dsp\346\226\271\346\241\210\\mcu_project__debug_fordsp\\source\\Keil_project" "../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c"
+	.loc	1 6 0                           @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:6:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #23]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+.Ltmp0:
+	.loc	1 7 11 prologue_end             @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:7:11
+	str	r0, [sp, #8]
+	.loc	1 8 14                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:8:14
+	str	r0, [sp, #4]
+	.loc	1 9 14                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:9:14
+	str	r0, [sp]
+.Ltmp1:
+	.loc	1 13 13                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:13:13
+	ldr	r0, [sp, #16]
+.Ltmp2:
+	.loc	1 13 5 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:13:5
+	cbnz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+.Ltmp3:
+	.loc	1 15 3 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:15:3
+	b	.LBB0_7
+.Ltmp4:
+.LBB0_2:
+	.loc	1 18 10                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:18:10
+	ldr	r0, [sp, #16]
+	.loc	1 18 33 is_stmt 0               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:18:33
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	ldr	r1, [r1, #28]
+	.loc	1 18 2                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:18:2
+	bl	set_u32
+	.loc	1 19 9 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:19:9
+	ldr	r0, [sp, #4]
+	adds	r0, #4
+	str	r0, [sp, #4]
+	movs	r0, #0
+.Ltmp5:
+	.loc	1 21 11                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:11
+	str	r0, [sp]
+	.loc	1 21 9 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:9
+	b	.LBB0_3
+.LBB0_3:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp6:
+	.loc	1 21 16                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:16
+	ldr	r0, [sp]
+.Ltmp7:
+	.loc	1 21 5                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:5
+	cmp	r0, #7
+	bhi	.LBB0_6
+	b	.LBB0_4
+.LBB0_4:                                @   in Loop: Header=BB0_3 Depth=1
+.Ltmp8:
+	.loc	1 23 61 is_stmt 1               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:61
+	ldr	r1, [sp]
+	.loc	1 23 26 is_stmt 0               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:26
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	add	r0, r1
+	ldrb.w	r0, [r0, #36]
+	.loc	1 23 9                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:9
+	ldr	r1, [sp, #16]
+	.loc	1 23 15                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:15
+	ldr	r2, [sp, #4]
+	.loc	1 23 21                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:21
+	ldr	r3, [sp]
+	.loc	1 23 19                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:19
+	add	r2, r3
+	.loc	1 23 24                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:23:24
+	strb	r0, [r1, r2]
+	.loc	1 24 5 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:24:5
+	b	.LBB0_5
+.Ltmp9:
+.LBB0_5:                                @   in Loop: Header=BB0_3 Depth=1
+	.loc	1 21 23                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:23
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	.loc	1 21 5 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:21:5
+	b	.LBB0_3
+.Ltmp10:
+.LBB0_6:
+	.loc	1 26 2 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:26:2
+	b	.LBB0_7
+.LBB0_7:
+	.loc	1 27 1                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:27:1
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp11:
+.Lfunc_end0:
+	.size	mailbox_i2c_dsp_ticks_reg_read, .Lfunc_end0-mailbox_i2c_dsp_ticks_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mailbox_i2c_dsp_fw_reg_read,"ax",%progbits
+	.hidden	mailbox_i2c_dsp_fw_reg_read     @ -- Begin function mailbox_i2c_dsp_fw_reg_read
+	.globl	mailbox_i2c_dsp_fw_reg_read
+	.p2align	2
+	.type	mailbox_i2c_dsp_fw_reg_read,%function
+	.code	16                              @ @mailbox_i2c_dsp_fw_reg_read
+	.thumb_func
+mailbox_i2c_dsp_fw_reg_read:
+.Lfunc_begin1:
+	.loc	1 30 0                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:30:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #23]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+.Ltmp12:
+	.loc	1 31 11 prologue_end            @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:31:11
+	str	r0, [sp, #8]
+	.loc	1 32 14                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:32:14
+	str	r0, [sp, #4]
+	.loc	1 33 14                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:33:14
+	str	r0, [sp]
+.Ltmp13:
+	.loc	1 37 13                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:37:13
+	ldr	r0, [sp, #16]
+.Ltmp14:
+	.loc	1 37 5 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:37:5
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+.Ltmp15:
+	.loc	1 39 3 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:39:3
+	b	.LBB1_7
+.Ltmp16:
+.LBB1_2:
+	.loc	1 42 10                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:42:10
+	ldr	r0, [sp, #16]
+	.loc	1 42 33 is_stmt 0               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:42:33
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	ldr	r1, [r1, #32]
+	.loc	1 42 2                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:42:2
+	bl	set_u32
+	.loc	1 43 9 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:43:9
+	ldr	r0, [sp, #4]
+	adds	r0, #4
+	str	r0, [sp, #4]
+	movs	r0, #0
+.Ltmp17:
+	.loc	1 45 11                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:11
+	str	r0, [sp]
+	.loc	1 45 9 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:9
+	b	.LBB1_3
+.LBB1_3:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp18:
+	.loc	1 45 16                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:16
+	ldr	r0, [sp]
+.Ltmp19:
+	.loc	1 45 5                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:5
+	cmp	r0, #17
+	bhi	.LBB1_6
+	b	.LBB1_4
+.LBB1_4:                                @   in Loop: Header=BB1_3 Depth=1
+.Ltmp20:
+	.loc	1 48 63 is_stmt 1               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:63
+	ldr	r1, [sp]
+	.loc	1 48 26 is_stmt 0               @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:26
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	add	r0, r1
+	ldrb.w	r0, [r0, #48]
+	.loc	1 48 9                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:9
+	ldr	r1, [sp, #16]
+	.loc	1 48 15                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:15
+	ldr	r2, [sp, #4]
+	.loc	1 48 21                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:21
+	ldr	r3, [sp]
+	.loc	1 48 19                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:19
+	add	r2, r3
+	.loc	1 48 24                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:48:24
+	strb	r0, [r1, r2]
+	.loc	1 49 5 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:49:5
+	b	.LBB1_5
+.Ltmp21:
+.LBB1_5:                                @   in Loop: Header=BB1_3 Depth=1
+	.loc	1 45 24                         @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:24
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	.loc	1 45 5 is_stmt 0                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:45:5
+	b	.LBB1_3
+.Ltmp22:
+.LBB1_6:
+	.loc	1 51 2 is_stmt 1                @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:51:2
+	b	.LBB1_7
+.LBB1_7:
+	.loc	1 52 1                          @ ../../thd_dsp_download_release_V0_0/mailbox_i2c_interface.c:52:1
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp23:
+.Lfunc_end1:
+	.size	mailbox_i2c_dsp_fw_reg_read, .Lfunc_end1-mailbox_i2c_dsp_fw_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.file	2 "D:\\D\\app\\kevil5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	4                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x111 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x66 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	5                               @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	3                               @ Abbrev [3] 0x37:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	23
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	5                               @ DW_AT_decl_line
+	.long	242                             @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0x45:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	5                               @ DW_AT_decl_line
+	.long	260                             @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0x53:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	5                               @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x61:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	7                               @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x6f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	8                               @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x7d:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	9                               @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x8c:0x66 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1-.Lfunc_begin1       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	3                               @ Abbrev [3] 0x9d:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	23
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+	.long	242                             @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0xab:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+	.long	260                             @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0xb9:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0xc7:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	31                              @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0xd5:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	32                              @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0xe3:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	33                              @ DW_AT_decl_line
+	.long	265                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0xf2:0xb DW_TAG_typedef
+	.long	253                             @ DW_AT_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0xfd:0x7 DW_TAG_base_type
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	7                               @ Abbrev [7] 0x104:0x5 DW_TAG_pointer_type
+	.long	242                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x109:0xb DW_TAG_typedef
+	.long	276                             @ DW_AT_type
+	.long	.Linfo_string11                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x114:0x7 DW_TAG_base_type
+	.long	.Linfo_string10                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]" @ string offset=0
+.Linfo_string1:
+	.asciz	"../../thd_dsp_download_release_V0_0\\mailbox_i2c_interface.c" @ string offset=68
+.Linfo_string2:
+	.asciz	"D:\\E\\code\\\347\211\210\346\234\254\344\273\243\347\240\201\\\350\260\203\350\257\225\347\211\210\346\234\254--dsp\346\226\271\346\241\210\\mcu_project__debug_fordsp\\source\\Keil_project" @ string offset=128
+.Linfo_string3:
+	.asciz	"mailbox_i2c_dsp_ticks_reg_read" @ string offset=221
+.Linfo_string4:
+	.asciz	"mailbox_i2c_dsp_fw_reg_read"   @ string offset=252
+.Linfo_string5:
+	.asciz	"regaddr"                       @ string offset=280
+.Linfo_string6:
+	.asciz	"unsigned char"                 @ string offset=288
+.Linfo_string7:
+	.asciz	"uint8_t"                       @ string offset=302
+.Linfo_string8:
+	.asciz	"pbuff"                         @ string offset=310
+.Linfo_string9:
+	.asciz	"bufflen"                       @ string offset=316
+.Linfo_string10:
+	.asciz	"unsigned int"                  @ string offset=324
+.Linfo_string11:
+	.asciz	"uint32_t"                      @ string offset=337
+.Linfo_string12:
+	.asciz	"value"                         @ string offset=346
+.Linfo_string13:
+	.asciz	"idx"                           @ string offset=352
+.Linfo_string14:
+	.asciz	"i"                             @ string offset=356
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

@@ -1,0 +1,463 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_misc.c"
+	.section	.text.nvic_priority_group_set,"ax",%progbits
+	.hidden	nvic_priority_group_set         @ -- Begin function nvic_priority_group_set
+	.globl	nvic_priority_group_set
+	.p2align	2
+	.type	nvic_priority_group_set,%function
+	.code	16                              @ @nvic_priority_group_set
+	.thumb_func
+nvic_priority_group_set:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movs	r1, #0
+	movt	r1, #1530
+	orrs	r0, r1
+	movw	r1, #60684
+	movt	r1, #57344
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end0:
+	.size	nvic_priority_group_set, .Lfunc_end0-nvic_priority_group_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.nvic_irq_enable,"ax",%progbits
+	.hidden	nvic_irq_enable                 @ -- Begin function nvic_irq_enable
+	.globl	nvic_irq_enable
+	.p2align	2
+	.type	nvic_irq_enable,%function
+	.code	16                              @ @nvic_irq_enable
+	.thumb_func
+nvic_irq_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #15]
+	strb.w	r1, [sp, #14]
+	strb.w	r2, [sp, #13]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	movw	r0, #60684
+	movt	r0, #57344
+	ldr	r0, [r0]
+	and	r0, r0, #1792
+	cmp.w	r0, #1792
+	bne	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	movs	r0, #0
+	str	r0, [sp, #4]
+	movs	r0, #4
+	str	r0, [sp]
+	b	.LBB1_15
+.LBB1_2:
+	movw	r0, #60684
+	movt	r0, #57344
+	ldr	r0, [r0]
+	and	r0, r0, #1792
+	cmp.w	r0, #1536
+	bne	.LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	movs	r0, #1
+	str	r0, [sp, #4]
+	movs	r0, #3
+	str	r0, [sp]
+	b	.LBB1_14
+.LBB1_4:
+	movw	r0, #60684
+	movt	r0, #57344
+	ldr	r0, [r0]
+	and	r0, r0, #1792
+	cmp.w	r0, #1280
+	bne	.LBB1_6
+	b	.LBB1_5
+.LBB1_5:
+	movs	r0, #2
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	b	.LBB1_13
+.LBB1_6:
+	movw	r0, #60684
+	movt	r0, #57344
+	ldr	r0, [r0]
+	and	r0, r0, #1792
+	cmp.w	r0, #1024
+	bne	.LBB1_8
+	b	.LBB1_7
+.LBB1_7:
+	movs	r0, #3
+	str	r0, [sp, #4]
+	movs	r0, #1
+	str	r0, [sp]
+	b	.LBB1_12
+.LBB1_8:
+	movw	r0, #60684
+	movt	r0, #57344
+	ldr	r0, [r0]
+	and	r0, r0, #1792
+	cmp.w	r0, #768
+	bne	.LBB1_10
+	b	.LBB1_9
+.LBB1_9:
+	movs	r0, #4
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB1_11
+.LBB1_10:
+	mov.w	r0, #1280
+	bl	nvic_priority_group_set
+	movs	r0, #2
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	b	.LBB1_11
+.LBB1_11:
+	b	.LBB1_12
+.LBB1_12:
+	b	.LBB1_13
+.LBB1_13:
+	b	.LBB1_14
+.LBB1_14:
+	b	.LBB1_15
+.LBB1_15:
+	ldrb.w	r0, [sp, #14]
+	ldr	r1, [sp, #4]
+	rsb.w	r1, r1, #4
+	lsls	r0, r1
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #13]
+	ldr	r1, [sp]
+	rsb.w	r2, r1, #4
+	movs	r1, #15
+	lsrs	r1, r2
+	ands	r1, r0
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	lsls	r0, r0, #4
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	movw	r2, #58368
+	movt	r2, #57344
+	strb	r0, [r1, r2]
+	ldrb.w	r2, [sp, #15]
+	and	r1, r2, #31
+	movs	r0, #1
+	lsls	r0, r1
+	movw	r1, #57600
+	movt	r1, #57344
+	orr.w	r1, r1, r2, lsr #3
+	bic	r1, r1, #3
+	str	r0, [r1]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	nvic_irq_enable, .Lfunc_end1-nvic_irq_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.nvic_irq_disable,"ax",%progbits
+	.hidden	nvic_irq_disable                @ -- Begin function nvic_irq_disable
+	.globl	nvic_irq_disable
+	.p2align	2
+	.type	nvic_irq_disable,%function
+	.code	16                              @ @nvic_irq_disable
+	.thumb_func
+nvic_irq_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrsb.w	r0, [sp, #7]
+	bl	__NVIC_DisableIRQ
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	nvic_irq_disable, .Lfunc_end2-nvic_irq_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.__NVIC_DisableIRQ,"ax",%progbits
+	.p2align	2                               @ -- Begin function __NVIC_DisableIRQ
+	.type	__NVIC_DisableIRQ,%function
+	.code	16                              @ @__NVIC_DisableIRQ
+	.thumb_func
+__NVIC_DisableIRQ:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrsb.w	r0, [sp, #3]
+	cmp	r0, #0
+	bmi	.LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	ldrsb.w	r1, [sp, #3]
+	and	r2, r1, #31
+	movs	r0, #1
+	lsls	r0, r2
+	lsrs	r2, r1, #5
+	movw	r1, #57728
+	movt	r1, #57344
+	str.w	r0, [r1, r2, lsl #2]
+	dsb	sy
+	isb	sy
+	b	.LBB3_2
+.LBB3_2:
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	__NVIC_DisableIRQ, .Lfunc_end3-__NVIC_DisableIRQ
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.nvic_system_reset,"ax",%progbits
+	.hidden	nvic_system_reset               @ -- Begin function nvic_system_reset
+	.globl	nvic_system_reset
+	.p2align	2
+	.type	nvic_system_reset,%function
+	.code	16                              @ @nvic_system_reset
+	.thumb_func
+nvic_system_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	bl	__NVIC_SystemReset
+.Lfunc_end4:
+	.size	nvic_system_reset, .Lfunc_end4-nvic_system_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.__NVIC_SystemReset,"ax",%progbits
+	.p2align	2                               @ -- Begin function __NVIC_SystemReset
+	.type	__NVIC_SystemReset,%function
+	.code	16                              @ @__NVIC_SystemReset
+	.thumb_func
+__NVIC_SystemReset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	dsb	sy
+	movw	r1, #60684
+	movt	r1, #57344
+	ldr	r0, [r1]
+	and	r0, r0, #1792
+	movs	r2, #4
+	movt	r2, #1530
+	orrs	r0, r2
+	str	r0, [r1]
+	dsb	sy
+	b	.LBB5_1
+.LBB5_1:                                @ =>This Inner Loop Header: Depth=1
+	nop
+	b	.LBB5_1
+.Lfunc_end5:
+	.size	__NVIC_SystemReset, .Lfunc_end5-__NVIC_SystemReset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.nvic_vector_table_set,"ax",%progbits
+	.hidden	nvic_vector_table_set           @ -- Begin function nvic_vector_table_set
+	.globl	nvic_vector_table_set
+	.p2align	2
+	.type	nvic_vector_table_set,%function
+	.code	16                              @ @nvic_vector_table_set
+	.thumb_func
+nvic_vector_table_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	movw	r2, #65408
+	movt	r2, #8191
+	ands	r1, r2
+	orrs	r0, r1
+	movw	r1, #60680
+	movt	r1, #57344
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	nvic_vector_table_set, .Lfunc_end6-nvic_vector_table_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.system_lowpower_set,"ax",%progbits
+	.hidden	system_lowpower_set             @ -- Begin function system_lowpower_set
+	.globl	system_lowpower_set
+	.p2align	2
+	.type	system_lowpower_set,%function
+	.code	16                              @ @system_lowpower_set
+	.thumb_func
+system_lowpower_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	system_lowpower_set, .Lfunc_end7-system_lowpower_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.system_lowpower_reset,"ax",%progbits
+	.hidden	system_lowpower_reset           @ -- Begin function system_lowpower_reset
+	.globl	system_lowpower_reset
+	.p2align	2
+	.type	system_lowpower_reset,%function
+	.code	16                              @ @system_lowpower_reset
+	.thumb_func
+system_lowpower_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	system_lowpower_reset, .Lfunc_end8-system_lowpower_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.systick_clksource_set,"ax",%progbits
+	.hidden	systick_clksource_set           @ -- Begin function systick_clksource_set
+	.globl	systick_clksource_set
+	.p2align	2
+	.type	systick_clksource_set,%function
+	.code	16                              @ @systick_clksource_set
+	.thumb_func
+systick_clksource_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #4
+	bne	.LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	movw	r1, #57360
+	movt	r1, #57344
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB9_3
+.LBB9_2:
+	movw	r1, #57360
+	movt	r1, #57344
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB9_3
+.LBB9_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	systick_clksource_set, .Lfunc_end9-systick_clksource_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,532 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_fwdgt.c"
+	.section	.text.fwdgt_write_enable,"ax",%progbits
+	.hidden	fwdgt_write_enable              @ -- Begin function fwdgt_write_enable
+	.globl	fwdgt_write_enable
+	.p2align	2
+	.type	fwdgt_write_enable,%function
+	.code	16                              @ @fwdgt_write_enable
+	.thumb_func
+fwdgt_write_enable:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #21845
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end0:
+	.size	fwdgt_write_enable, .Lfunc_end0-fwdgt_write_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_write_disable,"ax",%progbits
+	.hidden	fwdgt_write_disable             @ -- Begin function fwdgt_write_disable
+	.globl	fwdgt_write_disable
+	.p2align	2
+	.type	fwdgt_write_disable,%function
+	.code	16                              @ @fwdgt_write_disable
+	.thumb_func
+fwdgt_write_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12288
+	movt	r1, #16384
+	movs	r0, #0
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end1:
+	.size	fwdgt_write_disable, .Lfunc_end1-fwdgt_write_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_enable,"ax",%progbits
+	.hidden	fwdgt_enable                    @ -- Begin function fwdgt_enable
+	.globl	fwdgt_enable
+	.p2align	2
+	.type	fwdgt_enable,%function
+	.code	16                              @ @fwdgt_enable
+	.thumb_func
+fwdgt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #52428
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end2:
+	.size	fwdgt_enable, .Lfunc_end2-fwdgt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_prescaler_value_config,"ax",%progbits
+	.hidden	fwdgt_prescaler_value_config    @ -- Begin function fwdgt_prescaler_value_config
+	.globl	fwdgt_prescaler_value_config
+	.p2align	2
+	.type	fwdgt_prescaler_value_config,%function
+	.code	16                              @ @fwdgt_prescaler_value_config
+	.thumb_func
+fwdgt_prescaler_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #12]
+	movw	r0, #65535
+	movt	r0, #15
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #21845
+	str	r0, [r1]
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #8]
+	subs	r1, r0, #1
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB3_4
+	b	.LBB3_3
+.LBB3_3:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #4]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB3_4
+.LBB3_4:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB3_1
+	b	.LBB3_5
+.LBB3_5:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB3_7
+	b	.LBB3_6
+.LBB3_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB3_8
+.LBB3_7:
+	ldrh.w	r0, [sp, #12]
+	movw	r1, #12292
+	movt	r1, #16384
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB3_8
+.LBB3_8:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end3:
+	.size	fwdgt_prescaler_value_config, .Lfunc_end3-fwdgt_prescaler_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_reload_value_config,"ax",%progbits
+	.hidden	fwdgt_reload_value_config       @ -- Begin function fwdgt_reload_value_config
+	.globl	fwdgt_reload_value_config
+	.p2align	2
+	.type	fwdgt_reload_value_config,%function
+	.code	16                              @ @fwdgt_reload_value_config
+	.thumb_func
+fwdgt_reload_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #12]
+	movw	r0, #65535
+	movt	r0, #15
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #21845
+	str	r0, [r1]
+	b	.LBB4_1
+.LBB4_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #2
+	str	r0, [sp, #4]
+	b	.LBB4_2
+.LBB4_2:                                @   in Loop: Header=BB4_1 Depth=1
+	ldr	r0, [sp, #8]
+	subs	r1, r0, #1
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB4_4
+	b	.LBB4_3
+.LBB4_3:                                @   in Loop: Header=BB4_1 Depth=1
+	ldr	r0, [sp, #4]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB4_4
+.LBB4_4:                                @   in Loop: Header=BB4_1 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB4_1
+	b	.LBB4_5
+.LBB4_5:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB4_7
+	b	.LBB4_6
+.LBB4_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB4_8
+.LBB4_7:
+	ldrh.w	r0, [sp, #12]
+	bfc	r0, #12, #20
+	movw	r1, #12296
+	movt	r1, #16384
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB4_8
+.LBB4_8:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end4:
+	.size	fwdgt_reload_value_config, .Lfunc_end4-fwdgt_reload_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_window_value_config,"ax",%progbits
+	.hidden	fwdgt_window_value_config       @ -- Begin function fwdgt_window_value_config
+	.globl	fwdgt_window_value_config
+	.p2align	2
+	.type	fwdgt_window_value_config,%function
+	.code	16                              @ @fwdgt_window_value_config
+	.thumb_func
+fwdgt_window_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #12]
+	movw	r0, #65535
+	movt	r0, #15
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #21845
+	str	r0, [r1]
+	b	.LBB5_1
+.LBB5_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #4
+	str	r0, [sp, #4]
+	b	.LBB5_2
+.LBB5_2:                                @   in Loop: Header=BB5_1 Depth=1
+	ldr	r0, [sp, #8]
+	subs	r1, r0, #1
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB5_4
+	b	.LBB5_3
+.LBB5_3:                                @   in Loop: Header=BB5_1 Depth=1
+	ldr	r0, [sp, #4]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB5_4
+.LBB5_4:                                @   in Loop: Header=BB5_1 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB5_1
+	b	.LBB5_5
+.LBB5_5:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB5_7
+	b	.LBB5_6
+.LBB5_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB5_8
+.LBB5_7:
+	ldrh.w	r0, [sp, #12]
+	bfc	r0, #12, #20
+	movw	r1, #12304
+	movt	r1, #16384
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB5_8
+.LBB5_8:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end5:
+	.size	fwdgt_window_value_config, .Lfunc_end5-fwdgt_window_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_counter_reload,"ax",%progbits
+	.hidden	fwdgt_counter_reload            @ -- Begin function fwdgt_counter_reload
+	.globl	fwdgt_counter_reload
+	.p2align	2
+	.type	fwdgt_counter_reload,%function
+	.code	16                              @ @fwdgt_counter_reload
+	.thumb_func
+fwdgt_counter_reload:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #43690
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end6:
+	.size	fwdgt_counter_reload, .Lfunc_end6-fwdgt_counter_reload
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_config,"ax",%progbits
+	.hidden	fwdgt_config                    @ -- Begin function fwdgt_config
+	.globl	fwdgt_config
+	.p2align	2
+	.type	fwdgt_config,%function
+	.code	16                              @ @fwdgt_config
+	.thumb_func
+fwdgt_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strh.w	r0, [sp, #20]
+	strb.w	r1, [sp, #19]
+	movw	r0, #65535
+	movt	r0, #15
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #21845
+	str	r0, [r1]
+	b	.LBB7_1
+.LBB7_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #1
+	str	r0, [sp, #8]
+	b	.LBB7_2
+.LBB7_2:                                @   in Loop: Header=BB7_1 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbz	r1, .LBB7_4
+	b	.LBB7_3
+.LBB7_3:                                @   in Loop: Header=BB7_1 Depth=1
+	ldr	r0, [sp, #8]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB7_4
+.LBB7_4:                                @   in Loop: Header=BB7_1 Depth=1
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB7_1
+	b	.LBB7_5
+.LBB7_5:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB7_7
+	b	.LBB7_6
+.LBB7_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #23]
+	b	.LBB7_15
+.LBB7_7:
+	ldrb.w	r0, [sp, #19]
+	movw	r1, #12292
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r0, #65535
+	movt	r0, #15
+	str	r0, [sp, #12]
+	b	.LBB7_8
+.LBB7_8:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #2
+	str	r0, [sp, #8]
+	b	.LBB7_9
+.LBB7_9:                                @   in Loop: Header=BB7_8 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB7_11
+	b	.LBB7_10
+.LBB7_10:                               @   in Loop: Header=BB7_8 Depth=1
+	ldr	r0, [sp, #8]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB7_11
+.LBB7_11:                               @   in Loop: Header=BB7_8 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB7_8
+	b	.LBB7_12
+.LBB7_12:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB7_14
+	b	.LBB7_13
+.LBB7_13:
+	movs	r0, #0
+	strb.w	r0, [sp, #23]
+	b	.LBB7_15
+.LBB7_14:
+	ldrh.w	r0, [sp, #20]
+	bfc	r0, #12, #20
+	movw	r1, #12296
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r1, #12288
+	movt	r1, #16384
+	movw	r0, #43690
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #23]
+	b	.LBB7_15
+.LBB7_15:
+	ldrb.w	r0, [sp, #23]
+	add	sp, #24
+	bx	lr
+.Lfunc_end7:
+	.size	fwdgt_config, .Lfunc_end7-fwdgt_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fwdgt_flag_get,"ax",%progbits
+	.hidden	fwdgt_flag_get                  @ -- Begin function fwdgt_flag_get
+	.globl	fwdgt_flag_get
+	.p2align	2
+	.type	fwdgt_flag_get,%function
+	.code	16                              @ @fwdgt_flag_get
+	.thumb_func
+fwdgt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp]
+	movw	r0, #12300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ldrh.w	r1, [sp]
+	tst	r0, r1
+	beq	.LBB8_2
+	b	.LBB8_1
+.LBB8_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB8_3
+.LBB8_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	b	.LBB8_3
+.LBB8_3:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	fwdgt_flag_get, .Lfunc_end8-fwdgt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

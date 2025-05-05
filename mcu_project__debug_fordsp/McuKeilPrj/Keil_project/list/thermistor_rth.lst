@@ -1,0 +1,682 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"thermistor_rth.c"
+	.section	.text.calc_temp_value,"ax",%progbits
+	.hidden	calc_temp_value                 @ -- Begin function calc_temp_value
+	.globl	calc_temp_value
+	.p2align	2
+	.type	calc_temp_value,%function
+	.code	16                              @ @calc_temp_value
+	.thumb_func
+calc_temp_value:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 20
+	mov	r12, r0
+	ldr	r0, [sp, #24]
+	ldr	r0, [sp, #20]
+                                        @ kill: def $lr killed $r3
+                                        @ kill: def $lr killed $r2
+                                        @ kill: def $lr killed $r1
+	str.w	r12, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	strh.w	r3, [sp, #2]
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB0_3
+	b	.LBB0_1
+.LBB0_1:
+	ldrh.w	r0, [sp, #6]
+	cmp	r0, #1
+	blt	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #24]
+	cbnz	r0, .LBB0_4
+	b	.LBB0_3
+.LBB0_3:
+	b	.LBB0_10
+.LBB0_4:
+	ldrh.w	r0, [sp, #4]
+	ldrh.w	r1, [sp, #2]
+	cmp	r0, r1
+	bgt	.LBB0_6
+	b	.LBB0_5
+.LBB0_5:
+	ldrh.w	r0, [sp, #2]
+	ldrh.w	r1, [sp, #6]
+	cmp	r0, r1
+	blt	.LBB0_7
+	b	.LBB0_6
+.LBB0_6:
+	b	.LBB0_10
+.LBB0_7:
+	ldrh.w	r0, [sp, #4]
+	ldrh.w	r1, [sp, #2]
+	cmp	r0, r1
+	bne	.LBB0_9
+	b	.LBB0_8
+.LBB0_8:
+	ldrh.w	r0, [sp, #4]
+	movs	r1, #100
+	mul	r0, r0, r1
+	ldr	r1, [sp, #24]
+	str	r0, [r1]
+	b	.LBB0_10
+.LBB0_9:
+	ldrh.w	r0, [sp, #4]
+	ldr.w	r12, [sp, #8]
+	ldrh.w	r3, [r12, r0, lsl #1]
+	ldrh.w	r1, [sp]
+	subs	r2, r3, r1
+	movs	r1, #100
+	mul	r2, r2, r1
+	ldrh.w	lr, [sp, #2]
+	ldrh.w	r12, [r12, lr, lsl #1]
+	sub.w	r3, r3, r12
+	sdiv	r2, r2, r3
+	mla	r0, r0, r1, r2
+	ldr	r1, [sp, #24]
+	str	r0, [r1]
+	b	.LBB0_10
+.LBB0_10:
+	add	sp, #12
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	calc_temp_value, .Lfunc_end0-calc_temp_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.find_adc_temp,"ax",%progbits
+	.hidden	find_adc_temp                   @ -- Begin function find_adc_temp
+	.globl	find_adc_temp
+	.p2align	2
+	.type	find_adc_temp,%function
+	.code	16                              @ @find_adc_temp
+	.thumb_func
+find_adc_temp:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, lr}
+	push	{r4, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r4, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r12 killed $r2
+                                        @ kill: def $r12 killed $r0
+	strh.w	r0, [sp, #34]
+	str	r1, [sp, #28]
+	strh.w	r2, [sp, #26]
+	str	r3, [sp, #20]
+	movs	r0, #0
+	strh.w	r0, [sp, #18]
+	strh.w	r0, [sp, #16]
+	strh.w	r0, [sp, #14]
+	ldr	r0, [sp, #28]
+	cbz	r0, .LBB1_3
+	b	.LBB1_1
+.LBB1_1:
+	ldrh.w	r0, [sp, #26]
+	cmp	r0, #1
+	blt	.LBB1_3
+	b	.LBB1_2
+.LBB1_2:
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	movs	r0, #0
+	str	r0, [sp, #36]
+	b	.LBB1_23
+.LBB1_4:
+	ldrh.w	r0, [sp, #26]
+	subs	r0, #1
+	strh.w	r0, [sp, #16]
+	ldrh.w	r0, [sp, #34]
+	ldr	r1, [sp, #28]
+	ldrh.w	r2, [sp, #16]
+	ldrh.w	r1, [r1, r2, lsl #1]
+	cmp	r0, r1
+	bge	.LBB1_6
+	b	.LBB1_5
+.LBB1_5:
+	ldr	r0, [sp, #28]
+	ldrh.w	r1, [sp, #16]
+	ldrh.w	r0, [r0, r1, lsl #1]
+	strh.w	r0, [sp, #34]
+	b	.LBB1_9
+.LBB1_6:
+	ldrh.w	r0, [sp, #34]
+	ldr	r1, [sp, #28]
+	ldrh	r1, [r1]
+	cmp	r0, r1
+	ble	.LBB1_8
+	b	.LBB1_7
+.LBB1_7:
+	ldr	r0, [sp, #28]
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #34]
+	b	.LBB1_8
+.LBB1_8:
+	b	.LBB1_9
+.LBB1_9:
+	b	.LBB1_10
+.LBB1_10:                               @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #18]
+	ldrh.w	r1, [sp, #16]
+	cmp	r0, r1
+	bgt	.LBB1_22
+	b	.LBB1_11
+.LBB1_11:                               @   in Loop: Header=BB1_10 Depth=1
+	ldrh.w	r0, [sp, #18]
+	ldrh.w	r1, [sp, #16]
+	add	r0, r1
+	lsrs	r0, r0, #1
+	strh.w	r0, [sp, #14]
+	ldr	r0, [sp, #28]
+	ldrh.w	r1, [sp, #14]
+	ldrh.w	r0, [r0, r1, lsl #1]
+	ldrh.w	r1, [sp, #34]
+	cmp	r0, r1
+	bne	.LBB1_13
+	b	.LBB1_12
+.LBB1_12:
+	ldr	r0, [sp, #28]
+	ldrh.w	r1, [sp, #26]
+	ldrh.w	r3, [sp, #14]
+	ldrh.w	r2, [sp, #34]
+	ldr.w	lr, [sp, #20]
+	mov	r12, sp
+	str.w	lr, [r12, #4]
+	str.w	r2, [r12]
+	mov	r2, r3
+	bl	calc_temp_value
+	movs	r0, #1
+	str	r0, [sp, #36]
+	b	.LBB1_23
+.LBB1_13:                               @   in Loop: Header=BB1_10 Depth=1
+	ldrh.w	r0, [sp, #34]
+	ldr	r1, [sp, #28]
+	ldrh.w	r2, [sp, #14]
+	ldrh.w	r1, [r1, r2, lsl #1]
+	cmp	r0, r1
+	bge	.LBB1_17
+	b	.LBB1_14
+.LBB1_14:                               @   in Loop: Header=BB1_10 Depth=1
+	ldrh.w	r0, [sp, #14]
+	adds	r0, #1
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	ldrh.w	r1, [sp, #16]
+	cmp	r0, r1
+	ble	.LBB1_16
+	b	.LBB1_15
+.LBB1_15:
+	ldr	r0, [sp, #28]
+	ldrh.w	r1, [sp, #26]
+	ldrh.w	r3, [sp, #16]
+	subs	r2, r3, #1
+	ldrh.w	r12, [sp, #34]
+	ldr	r4, [sp, #20]
+	mov	lr, sp
+	str.w	r4, [lr, #4]
+	str.w	r12, [lr]
+	uxth	r2, r2
+	bl	calc_temp_value
+	movs	r0, #1
+	str	r0, [sp, #36]
+	b	.LBB1_23
+.LBB1_16:                               @   in Loop: Header=BB1_10 Depth=1
+	b	.LBB1_20
+.LBB1_17:                               @   in Loop: Header=BB1_10 Depth=1
+	ldrh.w	r0, [sp, #14]
+	subs	r0, #1
+	strh.w	r0, [sp, #16]
+	ldrh.w	r0, [sp, #16]
+	ldrh.w	r1, [sp, #18]
+	cmp	r0, r1
+	bge	.LBB1_19
+	b	.LBB1_18
+.LBB1_18:
+	ldr	r0, [sp, #28]
+	ldrh.w	r1, [sp, #26]
+	ldrh.w	r3, [sp, #18]
+	subs	r2, r3, #1
+	ldrh.w	r12, [sp, #34]
+	ldr	r4, [sp, #20]
+	mov	lr, sp
+	str.w	r4, [lr, #4]
+	str.w	r12, [lr]
+	uxth	r2, r2
+	bl	calc_temp_value
+	movs	r0, #1
+	str	r0, [sp, #36]
+	b	.LBB1_23
+.LBB1_19:                               @   in Loop: Header=BB1_10 Depth=1
+	b	.LBB1_20
+.LBB1_20:                               @   in Loop: Header=BB1_10 Depth=1
+	b	.LBB1_21
+.LBB1_21:                               @   in Loop: Header=BB1_10 Depth=1
+	b	.LBB1_10
+.LBB1_22:
+	movs	r0, #0
+	str	r0, [sp, #36]
+	b	.LBB1_23
+.LBB1_23:
+	ldr	r0, [sp, #36]
+	add	sp, #40
+	pop	{r4, pc}
+.Lfunc_end1:
+	.size	find_adc_temp, .Lfunc_end1-find_adc_temp
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.get_tec_therm_temperature,"ax",%progbits
+	.hidden	get_tec_therm_temperature       @ -- Begin function get_tec_therm_temperature
+	.globl	get_tec_therm_temperature
+	.p2align	2
+	.type	get_tec_therm_temperature,%function
+	.code	16                              @ @get_tec_therm_temperature
+	.thumb_func
+get_tec_therm_temperature:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	add	r1, sp, #12
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	str	r0, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	b	.LBB2_3
+.LBB2_2:
+	bl	sgm41296_tec_get_therm_adc
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	movw	r1, :lower16:g_tec_temp_adc
+	movt	r1, :upper16:g_tec_temp_adc
+	movs	r2, #166
+	add	r3, sp, #12
+	bl	find_adc_temp
+                                        @ kill: def $r1 killed $r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vcvt.f32.u32	s0, s0
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vldr	s2, .LCPI2_0
+	vdiv.f32	s0, s0, s2
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vldr	s2, .LCPI2_1
+	vadd.f32	s0, s0, s2
+	vstr	s0, [r0, #4]
+	ldr	r0, [sp, #16]
+	ldr	r1, [sp, #20]
+	str	r0, [r1]
+	b	.LBB2_3
+.LBB2_3:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	2
+@ %bb.4:
+.LCPI2_0:
+	.long	0x42c80000                      @ float 100
+.LCPI2_1:
+	.long	0xc2200000                      @ float -40
+.Lfunc_end2:
+	.size	get_tec_therm_temperature, .Lfunc_end2-get_tec_therm_temperature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.get_case_therm_temperature,"ax",%progbits
+	.hidden	get_case_therm_temperature      @ -- Begin function get_case_therm_temperature
+	.globl	get_case_therm_temperature
+	.p2align	2
+	.type	get_case_therm_temperature,%function
+	.code	16                              @ @get_case_therm_temperature
+	.thumb_func
+get_case_therm_temperature:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	add	r1, sp, #12
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	str	r0, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	b	.LBB3_3
+.LBB3_2:
+	movs	r0, #4
+	bl	adc_dma_channel_sample_average
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1]
+	ldrh.w	r0, [sp, #10]
+	mov	r2, sp
+	add	r1, sp, #12
+	str	r1, [r2]
+	movw	r1, :lower16:g_case_temp_adc
+	movt	r1, :upper16:g_case_temp_adc
+	movs	r2, #34
+	movs	r3, #5
+	bl	search_bisection_temp_by_adc
+                                        @ kill: def $r1 killed $r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vcvt.f32.u32	s0, s0
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vldr	s2, .LCPI3_0
+	vdiv.f32	s0, s0, s2
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vldr	s2, .LCPI3_1
+	vadd.f32	s0, s0, s2
+	vstr	s0, [r0, #4]
+	ldr	r0, [sp, #16]
+	ldr	r1, [sp, #20]
+	str	r0, [r1]
+	b	.LBB3_3
+.LBB3_3:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	2
+@ %bb.4:
+.LCPI3_0:
+	.long	0x42c80000                      @ float 100
+.LCPI3_1:
+	.long	0xc2200000                      @ float -40
+.Lfunc_end3:
+	.size	get_case_therm_temperature, .Lfunc_end3-get_case_therm_temperature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_tec_temp_adc                  @ @g_tec_temp_adc
+	.type	g_tec_temp_adc,%object
+	.section	.data.g_tec_temp_adc,"aw",%progbits
+	.globl	g_tec_temp_adc
+	.p2align	1, 0x0
+g_tec_temp_adc:
+	.short	3978                            @ 0xf8a
+	.short	3970                            @ 0xf82
+	.short	3962                            @ 0xf7a
+	.short	3953                            @ 0xf71
+	.short	3944                            @ 0xf68
+	.short	3934                            @ 0xf5e
+	.short	3924                            @ 0xf54
+	.short	3914                            @ 0xf4a
+	.short	3902                            @ 0xf3e
+	.short	3891                            @ 0xf33
+	.short	3878                            @ 0xf26
+	.short	3865                            @ 0xf19
+	.short	3852                            @ 0xf0c
+	.short	3837                            @ 0xefd
+	.short	3822                            @ 0xeee
+	.short	3807                            @ 0xedf
+	.short	3790                            @ 0xece
+	.short	3773                            @ 0xebd
+	.short	3755                            @ 0xeab
+	.short	3737                            @ 0xe99
+	.short	3717                            @ 0xe85
+	.short	3697                            @ 0xe71
+	.short	3675                            @ 0xe5b
+	.short	3653                            @ 0xe45
+	.short	3630                            @ 0xe2e
+	.short	3606                            @ 0xe16
+	.short	3581                            @ 0xdfd
+	.short	3555                            @ 0xde3
+	.short	3529                            @ 0xdc9
+	.short	3501                            @ 0xdad
+	.short	3473                            @ 0xd91
+	.short	3444                            @ 0xd74
+	.short	3413                            @ 0xd55
+	.short	3382                            @ 0xd36
+	.short	3350                            @ 0xd16
+	.short	3317                            @ 0xcf5
+	.short	3283                            @ 0xcd3
+	.short	3249                            @ 0xcb1
+	.short	3213                            @ 0xc8d
+	.short	3177                            @ 0xc69
+	.short	3140                            @ 0xc44
+	.short	3101                            @ 0xc1d
+	.short	3062                            @ 0xbf6
+	.short	3023                            @ 0xbcf
+	.short	2982                            @ 0xba6
+	.short	2941                            @ 0xb7d
+	.short	2900                            @ 0xb54
+	.short	2858                            @ 0xb2a
+	.short	2815                            @ 0xaff
+	.short	2772                            @ 0xad4
+	.short	2728                            @ 0xaa8
+	.short	2684                            @ 0xa7c
+	.short	2639                            @ 0xa4f
+	.short	2594                            @ 0xa22
+	.short	2549                            @ 0x9f5
+	.short	2504                            @ 0x9c8
+	.short	2458                            @ 0x99a
+	.short	2413                            @ 0x96d
+	.short	2367                            @ 0x93f
+	.short	2321                            @ 0x911
+	.short	2275                            @ 0x8e3
+	.short	2230                            @ 0x8b6
+	.short	2184                            @ 0x888
+	.short	2138                            @ 0x85a
+	.short	2093                            @ 0x82d
+	.short	2048                            @ 0x800
+	.short	2003                            @ 0x7d3
+	.short	1959                            @ 0x7a7
+	.short	1915                            @ 0x77b
+	.short	1871                            @ 0x74f
+	.short	1828                            @ 0x724
+	.short	1785                            @ 0x6f9
+	.short	1742                            @ 0x6ce
+	.short	1700                            @ 0x6a4
+	.short	1659                            @ 0x67b
+	.short	1618                            @ 0x652
+	.short	1578                            @ 0x62a
+	.short	1539                            @ 0x603
+	.short	1500                            @ 0x5dc
+	.short	1461                            @ 0x5b5
+	.short	1424                            @ 0x590
+	.short	1387                            @ 0x56b
+	.short	1351                            @ 0x547
+	.short	1315                            @ 0x523
+	.short	1280                            @ 0x500
+	.short	1246                            @ 0x4de
+	.short	1213                            @ 0x4bd
+	.short	1180                            @ 0x49c
+	.short	1148                            @ 0x47c
+	.short	1116                            @ 0x45c
+	.short	1086                            @ 0x43e
+	.short	1056                            @ 0x420
+	.short	1027                            @ 0x403
+	.short	999                             @ 0x3e7
+	.short	971                             @ 0x3cb
+	.short	944                             @ 0x3b0
+	.short	918                             @ 0x396
+	.short	892                             @ 0x37c
+	.short	867                             @ 0x363
+	.short	843                             @ 0x34b
+	.short	819                             @ 0x333
+	.short	796                             @ 0x31c
+	.short	774                             @ 0x306
+	.short	752                             @ 0x2f0
+	.short	731                             @ 0x2db
+	.short	710                             @ 0x2c6
+	.short	690                             @ 0x2b2
+	.short	671                             @ 0x29f
+	.short	652                             @ 0x28c
+	.short	634                             @ 0x27a
+	.short	616                             @ 0x268
+	.short	598                             @ 0x256
+	.short	581                             @ 0x245
+	.short	565                             @ 0x235
+	.short	549                             @ 0x225
+	.short	534                             @ 0x216
+	.short	519                             @ 0x207
+	.short	504                             @ 0x1f8
+	.short	490                             @ 0x1ea
+	.short	477                             @ 0x1dd
+	.short	463                             @ 0x1cf
+	.short	451                             @ 0x1c3
+	.short	438                             @ 0x1b6
+	.short	426                             @ 0x1aa
+	.short	415                             @ 0x19f
+	.short	403                             @ 0x193
+	.short	392                             @ 0x188
+	.short	381                             @ 0x17d
+	.short	371                             @ 0x173
+	.short	361                             @ 0x169
+	.short	352                             @ 0x160
+	.short	342                             @ 0x156
+	.short	333                             @ 0x14d
+	.short	324                             @ 0x144
+	.short	316                             @ 0x13c
+	.short	307                             @ 0x133
+	.short	299                             @ 0x12b
+	.short	291                             @ 0x123
+	.short	284                             @ 0x11c
+	.short	276                             @ 0x114
+	.short	269                             @ 0x10d
+	.short	262                             @ 0x106
+	.short	255                             @ 0xff
+	.short	249                             @ 0xf9
+	.short	242                             @ 0xf2
+	.short	236                             @ 0xec
+	.short	230                             @ 0xe6
+	.short	224                             @ 0xe0
+	.short	219                             @ 0xdb
+	.short	213                             @ 0xd5
+	.short	208                             @ 0xd0
+	.short	202                             @ 0xca
+	.short	198                             @ 0xc6
+	.short	192                             @ 0xc0
+	.short	188                             @ 0xbc
+	.short	183                             @ 0xb7
+	.short	179                             @ 0xb3
+	.short	175                             @ 0xaf
+	.short	170                             @ 0xaa
+	.short	166                             @ 0xa6
+	.short	162                             @ 0xa2
+	.short	158                             @ 0x9e
+	.short	155                             @ 0x9b
+	.short	151                             @ 0x97
+	.short	147                             @ 0x93
+	.short	144                             @ 0x90
+	.size	g_tec_temp_adc, 332
+
+	.hidden	g_case_temp_adc                 @ @g_case_temp_adc
+	.type	g_case_temp_adc,%object
+	.section	.data.g_case_temp_adc,"aw",%progbits
+	.globl	g_case_temp_adc
+	.p2align	1, 0x0
+g_case_temp_adc:
+	.short	3807                            @ 0xedf
+	.short	3734                            @ 0xe96
+	.short	3648                            @ 0xe40
+	.short	3549                            @ 0xddd
+	.short	3437                            @ 0xd6d
+	.short	3312                            @ 0xcf0
+	.short	3176                            @ 0xc68
+	.short	3029                            @ 0xbd5
+	.short	2873                            @ 0xb39
+	.short	2711                            @ 0xa97
+	.short	2545                            @ 0x9f1
+	.short	2377                            @ 0x949
+	.short	2211                            @ 0x8a3
+	.short	2048                            @ 0x800
+	.short	1891                            @ 0x763
+	.short	1741                            @ 0x6cd
+	.short	1600                            @ 0x640
+	.short	1465                            @ 0x5b9
+	.short	1341                            @ 0x53d
+	.short	1226                            @ 0x4ca
+	.short	1121                            @ 0x461
+	.short	1024                            @ 0x400
+	.short	937                             @ 0x3a9
+	.short	857                             @ 0x359
+	.short	785                             @ 0x311
+	.short	719                             @ 0x2cf
+	.short	660                             @ 0x294
+	.short	607                             @ 0x25f
+	.short	559                             @ 0x22f
+	.short	516                             @ 0x204
+	.short	478                             @ 0x1de
+	.short	443                             @ 0x1bb
+	.short	411                             @ 0x19b
+	.short	383                             @ 0x17f
+	.size	g_case_temp_adc, 68
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

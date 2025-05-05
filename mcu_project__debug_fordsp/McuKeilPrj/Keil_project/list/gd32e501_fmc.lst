@@ -1,0 +1,3071 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_fmc.c"
+	.section	.text.fmc_unlock,"ax",%progbits
+	.hidden	fmc_unlock                      @ -- Begin function fmc_unlock
+	.globl	fmc_unlock
+	.p2align	2
+	.type	fmc_unlock,%function
+	.code	16                              @ @fmc_unlock
+	.thumb_func
+fmc_unlock:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	movw	r1, #8196
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	b	.LBB0_2
+.LBB0_2:
+	movw	r0, #8272
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB0_4
+	b	.LBB0_3
+.LBB0_3:
+	movw	r1, #8260
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	b	.LBB0_4
+.LBB0_4:
+	bx	lr
+.Lfunc_end0:
+	.size	fmc_unlock, .Lfunc_end0-fmc_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_unlock,"ax",%progbits
+	.hidden	fmc_bank0_unlock                @ -- Begin function fmc_bank0_unlock
+	.globl	fmc_bank0_unlock
+	.p2align	2
+	.type	fmc_bank0_unlock,%function
+	.code	16                              @ @fmc_bank0_unlock
+	.thumb_func
+fmc_bank0_unlock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	movw	r1, #8196
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	b	.LBB1_2
+.LBB1_2:
+	bx	lr
+.Lfunc_end1:
+	.size	fmc_bank0_unlock, .Lfunc_end1-fmc_bank0_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_unlock,"ax",%progbits
+	.hidden	fmc_bank1_unlock                @ -- Begin function fmc_bank1_unlock
+	.globl	fmc_bank1_unlock
+	.p2align	2
+	.type	fmc_bank1_unlock,%function
+	.code	16                              @ @fmc_bank1_unlock
+	.thumb_func
+fmc_bank1_unlock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8272
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	movw	r1, #8260
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	b	.LBB2_2
+.LBB2_2:
+	bx	lr
+.Lfunc_end2:
+	.size	fmc_bank1_unlock, .Lfunc_end2-fmc_bank1_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_lock,"ax",%progbits
+	.hidden	fmc_lock                        @ -- Begin function fmc_lock
+	.globl	fmc_lock
+	.p2align	2
+	.type	fmc_lock,%function
+	.code	16                              @ @fmc_lock
+	.thumb_func
+fmc_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	movw	r1, #8272
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end3:
+	.size	fmc_lock, .Lfunc_end3-fmc_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_lock,"ax",%progbits
+	.hidden	fmc_bank0_lock                  @ -- Begin function fmc_bank0_lock
+	.globl	fmc_bank0_lock
+	.p2align	2
+	.type	fmc_bank0_lock,%function
+	.code	16                              @ @fmc_bank0_lock
+	.thumb_func
+fmc_bank0_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end4:
+	.size	fmc_bank0_lock, .Lfunc_end4-fmc_bank0_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_lock,"ax",%progbits
+	.hidden	fmc_bank1_lock                  @ -- Begin function fmc_bank1_lock
+	.globl	fmc_bank1_lock
+	.p2align	2
+	.type	fmc_bank1_lock,%function
+	.code	16                              @ @fmc_bank1_lock
+	.thumb_func
+fmc_bank1_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8272
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end5:
+	.size	fmc_bank1_lock, .Lfunc_end5-fmc_bank1_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_wscnt_set,"ax",%progbits
+	.hidden	fmc_wscnt_set                   @ -- Begin function fmc_wscnt_set
+	.globl	fmc_wscnt_set
+	.p2align	2
+	.type	fmc_wscnt_set,%function
+	.code	16                              @ @fmc_wscnt_set
+	.thumb_func
+fmc_wscnt_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #7
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r2, [sp, #7]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	fmc_wscnt_set, .Lfunc_end6-fmc_wscnt_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_prefetch_enable,"ax",%progbits
+	.hidden	fmc_prefetch_enable             @ -- Begin function fmc_prefetch_enable
+	.globl	fmc_prefetch_enable
+	.p2align	2
+	.type	fmc_prefetch_enable,%function
+	.code	16                              @ @fmc_prefetch_enable
+	.thumb_func
+fmc_prefetch_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end7:
+	.size	fmc_prefetch_enable, .Lfunc_end7-fmc_prefetch_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_prefetch_disable,"ax",%progbits
+	.hidden	fmc_prefetch_disable            @ -- Begin function fmc_prefetch_disable
+	.globl	fmc_prefetch_disable
+	.p2align	2
+	.type	fmc_prefetch_disable,%function
+	.code	16                              @ @fmc_prefetch_disable
+	.thumb_func
+fmc_prefetch_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end8:
+	.size	fmc_prefetch_disable, .Lfunc_end8-fmc_prefetch_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_cache_enable,"ax",%progbits
+	.hidden	fmc_cache_enable                @ -- Begin function fmc_cache_enable
+	.globl	fmc_cache_enable
+	.p2align	2
+	.type	fmc_cache_enable,%function
+	.code	16                              @ @fmc_cache_enable
+	.thumb_func
+fmc_cache_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #512
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end9:
+	.size	fmc_cache_enable, .Lfunc_end9-fmc_cache_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_cache_disable,"ax",%progbits
+	.hidden	fmc_cache_disable               @ -- Begin function fmc_cache_disable
+	.globl	fmc_cache_disable
+	.p2align	2
+	.type	fmc_cache_disable,%function
+	.code	16                              @ @fmc_cache_disable
+	.thumb_func
+fmc_cache_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #512
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end10:
+	.size	fmc_cache_disable, .Lfunc_end10-fmc_cache_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_cache_reset_enable,"ax",%progbits
+	.hidden	fmc_cache_reset_enable          @ -- Begin function fmc_cache_reset_enable
+	.globl	fmc_cache_reset_enable
+	.p2align	2
+	.type	fmc_cache_reset_enable,%function
+	.code	16                              @ @fmc_cache_reset_enable
+	.thumb_func
+fmc_cache_reset_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #2048
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end11:
+	.size	fmc_cache_reset_enable, .Lfunc_end11-fmc_cache_reset_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_cache_reset_disable,"ax",%progbits
+	.hidden	fmc_cache_reset_disable         @ -- Begin function fmc_cache_reset_disable
+	.globl	fmc_cache_reset_disable
+	.p2align	2
+	.type	fmc_cache_reset_disable,%function
+	.code	16                              @ @fmc_cache_reset_disable
+	.thumb_func
+fmc_cache_reset_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8192
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end12:
+	.size	fmc_cache_reset_disable, .Lfunc_end12-fmc_cache_reset_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_page_erase,"ax",%progbits
+	.hidden	fmc_page_erase                  @ -- Begin function fmc_page_erase
+	.globl	fmc_page_erase
+	.p2align	2
+	.type	fmc_page_erase,%function
+	.code	16                              @ @fmc_page_erase
+	.thumb_func
+fmc_page_erase:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #24]
+	cmp.w	r0, #134217728
+	blo	.LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	ldr	r0, [sp, #24]
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	add.w	r1, r1, #131072
+	cmp.w	r0, r1, lsl #10
+	bls	.LBB13_3
+	b	.LBB13_2
+.LBB13_2:
+	movs	r0, #6
+	strb.w	r0, [sp, #31]
+	b	.LBB13_21
+.LBB13_3:
+	ldr	r0, [sp, #24]
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	add.w	r1, r1, #262144
+	cmp.w	r0, r1, lsl #9
+	bhs	.LBB13_12
+	b	.LBB13_4
+.LBB13_4:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB13_8
+	b	.LBB13_5
+.LBB13_5:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #23]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB13_7
+	b	.LBB13_6
+.LBB13_6:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #16]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	movw	r2, #8212
+	movt	r2, #16386
+	str	r0, [r2]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB13_7
+.LBB13_7:
+	b	.LBB13_11
+.LBB13_8:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #23]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB13_10
+	b	.LBB13_9
+.LBB13_9:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	movw	r2, #8276
+	movt	r2, #16386
+	str	r0, [r2]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB13_10
+.LBB13_10:
+	b	.LBB13_11
+.LBB13_11:
+	b	.LBB13_20
+.LBB13_12:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB13_16
+	b	.LBB13_13
+.LBB13_13:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #23]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB13_15
+	b	.LBB13_14
+.LBB13_14:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	movw	r2, #8276
+	movt	r2, #16386
+	str	r0, [r2]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB13_15
+.LBB13_15:
+	b	.LBB13_19
+.LBB13_16:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #23]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB13_18
+	b	.LBB13_17
+.LBB13_17:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	movw	r2, #8212
+	movt	r2, #16386
+	str	r0, [r2]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB13_18
+.LBB13_18:
+	b	.LBB13_19
+.LBB13_19:
+	b	.LBB13_20
+.LBB13_20:
+	ldrb.w	r0, [sp, #23]
+	strb.w	r0, [sp, #31]
+	b	.LBB13_21
+.LBB13_21:
+	ldrb.w	r0, [sp, #31]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end13:
+	.size	fmc_page_erase, .Lfunc_end13-fmc_page_erase
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_ready_wait,"ax",%progbits
+	.hidden	fmc_bank0_ready_wait            @ -- Begin function fmc_bank0_ready_wait
+	.globl	fmc_bank0_ready_wait
+	.p2align	2
+	.type	fmc_bank0_ready_wait,%function
+	.code	16                              @ @fmc_bank0_ready_wait
+	.thumb_func
+fmc_bank0_ready_wait:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB14_1
+.LBB14_1:                               @ =>This Inner Loop Header: Depth=1
+	bl	fmc_bank0_state_get
+	strb.w	r0, [sp, #11]
+	ldr	r0, [sp, #12]
+	subs	r0, #1
+	str	r0, [sp, #12]
+	b	.LBB14_2
+.LBB14_2:                               @   in Loop: Header=BB14_1 Depth=1
+	ldrb.w	r1, [sp, #11]
+	movs	r0, #0
+	cmp	r1, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bne	.LBB14_4
+	b	.LBB14_3
+.LBB14_3:                               @   in Loop: Header=BB14_1 Depth=1
+	ldr	r0, [sp, #12]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB14_4
+.LBB14_4:                               @   in Loop: Header=BB14_1 Depth=1
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB14_1
+	b	.LBB14_5
+.LBB14_5:
+	ldrb.w	r0, [sp, #11]
+	cmp	r0, #1
+	bne	.LBB14_7
+	b	.LBB14_6
+.LBB14_6:
+	movs	r0, #5
+	strb.w	r0, [sp, #11]
+	b	.LBB14_7
+.LBB14_7:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	fmc_bank0_ready_wait, .Lfunc_end14-fmc_bank0_ready_wait
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_ready_wait,"ax",%progbits
+	.hidden	fmc_bank1_ready_wait            @ -- Begin function fmc_bank1_ready_wait
+	.globl	fmc_bank1_ready_wait
+	.p2align	2
+	.type	fmc_bank1_ready_wait,%function
+	.code	16                              @ @fmc_bank1_ready_wait
+	.thumb_func
+fmc_bank1_ready_wait:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB15_1
+.LBB15_1:                               @ =>This Inner Loop Header: Depth=1
+	bl	fmc_bank1_state_get
+	strb.w	r0, [sp, #11]
+	ldr	r0, [sp, #12]
+	subs	r0, #1
+	str	r0, [sp, #12]
+	b	.LBB15_2
+.LBB15_2:                               @   in Loop: Header=BB15_1 Depth=1
+	ldrb.w	r1, [sp, #11]
+	movs	r0, #0
+	cmp	r1, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bne	.LBB15_4
+	b	.LBB15_3
+.LBB15_3:                               @   in Loop: Header=BB15_1 Depth=1
+	ldr	r0, [sp, #12]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB15_4
+.LBB15_4:                               @   in Loop: Header=BB15_1 Depth=1
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB15_1
+	b	.LBB15_5
+.LBB15_5:
+	ldrb.w	r0, [sp, #11]
+	cmp	r0, #1
+	bne	.LBB15_7
+	b	.LBB15_6
+.LBB15_6:
+	movs	r0, #5
+	strb.w	r0, [sp, #11]
+	b	.LBB15_7
+.LBB15_7:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end15:
+	.size	fmc_bank1_ready_wait, .Lfunc_end15-fmc_bank1_ready_wait
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_mass_erase,"ax",%progbits
+	.hidden	fmc_mass_erase                  @ -- Begin function fmc_mass_erase
+	.globl	fmc_mass_erase
+	.p2align	2
+	.type	fmc_mass_erase,%function
+	.code	16                              @ @fmc_mass_erase
+	.thumb_func
+fmc_mass_erase:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB16_4
+	b	.LBB16_1
+.LBB16_1:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #22]
+	ldrb.w	r0, [sp, #22]
+	cbnz	r0, .LBB16_3
+	b	.LBB16_2
+.LBB16_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #16]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	strb.w	r0, [sp, #22]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB16_3
+.LBB16_3:
+	b	.LBB16_7
+.LBB16_4:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #22]
+	ldrb.w	r0, [sp, #22]
+	cbnz	r0, .LBB16_6
+	b	.LBB16_5
+.LBB16_5:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	strb.w	r0, [sp, #22]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB16_6
+.LBB16_6:
+	b	.LBB16_7
+.LBB16_7:
+	ldrb.w	r0, [sp, #22]
+	cbz	r0, .LBB16_9
+	b	.LBB16_8
+.LBB16_8:
+	ldrb.w	r0, [sp, #22]
+	strb.w	r0, [sp, #23]
+	b	.LBB16_17
+.LBB16_9:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB16_13
+	b	.LBB16_10
+.LBB16_10:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #22]
+	ldrb.w	r0, [sp, #22]
+	cbnz	r0, .LBB16_12
+	b	.LBB16_11
+.LBB16_11:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	strb.w	r0, [sp, #22]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB16_12
+.LBB16_12:
+	b	.LBB16_16
+.LBB16_13:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #22]
+	ldrb.w	r0, [sp, #22]
+	cbnz	r0, .LBB16_15
+	b	.LBB16_14
+.LBB16_14:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strb.w	r0, [sp, #22]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB16_15
+.LBB16_15:
+	b	.LBB16_16
+.LBB16_16:
+	ldrb.w	r0, [sp, #22]
+	strb.w	r0, [sp, #23]
+	b	.LBB16_17
+.LBB16_17:
+	ldrb.w	r0, [sp, #23]
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end16:
+	.size	fmc_mass_erase, .Lfunc_end16-fmc_mass_erase
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_mass_erase,"ax",%progbits
+	.hidden	fmc_bank0_mass_erase            @ -- Begin function fmc_bank0_mass_erase
+	.globl	fmc_bank0_mass_erase
+	.p2align	2
+	.type	fmc_bank0_mass_erase,%function
+	.code	16                              @ @fmc_bank0_mass_erase
+	.thumb_func
+fmc_bank0_mass_erase:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB17_4
+	b	.LBB17_1
+.LBB17_1:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cbnz	r0, .LBB17_3
+	b	.LBB17_2
+.LBB17_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	strb.w	r0, [sp, #15]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB17_3
+.LBB17_3:
+	b	.LBB17_7
+.LBB17_4:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cbnz	r0, .LBB17_6
+	b	.LBB17_5
+.LBB17_5:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strb.w	r0, [sp, #15]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB17_6
+.LBB17_6:
+	b	.LBB17_7
+.LBB17_7:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end17:
+	.size	fmc_bank0_mass_erase, .Lfunc_end17-fmc_bank0_mass_erase
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_mass_erase,"ax",%progbits
+	.hidden	fmc_bank1_mass_erase            @ -- Begin function fmc_bank1_mass_erase
+	.globl	fmc_bank1_mass_erase
+	.p2align	2
+	.type	fmc_bank1_mass_erase,%function
+	.code	16                              @ @fmc_bank1_mass_erase
+	.thumb_func
+fmc_bank1_mass_erase:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB18_4
+	b	.LBB18_1
+.LBB18_1:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cbnz	r0, .LBB18_3
+	b	.LBB18_2
+.LBB18_2:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	strb.w	r0, [sp, #15]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_3:
+	b	.LBB18_7
+.LBB18_4:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cbnz	r0, .LBB18_6
+	b	.LBB18_5
+.LBB18_5:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strb.w	r0, [sp, #15]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB18_6
+.LBB18_6:
+	b	.LBB18_7
+.LBB18_7:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end18:
+	.size	fmc_bank1_mass_erase, .Lfunc_end18-fmc_bank1_mass_erase
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_doubleword_program,"ax",%progbits
+	.hidden	fmc_doubleword_program          @ -- Begin function fmc_doubleword_program
+	.globl	fmc_doubleword_program
+	.p2align	2
+	.type	fmc_doubleword_program,%function
+	.code	16                              @ @fmc_doubleword_program
+	.thumb_func
+fmc_doubleword_program:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+                                        @ kill: def $r1 killed $r3
+                                        @ kill: def $r1 killed $r2
+	str	r0, [sp, #40]
+	str	r3, [sp, #36]
+	str	r2, [sp, #32]
+	ldr	r0, [sp, #40]
+	cmp.w	r0, #134217728
+	bls	.LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	ldr	r0, [sp, #40]
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	add.w	r1, r1, #131072
+	cmp.w	r0, r1, lsl #10
+	blo	.LBB19_4
+	b	.LBB19_2
+.LBB19_2:
+	ldr	r0, [sp, #40]
+	cbz	r0, .LBB19_5
+	b	.LBB19_3
+.LBB19_3:
+	ldr	r0, [sp, #40]
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	cmp.w	r0, r1, lsl #10
+	bhs	.LBB19_5
+	b	.LBB19_4
+.LBB19_4:
+	b	.LBB19_6
+.LBB19_5:
+	movs	r0, #6
+	strb.w	r0, [sp, #47]
+	b	.LBB19_24
+.LBB19_6:
+	ldr	r0, [sp, #40]
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	add.w	r1, r1, #262144
+	cmp.w	r0, r1, lsl #9
+	bhs	.LBB19_15
+	b	.LBB19_7
+.LBB19_7:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB19_11
+	b	.LBB19_8
+.LBB19_8:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #23]
+	ldr	r0, [sp, #32]
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #36]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB19_10
+	b	.LBB19_9
+.LBB19_9:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #16]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #40]
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #40]
+	str	r0, [r1, #4]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB19_10
+.LBB19_10:
+	b	.LBB19_14
+.LBB19_11:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #23]
+	ldr	r0, [sp, #32]
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #36]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB19_13
+	b	.LBB19_12
+.LBB19_12:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #40]
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #40]
+	str	r0, [r1, #4]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB19_13
+.LBB19_13:
+	b	.LBB19_14
+.LBB19_14:
+	b	.LBB19_23
+.LBB19_15:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldrh	r0, [r0]
+	lsrs	r0, r0, #8
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB19_19
+	b	.LBB19_16
+.LBB19_16:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #23]
+	ldr	r0, [sp, #32]
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #36]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB19_18
+	b	.LBB19_17
+.LBB19_17:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #40]
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #40]
+	str	r0, [r1, #4]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB19_18
+.LBB19_18:
+	b	.LBB19_22
+.LBB19_19:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #23]
+	ldr	r0, [sp, #32]
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #36]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB19_21
+	b	.LBB19_20
+.LBB19_20:
+	movw	r1, #8208
+	movt	r1, #16386
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #40]
+	str	r0, [r1]
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #40]
+	str	r0, [r1, #4]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strb.w	r0, [sp, #23]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB19_21
+.LBB19_21:
+	b	.LBB19_22
+.LBB19_22:
+	b	.LBB19_23
+.LBB19_23:
+	ldrb.w	r0, [sp, #23]
+	strb.w	r0, [sp, #47]
+	b	.LBB19_24
+.LBB19_24:
+	ldrb.w	r0, [sp, #47]
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end19:
+	.size	fmc_doubleword_program, .Lfunc_end19-fmc_doubleword_program
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.otp_doubleword_program,"ax",%progbits
+	.hidden	otp_doubleword_program          @ -- Begin function otp_doubleword_program
+	.globl	otp_doubleword_program
+	.p2align	2
+	.type	otp_doubleword_program,%function
+	.code	16                              @ @otp_doubleword_program
+	.thumb_func
+otp_doubleword_program:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r1 killed $r3
+                                        @ kill: def $r1 killed $r2
+	str	r0, [sp, #24]
+	str	r3, [sp, #20]
+	str	r2, [sp, #16]
+	ldr	r0, [sp, #24]
+	movw	r1, #28672
+	movt	r1, #8191
+	cmp	r0, r1
+	blo	.LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	ldr	r0, [sp, #24]
+	movw	r1, #32769
+	movt	r1, #8191
+	cmp	r0, r1
+	blo	.LBB20_3
+	b	.LBB20_2
+.LBB20_2:
+	movs	r0, #6
+	strb.w	r0, [sp, #31]
+	b	.LBB20_6
+.LBB20_3:
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	strb.w	r0, [sp, #7]
+	ldr	r0, [sp, #16]
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #20]
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB20_5
+	b	.LBB20_4
+.LBB20_4:
+	movw	r1, #8272
+	movt	r1, #16386
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #24]
+	str	r0, [r1]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #24]
+	str	r0, [r1, #4]
+	mov.w	r0, #983040
+	bl	fmc_bank1_ready_wait
+	ldr	r1, [sp]                        @ 4-byte Reload
+	strb.w	r0, [sp, #7]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB20_5
+.LBB20_5:
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #31]
+	b	.LBB20_6
+.LBB20_6:
+	ldrb.w	r0, [sp, #31]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end20:
+	.size	otp_doubleword_program, .Lfunc_end20-otp_doubleword_program
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_unlock,"ax",%progbits
+	.hidden	ob_unlock                       @ -- Begin function ob_unlock
+	.globl	ob_unlock
+	.p2align	2
+	.type	ob_unlock,%function
+	.code	16                              @ @ob_unlock
+	.thumb_func
+ob_unlock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #22
+	cmp	r0, #0
+	bmi	.LBB21_2
+	b	.LBB21_1
+.LBB21_1:
+	movw	r1, #8200
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	b	.LBB21_2
+.LBB21_2:
+	b	.LBB21_3
+.LBB21_3:                               @ =>This Inner Loop Header: Depth=1
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #22
+	cmp	r0, #0
+	bmi	.LBB21_5
+	b	.LBB21_4
+.LBB21_4:                               @   in Loop: Header=BB21_3 Depth=1
+	b	.LBB21_3
+.LBB21_5:
+	bx	lr
+.Lfunc_end21:
+	.size	ob_unlock, .Lfunc_end21-ob_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_lock,"ax",%progbits
+	.hidden	ob_lock                         @ -- Begin function ob_lock
+	.globl	ob_lock
+	.p2align	2
+	.type	ob_lock,%function
+	.code	16                              @ @ob_lock
+	.thumb_func
+ob_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #512
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end22:
+	.size	ob_lock, .Lfunc_end22-ob_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_reset,"ax",%progbits
+	.hidden	ob_reset                        @ -- Begin function ob_reset
+	.globl	ob_reset
+	.p2align	2
+	.type	ob_reset,%function
+	.code	16                              @ @ob_reset
+	.thumb_func
+ob_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #8192
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end23:
+	.size	ob_reset, .Lfunc_end23-ob_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_erase,"ax",%progbits
+	.hidden	ob_erase                        @ -- Begin function ob_erase
+	.globl	ob_erase
+	.p2align	2
+	.type	ob_erase,%function
+	.code	16                              @ @ob_erase
+	.thumb_func
+ob_erase:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	movw	r0, #63488
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #8]
+	movw	r0, #65535
+	strh.w	r0, [sp, #10]
+	mov.w	r0, #-1
+	str	r0, [sp, #12]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #0
+	bne	.LBB24_9
+	b	.LBB24_1
+.LBB24_1:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB24_5
+	b	.LBB24_2
+.LBB24_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	r0, sp, #8
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #0
+	bl	ob_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movs	r1, #1
+	bl	ob_write
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB24_4
+	b	.LBB24_3
+.LBB24_3:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB24_4
+.LBB24_4:
+	b	.LBB24_8
+.LBB24_5:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB24_7
+	b	.LBB24_6
+.LBB24_6:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB24_7
+.LBB24_7:
+	b	.LBB24_8
+.LBB24_8:
+	b	.LBB24_9
+.LBB24_9:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end24:
+	.size	ob_erase, .Lfunc_end24-ob_erase
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_write,"ax",%progbits
+	.p2align	2                               @ -- Begin function ob_write
+	.type	ob_write,%function
+	.code	16                              @ @ob_write
+	.thumb_func
+ob_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #12]
+	strb.w	r1, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	cbnz	r0, .LBB25_2
+	b	.LBB25_1
+.LBB25_1:
+	ldr	r0, [sp, #12]
+	ldrh	r0, [r0]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldrh	r1, [r0, #2]
+	ldr	r0, [sp, #4]
+	orr.w	r0, r0, r1, lsl #16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	movw	r1, #63488
+	movt	r1, #8191
+	str	r0, [r1]
+	ldr	r0, [sp]
+	movw	r1, #63492
+	movt	r1, #8191
+	str	r0, [r1]
+	b	.LBB25_3
+.LBB25_2:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #8]
+	movw	r1, #63496
+	movt	r1, #8191
+	str	r0, [r1]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #12]
+	movw	r1, #63500
+	movt	r1, #8191
+	str	r0, [r1]
+	b	.LBB25_3
+.LBB25_3:
+	add	sp, #16
+	bx	lr
+.Lfunc_end25:
+	.size	ob_write, .Lfunc_end25-ob_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_write_protection_enable,"ax",%progbits
+	.hidden	ob_write_protection_enable      @ -- Begin function ob_write_protection_enable
+	.globl	ob_write_protection_enable
+	.p2align	2
+	.type	ob_write_protection_enable,%function
+	.code	16                              @ @ob_write_protection_enable
+	.thumb_func
+ob_write_protection_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #32]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #32]
+	bic	r0, r0, #-2147483648
+	movw	r1, #63456
+	movt	r1, #8191
+	ldrh	r1, [r1]
+	lsrs	r1, r1, #4
+	lsrs	r0, r1
+	cbz	r0, .LBB26_2
+	b	.LBB26_1
+.LBB26_1:
+	movs	r0, #6
+	strb.w	r0, [sp, #39]
+	b	.LBB26_12
+.LBB26_2:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	movw	r0, #63488
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #16]
+	movw	r0, #63490
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #18]
+	movw	r0, #63492
+	movt	r0, #8191
+	ldr	r0, [r0]
+	str	r0, [sp, #20]
+	movw	r0, #63496
+	movt	r0, #8191
+	ldrd	r0, r1, [r0]
+	str	r1, [sp, #28]
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #32]
+	mvns	r0, r0
+	str	r0, [sp, #32]
+	ldrb.w	r2, [sp, #32]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #12]
+	orrs	r0, r2
+	str	r1, [sp, #12]
+	str	r0, [sp, #8]
+	ldrb.w	r2, [sp, #33]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #12]
+	orr.w	r0, r0, r2, lsl #16
+	str	r1, [sp, #12]
+	str	r0, [sp, #8]
+	ldrb.w	r2, [sp, #34]
+	ldr	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	orrs	r0, r2
+	str	r1, [sp, #8]
+	str	r0, [sp, #12]
+	ldrb.w	r2, [sp, #35]
+	ldr	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	orr.w	r0, r0, r2, lsl #16
+	str	r1, [sp, #8]
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #28]
+	ldr	r3, [sp, #8]
+	ldr	r2, [sp, #12]
+	ands	r0, r3
+	ands	r1, r2
+	str	r1, [sp, #28]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #0
+	bne	.LBB26_11
+	b	.LBB26_3
+.LBB26_3:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB26_7
+	b	.LBB26_4
+.LBB26_4:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	r0, sp, #16
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #1
+	bl	ob_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movs	r1, #0
+	bl	ob_write
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB26_6
+	b	.LBB26_5
+.LBB26_5:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB26_6
+.LBB26_6:
+	b	.LBB26_10
+.LBB26_7:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB26_9
+	b	.LBB26_8
+.LBB26_8:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB26_9
+.LBB26_9:
+	b	.LBB26_10
+.LBB26_10:
+	b	.LBB26_11
+.LBB26_11:
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #39]
+	b	.LBB26_12
+.LBB26_12:
+	ldrb.w	r0, [sp, #39]
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end26:
+	.size	ob_write_protection_enable, .Lfunc_end26-ob_write_protection_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_security_protection_config,"ax",%progbits
+	.hidden	ob_security_protection_config   @ -- Begin function ob_security_protection_config
+	.globl	ob_security_protection_config
+	.p2align	2
+	.type	ob_security_protection_config,%function
+	.code	16                              @ @ob_security_protection_config
+	.thumb_func
+ob_security_protection_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #30]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrh.w	r0, [sp, #30]
+	strh.w	r0, [sp, #8]
+	movw	r0, #63490
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #10]
+	movw	r0, #63492
+	movt	r0, #8191
+	ldr	r0, [r0]
+	str	r0, [sp, #12]
+	movw	r0, #63496
+	movt	r0, #8191
+	ldrd	r0, r1, [r0]
+	str	r1, [sp, #20]
+	str	r0, [sp, #16]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #0
+	bne	.LBB27_9
+	b	.LBB27_1
+.LBB27_1:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB27_5
+	b	.LBB27_2
+.LBB27_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	r0, sp, #8
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #0
+	bl	ob_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movs	r1, #1
+	bl	ob_write
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB27_4
+	b	.LBB27_3
+.LBB27_3:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB27_4
+.LBB27_4:
+	b	.LBB27_8
+.LBB27_5:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB27_7
+	b	.LBB27_6
+.LBB27_6:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB27_7
+.LBB27_7:
+	b	.LBB27_8
+.LBB27_8:
+	b	.LBB27_9
+.LBB27_9:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end27:
+	.size	ob_security_protection_config, .Lfunc_end27-ob_security_protection_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_user_write,"ax",%progbits
+	.hidden	ob_user_write                   @ -- Begin function ob_user_write
+	.globl	ob_user_write
+	.p2align	2
+	.type	ob_user_write,%function
+	.code	16                              @ @ob_user_write
+	.thumb_func
+ob_user_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #31]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	movw	r0, #63488
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #31]
+	strh.w	r0, [sp, #10]
+	movw	r0, #63492
+	movt	r0, #8191
+	ldr	r0, [r0]
+	str	r0, [sp, #12]
+	movw	r0, #63496
+	movt	r0, #8191
+	ldrd	r0, r1, [r0]
+	str	r1, [sp, #20]
+	str	r0, [sp, #16]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #0
+	bne	.LBB28_9
+	b	.LBB28_1
+.LBB28_1:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB28_5
+	b	.LBB28_2
+.LBB28_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	r0, sp, #8
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #0
+	bl	ob_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movs	r1, #1
+	bl	ob_write
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB28_4
+	b	.LBB28_3
+.LBB28_3:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB28_4
+.LBB28_4:
+	b	.LBB28_8
+.LBB28_5:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #5
+	beq	.LBB28_7
+	b	.LBB28_6
+.LBB28_6:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB28_7
+.LBB28_7:
+	b	.LBB28_8
+.LBB28_8:
+	b	.LBB28_9
+.LBB28_9:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end28:
+	.size	ob_user_write, .Lfunc_end28-ob_user_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_data_program,"ax",%progbits
+	.hidden	ob_data_program                 @ -- Begin function ob_data_program
+	.globl	ob_data_program
+	.p2align	2
+	.type	ob_data_program,%function
+	.code	16                              @ @ob_data_program
+	.thumb_func
+ob_data_program:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #38]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #15]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	movw	r0, #63488
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #16]
+	movw	r0, #63490
+	movt	r0, #8191
+	ldrh	r0, [r0]
+	strh.w	r0, [sp, #18]
+	movw	r0, #63496
+	movt	r0, #8191
+	ldrd	r0, r1, [r0]
+	str	r1, [sp, #28]
+	str	r0, [sp, #24]
+	ldrb.w	r1, [sp, #38]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #39]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #16
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	str	r0, [sp, #20]
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #0
+	bne	.LBB29_9
+	b	.LBB29_1
+.LBB29_1:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cbnz	r0, .LBB29_5
+	b	.LBB29_2
+.LBB29_2:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	r0, sp, #16
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #0
+	bl	ob_write
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #1
+	bl	ob_write
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #15]
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #5
+	beq	.LBB29_4
+	b	.LBB29_3
+.LBB29_3:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB29_4
+.LBB29_4:
+	b	.LBB29_8
+.LBB29_5:
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #5
+	beq	.LBB29_7
+	b	.LBB29_6
+.LBB29_6:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB29_7
+.LBB29_7:
+	b	.LBB29_8
+.LBB29_8:
+	b	.LBB29_9
+.LBB29_9:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end29:
+	.size	ob_data_program, .Lfunc_end29-ob_data_program
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_user_get,"ax",%progbits
+	.hidden	ob_user_get                     @ -- Begin function ob_user_get
+	.globl	ob_user_get
+	.p2align	2
+	.type	ob_user_get,%function
+	.code	16                              @ @ob_user_get
+	.thumb_func
+ob_user_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ubfx	r0, r0, #8, #8
+	bx	lr
+.Lfunc_end30:
+	.size	ob_user_get, .Lfunc_end30-ob_user_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_data_get,"ax",%progbits
+	.hidden	ob_data_get                     @ -- Begin function ob_data_get
+	.globl	ob_data_get
+	.p2align	2
+	.type	ob_data_get,%function
+	.code	16                              @ @ob_data_get
+	.thumb_func
+ob_data_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsrs	r0, r0, #16
+	bx	lr
+.Lfunc_end31:
+	.size	ob_data_get, .Lfunc_end31-ob_data_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_write_protection_get,"ax",%progbits
+	.hidden	ob_write_protection_get         @ -- Begin function ob_write_protection_get
+	.globl	ob_write_protection_get
+	.p2align	2
+	.type	ob_write_protection_get,%function
+	.code	16                              @ @ob_write_protection_get
+	.thumb_func
+ob_write_protection_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8224
+	movt	r0, #16386
+	ldr	r0, [r0]
+	bx	lr
+.Lfunc_end32:
+	.size	ob_write_protection_get, .Lfunc_end32-ob_write_protection_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ob_plevel_get,"ax",%progbits
+	.hidden	ob_plevel_get                   @ -- Begin function ob_plevel_get
+	.globl	ob_plevel_get
+	.p2align	2
+	.type	ob_plevel_get,%function
+	.code	16                              @ @ob_plevel_get
+	.thumb_func
+ob_plevel_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #8220
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ubfx	r0, r0, #1, #2
+	bx	lr
+.Lfunc_end33:
+	.size	ob_plevel_get, .Lfunc_end33-ob_plevel_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_flag_get,"ax",%progbits
+	.hidden	fmc_bank0_flag_get              @ -- Begin function fmc_bank0_flag_get
+	.globl	fmc_bank0_flag_get
+	.p2align	2
+	.type	fmc_bank0_flag_get,%function
+	.code	16                              @ @fmc_bank0_flag_get
+	.thumb_func
+fmc_bank0_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB34_2
+	b	.LBB34_1
+.LBB34_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB34_2
+.LBB34_2:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end34:
+	.size	fmc_bank0_flag_get, .Lfunc_end34-fmc_bank0_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_flag_get,"ax",%progbits
+	.hidden	fmc_bank1_flag_get              @ -- Begin function fmc_bank1_flag_get
+	.globl	fmc_bank1_flag_get
+	.p2align	2
+	.type	fmc_bank1_flag_get,%function
+	.code	16                              @ @fmc_bank1_flag_get
+	.thumb_func
+fmc_bank1_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB35_2
+	b	.LBB35_1
+.LBB35_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB35_2
+.LBB35_2:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end35:
+	.size	fmc_bank1_flag_get, .Lfunc_end35-fmc_bank1_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_flag_clear,"ax",%progbits
+	.hidden	fmc_bank0_flag_clear            @ -- Begin function fmc_bank0_flag_clear
+	.globl	fmc_bank0_flag_clear
+	.p2align	2
+	.type	fmc_bank0_flag_clear,%function
+	.code	16                              @ @fmc_bank0_flag_clear
+	.thumb_func
+fmc_bank0_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8204
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end36:
+	.size	fmc_bank0_flag_clear, .Lfunc_end36-fmc_bank0_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_flag_clear,"ax",%progbits
+	.hidden	fmc_bank1_flag_clear            @ -- Begin function fmc_bank1_flag_clear
+	.globl	fmc_bank1_flag_clear
+	.p2align	2
+	.type	fmc_bank1_flag_clear,%function
+	.code	16                              @ @fmc_bank1_flag_clear
+	.thumb_func
+fmc_bank1_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8268
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end37:
+	.size	fmc_bank1_flag_clear, .Lfunc_end37-fmc_bank1_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_interrupt_enable,"ax",%progbits
+	.hidden	fmc_bank0_interrupt_enable      @ -- Begin function fmc_bank0_interrupt_enable
+	.globl	fmc_bank0_interrupt_enable
+	.p2align	2
+	.type	fmc_bank0_interrupt_enable,%function
+	.code	16                              @ @fmc_bank0_interrupt_enable
+	.thumb_func
+fmc_bank0_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end38:
+	.size	fmc_bank0_interrupt_enable, .Lfunc_end38-fmc_bank0_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_interrupt_enable,"ax",%progbits
+	.hidden	fmc_bank1_interrupt_enable      @ -- Begin function fmc_bank1_interrupt_enable
+	.globl	fmc_bank1_interrupt_enable
+	.p2align	2
+	.type	fmc_bank1_interrupt_enable,%function
+	.code	16                              @ @fmc_bank1_interrupt_enable
+	.thumb_func
+fmc_bank1_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8272
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end39:
+	.size	fmc_bank1_interrupt_enable, .Lfunc_end39-fmc_bank1_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_interrupt_disable,"ax",%progbits
+	.hidden	fmc_bank0_interrupt_disable     @ -- Begin function fmc_bank0_interrupt_disable
+	.globl	fmc_bank0_interrupt_disable
+	.p2align	2
+	.type	fmc_bank0_interrupt_disable,%function
+	.code	16                              @ @fmc_bank0_interrupt_disable
+	.thumb_func
+fmc_bank0_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end40:
+	.size	fmc_bank0_interrupt_disable, .Lfunc_end40-fmc_bank0_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_interrupt_disable,"ax",%progbits
+	.hidden	fmc_bank1_interrupt_disable     @ -- Begin function fmc_bank1_interrupt_disable
+	.globl	fmc_bank1_interrupt_disable
+	.p2align	2
+	.type	fmc_bank1_interrupt_disable,%function
+	.code	16                              @ @fmc_bank1_interrupt_disable
+	.thumb_func
+fmc_bank1_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #8272
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end41:
+	.size	fmc_bank1_interrupt_disable, .Lfunc_end41-fmc_bank1_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_interrupt_flag_get,"ax",%progbits
+	.hidden	fmc_bank0_interrupt_flag_get    @ -- Begin function fmc_bank0_interrupt_flag_get
+	.globl	fmc_bank0_interrupt_flag_get
+	.p2align	2
+	.type	fmc_bank0_interrupt_flag_get,%function
+	.code	16                              @ @fmc_bank0_interrupt_flag_get
+	.thumb_func
+fmc_bank0_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	cmp	r0, #32
+	bne	.LBB42_5
+	b	.LBB42_1
+.LBB42_1:
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	and	r0, r0, #4096
+	str	r0, [sp, #4]
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #8]
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB42_4
+	b	.LBB42_2
+.LBB42_2:
+	ldr	r0, [sp]
+	cbz	r0, .LBB42_4
+	b	.LBB42_3
+.LBB42_3:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB42_9
+.LBB42_4:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB42_9
+.LBB42_5:
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	and	r0, r0, #1024
+	str	r0, [sp, #4]
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #8]
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB42_8
+	b	.LBB42_6
+.LBB42_6:
+	ldr	r0, [sp]
+	cbz	r0, .LBB42_8
+	b	.LBB42_7
+.LBB42_7:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB42_9
+.LBB42_8:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB42_9
+.LBB42_9:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end42:
+	.size	fmc_bank0_interrupt_flag_get, .Lfunc_end42-fmc_bank0_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_interrupt_flag_get,"ax",%progbits
+	.hidden	fmc_bank1_interrupt_flag_get    @ -- Begin function fmc_bank1_interrupt_flag_get
+	.globl	fmc_bank1_interrupt_flag_get
+	.p2align	2
+	.type	fmc_bank1_interrupt_flag_get,%function
+	.code	16                              @ @fmc_bank1_interrupt_flag_get
+	.thumb_func
+fmc_bank1_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	cmp	r0, #32
+	bne	.LBB43_5
+	b	.LBB43_1
+.LBB43_1:
+	movw	r0, #8272
+	movt	r0, #16386
+	ldr	r0, [r0]
+	and	r0, r0, #4096
+	str	r0, [sp, #4]
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #8]
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB43_4
+	b	.LBB43_2
+.LBB43_2:
+	ldr	r0, [sp]
+	cbz	r0, .LBB43_4
+	b	.LBB43_3
+.LBB43_3:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB43_9
+.LBB43_4:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB43_9
+.LBB43_5:
+	movw	r0, #8272
+	movt	r0, #16386
+	ldr	r0, [r0]
+	and	r0, r0, #1024
+	str	r0, [sp, #4]
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #8]
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB43_8
+	b	.LBB43_6
+.LBB43_6:
+	ldr	r0, [sp]
+	cbz	r0, .LBB43_8
+	b	.LBB43_7
+.LBB43_7:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB43_9
+.LBB43_8:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB43_9
+.LBB43_9:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end43:
+	.size	fmc_bank1_interrupt_flag_get, .Lfunc_end43-fmc_bank1_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_interrupt_flag_clear,"ax",%progbits
+	.hidden	fmc_bank0_interrupt_flag_clear  @ -- Begin function fmc_bank0_interrupt_flag_clear
+	.globl	fmc_bank0_interrupt_flag_clear
+	.p2align	2
+	.type	fmc_bank0_interrupt_flag_clear,%function
+	.code	16                              @ @fmc_bank0_interrupt_flag_clear
+	.thumb_func
+fmc_bank0_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, #8204
+	movt	r1, #16386
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end44:
+	.size	fmc_bank0_interrupt_flag_clear, .Lfunc_end44-fmc_bank0_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_interrupt_flag_clear,"ax",%progbits
+	.hidden	fmc_bank1_interrupt_flag_clear  @ -- Begin function fmc_bank1_interrupt_flag_clear
+	.globl	fmc_bank1_interrupt_flag_clear
+	.p2align	2
+	.type	fmc_bank1_interrupt_flag_clear,%function
+	.code	16                              @ @fmc_bank1_interrupt_flag_clear
+	.thumb_func
+fmc_bank1_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, #8268
+	movt	r1, #16386
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end45:
+	.size	fmc_bank1_interrupt_flag_clear, .Lfunc_end45-fmc_bank1_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank0_state_get,"ax",%progbits
+	.hidden	fmc_bank0_state_get             @ -- Begin function fmc_bank0_state_get
+	.globl	fmc_bank0_state_get
+	.p2align	2
+	.type	fmc_bank0_state_get,%function
+	.code	16                              @ @fmc_bank0_state_get
+	.thumb_func
+fmc_bank0_state_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB46_2
+	b	.LBB46_1
+.LBB46_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB46_8
+.LBB46_2:
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #27
+	cmp	r0, #0
+	bpl	.LBB46_4
+	b	.LBB46_3
+.LBB46_3:
+	movs	r0, #4
+	strb.w	r0, [sp, #3]
+	b	.LBB46_7
+.LBB46_4:
+	movw	r0, #8204
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB46_6
+	b	.LBB46_5
+.LBB46_5:
+	movs	r0, #2
+	strb.w	r0, [sp, #3]
+	b	.LBB46_6
+.LBB46_6:
+	b	.LBB46_7
+.LBB46_7:
+	b	.LBB46_8
+.LBB46_8:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end46:
+	.size	fmc_bank0_state_get, .Lfunc_end46-fmc_bank0_state_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fmc_bank1_state_get,"ax",%progbits
+	.hidden	fmc_bank1_state_get             @ -- Begin function fmc_bank1_state_get
+	.globl	fmc_bank1_state_get
+	.p2align	2
+	.type	fmc_bank1_state_get,%function
+	.code	16                              @ @fmc_bank1_state_get
+	.thumb_func
+fmc_bank1_state_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB47_2
+	b	.LBB47_1
+.LBB47_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB47_8
+.LBB47_2:
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #27
+	cmp	r0, #0
+	bpl	.LBB47_4
+	b	.LBB47_3
+.LBB47_3:
+	movs	r0, #4
+	strb.w	r0, [sp, #3]
+	b	.LBB47_7
+.LBB47_4:
+	movw	r0, #8268
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB47_6
+	b	.LBB47_5
+.LBB47_5:
+	movs	r0, #2
+	strb.w	r0, [sp, #3]
+	b	.LBB47_6
+.LBB47_6:
+	b	.LBB47_7
+.LBB47_7:
+	b	.LBB47_8
+.LBB47_8:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end47:
+	.size	fmc_bank1_state_get, .Lfunc_end47-fmc_bank1_state_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.boot_forbid,"ax",%progbits
+	.hidden	boot_forbid                     @ -- Begin function boot_forbid
+	.globl	boot_forbid
+	.p2align	2
+	.type	boot_forbid,%function
+	.code	16                              @ @boot_forbid
+	.thumb_func
+boot_forbid:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #6]
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB48_2
+	b	.LBB48_1
+.LBB48_1:
+	movw	r1, #8196
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #6]
+	b	.LBB48_2
+.LBB48_2:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB48_4
+	b	.LBB48_3
+.LBB48_3:
+	movw	r1, #8284
+	movt	r1, #16386
+	movs	r0, #0
+	movt	r0, #13260
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB48_4
+.LBB48_4:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #6]
+	cmp	r0, #1
+	bne	.LBB48_6
+	b	.LBB48_5
+.LBB48_5:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB48_6
+.LBB48_6:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end48:
+	.size	boot_forbid, .Lfunc_end48-boot_forbid
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.swd_disable,"ax",%progbits
+	.hidden	swd_disable                     @ -- Begin function swd_disable
+	.globl	swd_disable
+	.p2align	2
+	.type	swd_disable,%function
+	.code	16                              @ @swd_disable
+	.thumb_func
+swd_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #6]
+	movw	r0, #8208
+	movt	r0, #16386
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB49_2
+	b	.LBB49_1
+.LBB49_1:
+	movw	r1, #8196
+	movt	r1, #16386
+	movw	r0, #291
+	movt	r0, #17767
+	str	r0, [r1]
+	movw	r0, #35243
+	movt	r0, #52719
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #6]
+	b	.LBB49_2
+.LBB49_2:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB49_4
+	b	.LBB49_3
+.LBB49_3:
+	movw	r1, #8280
+	movt	r1, #16386
+	movs	r0, #0
+	movt	r0, #13260
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB49_4
+.LBB49_4:
+	mov.w	r0, #983040
+	bl	fmc_bank0_ready_wait
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #6]
+	cmp	r0, #1
+	bne	.LBB49_6
+	b	.LBB49_5
+.LBB49_5:
+	movw	r1, #8208
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB49_6
+.LBB49_6:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end49:
+	.size	swd_disable, .Lfunc_end49-swd_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

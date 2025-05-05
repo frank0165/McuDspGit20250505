@@ -1,0 +1,177 @@
+TX_IBIAS_VALUE_50G(0x0) = 440
+TX_SOA_VALUE_50G(0x2) = 110
+TX_VEA_VALUE_50G(0x4) = 10
+TX_IMOD_VALUE_50G(0x6) = 4560
+TX_CPA_VALUE_50G(0x8) = 130
+TX_DEEMPH_VALUE_50G(0xa) = 10230
+RX_VAPD_VALUE_50G(0xc) = 330
+RX_EQ_VALUE_50G(0xe) = 990
+RX_SWING_VALUE_50G(0x10) = 990
+RX_DEEMPH_VALUE_50G(0x12) = 120
+RX_LOS_THRESHOLD_VALUE_50G(0x14) = 310
+RX_LOS_HYST_VALUE_50G(0x16) = 240
+RX_TEC_TARGET_TEMP_PERCENT(0x18) = 86%
+RX_TEC_TARGET_TEMP_VALUE = 52.900002
+
+
+*******10G*************************
+TX_IBIAS_VALUE_10G(0x19) = 550
+TX_VEA_VALUE_10G(0x1b) = 12
+TX_IMOD_VALUE_10G(0x1d) = 12220
+TX_CPA_VALUE_10G(0x1f) = 440
+TX_DEEMPH_VALUE_10G(0x21) = 220
+RX_VAPD_VALUE_10G(0x23) = 170
+RX_EQ_VALUE_10G(0x25) = 230
+RX_SWING_VALUE_10G(0x27) = 110
+RX_DEEMPH_VALUE_10G(0x29) = 110
+RX_LOS_THRESHOLD_VALUE_10G(0x2b) = 550
+RX_LOS_HYST_VALUE_10G(0x2d) = 220
+
+
+*******1G*************************
+TX_IBIAS_VALUE_1G(0x2f) = 700
+TX_IMOD_VALUE_1G(0x31) = 500
+TX_CPA_VALUE_1G(0x33) = 140
+RX_VAPD_VALUE_1G(0x35) = 450
+RX_SWING_VALUE_1G(0x37) = 1700
+RX_LOS_THRESHOLD_VALUE_1G(0x39) = 350
+RX_LOS_HYST_VALUE_1G(0x3b) = 20
+
+
+********** APC *******************
+APC_ENABLE_50G_CFG(0x3d) = 1
+APC_TARGET_VALUE_50G_CFG(0x3e) = 1110
+APC_ENABLE_10G_CFG(0x40) = 1
+APC_TARGET_VALUE_10G_CFG(0x41) = 2220
+APC_ENABLE_1G_CFG(0x43) = 1
+APC_TARGET_VALUE_1G_CFG(0x44) = 1990
+
+
+********* Slope/Offset******************
+TX_I_SLOPE_50G(0x46) = 65535
+TX_I_OFFSET_50G(0x48) = 65535
+TX_PWR_SLOPE_50G(0x4a) = 65535
+TX_PWR_OFFSET_50G(0x4c) = 65535
+RX_PWR_X2_50G(0x4e) = 65535
+RX_PWR_X1_50G(0x50) = 65535
+RX_PWR_X0_50G(0x52) = 65535
+TX_I_SLOPE_10G(0x54) = 65535
+TX_I_OFFSET_10G(0x56) = 65535
+TX_PWR_SLOPE_10G(0x58) = 65535
+TX_PWR_OFFSET_10G(0x5a) = 65535
+RX_PWR_X2_10G(0x5c) = 65535
+RX_PWR_X1_10G(0x5e) = 65535
+RX_PWR_X0_10G(0x60) = 65535
+TX_I_SLOPE_1G(0x62) = 65535
+TX_I_OFFSET_1G(0x64) = 65535
+TX_PWR_SLOPE_1G(0x66) = 65535
+TX_PWR_OFFSET_1G(0x68) = 65535
+RX_PWR_X2_1G(0x6a) = 65535
+RX_PWR_X1_1G(0x6c) = 65535
+RX_PWR_X0_1G(0x6e) = 65535
+
+
+GN7161:
+APC_Enable:
+LD_BIAS_TXDSBL_MASK(reg:0x821)= 0x0
+APC_OVR(reg:0x827)= 0x0
+APC_EN(reg:0x81d)= 0x0
+Apc Target:
+APC_target(reg:0x869)= 0x0
+APC_target_voltage = 0 (mV)
+Ibias:
+LD_Ibias_HI(reg:0x826)= 0x0
+LD_Ibias_LO(reg:0x825)= 0x0
+Ibias_real = 0.000000
+SOA:
+LD_GAIN_OFFSET(reg:0x0)= 0x0
+SOA_ILD(reg:0x20)= 0x0
+SOA_ILD_REAL = 0.000000
+IMOD:
+IMOD_HI(reg:0x892)= 0x0
+IMOD_LO(reg:0x893)= 0x0
+IMOD_value = 0
+VEA:
+Vea(reg:0x21)= 0x0
+Vea_real = 0.000000
+Vea(reg:0x21)= 0x0
+Vea_real = 0.000000
+TX_Cross
+TX_CROSS(reg:0x880)= 0x0
+TX_Deempth
+TX_LD_PD_DE_REG(reg:0x8a2)= 0x0
+TX_LD_IMOD_CTRL_MAIN_DE_9_8_REG(reg:0x896)= 0x0
+TX_LD_IMOD_CTRL_MAIN_DE_7_0_REG(reg:0x897)= 0x0
+TX_LD_IMOD_CTRL_MAIN_DE = 0
+TX_Disable:
+tx_disable_reg(reg:0x85e)= 0x0
+RX_SWING:
+RX_SWING(reg:0x1882)= 0x0
+
+RX_eq_boost:
+RX_eq_boost(reg:0x184b)= 0x0
+
+SDD:
+SDD(reg:0x1848)= 0x0
+
+SDA:
+SDA(reg:0x1847)= 0x0
+
+RX_DeEmpth:
+When set to 1,powers down the de-emphasis path and de-emphasis output dirver
+RX_PD_DRV_DEEMPH_DRV(reg:0x187f)= 0x0
+RX_DRV_DEEMPH_LEVEL(reg:0x1883)= 0x0
+
+
+GN7153:
+APC_Enable:
+LD_BIAS_TXDSBL_MASK(reg:0x6)= 0x0
+APC_OVR(reg:0xe)= 0x0
+APC_EN(reg:0xB)= 0x0
+Apc Target:
+APC_target(reg:0xf)= 0x0
+APC_target_voltage = 0 (mV)
+
+Ibias:
+LD_Ibias(reg:0xd)= 0x0
+APC_OVR(reg:0xe)= 0x0
+Ibias_real = 0.000000
+
+IMOD_HI(reg:0x5a)= 0x0
+IMOD_LO(reg:0x59)= 0x0
+IMOD_value = 0
+IMOD_real = 0.000000
+
+TX_CROSS(reg:0x5b) = 0x0
+TX_DeEmph(reg:0x5d) = 0x0
+B2_Addr_Soft_tx_disable(reg:0x6e)= 0x0
+TX_Laser_Driver_shutdwon(reg:0x60)= 0x0
+RX_SWING(reg:0x77) = 0x0
+RX_EQ(reg:0x80) = 0x0
+SDA(reg:0x91) = 0x0
+
+
+UX3326:
+APC_Enable:
+APC circuit enable bit:reg0x00(bit[1]) = 0
+Select the close/open loop mode:CL_OLN(reg:0x02,bit[1]) = 0
+C2_Addr_Soft_tx_disable(reg:0x6e, bit[6])= 0
+Apc Target:
+APC_TARGET_HI(reg:0x8)= 0x0
+APC_TARGET_LO(reg:0x9)= 0x0
+APC_target_value = 0
+
+Ibias:
+IBIAS_HI(reg:0x4)= 0x0
+IBIAS_LO(reg:0x5)= 0x0
+ibias_value = 0.000000
+
+Imod:
+IMOD_HI(reg:0x6)= 0x0
+IMOD_LO(reg:0x7)= 0x0
+imod_value = 0.000000
+
+TX CROSS(reg:0x0A) = 0
+RX SWING(reg:0x13) = 0
+SDD(reg:0x14,bit_4_3) = 0
+SDA(reg:0x1C) = 0

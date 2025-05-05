@@ -1,0 +1,1752 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_rtc.c"
+	.section	.text.rtc_deinit,"ax",%progbits
+	.hidden	rtc_deinit                      @ -- Begin function rtc_deinit
+	.globl	rtc_deinit
+	.p2align	2
+	.type	rtc_deinit,%function
+	.code	16                              @ @rtc_deinit
+	.thumb_func
+rtc_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	movw	r1, #10304
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r2, #10276
+	movt	r2, #16384
+	movs	r1, #202
+	str	r1, [r2]
+	movs	r1, #83
+	str	r1, [r2]
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r2, [r1]
+	str	r0, [r1]
+	bl	rtc_init_mode_enter
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	movw	r1, #10240
+	movt	r1, #16384
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r2, #10244
+	movt	r2, #16384
+	movw	r1, #8449
+	str	r1, [r2]
+	movw	r2, #10256
+	movt	r2, #16384
+	movs	r1, #255
+	movt	r1, #127
+	str	r1, [r2]
+	movw	r2, #10252
+	movt	r2, #16384
+	movs	r1, #7
+	str	r1, [r2]
+	movw	r1, #10268
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r1, #10308
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r1, #10284
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r1, #10300
+	movt	r1, #16384
+	str	r0, [r1]
+	bl	rtc_register_sync_wait
+	strb.w	r0, [sp, #7]
+	b	.LBB0_2
+.LBB0_2:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	rtc_deinit, .Lfunc_end0-rtc_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_init_mode_enter,"ax",%progbits
+	.hidden	rtc_init_mode_enter             @ -- Begin function rtc_init_mode_enter
+	.globl	rtc_init_mode_enter
+	.p2align	2
+	.type	rtc_init_mode_enter,%function
+	.code	16                              @ @rtc_init_mode_enter
+	.thumb_func
+rtc_init_mode_enter:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #16384
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	strb.w	r0, [sp, #7]
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	lsls	r0, r0, #25
+	cmp	r0, #0
+	bmi	.LBB1_9
+	b	.LBB1_1
+.LBB1_1:
+	movw	r1, #10252
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB1_2
+.LBB1_2:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #64
+	str	r0, [sp, #8]
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_2 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB1_5
+	b	.LBB1_4
+.LBB1_4:                                @   in Loop: Header=BB1_2 Depth=1
+	ldr	r0, [sp, #8]
+	clz	r0, r0
+	lsrs	r0, r0, #5
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB1_5
+.LBB1_5:                                @   in Loop: Header=BB1_2 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB1_2
+	b	.LBB1_6
+.LBB1_6:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB1_8
+	b	.LBB1_7
+.LBB1_7:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB1_8
+.LBB1_8:
+	b	.LBB1_10
+.LBB1_9:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB1_10
+.LBB1_10:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #16
+	bx	lr
+.Lfunc_end1:
+	.size	rtc_init_mode_enter, .Lfunc_end1-rtc_init_mode_enter
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_register_sync_wait,"ax",%progbits
+	.hidden	rtc_register_sync_wait          @ -- Begin function rtc_register_sync_wait
+	.globl	rtc_register_sync_wait
+	.p2align	2
+	.type	rtc_register_sync_wait,%function
+	.code	16                              @ @rtc_register_sync_wait
+	.thumb_func
+rtc_register_sync_wait:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #32768
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	strb.w	r0, [sp, #7]
+	movw	r0, #10248
+	movt	r0, #16384
+	ldr	r0, [r0]
+	lsls	r0, r0, #26
+	cmp	r0, #0
+	bmi	.LBB2_9
+	b	.LBB2_1
+.LBB2_1:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r1, #10252
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB2_2
+.LBB2_2:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #32
+	str	r0, [sp, #8]
+	b	.LBB2_3
+.LBB2_3:                                @   in Loop: Header=BB2_2 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB2_5
+	b	.LBB2_4
+.LBB2_4:                                @   in Loop: Header=BB2_2 Depth=1
+	ldr	r0, [sp, #8]
+	clz	r0, r0
+	lsrs	r0, r0, #5
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB2_5
+.LBB2_5:                                @   in Loop: Header=BB2_2 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB2_2
+	b	.LBB2_6
+.LBB2_6:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB2_8
+.LBB2_8:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	b	.LBB2_10
+.LBB2_9:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB2_10
+.LBB2_10:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #16
+	bx	lr
+.Lfunc_end2:
+	.size	rtc_register_sync_wait, .Lfunc_end2-rtc_register_sync_wait
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_init,"ax",%progbits
+	.hidden	rtc_init                        @ -- Begin function rtc_init
+	.globl	rtc_init
+	.p2align	2
+	.type	rtc_init,%function
+	.code	16                              @ @rtc_init
+	.thumb_func
+rtc_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrb	r3, [r0]
+	ldrb	r2, [r0, #1]
+	ldrb	r1, [r0, #2]
+	ldrb	r0, [r0, #3]
+	lsls	r0, r0, #13
+	uxth	r0, r0
+	orr.w	r0, r0, r3, lsl #16
+	and	r2, r2, #31
+	orr.w	r0, r0, r2, lsl #8
+	and	r1, r1, #63
+	add	r0, r1
+	str	r0, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #12]
+	ldrb	r3, [r1, #4]
+	ldrb	r2, [r1, #5]
+	ldrb	r1, [r1, #6]
+	and	r3, r3, #63
+	orr.w	r0, r0, r3, lsl #16
+	and	r2, r2, #127
+	orr.w	r0, r0, r2, lsl #8
+	and	r1, r1, #127
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	bl	rtc_init_mode_enter
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	cbz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	ldr	r0, [sp, #12]
+	ldrh	r1, [r0, #8]
+	ldrh	r0, [r0, #10]
+	orr.w	r0, r0, r1, lsl #16
+	movw	r1, #32767
+	movt	r1, #127
+	ands	r0, r1
+	movw	r1, #10256
+	movt	r1, #16384
+	str	r0, [r1]
+	ldr	r0, [sp, #4]
+	movw	r1, #10240
+	movt	r1, #16384
+	str	r0, [r1]
+	ldr	r0, [sp]
+	movw	r1, #10244
+	movt	r1, #16384
+	str	r0, [r1]
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	ldr	r0, [sp, #12]
+	ldr	r2, [r0, #16]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	bl	rtc_init_mode_exit
+	bl	rtc_register_sync_wait
+	strb.w	r0, [sp, #11]
+	b	.LBB3_2
+.LBB3_2:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #11]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	rtc_init, .Lfunc_end3-rtc_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_init_mode_exit,"ax",%progbits
+	.hidden	rtc_init_mode_exit              @ -- Begin function rtc_init_mode_exit
+	.globl	rtc_init_mode_exit
+	.p2align	2
+	.type	rtc_init_mode_exit,%function
+	.code	16                              @ @rtc_init_mode_exit
+	.thumb_func
+rtc_init_mode_exit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #10252
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end4:
+	.size	rtc_init_mode_exit, .Lfunc_end4-rtc_init_mode_exit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_current_time_get,"ax",%progbits
+	.hidden	rtc_current_time_get            @ -- Begin function rtc_current_time_get
+	.globl	rtc_current_time_get
+	.p2align	2
+	.type	rtc_current_time_get,%function
+	.code	16                              @ @rtc_current_time_get
+	.thumb_func
+rtc_current_time_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #16]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	movw	r0, #10240
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp, #12]
+	movw	r0, #10244
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp, #8]
+	movw	r0, #10256
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	movw	r0, #10248
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #16]
+	strb	r0, [r1]
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #8, #5
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #1]
+	ldr	r0, [sp, #8]
+	and	r0, r0, #63
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #2]
+	ldrh.w	r0, [sp, #8]
+	lsrs	r0, r0, #13
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #3]
+	ldr	r0, [sp, #12]
+	ubfx	r0, r0, #16, #6
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #4]
+	ldr	r0, [sp, #12]
+	ubfx	r0, r0, #8, #7
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #5]
+	ldr	r0, [sp, #12]
+	and	r0, r0, #127
+	ldr	r1, [sp, #16]
+	strb	r0, [r1, #6]
+	ldr	r0, [sp, #4]
+	ubfx	r0, r0, #16, #7
+	ldr	r1, [sp, #16]
+	strh	r0, [r1, #8]
+	ldr	r0, [sp, #4]
+	bfc	r0, #15, #17
+	ldr	r1, [sp, #16]
+	strh	r0, [r1, #10]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #4194304
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #12]
+	ldr	r0, [sp]
+	and	r0, r0, #64
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #16]
+	add	sp, #20
+	bx	lr
+.Lfunc_end5:
+	.size	rtc_current_time_get, .Lfunc_end5-rtc_current_time_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_subsecond_get,"ax",%progbits
+	.hidden	rtc_subsecond_get               @ -- Begin function rtc_subsecond_get
+	.globl	rtc_subsecond_get
+	.p2align	2
+	.type	rtc_subsecond_get,%function
+	.code	16                              @ @rtc_subsecond_get
+	.thumb_func
+rtc_subsecond_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r0, #10280
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	movw	r0, #10244
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ldr	r0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	rtc_subsecond_get, .Lfunc_end6-rtc_subsecond_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_config,"ax",%progbits
+	.hidden	rtc_alarm_config                @ -- Begin function rtc_alarm_config
+	.globl	rtc_alarm_config
+	.p2align	2
+	.type	rtc_alarm_config,%function
+	.code	16                              @ @rtc_alarm_config
+	.thumb_func
+rtc_alarm_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	ldr	r2, [r1, #4]
+	orrs	r0, r2
+	ldr	r2, [r1, #12]
+	orrs	r0, r2
+	ldrb	r2, [r1, #8]
+	and	r2, r2, #63
+	orr.w	r0, r0, r2, lsl #24
+	ldrb	r2, [r1, #9]
+	and	r2, r2, #63
+	orr.w	r0, r0, r2, lsl #16
+	ldrb	r2, [r1, #10]
+	and	r2, r2, #127
+	orr.w	r0, r0, r2, lsl #8
+	ldrb	r1, [r1, #11]
+	and	r1, r1, #127
+	orrs	r0, r1
+	str	r0, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r0, [sp]
+	movw	r2, #10268
+	movt	r2, #16384
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end7:
+	.size	rtc_alarm_config, .Lfunc_end7-rtc_alarm_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_subsecond_config,"ax",%progbits
+	.hidden	rtc_alarm_subsecond_config      @ -- Begin function rtc_alarm_subsecond_config
+	.globl	rtc_alarm_subsecond_config
+	.p2align	2
+	.type	rtc_alarm_subsecond_config,%function
+	.code	16                              @ @rtc_alarm_subsecond_config
+	.thumb_func
+rtc_alarm_subsecond_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r0, [sp, #4]
+	ldr	r2, [sp]
+	orrs	r0, r2
+	movw	r2, #10308
+	movt	r2, #16384
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end8:
+	.size	rtc_alarm_subsecond_config, .Lfunc_end8-rtc_alarm_subsecond_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_enable,"ax",%progbits
+	.hidden	rtc_alarm_enable                @ -- Begin function rtc_alarm_enable
+	.globl	rtc_alarm_enable
+	.p2align	2
+	.type	rtc_alarm_enable,%function
+	.code	16                              @ @rtc_alarm_enable
+	.thumb_func
+rtc_alarm_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	orr	r0, r0, #256
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end9:
+	.size	rtc_alarm_enable, .Lfunc_end9-rtc_alarm_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_disable,"ax",%progbits
+	.hidden	rtc_alarm_disable               @ -- Begin function rtc_alarm_disable
+	.globl	rtc_alarm_disable
+	.p2align	2
+	.type	rtc_alarm_disable,%function
+	.code	16                              @ @rtc_alarm_disable
+	.thumb_func
+rtc_alarm_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #32768
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	str	r0, [sp, #4]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	b	.LBB10_1
+.LBB10_1:                               @ =>This Inner Loop Header: Depth=1
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	b	.LBB10_2
+.LBB10_2:                               @   in Loop: Header=BB10_1 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB10_4
+	b	.LBB10_3
+.LBB10_3:                               @   in Loop: Header=BB10_1 Depth=1
+	ldr	r0, [sp, #4]
+	clz	r0, r0
+	lsrs	r0, r0, #5
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB10_4
+.LBB10_4:                               @   in Loop: Header=BB10_1 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB10_1
+	b	.LBB10_5
+.LBB10_5:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB10_7
+	b	.LBB10_6
+.LBB10_6:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB10_7
+.LBB10_7:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #11]
+	add	sp, #16
+	bx	lr
+.Lfunc_end10:
+	.size	rtc_alarm_disable, .Lfunc_end10-rtc_alarm_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_get,"ax",%progbits
+	.hidden	rtc_alarm_get                   @ -- Begin function rtc_alarm_get
+	.globl	rtc_alarm_get
+	.p2align	2
+	.type	rtc_alarm_get,%function
+	.code	16                              @ @rtc_alarm_get
+	.thumb_func
+rtc_alarm_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r0, #10268
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #2139062143
+	ldr	r1, [sp, #4]
+	str	r0, [r1]
+	ldr	r0, [sp]
+	and	r0, r0, #4194304
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #12]
+	ldr	r0, [sp]
+	and	r0, r0, #1073741824
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #4]
+	ldr	r0, [sp]
+	ubfx	r0, r0, #24, #6
+	ldr	r1, [sp, #4]
+	strb	r0, [r1, #8]
+	ldr	r0, [sp]
+	ubfx	r0, r0, #16, #6
+	ldr	r1, [sp, #4]
+	strb	r0, [r1, #9]
+	ldr	r0, [sp]
+	ubfx	r0, r0, #8, #7
+	ldr	r1, [sp, #4]
+	strb	r0, [r1, #10]
+	ldr	r0, [sp]
+	and	r0, r0, #127
+	ldr	r1, [sp, #4]
+	strb	r0, [r1, #11]
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	rtc_alarm_get, .Lfunc_end11-rtc_alarm_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alarm_subsecond_get,"ax",%progbits
+	.hidden	rtc_alarm_subsecond_get         @ -- Begin function rtc_alarm_subsecond_get
+	.globl	rtc_alarm_subsecond_get
+	.p2align	2
+	.type	rtc_alarm_subsecond_get,%function
+	.code	16                              @ @rtc_alarm_subsecond_get
+	.thumb_func
+rtc_alarm_subsecond_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #10308
+	movt	r0, #16384
+	ldr	r0, [r0]
+	bfc	r0, #15, #17
+	bx	lr
+.Lfunc_end12:
+	.size	rtc_alarm_subsecond_get, .Lfunc_end12-rtc_alarm_subsecond_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_timestamp_enable,"ax",%progbits
+	.hidden	rtc_timestamp_enable            @ -- Begin function rtc_timestamp_enable
+	.globl	rtc_timestamp_enable
+	.p2align	2
+	.type	rtc_timestamp_enable,%function
+	.code	16                              @ @rtc_timestamp_enable
+	.thumb_func
+rtc_timestamp_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	movw	r1, #2056
+	bics	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	orrs	r0, r1
+	orr	r0, r0, #2048
+	str	r0, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r0, [sp]
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	rtc_timestamp_enable, .Lfunc_end13-rtc_timestamp_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_timestamp_disable,"ax",%progbits
+	.hidden	rtc_timestamp_disable           @ -- Begin function rtc_timestamp_disable
+	.globl	rtc_timestamp_disable
+	.p2align	2
+	.type	rtc_timestamp_disable,%function
+	.code	16                              @ @rtc_timestamp_disable
+	.thumb_func
+rtc_timestamp_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	bic	r0, r0, #2048
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end14:
+	.size	rtc_timestamp_disable, .Lfunc_end14-rtc_timestamp_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_timestamp_get,"ax",%progbits
+	.hidden	rtc_timestamp_get               @ -- Begin function rtc_timestamp_get
+	.globl	rtc_timestamp_get
+	.p2align	2
+	.type	rtc_timestamp_get,%function
+	.code	16                              @ @rtc_timestamp_get
+	.thumb_func
+rtc_timestamp_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	movw	r0, #10288
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	movw	r0, #10292
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #4194304
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #8]
+	ldr	r0, [sp]
+	ubfx	r0, r0, #8, #5
+	ldr	r1, [sp, #8]
+	strb	r0, [r1]
+	ldr	r0, [sp]
+	and	r0, r0, #63
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #1]
+	ldrh.w	r0, [sp]
+	lsrs	r0, r0, #13
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #2]
+	ldr	r0, [sp, #4]
+	ubfx	r0, r0, #16, #6
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #3]
+	ldr	r0, [sp, #4]
+	ubfx	r0, r0, #8, #7
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #127
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #5]
+	add	sp, #12
+	bx	lr
+.Lfunc_end15:
+	.size	rtc_timestamp_get, .Lfunc_end15-rtc_timestamp_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_timestamp_subsecond_get,"ax",%progbits
+	.hidden	rtc_timestamp_subsecond_get     @ -- Begin function rtc_timestamp_subsecond_get
+	.globl	rtc_timestamp_subsecond_get
+	.p2align	2
+	.type	rtc_timestamp_subsecond_get,%function
+	.code	16                              @ @rtc_timestamp_subsecond_get
+	.thumb_func
+rtc_timestamp_subsecond_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #10296
+	movt	r0, #16384
+	ldr	r0, [r0]
+	bx	lr
+.Lfunc_end16:
+	.size	rtc_timestamp_subsecond_get, .Lfunc_end16-rtc_timestamp_subsecond_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_tamper_enable,"ax",%progbits
+	.hidden	rtc_tamper_enable               @ -- Begin function rtc_tamper_enable
+	.globl	rtc_tamper_enable
+	.p2align	2
+	.type	rtc_tamper_enable,%function
+	.code	16                              @ @rtc_tamper_enable
+	.thumb_func
+rtc_tamper_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r2, [r0]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	ldr	r0, [r1]
+	bic	r0, r0, #6144
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #8]
+	cbz	r0, .LBB17_5
+	b	.LBB17_1
+.LBB17_1:
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #65280
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldrb	r0, [r0, #16]
+	cbnz	r0, .LBB17_3
+	b	.LBB17_2
+.LBB17_2:
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB17_4
+.LBB17_3:
+	ldr	r0, [sp]
+	ldr	r2, [r0, #20]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB17_4
+.LBB17_4:
+	ldr	r0, [sp]
+	ldr	r2, [r0, #12]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldr	r2, [r0, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB17_5
+.LBB17_5:
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldrb	r0, [r0, #24]
+	cbz	r0, .LBB17_7
+	b	.LBB17_6
+.LBB17_6:
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB17_7
+.LBB17_7:
+	ldr	r0, [sp]
+	ldr	r2, [r0]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic.w	r0, r0, r2, lsl #1
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #4]
+	cbz	r0, .LBB17_9
+	b	.LBB17_8
+.LBB17_8:
+	ldr	r0, [sp]
+	ldr	r2, [r0]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #1
+	str	r0, [r1]
+	b	.LBB17_9
+.LBB17_9:
+	ldr	r0, [sp]
+	ldr	r2, [r0]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	rtc_tamper_enable, .Lfunc_end17-rtc_tamper_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_tamper_disable,"ax",%progbits
+	.hidden	rtc_tamper_disable              @ -- Begin function rtc_tamper_disable
+	.globl	rtc_tamper_disable
+	.p2align	2
+	.type	rtc_tamper_disable,%function
+	.code	16                              @ @rtc_tamper_disable
+	.thumb_func
+rtc_tamper_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end18:
+	.size	rtc_tamper_disable, .Lfunc_end18-rtc_tamper_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_alter_output_config,"ax",%progbits
+	.hidden	rtc_alter_output_config         @ -- Begin function rtc_alter_output_config
+	.globl	rtc_alter_output_config
+	.p2align	2
+	.type	rtc_alter_output_config,%function
+	.code	16                              @ @rtc_alter_output_config
+	.thumb_func
+rtc_alter_output_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #16252928
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #6]
+	lsls	r0, r0, #26
+	cmp	r0, #0
+	bpl	.LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	movw	r1, #10304
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #262144
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB19_2
+.LBB19_2:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end19:
+	.size	rtc_alter_output_config, .Lfunc_end19-rtc_alter_output_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_calibration_config,"ax",%progbits
+	.hidden	rtc_calibration_config          @ -- Begin function rtc_calibration_config
+	.globl	rtc_calibration_config
+	.p2align	2
+	.type	rtc_calibration_config,%function
+	.code	16                              @ @rtc_calibration_config
+	.thumb_func
+rtc_calibration_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#28
+	sub	sp, #28
+	.cfi_def_cfa_offset 28
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	str	r2, [sp, #16]
+	mov.w	r0, #4096
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	str	r0, [sp, #4]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	b	.LBB20_1
+.LBB20_1:                               @ =>This Inner Loop Header: Depth=1
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #65536
+	str	r0, [sp, #4]
+	b	.LBB20_2
+.LBB20_2:                               @   in Loop: Header=BB20_1 Depth=1
+	ldr	r0, [sp, #12]
+	subs	r1, r0, #1
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB20_4
+	b	.LBB20_3
+.LBB20_3:                               @   in Loop: Header=BB20_1 Depth=1
+	ldr	r0, [sp, #4]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB20_4
+.LBB20_4:                               @   in Loop: Header=BB20_1 Depth=1
+	ldr	r0, [sp]                        @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB20_1
+	b	.LBB20_5
+.LBB20_5:
+	ldr	r0, [sp, #4]
+	cbnz	r0, .LBB20_7
+	b	.LBB20_6
+.LBB20_6:
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #20]
+	orrs	r0, r1
+	ldr	r1, [sp, #16]
+	bfc	r1, #9, #23
+	orrs	r0, r1
+	movw	r1, #10300
+	movt	r1, #16384
+	str	r0, [r1]
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB20_7
+.LBB20_7:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #11]
+	add	sp, #28
+	bx	lr
+.Lfunc_end20:
+	.size	rtc_calibration_config, .Lfunc_end20-rtc_calibration_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_hour_adjust,"ax",%progbits
+	.hidden	rtc_hour_adjust                 @ -- Begin function rtc_hour_adjust
+	.globl	rtc_hour_adjust
+	.p2align	2
+	.type	rtc_hour_adjust,%function
+	.code	16                              @ @rtc_hour_adjust
+	.thumb_func
+rtc_hour_adjust:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r3, [sp]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	orrs	r0, r3
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end21:
+	.size	rtc_hour_adjust, .Lfunc_end21-rtc_hour_adjust
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_second_adjust,"ax",%progbits
+	.hidden	rtc_second_adjust               @ -- Begin function rtc_second_adjust
+	.globl	rtc_second_adjust
+	.p2align	2
+	.type	rtc_second_adjust,%function
+	.code	16                              @ @rtc_second_adjust
+	.thumb_func
+rtc_second_adjust:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	mov.w	r0, #4096
+	str	r0, [sp, #20]
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	b	.LBB22_1
+.LBB22_1:                               @ =>This Inner Loop Header: Depth=1
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #8
+	str	r0, [sp, #12]
+	b	.LBB22_2
+.LBB22_2:                               @   in Loop: Header=BB22_1 Depth=1
+	ldr	r0, [sp, #20]
+	subs	r1, r0, #1
+	str	r1, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbz	r1, .LBB22_4
+	b	.LBB22_3
+.LBB22_3:                               @   in Loop: Header=BB22_1 Depth=1
+	ldr	r0, [sp, #12]
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB22_4
+.LBB22_4:                               @   in Loop: Header=BB22_1 Depth=1
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB22_1
+	b	.LBB22_5
+.LBB22_5:
+	movw	r0, #10248
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #16
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	cbnz	r0, .LBB22_8
+	b	.LBB22_6
+.LBB22_6:
+	ldr	r0, [sp, #8]
+	cbnz	r0, .LBB22_8
+	b	.LBB22_7
+.LBB22_7:
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #24]
+	bfc	r1, #15, #17
+	orrs	r0, r1
+	movw	r1, #10284
+	movt	r1, #16384
+	str	r0, [r1]
+	bl	rtc_register_sync_wait
+	strb.w	r0, [sp, #19]
+	b	.LBB22_8
+.LBB22_8:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #19]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end22:
+	.size	rtc_second_adjust, .Lfunc_end22-rtc_second_adjust
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_bypass_shadow_enable,"ax",%progbits
+	.hidden	rtc_bypass_shadow_enable        @ -- Begin function rtc_bypass_shadow_enable
+	.globl	rtc_bypass_shadow_enable
+	.p2align	2
+	.type	rtc_bypass_shadow_enable,%function
+	.code	16                              @ @rtc_bypass_shadow_enable
+	.thumb_func
+rtc_bypass_shadow_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	orr	r0, r0, #32
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end23:
+	.size	rtc_bypass_shadow_enable, .Lfunc_end23-rtc_bypass_shadow_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_bypass_shadow_disable,"ax",%progbits
+	.hidden	rtc_bypass_shadow_disable       @ -- Begin function rtc_bypass_shadow_disable
+	.globl	rtc_bypass_shadow_disable
+	.p2align	2
+	.type	rtc_bypass_shadow_disable,%function
+	.code	16                              @ @rtc_bypass_shadow_disable
+	.thumb_func
+rtc_bypass_shadow_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	and	r0, r0, #223
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end24:
+	.size	rtc_bypass_shadow_disable, .Lfunc_end24-rtc_bypass_shadow_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_refclock_detection_enable,"ax",%progbits
+	.hidden	rtc_refclock_detection_enable   @ -- Begin function rtc_refclock_detection_enable
+	.globl	rtc_refclock_detection_enable
+	.p2align	2
+	.type	rtc_refclock_detection_enable,%function
+	.code	16                              @ @rtc_refclock_detection_enable
+	.thumb_func
+rtc_refclock_detection_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	bl	rtc_init_mode_enter
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbz	r0, .LBB25_2
+	b	.LBB25_1
+.LBB25_1:
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	bl	rtc_init_mode_exit
+	b	.LBB25_2
+.LBB25_2:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end25:
+	.size	rtc_refclock_detection_enable, .Lfunc_end25-rtc_refclock_detection_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_refclock_detection_disable,"ax",%progbits
+	.hidden	rtc_refclock_detection_disable  @ -- Begin function rtc_refclock_detection_disable
+	.globl	rtc_refclock_detection_disable
+	.p2align	2
+	.type	rtc_refclock_detection_disable,%function
+	.code	16                              @ @rtc_refclock_detection_disable
+	.thumb_func
+rtc_refclock_detection_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	bl	rtc_init_mode_enter
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbz	r0, .LBB26_2
+	b	.LBB26_1
+.LBB26_1:
+	movw	r1, #10248
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	bl	rtc_init_mode_exit
+	b	.LBB26_2
+.LBB26_2:
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #255
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end26:
+	.size	rtc_refclock_detection_disable, .Lfunc_end26-rtc_refclock_detection_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_interrupt_enable,"ax",%progbits
+	.hidden	rtc_interrupt_enable            @ -- Begin function rtc_interrupt_enable
+	.globl	rtc_interrupt_enable
+	.p2align	2
+	.type	rtc_interrupt_enable,%function
+	.code	16                              @ @rtc_interrupt_enable
+	.thumb_func
+rtc_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r0, [sp]
+	bic	r3, r0, #4
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	orrs	r0, r3
+	str	r0, [r2]
+	ldr	r0, [sp]
+	and	r3, r0, #4
+	movw	r2, #10304
+	movt	r2, #16384
+	ldr	r0, [r2]
+	orrs	r0, r3
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end27:
+	.size	rtc_interrupt_enable, .Lfunc_end27-rtc_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_interrupt_disable,"ax",%progbits
+	.hidden	rtc_interrupt_disable           @ -- Begin function rtc_interrupt_disable
+	.globl	rtc_interrupt_disable
+	.p2align	2
+	.type	rtc_interrupt_disable,%function
+	.code	16                              @ @rtc_interrupt_disable
+	.thumb_func
+rtc_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #10276
+	movt	r1, #16384
+	movs	r0, #202
+	str	r0, [r1]
+	movs	r0, #83
+	str	r0, [r1]
+	ldr	r2, [sp]
+	movs	r0, #4
+	orn	r3, r0, r2
+	movw	r2, #10248
+	movt	r2, #16384
+	ldr	r0, [r2]
+	ands	r0, r3
+	str	r0, [r2]
+	ldr	r2, [sp]
+	mvn	r0, #4
+	orn	r3, r0, r2
+	movw	r2, #10304
+	movt	r2, #16384
+	ldr	r0, [r2]
+	ands	r0, r3
+	str	r0, [r2]
+	movs	r0, #255
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end28:
+	.size	rtc_interrupt_disable, .Lfunc_end28-rtc_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_flag_get,"ax",%progbits
+	.hidden	rtc_flag_get                    @ -- Begin function rtc_flag_get
+	.globl	rtc_flag_get
+	.p2align	2
+	.type	rtc_flag_get,%function
+	.code	16                              @ @rtc_flag_get
+	.thumb_func
+rtc_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #10252
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB29_2
+	b	.LBB29_1
+.LBB29_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB29_2
+.LBB29_2:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end29:
+	.size	rtc_flag_get, .Lfunc_end29-rtc_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rtc_flag_clear,"ax",%progbits
+	.hidden	rtc_flag_clear                  @ -- Begin function rtc_flag_clear
+	.globl	rtc_flag_clear
+	.p2align	2
+	.type	rtc_flag_clear,%function
+	.code	16                              @ @rtc_flag_clear
+	.thumb_func
+rtc_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #10252
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end30:
+	.size	rtc_flag_clear, .Lfunc_end30-rtc_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

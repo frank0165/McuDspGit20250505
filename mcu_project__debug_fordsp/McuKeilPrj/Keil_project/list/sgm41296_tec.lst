@@ -1,0 +1,339 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"sgm41296_tec.c"
+	.section	.text.sgm41296_tec_gpio_init,"ax",%progbits
+	.hidden	sgm41296_tec_gpio_init          @ -- Begin function sgm41296_tec_gpio_init
+	.globl	sgm41296_tec_gpio_init
+	.p2align	2
+	.type	sgm41296_tec_gpio_init,%function
+	.code	16                              @ @sgm41296_tec_gpio_init
+	.thumb_func
+sgm41296_tec_gpio_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	movs	r3, #64
+	str	r3, [sp]                        @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #12]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movs	r3, #128
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	sgm41296_tec_gpio_init, .Lfunc_end0-sgm41296_tec_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41296_tec_get_xtec_voltage,"ax",%progbits
+	.hidden	sgm41296_tec_get_xtec_voltage   @ -- Begin function sgm41296_tec_get_xtec_voltage
+	.globl	sgm41296_tec_get_xtec_voltage
+	.p2align	3
+	.type	sgm41296_tec_get_xtec_voltage,%function
+	.code	16                              @ @sgm41296_tec_get_xtec_voltage
+	.thumb_func
+sgm41296_tec_get_xtec_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	ldr	r0, [sp, #4]
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	b	.LBB1_3
+.LBB1_2:
+	movs	r0, #10
+	bl	adc_dma_channel_sample_average
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI1_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #4]
+	str	r0, [r1]
+	b	.LBB1_3
+.LBB1_3:
+	add	sp, #8
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.4:
+.LCPI1_0:
+	.long	0                               @ double 6.103515625E-4
+	.long	1061421056
+.Lfunc_end1:
+	.size	sgm41296_tec_get_xtec_voltage, .Lfunc_end1-sgm41296_tec_get_xtec_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41296_tec_get_therm_adc,"ax",%progbits
+	.hidden	sgm41296_tec_get_therm_adc      @ -- Begin function sgm41296_tec_get_therm_adc
+	.globl	sgm41296_tec_get_therm_adc
+	.p2align	2
+	.type	sgm41296_tec_get_therm_adc,%function
+	.code	16                              @ @sgm41296_tec_get_therm_adc
+	.thumb_func
+sgm41296_tec_get_therm_adc:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movs	r0, #11
+	bl	adc_dma_channel_sample_average
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	sgm41296_tec_get_therm_adc, .Lfunc_end2-sgm41296_tec_get_therm_adc
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41296_tec_release_limit_refresh,"ax",%progbits
+	.hidden	sgm41296_tec_release_limit_refresh @ -- Begin function sgm41296_tec_release_limit_refresh
+	.globl	sgm41296_tec_release_limit_refresh
+	.p2align	2
+	.type	sgm41296_tec_release_limit_refresh,%function
+	.code	16                              @ @sgm41296_tec_release_limit_refresh
+	.thumb_func
+sgm41296_tec_release_limit_refresh:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #66
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	strb.w	r0, [sp, #2]
+	strh.w	r0, [sp]
+	movs	r0, #9
+	strb.w	r0, [sp, #3]
+	ldr	r0, [sp, #4]
+	ldrb.w	r1, [sp, #3]
+	add.w	r2, sp, #2
+	movs	r3, #1
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #2]
+	lsrs	r0, r0, #5
+	lsls	r0, r0, #31
+	cbnz	r0, .LBB3_3
+	b	.LBB3_1
+.LBB3_1:
+	ldrb.w	r0, [sp, #2]
+	lsrs	r0, r0, #4
+	lsls	r0, r0, #31
+	cbnz	r0, .LBB3_3
+	b	.LBB3_2
+.LBB3_2:
+	ldrb.w	r0, [sp, #2]
+	lsrs	r0, r0, #3
+	lsls	r0, r0, #31
+	cbnz	r0, .LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+	movs	r0, #0
+	strh.w	r0, [sp]
+	strb.w	r0, [sp, #3]
+	strb.w	r0, [sp, #2]
+	ldr	r0, [sp, #4]
+	ldrb.w	r1, [sp, #3]
+	add.w	r2, sp, #2
+	movs	r3, #1
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #2]
+	orr	r0, r0, #3
+	strb.w	r0, [sp, #2]
+	ldrb.w	r0, [sp, #3]
+	strb.w	r0, [sp]
+	ldrb.w	r1, [sp, #2]
+	ldrb.w	r0, [sp, #1]
+	orrs	r0, r1
+	strb.w	r0, [sp, #1]
+	ldr	r0, [sp, #4]
+	mov	r1, sp
+	movs	r2, #2
+	bl	master_reg_byte_write
+	b	.LBB3_4
+.LBB3_4:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	sgm41296_tec_release_limit_refresh, .Lfunc_end3-sgm41296_tec_release_limit_refresh
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm1296_tec_init,"ax",%progbits
+	.hidden	sgm1296_tec_init                @ -- Begin function sgm1296_tec_init
+	.globl	sgm1296_tec_init
+	.p2align	2
+	.type	sgm1296_tec_init,%function
+	.code	16                              @ @sgm1296_tec_init
+	.thumb_func
+sgm1296_tec_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	vmov.f32	s0, #1.250000e+00
+	bl	sgm41296_vtec_dac_ctl_set
+	bl	sgm41296_tec_gpio_init
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	sgm1296_tec_init, .Lfunc_end4-sgm1296_tec_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41296_vtec_dac_ctl_set,"ax",%progbits
+	.hidden	sgm41296_vtec_dac_ctl_set       @ -- Begin function sgm41296_vtec_dac_ctl_set
+	.globl	sgm41296_vtec_dac_ctl_set
+	.p2align	3
+	.type	sgm41296_vtec_dac_ctl_set,%function
+	.code	16                              @ @sgm41296_vtec_dac_ctl_set
+	.thumb_func
+sgm41296_vtec_dac_ctl_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	add	r0, sp, #12
+	vstr	s0, [r0]
+	movs	r1, #0
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	strh.w	r1, [sp, #10]
+	vldr	s0, [r0]
+	vldr	s2, .LCPI5_0
+	vmul.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI5_1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	strh.w	r0, [sp, #10]
+	ldrh.w	r3, [sp, #10]
+	movw	r0, #52224
+	movt	r0, #16384
+	mov	r1, r2
+	bl	dac_data_set
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI5_1:
+	.long	0                               @ double 2.5
+	.long	1074003968
+.LCPI5_0:
+	.long	0x45800000                      @ float 4096
+.Lfunc_end5:
+	.size	sgm41296_vtec_dac_ctl_set, .Lfunc_end5-sgm41296_vtec_dac_ctl_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,13 @@
+@echo on
+
+del D:\E\code\mcu_project\source\Keil_project\merge\App.bin
+del D:\E\code\mcu_project\source\Keil_project\merge\boot.bin
+
+copy D:\E\code\GD32E501_I2C_IAP\Template\Keil_project\output\Project.bin D:\E\code\mcu_project\source\Keil_project\merge\boot.bin
+copy D:\E\code\mcu_project\source\Keil_project\output\Project.bin D:\E\code\mcu_project\source\Keil_project\merge\App.bin
+
+
+d:
+cmd
+
+

@@ -1,0 +1,2665 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_usart.c"
+	.section	.text.usart_deinit,"ax",%progbits
+	.hidden	usart_deinit                    @ -- Begin function usart_deinit
+	.globl	usart_deinit
+	.p2align	2
+	.type	usart_deinit,%function
+	.code	16                              @ @usart_deinit
+	.thumb_func
+usart_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movw	r1, #17408
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_3
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	movw	r1, #14336
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB0_4
+	b	.LBB0_2
+.LBB0_2:
+	movw	r0, #782
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_5
+.LBB0_3:
+	movw	r0, #1041
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_5
+.LBB0_4:
+	b	.LBB0_5
+.LBB0_5:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	usart_deinit, .Lfunc_end0-usart_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_baudrate_set,"ax",%progbits
+	.hidden	usart_baudrate_set              @ -- Begin function usart_baudrate_set
+	.globl	usart_baudrate_set
+	.p2align	2
+	.type	usart_baudrate_set,%function
+	.code	16                              @ @usart_baudrate_set
+	.thumb_func
+usart_baudrate_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	movs	r0, #0
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #28]
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movw	r1, #17408
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB1_3
+	b	.LBB1_1
+.LBB1_1:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movw	r1, #14336
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB1_4
+	b	.LBB1_2
+.LBB1_2:
+	movs	r0, #5
+	bl	rcu_clock_freq_get
+	str	r0, [sp, #20]
+	b	.LBB1_5
+.LBB1_3:
+	movs	r0, #2
+	bl	rcu_clock_freq_get
+	str	r0, [sp, #20]
+	b	.LBB1_5
+.LBB1_4:
+	b	.LBB1_5
+.LBB1_5:
+	ldr	r0, [sp, #28]
+	ldr	r0, [r0]
+	lsls	r0, r0, #16
+	cmp	r0, #0
+	bpl	.LBB1_7
+	b	.LBB1_6
+.LBB1_6:
+	ldr	r0, [sp, #20]
+	lsls	r0, r0, #1
+	ldr	r1, [sp, #24]
+	add.w	r0, r0, r1, lsr #1
+	udiv	r0, r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	movw	r1, #65520
+	ands	r0, r1
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #1, #3
+	str	r0, [sp, #12]
+	ldrh.w	r0, [sp, #16]
+	ldrh.w	r1, [sp, #12]
+	orrs	r0, r1
+	ldr	r1, [sp, #28]
+	str	r0, [r1, #12]
+	b	.LBB1_8
+.LBB1_7:
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #24]
+	add.w	r0, r0, r1, lsr #1
+	udiv	r0, r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	movw	r1, #65520
+	ands	r0, r1
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #8]
+	and	r0, r0, #15
+	str	r0, [sp, #12]
+	ldrh.w	r0, [sp, #16]
+	ldrh.w	r1, [sp, #12]
+	orrs	r0, r1
+	ldr	r1, [sp, #28]
+	str	r0, [r1, #12]
+	b	.LBB1_8
+.LBB1_8:
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	usart_baudrate_set, .Lfunc_end1-usart_baudrate_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_parity_config,"ax",%progbits
+	.hidden	usart_parity_config             @ -- Begin function usart_parity_config
+	.globl	usart_parity_config
+	.p2align	2
+	.type	usart_parity_config,%function
+	.code	16                              @ @usart_parity_config
+	.thumb_func
+usart_parity_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1536
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	usart_parity_config, .Lfunc_end2-usart_parity_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_word_length_set,"ax",%progbits
+	.hidden	usart_word_length_set           @ -- Begin function usart_word_length_set
+	.globl	usart_word_length_set
+	.p2align	2
+	.type	usart_word_length_set,%function
+	.code	16                              @ @usart_word_length_set
+	.thumb_func
+usart_word_length_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #4096
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end3:
+	.size	usart_word_length_set, .Lfunc_end3-usart_word_length_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_stop_bit_set,"ax",%progbits
+	.hidden	usart_stop_bit_set              @ -- Begin function usart_stop_bit_set
+	.globl	usart_stop_bit_set
+	.p2align	2
+	.type	usart_stop_bit_set,%function
+	.code	16                              @ @usart_stop_bit_set
+	.thumb_func
+usart_stop_bit_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #12288
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end4:
+	.size	usart_stop_bit_set, .Lfunc_end4-usart_stop_bit_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_enable,"ax",%progbits
+	.hidden	usart_enable                    @ -- Begin function usart_enable
+	.globl	usart_enable
+	.p2align	2
+	.type	usart_enable,%function
+	.code	16                              @ @usart_enable
+	.thumb_func
+usart_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	usart_enable, .Lfunc_end5-usart_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_disable,"ax",%progbits
+	.hidden	usart_disable                   @ -- Begin function usart_disable
+	.globl	usart_disable
+	.p2align	2
+	.type	usart_disable,%function
+	.code	16                              @ @usart_disable
+	.thumb_func
+usart_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	usart_disable, .Lfunc_end6-usart_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_transmit_config,"ax",%progbits
+	.hidden	usart_transmit_config           @ -- Begin function usart_transmit_config
+	.globl	usart_transmit_config
+	.p2align	2
+	.type	usart_transmit_config,%function
+	.code	16                              @ @usart_transmit_config
+	.thumb_func
+usart_transmit_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end7:
+	.size	usart_transmit_config, .Lfunc_end7-usart_transmit_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receive_config,"ax",%progbits
+	.hidden	usart_receive_config            @ -- Begin function usart_receive_config
+	.globl	usart_receive_config
+	.p2align	2
+	.type	usart_receive_config,%function
+	.code	16                              @ @usart_receive_config
+	.thumb_func
+usart_receive_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end8:
+	.size	usart_receive_config, .Lfunc_end8-usart_receive_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_data_first_config,"ax",%progbits
+	.hidden	usart_data_first_config         @ -- Begin function usart_data_first_config
+	.globl	usart_data_first_config
+	.p2align	2
+	.type	usart_data_first_config,%function
+	.code	16                              @ @usart_data_first_config
+	.thumb_func
+usart_data_first_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #524288
+	str	r0, [r1, #4]
+	ldr	r0, [sp]
+	and	r2, r0, #524288
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end9:
+	.size	usart_data_first_config, .Lfunc_end9-usart_data_first_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_invert_config,"ax",%progbits
+	.hidden	usart_invert_config             @ -- Begin function usart_invert_config
+	.globl	usart_invert_config
+	.p2align	2
+	.type	usart_invert_config,%function
+	.code	16                              @ @usart_invert_config
+	.thumb_func
+usart_invert_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #7
+	bhi	.LBB10_11
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI10_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI10_0:
+	.byte	(.LBB10_3-(.LCPI10_0+4))/2
+	.byte	(.LBB10_4-(.LCPI10_0+4))/2
+	.byte	(.LBB10_5-(.LCPI10_0+4))/2
+	.byte	(.LBB10_6-(.LCPI10_0+4))/2
+	.byte	(.LBB10_7-(.LCPI10_0+4))/2
+	.byte	(.LBB10_8-(.LCPI10_0+4))/2
+	.byte	(.LBB10_9-(.LCPI10_0+4))/2
+	.byte	(.LBB10_10-(.LCPI10_0+4))/2
+	.p2align	1
+.LBB10_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #262144
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #262144
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #131072
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #131072
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_7:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #65536
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_8:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #65536
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_9:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #32768
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_10:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #32768
+	str	r0, [r1, #4]
+	b	.LBB10_12
+.LBB10_11:
+	b	.LBB10_12
+.LBB10_12:
+	add	sp, #12
+	bx	lr
+.Lfunc_end10:
+	.size	usart_invert_config, .Lfunc_end10-usart_invert_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_overrun_enable,"ax",%progbits
+	.hidden	usart_overrun_enable            @ -- Begin function usart_overrun_enable
+	.globl	usart_overrun_enable
+	.p2align	2
+	.type	usart_overrun_enable,%function
+	.code	16                              @ @usart_overrun_enable
+	.thumb_func
+usart_overrun_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #4096
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	usart_overrun_enable, .Lfunc_end11-usart_overrun_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_overrun_disable,"ax",%progbits
+	.hidden	usart_overrun_disable           @ -- Begin function usart_overrun_disable
+	.globl	usart_overrun_disable
+	.p2align	2
+	.type	usart_overrun_disable,%function
+	.code	16                              @ @usart_overrun_disable
+	.thumb_func
+usart_overrun_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #4096
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end12:
+	.size	usart_overrun_disable, .Lfunc_end12-usart_overrun_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_oversample_config,"ax",%progbits
+	.hidden	usart_oversample_config         @ -- Begin function usart_oversample_config
+	.globl	usart_oversample_config
+	.p2align	2
+	.type	usart_oversample_config,%function
+	.code	16                              @ @usart_oversample_config
+	.thumb_func
+usart_oversample_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	usart_oversample_config, .Lfunc_end13-usart_oversample_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_sample_bit_config,"ax",%progbits
+	.hidden	usart_sample_bit_config         @ -- Begin function usart_sample_bit_config
+	.globl	usart_sample_bit_config
+	.p2align	2
+	.type	usart_sample_bit_config,%function
+	.code	16                              @ @usart_sample_bit_config
+	.thumb_func
+usart_sample_bit_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #2048
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end14:
+	.size	usart_sample_bit_config, .Lfunc_end14-usart_sample_bit_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receiver_timeout_enable,"ax",%progbits
+	.hidden	usart_receiver_timeout_enable   @ -- Begin function usart_receiver_timeout_enable
+	.globl	usart_receiver_timeout_enable
+	.p2align	2
+	.type	usart_receiver_timeout_enable,%function
+	.code	16                              @ @usart_receiver_timeout_enable
+	.thumb_func
+usart_receiver_timeout_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #8388608
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end15:
+	.size	usart_receiver_timeout_enable, .Lfunc_end15-usart_receiver_timeout_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receiver_timeout_disable,"ax",%progbits
+	.hidden	usart_receiver_timeout_disable  @ -- Begin function usart_receiver_timeout_disable
+	.globl	usart_receiver_timeout_disable
+	.p2align	2
+	.type	usart_receiver_timeout_disable,%function
+	.code	16                              @ @usart_receiver_timeout_disable
+	.thumb_func
+usart_receiver_timeout_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #8388608
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end16:
+	.size	usart_receiver_timeout_disable, .Lfunc_end16-usart_receiver_timeout_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receiver_timeout_threshold_config,"ax",%progbits
+	.hidden	usart_receiver_timeout_threshold_config @ -- Begin function usart_receiver_timeout_threshold_config
+	.globl	usart_receiver_timeout_threshold_config
+	.p2align	2
+	.type	usart_receiver_timeout_threshold_config,%function
+	.code	16                              @ @usart_receiver_timeout_threshold_config
+	.thumb_func
+usart_receiver_timeout_threshold_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	and	r0, r0, #-16777216
+	str	r0, [r1, #20]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orrs	r0, r2
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end17:
+	.size	usart_receiver_timeout_threshold_config, .Lfunc_end17-usart_receiver_timeout_threshold_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_data_transmit,"ax",%progbits
+	.hidden	usart_data_transmit             @ -- Begin function usart_data_transmit
+	.globl	usart_data_transmit
+	.p2align	2
+	.type	usart_data_transmit,%function
+	.code	16                              @ @usart_data_transmit
+	.thumb_func
+usart_data_transmit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	bfc	r0, #9, #23
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #40]
+	add	sp, #8
+	bx	lr
+.Lfunc_end18:
+	.size	usart_data_transmit, .Lfunc_end18-usart_data_transmit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_data_receive,"ax",%progbits
+	.hidden	usart_data_receive              @ -- Begin function usart_data_receive
+	.globl	usart_data_receive
+	.p2align	2
+	.type	usart_data_receive,%function
+	.code	16                              @ @usart_data_receive
+	.thumb_func
+usart_data_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #36]
+	bfc	r0, #9, #23
+	add	sp, #4
+	bx	lr
+.Lfunc_end19:
+	.size	usart_data_receive, .Lfunc_end19-usart_data_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_autobaud_detection_enable,"ax",%progbits
+	.hidden	usart_autobaud_detection_enable @ -- Begin function usart_autobaud_detection_enable
+	.globl	usart_autobaud_detection_enable
+	.p2align	2
+	.type	usart_autobaud_detection_enable,%function
+	.code	16                              @ @usart_autobaud_detection_enable
+	.thumb_func
+usart_autobaud_detection_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #1048576
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	usart_autobaud_detection_enable, .Lfunc_end20-usart_autobaud_detection_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_autobaud_detection_disable,"ax",%progbits
+	.hidden	usart_autobaud_detection_disable @ -- Begin function usart_autobaud_detection_disable
+	.globl	usart_autobaud_detection_disable
+	.p2align	2
+	.type	usart_autobaud_detection_disable,%function
+	.code	16                              @ @usart_autobaud_detection_disable
+	.thumb_func
+usart_autobaud_detection_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1048576
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end21:
+	.size	usart_autobaud_detection_disable, .Lfunc_end21-usart_autobaud_detection_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_autobaud_detection_mode_config,"ax",%progbits
+	.hidden	usart_autobaud_detection_mode_config @ -- Begin function usart_autobaud_detection_mode_config
+	.globl	usart_autobaud_detection_mode_config
+	.p2align	2
+	.type	usart_autobaud_detection_mode_config,%function
+	.code	16                              @ @usart_autobaud_detection_mode_config
+	.thumb_func
+usart_autobaud_detection_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #6291456
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end22:
+	.size	usart_autobaud_detection_mode_config, .Lfunc_end22-usart_autobaud_detection_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_address_config,"ax",%progbits
+	.hidden	usart_address_config            @ -- Begin function usart_address_config
+	.globl	usart_address_config
+	.p2align	2
+	.type	usart_address_config,%function
+	.code	16                              @ @usart_address_config
+	.thumb_func
+usart_address_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #-16777216
+	str	r0, [r1, #4]
+	ldrb.w	r2, [sp, #3]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #24
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end23:
+	.size	usart_address_config, .Lfunc_end23-usart_address_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_address_detection_mode_config,"ax",%progbits
+	.hidden	usart_address_detection_mode_config @ -- Begin function usart_address_detection_mode_config
+	.globl	usart_address_detection_mode_config
+	.p2align	2
+	.type	usart_address_detection_mode_config,%function
+	.code	16                              @ @usart_address_detection_mode_config
+	.thumb_func
+usart_address_detection_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16
+	str	r0, [r1, #4]
+	ldr	r0, [sp]
+	and	r2, r0, #16
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end24:
+	.size	usart_address_detection_mode_config, .Lfunc_end24-usart_address_detection_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_mute_mode_enable,"ax",%progbits
+	.hidden	usart_mute_mode_enable          @ -- Begin function usart_mute_mode_enable
+	.globl	usart_mute_mode_enable
+	.p2align	2
+	.type	usart_mute_mode_enable,%function
+	.code	16                              @ @usart_mute_mode_enable
+	.thumb_func
+usart_mute_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #8192
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end25:
+	.size	usart_mute_mode_enable, .Lfunc_end25-usart_mute_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_mute_mode_disable,"ax",%progbits
+	.hidden	usart_mute_mode_disable         @ -- Begin function usart_mute_mode_disable
+	.globl	usart_mute_mode_disable
+	.p2align	2
+	.type	usart_mute_mode_disable,%function
+	.code	16                              @ @usart_mute_mode_disable
+	.thumb_func
+usart_mute_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #8192
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end26:
+	.size	usart_mute_mode_disable, .Lfunc_end26-usart_mute_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_mute_mode_wakeup_config,"ax",%progbits
+	.hidden	usart_mute_mode_wakeup_config   @ -- Begin function usart_mute_mode_wakeup_config
+	.globl	usart_mute_mode_wakeup_config
+	.p2align	2
+	.type	usart_mute_mode_wakeup_config,%function
+	.code	16                              @ @usart_mute_mode_wakeup_config
+	.thumb_func
+usart_mute_mode_wakeup_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end27:
+	.size	usart_mute_mode_wakeup_config, .Lfunc_end27-usart_mute_mode_wakeup_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_lin_mode_enable,"ax",%progbits
+	.hidden	usart_lin_mode_enable           @ -- Begin function usart_lin_mode_enable
+	.globl	usart_lin_mode_enable
+	.p2align	2
+	.type	usart_lin_mode_enable,%function
+	.code	16                              @ @usart_lin_mode_enable
+	.thumb_func
+usart_lin_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #16384
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end28:
+	.size	usart_lin_mode_enable, .Lfunc_end28-usart_lin_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_lin_mode_disable,"ax",%progbits
+	.hidden	usart_lin_mode_disable          @ -- Begin function usart_lin_mode_disable
+	.globl	usart_lin_mode_disable
+	.p2align	2
+	.type	usart_lin_mode_disable,%function
+	.code	16                              @ @usart_lin_mode_disable
+	.thumb_func
+usart_lin_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16384
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end29:
+	.size	usart_lin_mode_disable, .Lfunc_end29-usart_lin_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_lin_break_detection_length_config,"ax",%progbits
+	.hidden	usart_lin_break_detection_length_config @ -- Begin function usart_lin_break_detection_length_config
+	.globl	usart_lin_break_detection_length_config
+	.p2align	2
+	.type	usart_lin_break_detection_length_config,%function
+	.code	16                              @ @usart_lin_break_detection_length_config
+	.thumb_func
+usart_lin_break_detection_length_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #32
+	str	r0, [r1, #4]
+	ldr	r0, [sp]
+	and	r2, r0, #32
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end30:
+	.size	usart_lin_break_detection_length_config, .Lfunc_end30-usart_lin_break_detection_length_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_halfduplex_enable,"ax",%progbits
+	.hidden	usart_halfduplex_enable         @ -- Begin function usart_halfduplex_enable
+	.globl	usart_halfduplex_enable
+	.p2align	2
+	.type	usart_halfduplex_enable,%function
+	.code	16                              @ @usart_halfduplex_enable
+	.thumb_func
+usart_halfduplex_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #8
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end31:
+	.size	usart_halfduplex_enable, .Lfunc_end31-usart_halfduplex_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_halfduplex_disable,"ax",%progbits
+	.hidden	usart_halfduplex_disable        @ -- Begin function usart_halfduplex_disable
+	.globl	usart_halfduplex_disable
+	.p2align	2
+	.type	usart_halfduplex_disable,%function
+	.code	16                              @ @usart_halfduplex_disable
+	.thumb_func
+usart_halfduplex_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #8
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end32:
+	.size	usart_halfduplex_disable, .Lfunc_end32-usart_halfduplex_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_clock_enable,"ax",%progbits
+	.hidden	usart_clock_enable              @ -- Begin function usart_clock_enable
+	.globl	usart_clock_enable
+	.p2align	2
+	.type	usart_clock_enable,%function
+	.code	16                              @ @usart_clock_enable
+	.thumb_func
+usart_clock_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #2048
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end33:
+	.size	usart_clock_enable, .Lfunc_end33-usart_clock_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_clock_disable,"ax",%progbits
+	.hidden	usart_clock_disable             @ -- Begin function usart_clock_disable
+	.globl	usart_clock_disable
+	.p2align	2
+	.type	usart_clock_disable,%function
+	.code	16                              @ @usart_clock_disable
+	.thumb_func
+usart_clock_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #2048
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end34:
+	.size	usart_clock_disable, .Lfunc_end34-usart_clock_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_synchronous_clock_config,"ax",%progbits
+	.hidden	usart_synchronous_clock_config  @ -- Begin function usart_synchronous_clock_config
+	.globl	usart_synchronous_clock_config
+	.p2align	2
+	.type	usart_synchronous_clock_config,%function
+	.code	16                              @ @usart_synchronous_clock_config
+	.thumb_func
+usart_synchronous_clock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1792
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #8]
+	and	r2, r0, #256
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	and	r2, r0, #512
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	ldr	r0, [sp]
+	and	r2, r0, #1024
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #16
+	bx	lr
+.Lfunc_end35:
+	.size	usart_synchronous_clock_config, .Lfunc_end35-usart_synchronous_clock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_guard_time_config,"ax",%progbits
+	.hidden	usart_guard_time_config         @ -- Begin function usart_guard_time_config
+	.globl	usart_guard_time_config
+	.p2align	2
+	.type	usart_guard_time_config,%function
+	.code	16                              @ @usart_guard_time_config
+	.thumb_func
+usart_guard_time_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #65280
+	str	r0, [r1, #16]
+	ldr	r0, [sp]
+	lsls	r0, r0, #8
+	uxth	r2, r0
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #16]
+	orrs	r0, r2
+	str	r0, [r1, #16]
+	add	sp, #8
+	bx	lr
+.Lfunc_end36:
+	.size	usart_guard_time_config, .Lfunc_end36-usart_guard_time_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_enable,"ax",%progbits
+	.hidden	usart_smartcard_mode_enable     @ -- Begin function usart_smartcard_mode_enable
+	.globl	usart_smartcard_mode_enable
+	.p2align	2
+	.type	usart_smartcard_mode_enable,%function
+	.code	16                              @ @usart_smartcard_mode_enable
+	.thumb_func
+usart_smartcard_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #32
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end37:
+	.size	usart_smartcard_mode_enable, .Lfunc_end37-usart_smartcard_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_disable,"ax",%progbits
+	.hidden	usart_smartcard_mode_disable    @ -- Begin function usart_smartcard_mode_disable
+	.globl	usart_smartcard_mode_disable
+	.p2align	2
+	.type	usart_smartcard_mode_disable,%function
+	.code	16                              @ @usart_smartcard_mode_disable
+	.thumb_func
+usart_smartcard_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #32
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end38:
+	.size	usart_smartcard_mode_disable, .Lfunc_end38-usart_smartcard_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_nack_enable,"ax",%progbits
+	.hidden	usart_smartcard_mode_nack_enable @ -- Begin function usart_smartcard_mode_nack_enable
+	.globl	usart_smartcard_mode_nack_enable
+	.p2align	2
+	.type	usart_smartcard_mode_nack_enable,%function
+	.code	16                              @ @usart_smartcard_mode_nack_enable
+	.thumb_func
+usart_smartcard_mode_nack_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #16
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end39:
+	.size	usart_smartcard_mode_nack_enable, .Lfunc_end39-usart_smartcard_mode_nack_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_nack_disable,"ax",%progbits
+	.hidden	usart_smartcard_mode_nack_disable @ -- Begin function usart_smartcard_mode_nack_disable
+	.globl	usart_smartcard_mode_nack_disable
+	.p2align	2
+	.type	usart_smartcard_mode_nack_disable,%function
+	.code	16                              @ @usart_smartcard_mode_nack_disable
+	.thumb_func
+usart_smartcard_mode_nack_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #16
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end40:
+	.size	usart_smartcard_mode_nack_disable, .Lfunc_end40-usart_smartcard_mode_nack_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_early_nack_enable,"ax",%progbits
+	.hidden	usart_smartcard_mode_early_nack_enable @ -- Begin function usart_smartcard_mode_early_nack_enable
+	.globl	usart_smartcard_mode_early_nack_enable
+	.p2align	2
+	.type	usart_smartcard_mode_early_nack_enable,%function
+	.code	16                              @ @usart_smartcard_mode_early_nack_enable
+	.thumb_func
+usart_smartcard_mode_early_nack_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #208]
+	orr	r0, r0, #1
+	str.w	r0, [r1, #208]
+	add	sp, #4
+	bx	lr
+.Lfunc_end41:
+	.size	usart_smartcard_mode_early_nack_enable, .Lfunc_end41-usart_smartcard_mode_early_nack_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_mode_early_nack_disable,"ax",%progbits
+	.hidden	usart_smartcard_mode_early_nack_disable @ -- Begin function usart_smartcard_mode_early_nack_disable
+	.globl	usart_smartcard_mode_early_nack_disable
+	.p2align	2
+	.type	usart_smartcard_mode_early_nack_disable,%function
+	.code	16                              @ @usart_smartcard_mode_early_nack_disable
+	.thumb_func
+usart_smartcard_mode_early_nack_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #208]
+	bic	r0, r0, #1
+	str.w	r0, [r1, #208]
+	add	sp, #4
+	bx	lr
+.Lfunc_end42:
+	.size	usart_smartcard_mode_early_nack_disable, .Lfunc_end42-usart_smartcard_mode_early_nack_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_smartcard_autoretry_config,"ax",%progbits
+	.hidden	usart_smartcard_autoretry_config @ -- Begin function usart_smartcard_autoretry_config
+	.globl	usart_smartcard_autoretry_config
+	.p2align	2
+	.type	usart_smartcard_autoretry_config,%function
+	.code	16                              @ @usart_smartcard_autoretry_config
+	.thumb_func
+usart_smartcard_autoretry_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #917504
+	str	r0, [r1, #8]
+	ldr	r0, [sp]
+	and	r2, r0, #7
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orr.w	r0, r0, r2, lsl #17
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end43:
+	.size	usart_smartcard_autoretry_config, .Lfunc_end43-usart_smartcard_autoretry_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_block_length_config,"ax",%progbits
+	.hidden	usart_block_length_config       @ -- Begin function usart_block_length_config
+	.globl	usart_block_length_config
+	.p2align	2
+	.type	usart_block_length_config,%function
+	.code	16                              @ @usart_block_length_config
+	.thumb_func
+usart_block_length_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	bic	r0, r0, #-16777216
+	str	r0, [r1, #20]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orr.w	r0, r0, r2, lsl #24
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end44:
+	.size	usart_block_length_config, .Lfunc_end44-usart_block_length_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_irda_mode_enable,"ax",%progbits
+	.hidden	usart_irda_mode_enable          @ -- Begin function usart_irda_mode_enable
+	.globl	usart_irda_mode_enable
+	.p2align	2
+	.type	usart_irda_mode_enable,%function
+	.code	16                              @ @usart_irda_mode_enable
+	.thumb_func
+usart_irda_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #2
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end45:
+	.size	usart_irda_mode_enable, .Lfunc_end45-usart_irda_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_irda_mode_disable,"ax",%progbits
+	.hidden	usart_irda_mode_disable         @ -- Begin function usart_irda_mode_disable
+	.globl	usart_irda_mode_disable
+	.p2align	2
+	.type	usart_irda_mode_disable,%function
+	.code	16                              @ @usart_irda_mode_disable
+	.thumb_func
+usart_irda_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #2
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end46:
+	.size	usart_irda_mode_disable, .Lfunc_end46-usart_irda_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_prescaler_config,"ax",%progbits
+	.hidden	usart_prescaler_config          @ -- Begin function usart_prescaler_config
+	.globl	usart_prescaler_config
+	.p2align	2
+	.type	usart_prescaler_config,%function
+	.code	16                              @ @usart_prescaler_config
+	.thumb_func
+usart_prescaler_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #255
+	str	r0, [r1, #16]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #16]
+	orrs	r0, r2
+	str	r0, [r1, #16]
+	add	sp, #8
+	bx	lr
+.Lfunc_end47:
+	.size	usart_prescaler_config, .Lfunc_end47-usart_prescaler_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_irda_lowpower_config,"ax",%progbits
+	.hidden	usart_irda_lowpower_config      @ -- Begin function usart_irda_lowpower_config
+	.globl	usart_irda_lowpower_config
+	.p2align	2
+	.type	usart_irda_lowpower_config,%function
+	.code	16                              @ @usart_irda_lowpower_config
+	.thumb_func
+usart_irda_lowpower_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #4
+	str	r0, [r1, #8]
+	ldr	r0, [sp]
+	and	r2, r0, #4
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end48:
+	.size	usart_irda_lowpower_config, .Lfunc_end48-usart_irda_lowpower_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_hardware_flow_rts_config,"ax",%progbits
+	.hidden	usart_hardware_flow_rts_config  @ -- Begin function usart_hardware_flow_rts_config
+	.globl	usart_hardware_flow_rts_config
+	.p2align	2
+	.type	usart_hardware_flow_rts_config,%function
+	.code	16                              @ @usart_hardware_flow_rts_config
+	.thumb_func
+usart_hardware_flow_rts_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #256
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end49:
+	.size	usart_hardware_flow_rts_config, .Lfunc_end49-usart_hardware_flow_rts_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_hardware_flow_cts_config,"ax",%progbits
+	.hidden	usart_hardware_flow_cts_config  @ -- Begin function usart_hardware_flow_cts_config
+	.globl	usart_hardware_flow_cts_config
+	.p2align	2
+	.type	usart_hardware_flow_cts_config,%function
+	.code	16                              @ @usart_hardware_flow_cts_config
+	.thumb_func
+usart_hardware_flow_cts_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #512
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end50:
+	.size	usart_hardware_flow_cts_config, .Lfunc_end50-usart_hardware_flow_cts_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_hardware_flow_coherence_config,"ax",%progbits
+	.hidden	usart_hardware_flow_coherence_config @ -- Begin function usart_hardware_flow_coherence_config
+	.globl	usart_hardware_flow_coherence_config
+	.p2align	2
+	.type	usart_hardware_flow_coherence_config,%function
+	.code	16                              @ @usart_hardware_flow_coherence_config
+	.thumb_func
+usart_hardware_flow_coherence_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #192]
+	bic	r0, r0, #1
+	str.w	r0, [r1, #192]
+	ldr	r0, [sp]
+	and	r2, r0, #1
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #192]
+	orrs	r0, r2
+	str.w	r0, [r1, #192]
+	add	sp, #8
+	bx	lr
+.Lfunc_end51:
+	.size	usart_hardware_flow_coherence_config, .Lfunc_end51-usart_hardware_flow_coherence_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_rs485_driver_enable,"ax",%progbits
+	.hidden	usart_rs485_driver_enable       @ -- Begin function usart_rs485_driver_enable
+	.globl	usart_rs485_driver_enable
+	.p2align	2
+	.type	usart_rs485_driver_enable,%function
+	.code	16                              @ @usart_rs485_driver_enable
+	.thumb_func
+usart_rs485_driver_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #16384
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end52:
+	.size	usart_rs485_driver_enable, .Lfunc_end52-usart_rs485_driver_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_rs485_driver_disable,"ax",%progbits
+	.hidden	usart_rs485_driver_disable      @ -- Begin function usart_rs485_driver_disable
+	.globl	usart_rs485_driver_disable
+	.p2align	2
+	.type	usart_rs485_driver_disable,%function
+	.code	16                              @ @usart_rs485_driver_disable
+	.thumb_func
+usart_rs485_driver_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #16384
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end53:
+	.size	usart_rs485_driver_disable, .Lfunc_end53-usart_rs485_driver_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_driver_assertime_config,"ax",%progbits
+	.hidden	usart_driver_assertime_config   @ -- Begin function usart_driver_assertime_config
+	.globl	usart_driver_assertime_config
+	.p2align	2
+	.type	usart_driver_assertime_config,%function
+	.code	16                              @ @usart_driver_assertime_config
+	.thumb_func
+usart_driver_assertime_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #65011712
+	str	r0, [r1]
+	ldr	r0, [sp]
+	and	r2, r0, #31
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #21
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end54:
+	.size	usart_driver_assertime_config, .Lfunc_end54-usart_driver_assertime_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_driver_deassertime_config,"ax",%progbits
+	.hidden	usart_driver_deassertime_config @ -- Begin function usart_driver_deassertime_config
+	.globl	usart_driver_deassertime_config
+	.p2align	2
+	.type	usart_driver_deassertime_config,%function
+	.code	16                              @ @usart_driver_deassertime_config
+	.thumb_func
+usart_driver_deassertime_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #2031616
+	str	r0, [r1]
+	ldr	r0, [sp]
+	and	r2, r0, #31
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end55:
+	.size	usart_driver_deassertime_config, .Lfunc_end55-usart_driver_deassertime_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_depolarity_config,"ax",%progbits
+	.hidden	usart_depolarity_config         @ -- Begin function usart_depolarity_config
+	.globl	usart_depolarity_config
+	.p2align	2
+	.type	usart_depolarity_config,%function
+	.code	16                              @ @usart_depolarity_config
+	.thumb_func
+usart_depolarity_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #32768
+	str	r0, [r1, #8]
+	ldr	r0, [sp]
+	and	r2, r0, #32768
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end56:
+	.size	usart_depolarity_config, .Lfunc_end56-usart_depolarity_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_dma_receive_config,"ax",%progbits
+	.hidden	usart_dma_receive_config        @ -- Begin function usart_dma_receive_config
+	.globl	usart_dma_receive_config
+	.p2align	2
+	.type	usart_dma_receive_config,%function
+	.code	16                              @ @usart_dma_receive_config
+	.thumb_func
+usart_dma_receive_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #64
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end57:
+	.size	usart_dma_receive_config, .Lfunc_end57-usart_dma_receive_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_dma_transmit_config,"ax",%progbits
+	.hidden	usart_dma_transmit_config       @ -- Begin function usart_dma_transmit_config
+	.globl	usart_dma_transmit_config
+	.p2align	2
+	.type	usart_dma_transmit_config,%function
+	.code	16                              @ @usart_dma_transmit_config
+	.thumb_func
+usart_dma_transmit_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #128
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end58:
+	.size	usart_dma_transmit_config, .Lfunc_end58-usart_dma_transmit_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_reception_error_dma_disable,"ax",%progbits
+	.hidden	usart_reception_error_dma_disable @ -- Begin function usart_reception_error_dma_disable
+	.globl	usart_reception_error_dma_disable
+	.p2align	2
+	.type	usart_reception_error_dma_disable,%function
+	.code	16                              @ @usart_reception_error_dma_disable
+	.thumb_func
+usart_reception_error_dma_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #8192
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end59:
+	.size	usart_reception_error_dma_disable, .Lfunc_end59-usart_reception_error_dma_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_reception_error_dma_enable,"ax",%progbits
+	.hidden	usart_reception_error_dma_enable @ -- Begin function usart_reception_error_dma_enable
+	.globl	usart_reception_error_dma_enable
+	.p2align	2
+	.type	usart_reception_error_dma_enable,%function
+	.code	16                              @ @usart_reception_error_dma_enable
+	.thumb_func
+usart_reception_error_dma_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #8192
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end60:
+	.size	usart_reception_error_dma_enable, .Lfunc_end60-usart_reception_error_dma_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_wakeup_enable,"ax",%progbits
+	.hidden	usart_wakeup_enable             @ -- Begin function usart_wakeup_enable
+	.globl	usart_wakeup_enable
+	.p2align	2
+	.type	usart_wakeup_enable,%function
+	.code	16                              @ @usart_wakeup_enable
+	.thumb_func
+usart_wakeup_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end61:
+	.size	usart_wakeup_enable, .Lfunc_end61-usart_wakeup_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_wakeup_disable,"ax",%progbits
+	.hidden	usart_wakeup_disable            @ -- Begin function usart_wakeup_disable
+	.globl	usart_wakeup_disable
+	.p2align	2
+	.type	usart_wakeup_disable,%function
+	.code	16                              @ @usart_wakeup_disable
+	.thumb_func
+usart_wakeup_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end62:
+	.size	usart_wakeup_disable, .Lfunc_end62-usart_wakeup_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_wakeup_mode_config,"ax",%progbits
+	.hidden	usart_wakeup_mode_config        @ -- Begin function usart_wakeup_mode_config
+	.globl	usart_wakeup_mode_config
+	.p2align	2
+	.type	usart_wakeup_mode_config,%function
+	.code	16                              @ @usart_wakeup_mode_config
+	.thumb_func
+usart_wakeup_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #3145728
+	str	r0, [r1, #8]
+	ldr	r0, [sp]
+	and	r2, r0, #3145728
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end63:
+	.size	usart_wakeup_mode_config, .Lfunc_end63-usart_wakeup_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receive_fifo_enable,"ax",%progbits
+	.hidden	usart_receive_fifo_enable       @ -- Begin function usart_receive_fifo_enable
+	.globl	usart_receive_fifo_enable
+	.p2align	2
+	.type	usart_receive_fifo_enable,%function
+	.code	16                              @ @usart_receive_fifo_enable
+	.thumb_func
+usart_receive_fifo_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #208]
+	orr	r0, r0, #256
+	str.w	r0, [r1, #208]
+	add	sp, #4
+	bx	lr
+.Lfunc_end64:
+	.size	usart_receive_fifo_enable, .Lfunc_end64-usart_receive_fifo_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receive_fifo_disable,"ax",%progbits
+	.hidden	usart_receive_fifo_disable      @ -- Begin function usart_receive_fifo_disable
+	.globl	usart_receive_fifo_disable
+	.p2align	2
+	.type	usart_receive_fifo_disable,%function
+	.code	16                              @ @usart_receive_fifo_disable
+	.thumb_func
+usart_receive_fifo_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #208]
+	bic	r0, r0, #256
+	str.w	r0, [r1, #208]
+	add	sp, #4
+	bx	lr
+.Lfunc_end65:
+	.size	usart_receive_fifo_disable, .Lfunc_end65-usart_receive_fifo_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_receive_fifo_counter_number,"ax",%progbits
+	.hidden	usart_receive_fifo_counter_number @ -- Begin function usart_receive_fifo_counter_number
+	.globl	usart_receive_fifo_counter_number
+	.p2align	2
+	.type	usart_receive_fifo_counter_number,%function
+	.code	16                              @ @usart_receive_fifo_counter_number
+	.thumb_func
+usart_receive_fifo_counter_number:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr.w	r0, [r0, #208]
+	ubfx	r0, r0, #12, #3
+	add	sp, #4
+	bx	lr
+.Lfunc_end66:
+	.size	usart_receive_fifo_counter_number, .Lfunc_end66-usart_receive_fifo_counter_number
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_flag_get,"ax",%progbits
+	.hidden	usart_flag_get                  @ -- Begin function usart_flag_get
+	.globl	usart_flag_get
+	.p2align	2
+	.type	usart_flag_get,%function
+	.code	16                              @ @usart_flag_get
+	.thumb_func
+usart_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r0, [sp, #4]
+	ldrh.w	r1, [sp, #2]
+	lsrs	r1, r1, #6
+	ldr	r0, [r0, r1]
+	ldrh.w	r1, [sp, #2]
+	and	r1, r1, #31
+	lsrs	r0, r1
+	lsls	r0, r0, #31
+	cbz	r0, .LBB67_2
+	b	.LBB67_1
+.LBB67_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB67_3
+.LBB67_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB67_3
+.LBB67_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end67:
+	.size	usart_flag_get, .Lfunc_end67-usart_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_flag_clear,"ax",%progbits
+	.hidden	usart_flag_clear                @ -- Begin function usart_flag_clear
+	.globl	usart_flag_clear
+	.p2align	2
+	.type	usart_flag_clear,%function
+	.code	16                              @ @usart_flag_clear
+	.thumb_func
+usart_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	and	r1, r0, #31
+	movs	r0, #1
+	lsl.w	r2, r0, r1
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	add	sp, #8
+	bx	lr
+.Lfunc_end68:
+	.size	usart_flag_clear, .Lfunc_end68-usart_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_interrupt_enable,"ax",%progbits
+	.hidden	usart_interrupt_enable          @ -- Begin function usart_interrupt_enable
+	.globl	usart_interrupt_enable
+	.p2align	2
+	.type	usart_interrupt_enable,%function
+	.code	16                              @ @usart_interrupt_enable
+	.thumb_func
+usart_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #31
+	movs	r1, #1
+	lsl.w	r3, r1, r2
+	ldr	r1, [sp, #4]
+	lsrs	r2, r0, #6
+	ldr	r0, [r1, r2]
+	orrs	r0, r3
+	str	r0, [r1, r2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end69:
+	.size	usart_interrupt_enable, .Lfunc_end69-usart_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_interrupt_disable,"ax",%progbits
+	.hidden	usart_interrupt_disable         @ -- Begin function usart_interrupt_disable
+	.globl	usart_interrupt_disable
+	.p2align	2
+	.type	usart_interrupt_disable,%function
+	.code	16                              @ @usart_interrupt_disable
+	.thumb_func
+usart_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #31
+	movs	r1, #1
+	lsl.w	r3, r1, r2
+	ldr	r1, [sp, #4]
+	lsrs	r2, r0, #6
+	ldr	r0, [r1, r2]
+	bics	r0, r3
+	str	r0, [r1, r2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end70:
+	.size	usart_interrupt_disable, .Lfunc_end70-usart_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_command_enable,"ax",%progbits
+	.hidden	usart_command_enable            @ -- Begin function usart_command_enable
+	.globl	usart_command_enable
+	.p2align	2
+	.type	usart_command_enable,%function
+	.code	16                              @ @usart_command_enable
+	.thumb_func
+usart_command_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	add	sp, #8
+	bx	lr
+.Lfunc_end71:
+	.size	usart_command_enable, .Lfunc_end71-usart_command_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_interrupt_flag_get,"ax",%progbits
+	.hidden	usart_interrupt_flag_get        @ -- Begin function usart_interrupt_flag_get
+	.globl	usart_interrupt_flag_get
+	.p2align	2
+	.type	usart_interrupt_flag_get,%function
+	.code	16                              @ @usart_interrupt_flag_get
+	.thumb_func
+usart_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrh.w	r1, [sp, #8]
+	lsrs	r1, r1, #6
+	ldr	r0, [r0, r1]
+	ldr	r1, [sp, #8]
+	and	r2, r1, #31
+	movs	r1, #1
+	lsl.w	r2, r1, r2
+	ands	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r2, [sp, #8]
+	lsrs	r2, r2, #22
+	ldr	r0, [r0, r2]
+	ldr	r2, [sp, #8]
+	ubfx	r2, r2, #16, #5
+	lsls	r1, r2
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	cbz	r0, .LBB72_3
+	b	.LBB72_1
+.LBB72_1:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB72_3
+	b	.LBB72_2
+.LBB72_2:
+	movs	r0, #1
+	strb.w	r0, [sp, #19]
+	b	.LBB72_4
+.LBB72_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	b	.LBB72_4
+.LBB72_4:
+	ldrb.w	r0, [sp, #19]
+	add	sp, #20
+	bx	lr
+.Lfunc_end72:
+	.size	usart_interrupt_flag_get, .Lfunc_end72-usart_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.usart_interrupt_flag_clear,"ax",%progbits
+	.hidden	usart_interrupt_flag_clear      @ -- Begin function usart_interrupt_flag_clear
+	.globl	usart_interrupt_flag_clear
+	.p2align	2
+	.type	usart_interrupt_flag_clear,%function
+	.code	16                              @ @usart_interrupt_flag_clear
+	.thumb_func
+usart_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	movw	r1, #13321
+	movt	r1, #13327
+	cmp	r0, r1
+	bne	.LBB73_2
+	b	.LBB73_1
+.LBB73_1:
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #208]
+	bic	r0, r0, #32768
+	str.w	r0, [r1, #208]
+	b	.LBB73_3
+.LBB73_2:
+	ldr	r0, [sp]
+	ubfx	r1, r0, #16, #5
+	movs	r0, #1
+	lsl.w	r2, r0, r1
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	b	.LBB73_3
+.LBB73_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end73:
+	.size	usart_interrupt_flag_clear, .Lfunc_end73-usart_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

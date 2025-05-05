@@ -1,0 +1,2319 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"ddm_i2c_interface.c"
+	.section	.text.apc_target_voltage_reg_write,"ax",%progbits
+	.hidden	apc_target_voltage_reg_write    @ -- Begin function apc_target_voltage_reg_write
+	.globl	apc_target_voltage_reg_write
+	.p2align	3
+	.type	apc_target_voltage_reg_write,%function
+	.code	16                              @ @apc_target_voltage_reg_write
+	.thumb_func
+apc_target_voltage_reg_write:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	add	r2, sp, #12
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #4
+	bhi	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:
+	b	.LBB0_14
+.LBB0_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #4
+	bne	.LBB0_5
+	b	.LBB0_4
+.LBB0_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB0_6
+	b	.LBB0_5
+.LBB0_5:
+	b	.LBB0_14
+.LBB0_6:
+	ldr	r0, [sp, #20]
+	adds	r0, #3
+	bl	get_u16
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI0_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #2]
+	cbnz	r0, .LBB0_8
+	b	.LBB0_7
+.LBB0_7:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	movw	r2, :lower16:default_config_value
+	movt	r2, :upper16:default_config_value
+	strb.w	r1, [r2, #63]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r2, #64]
+	vldr	s0, [r0]
+	bl	ddm_50g_apc_target_voltage
+	b	.LBB0_14
+.LBB0_8:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #2]
+	cmp	r0, #1
+	bne	.LBB0_10
+	b	.LBB0_9
+.LBB0_9:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	movw	r2, :lower16:default_config_value
+	movt	r2, :upper16:default_config_value
+	strb.w	r1, [r2, #66]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r2, #67]
+	vldr	s0, [r0]
+	bl	ddm_10g_apc_target_voltage
+	b	.LBB0_13
+.LBB0_10:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #2]
+	cmp	r0, #2
+	bne	.LBB0_12
+	b	.LBB0_11
+.LBB0_11:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	movw	r2, :lower16:default_config_value
+	movt	r2, :upper16:default_config_value
+	strb.w	r1, [r2, #69]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r2, #70]
+	vldr	s0, [r0]
+	bl	ddm_1g_apc_target_voltage
+	b	.LBB0_12
+.LBB0_12:
+	b	.LBB0_13
+.LBB0_13:
+	b	.LBB0_14
+.LBB0_14:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.15:
+.LCPI0_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end0:
+	.size	apc_target_voltage_reg_write, .Lfunc_end0-apc_target_voltage_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.apc_auto_enable_reg_write,"ax",%progbits
+	.hidden	apc_auto_enable_reg_write       @ -- Begin function apc_auto_enable_reg_write
+	.globl	apc_auto_enable_reg_write
+	.p2align	2
+	.type	apc_auto_enable_reg_write,%function
+	.code	16                              @ @apc_auto_enable_reg_write
+	.thumb_func
+apc_auto_enable_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	ldr	r0, [sp]
+	cmp	r0, #3
+	bhi	.LBB1_3
+	b	.LBB1_2
+.LBB1_2:
+	b	.LBB1_15
+.LBB1_3:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #2
+	bne	.LBB1_5
+	b	.LBB1_4
+.LBB1_4:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB1_6
+	b	.LBB1_5
+.LBB1_5:
+	b	.LBB1_15
+.LBB1_6:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #2]
+	cbnz	r0, .LBB1_8
+	b	.LBB1_7
+.LBB1_7:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #62]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	bl	ddm_50g_apc_auto_enable
+	b	.LBB1_14
+.LBB1_8:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #2]
+	cmp	r0, #1
+	bne	.LBB1_10
+	b	.LBB1_9
+.LBB1_9:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #65]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	bl	ddm_10g_apc_auto_enable
+	b	.LBB1_13
+.LBB1_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #2]
+	cmp	r0, #2
+	bne	.LBB1_12
+	b	.LBB1_11
+.LBB1_11:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #68]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #3]
+	bl	ddm_1g_apc_auto_enable
+	b	.LBB1_12
+.LBB1_12:
+	b	.LBB1_13
+.LBB1_13:
+	b	.LBB1_14
+.LBB1_14:
+	b	.LBB1_15
+.LBB1_15:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	apc_auto_enable_reg_write, .Lfunc_end1-apc_auto_enable_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.apd_i2c_vcc_reg_write,"ax",%progbits
+	.hidden	apd_i2c_vcc_reg_write           @ -- Begin function apd_i2c_vcc_reg_write
+	.globl	apd_i2c_vcc_reg_write
+	.p2align	3
+	.type	apd_i2c_vcc_reg_write,%function
+	.code	16                              @ @apd_i2c_vcc_reg_write
+	.thumb_func
+apd_i2c_vcc_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI2_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB2_5
+	b	.LBB2_1
+.LBB2_1:
+	vldr	s0, [sp, #4]
+	vldr	s2, .LCPI2_1
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB2_3
+	b	.LBB2_2
+.LBB2_2:
+	vldr	s0, [sp, #4]
+	bl	ddm_50g_set_rx_vapd
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #12]
+	ldrh.w	r0, [sp, #10]
+	strb	r0, [r1, #13]
+	b	.LBB2_4
+.LBB2_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #12]
+	strb	r0, [r1, #13]
+	b	.LBB2_4
+.LBB2_4:
+	b	.LBB2_5
+.LBB2_5:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB2_10
+	b	.LBB2_6
+.LBB2_6:
+	vldr	s0, [sp, #4]
+	vldr	s2, .LCPI2_2
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+	vldr	s0, [sp, #4]
+	bl	ddm_10g_set_rx_vapd
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #36]
+	ldrh.w	r0, [sp, #10]
+	strb.w	r0, [r1, #37]
+	b	.LBB2_9
+.LBB2_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #36]
+	strb.w	r0, [r1, #37]
+	b	.LBB2_9
+.LBB2_9:
+	b	.LBB2_10
+.LBB2_10:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB2_15
+	b	.LBB2_11
+.LBB2_11:
+	vldr	s0, [sp, #4]
+	vldr	s2, .LCPI2_3
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB2_13
+	b	.LBB2_12
+.LBB2_12:
+	vldr	s0, [sp, #4]
+	bl	ddm_1g_set_rx_vapd
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #54]
+	ldrh.w	r0, [sp, #10]
+	strb.w	r0, [r1, #55]
+	b	.LBB2_14
+.LBB2_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #54]
+	strb.w	r0, [r1, #55]
+	b	.LBB2_14
+.LBB2_14:
+	b	.LBB2_15
+.LBB2_15:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI2_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI2_1:
+	.long	0x420c0000                      @ float 35
+.LCPI2_2:
+	.long	0x42200000                      @ float 40
+.LCPI2_3:
+	.long	0x42480000                      @ float 50
+.Lfunc_end2:
+	.size	apd_i2c_vcc_reg_write, .Lfunc_end2-apd_i2c_vcc_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.soa_i2c_ild_reg_write,"ax",%progbits
+	.hidden	soa_i2c_ild_reg_write           @ -- Begin function soa_i2c_ild_reg_write
+	.globl	soa_i2c_ild_reg_write
+	.p2align	3
+	.type	soa_i2c_ild_reg_write,%function
+	.code	16                              @ @soa_i2c_ild_reg_write
+	.thumb_func
+soa_i2c_ild_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI3_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB3_5
+	b	.LBB3_1
+.LBB3_1:
+	vldr	s0, [sp, #4]
+	vldr	s2, .LCPI3_1
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB3_3
+	b	.LBB3_2
+.LBB3_2:
+	vldr	s0, [sp, #4]
+	bl	ddm_50g_set_soa_ild
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #2]
+	ldrh.w	r0, [sp, #10]
+	strb	r0, [r1, #3]
+	b	.LBB3_4
+.LBB3_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #2]
+	strb	r0, [r1, #3]
+	b	.LBB3_4
+.LBB3_4:
+	b	.LBB3_5
+.LBB3_5:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.6:
+.LCPI3_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI3_1:
+	.long	0x42c80000                      @ float 100
+.Lfunc_end3:
+	.size	soa_i2c_ild_reg_write, .Lfunc_end3-soa_i2c_ild_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.vea_i2c_vcc_reg_write,"ax",%progbits
+	.hidden	vea_i2c_vcc_reg_write           @ -- Begin function vea_i2c_vcc_reg_write
+	.globl	vea_i2c_vcc_reg_write
+	.p2align	3
+	.type	vea_i2c_vcc_reg_write,%function
+	.code	16                              @ @vea_i2c_vcc_reg_write
+	.thumb_func
+vea_i2c_vcc_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI4_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB4_5
+	b	.LBB4_1
+.LBB4_1:
+	vldr	s0, [sp, #4]
+	vmov.f32	s2, #2.000000e+00
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB4_3
+	b	.LBB4_2
+.LBB4_2:
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #4]
+	ldrh.w	r0, [sp, #10]
+	strb	r0, [r1, #5]
+	vldr	s0, [sp, #4]
+	bl	ddm_50g_set_ea
+	b	.LBB4_4
+.LBB4_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #4]
+	strb	r0, [r1, #5]
+	b	.LBB4_4
+.LBB4_4:
+	b	.LBB4_5
+.LBB4_5:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB4_10
+	b	.LBB4_6
+.LBB4_6:
+	vldr	s0, [sp, #4]
+	vmov.f32	s2, #2.000000e+00
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB4_8
+	b	.LBB4_7
+.LBB4_7:
+	vldr	s0, [sp, #4]
+	bl	ddm_10g_set_ea
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #28]
+	ldrh.w	r0, [sp, #10]
+	strb	r0, [r1, #29]
+	b	.LBB4_9
+.LBB4_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #28]
+	strb	r0, [r1, #29]
+	b	.LBB4_9
+.LBB4_9:
+	b	.LBB4_10
+.LBB4_10:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI4_0:
+	.long	1202590843                      @ double 0.01
+	.long	1065646817
+.Lfunc_end4:
+	.size	vea_i2c_vcc_reg_write, .Lfunc_end4-vea_i2c_vcc_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ibias_i2c_reg_write,"ax",%progbits
+	.hidden	ibias_i2c_reg_write             @ -- Begin function ibias_i2c_reg_write
+	.globl	ibias_i2c_reg_write
+	.p2align	3
+	.type	ibias_i2c_reg_write,%function
+	.code	16                              @ @ibias_i2c_reg_write
+	.thumb_func
+ibias_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	add	r2, sp, #12
+	str	r2, [sp]                        @ 4-byte Spill
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	ldr	r0, [sp, #28]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI5_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB5_5
+	b	.LBB5_1
+.LBB5_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI5_1
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB5_3
+	b	.LBB5_2
+.LBB5_2:
+	ldr	r0, [sp, #12]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI5_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	ddm_50g_set_ld_ibias
+	ldrb.w	r0, [sp, #19]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1]
+	ldrh.w	r0, [sp, #18]
+	strb	r0, [r1, #1]
+	b	.LBB5_4
+.LBB5_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1]
+	strb	r0, [r1, #1]
+	b	.LBB5_4
+.LBB5_4:
+	b	.LBB5_5
+.LBB5_5:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB5_10
+	b	.LBB5_6
+.LBB5_6:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI5_1
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB5_8
+	b	.LBB5_7
+.LBB5_7:
+	ldr	r0, [sp, #12]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI5_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #8]
+	ldrh.w	r0, [sp, #8]
+	bl	ddm_10g_set_ld_ibias
+	ldrb.w	r0, [sp, #19]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #26]
+	ldrh.w	r0, [sp, #18]
+	strb	r0, [r1, #27]
+	b	.LBB5_9
+.LBB5_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #26]
+	strb	r0, [r1, #27]
+	b	.LBB5_9
+.LBB5_9:
+	b	.LBB5_10
+.LBB5_10:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB5_15
+	b	.LBB5_11
+.LBB5_11:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI5_4
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB5_13
+	b	.LBB5_12
+.LBB5_12:
+	ldr	r0, [sp, #12]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI5_5
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #6]
+	ldrh.w	r0, [sp, #6]
+	bl	ddm_1g_set_ld_ibias
+	ldrb.w	r0, [sp, #19]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #48]
+	ldrh.w	r0, [sp, #18]
+	strb.w	r0, [r1, #49]
+	b	.LBB5_14
+.LBB5_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #48]
+	strb.w	r0, [r1, #49]
+	b	.LBB5_14
+.LBB5_14:
+	b	.LBB5_15
+.LBB5_15:
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI5_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI5_2:
+	.long	1305670058                      @ double 0.188
+	.long	1070076002
+.LCPI5_3:
+	.long	2714419331                      @ double 0.154
+	.long	1069790789
+.LCPI5_5:
+	.long	3367254360                      @ double 0.124
+	.long	1069530742
+.LCPI5_1:
+	.long	0x42f00000                      @ float 120
+.LCPI5_4:
+	.long	0x42c80000                      @ float 100
+.Lfunc_end5:
+	.size	ibias_i2c_reg_write, .Lfunc_end5-ibias_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.imod_i2c_reg_write,"ax",%progbits
+	.hidden	imod_i2c_reg_write              @ -- Begin function imod_i2c_reg_write
+	.globl	imod_i2c_reg_write
+	.p2align	3
+	.type	imod_i2c_reg_write,%function
+	.code	16                              @ @imod_i2c_reg_write
+	.thumb_func
+imod_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI6_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB6_5
+	b	.LBB6_1
+.LBB6_1:
+	ldrh.w	r0, [sp]
+	cmp.w	r0, #700
+	bgt	.LBB6_3
+	b	.LBB6_2
+.LBB6_2:
+	ldrh.w	r0, [sp]
+	bl	ddm_50g_set_ld_imod
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #6]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #7]
+	b	.LBB6_4
+.LBB6_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #6]
+	strb	r0, [r1, #7]
+	b	.LBB6_4
+.LBB6_4:
+	b	.LBB6_5
+.LBB6_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB6_10
+	b	.LBB6_6
+.LBB6_6:
+	ldrh.w	r0, [sp]
+	movw	r1, #2500
+	cmp	r0, r1
+	bgt	.LBB6_8
+	b	.LBB6_7
+.LBB6_7:
+	ldrh.w	r0, [sp]
+	bl	ddm_10g_set_ld_imod
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #30]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #31]
+	b	.LBB6_9
+.LBB6_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #30]
+	strb	r0, [r1, #31]
+	b	.LBB6_9
+.LBB6_9:
+	b	.LBB6_10
+.LBB6_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB6_15
+	b	.LBB6_11
+.LBB6_11:
+	ldrh.w	r0, [sp]
+	cmp	r0, #100
+	bgt	.LBB6_13
+	b	.LBB6_12
+.LBB6_12:
+	ldrh.w	r0, [sp]
+	bl	ddm_1g_set_ld_imod
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #50]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #51]
+	b	.LBB6_14
+.LBB6_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #50]
+	strb.w	r0, [r1, #51]
+	b	.LBB6_14
+.LBB6_14:
+	b	.LBB6_15
+.LBB6_15:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI6_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end6:
+	.size	imod_i2c_reg_write, .Lfunc_end6-imod_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.swing_i2c_reg_write,"ax",%progbits
+	.hidden	swing_i2c_reg_write             @ -- Begin function swing_i2c_reg_write
+	.globl	swing_i2c_reg_write
+	.p2align	3
+	.type	swing_i2c_reg_write,%function
+	.code	16                              @ @swing_i2c_reg_write
+	.thumb_func
+swing_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI7_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_5
+	b	.LBB7_1
+.LBB7_1:
+	ldrh.w	r0, [sp]
+	cmp	r0, #180
+	bgt	.LBB7_3
+	b	.LBB7_2
+.LBB7_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #16]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #17]
+	ldrh.w	r0, [sp]
+	bl	ddm_50g_set_rx_swing
+	b	.LBB7_4
+.LBB7_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #16]
+	strb	r0, [r1, #17]
+	b	.LBB7_4
+.LBB7_4:
+	b	.LBB7_5
+.LBB7_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB7_10
+	b	.LBB7_6
+.LBB7_6:
+	ldrh.w	r0, [sp]
+	cmp	r0, #15
+	bgt	.LBB7_8
+	b	.LBB7_7
+.LBB7_7:
+	ldrh.w	r0, [sp]
+	bl	ddm_10g_set_rx_swing
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #40]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #41]
+	b	.LBB7_9
+.LBB7_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #40]
+	strb.w	r0, [r1, #41]
+	b	.LBB7_9
+.LBB7_9:
+	b	.LBB7_10
+.LBB7_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB7_15
+	b	.LBB7_11
+.LBB7_11:
+	ldrh.w	r0, [sp]
+	cmp	r0, #171
+	bgt	.LBB7_13
+	b	.LBB7_12
+.LBB7_12:
+	ldrh.w	r0, [sp]
+	bl	ddm_1g_set_rx_swing
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #56]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #57]
+	b	.LBB7_14
+.LBB7_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #56]
+	strb.w	r0, [r1, #57]
+	b	.LBB7_14
+.LBB7_14:
+	b	.LBB7_15
+.LBB7_15:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI7_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end7:
+	.size	swing_i2c_reg_write, .Lfunc_end7-swing_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rx_eq_i2c_reg_write,"ax",%progbits
+	.hidden	rx_eq_i2c_reg_write             @ -- Begin function rx_eq_i2c_reg_write
+	.globl	rx_eq_i2c_reg_write
+	.p2align	3
+	.type	rx_eq_i2c_reg_write,%function
+	.code	16                              @ @rx_eq_i2c_reg_write
+	.thumb_func
+rx_eq_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI8_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB8_5
+	b	.LBB8_1
+.LBB8_1:
+	ldrh.w	r0, [sp]
+	cmp	r0, #127
+	bgt	.LBB8_3
+	b	.LBB8_2
+.LBB8_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #14]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #15]
+	ldrh.w	r0, [sp]
+	bl	ddm_50g_set_rx_eq_boost
+	b	.LBB8_4
+.LBB8_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #14]
+	strb	r0, [r1, #15]
+	b	.LBB8_4
+.LBB8_4:
+	b	.LBB8_5
+.LBB8_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB8_10
+	b	.LBB8_6
+.LBB8_6:
+	ldrh.w	r0, [sp]
+	cmp	r0, #31
+	bgt	.LBB8_8
+	b	.LBB8_7
+.LBB8_7:
+	ldrh.w	r0, [sp]
+	bl	ddm_10g_set_rx_eq_boost
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #38]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #39]
+	b	.LBB8_9
+.LBB8_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #38]
+	strb.w	r0, [r1, #39]
+	b	.LBB8_9
+.LBB8_9:
+	b	.LBB8_10
+.LBB8_10:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI8_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end8:
+	.size	rx_eq_i2c_reg_write, .Lfunc_end8-rx_eq_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cpa_i2c_reg_write,"ax",%progbits
+	.hidden	cpa_i2c_reg_write               @ -- Begin function cpa_i2c_reg_write
+	.globl	cpa_i2c_reg_write
+	.p2align	3
+	.type	cpa_i2c_reg_write,%function
+	.code	16                              @ @cpa_i2c_reg_write
+	.thumb_func
+cpa_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI9_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strb.w	r0, [sp, #1]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB9_5
+	b	.LBB9_1
+.LBB9_1:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #31
+	bgt	.LBB9_3
+	b	.LBB9_2
+.LBB9_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #8]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #9]
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_50g_set_tx_ld_cpa
+	b	.LBB9_4
+.LBB9_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #8]
+	strb	r0, [r1, #9]
+	b	.LBB9_4
+.LBB9_4:
+	b	.LBB9_5
+.LBB9_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB9_10
+	b	.LBB9_6
+.LBB9_6:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #63
+	bgt	.LBB9_8
+	b	.LBB9_7
+.LBB9_7:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_10g_set_tx_ld_cpa
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #32]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #33]
+	b	.LBB9_9
+.LBB9_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #32]
+	strb.w	r0, [r1, #33]
+	b	.LBB9_9
+.LBB9_9:
+	b	.LBB9_10
+.LBB9_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB9_15
+	b	.LBB9_11
+.LBB9_11:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #63
+	bgt	.LBB9_13
+	b	.LBB9_12
+.LBB9_12:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_1g_set_tx_ld_cpa
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #52]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #53]
+	b	.LBB9_14
+.LBB9_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #52]
+	strb.w	r0, [r1, #53]
+	b	.LBB9_14
+.LBB9_14:
+	b	.LBB9_15
+.LBB9_15:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI9_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end9:
+	.size	cpa_i2c_reg_write, .Lfunc_end9-cpa_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tx_deemph_i2c_reg_write,"ax",%progbits
+	.hidden	tx_deemph_i2c_reg_write         @ -- Begin function tx_deemph_i2c_reg_write
+	.globl	tx_deemph_i2c_reg_write
+	.p2align	3
+	.type	tx_deemph_i2c_reg_write,%function
+	.code	16                              @ @tx_deemph_i2c_reg_write
+	.thumb_func
+tx_deemph_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI10_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB10_5
+	b	.LBB10_1
+.LBB10_1:
+	ldrh.w	r0, [sp]
+	cmp.w	r0, #1024
+	bge	.LBB10_3
+	b	.LBB10_2
+.LBB10_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #10]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #11]
+	ldrh.w	r0, [sp]
+	bl	ddm_50g_set_tx_ld_deempth
+	b	.LBB10_4
+.LBB10_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #10]
+	strb	r0, [r1, #11]
+	b	.LBB10_4
+.LBB10_4:
+	b	.LBB10_5
+.LBB10_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB10_10
+	b	.LBB10_6
+.LBB10_6:
+	ldrh.w	r0, [sp]
+	cmp	r0, #31
+	bgt	.LBB10_8
+	b	.LBB10_7
+.LBB10_7:
+	ldrh.w	r0, [sp]
+	bl	ddm_10g_set_tx_ld_deempth
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #34]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #35]
+	b	.LBB10_9
+.LBB10_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #34]
+	strb.w	r0, [r1, #35]
+	b	.LBB10_9
+.LBB10_9:
+	b	.LBB10_10
+.LBB10_10:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI10_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end10:
+	.size	tx_deemph_i2c_reg_write, .Lfunc_end10-tx_deemph_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rx_deemph_i2c_reg_write,"ax",%progbits
+	.hidden	rx_deemph_i2c_reg_write         @ -- Begin function rx_deemph_i2c_reg_write
+	.globl	rx_deemph_i2c_reg_write
+	.p2align	3
+	.type	rx_deemph_i2c_reg_write,%function
+	.code	16                              @ @rx_deemph_i2c_reg_write
+	.thumb_func
+rx_deemph_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI11_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strb.w	r0, [sp, #1]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB11_5
+	b	.LBB11_1
+.LBB11_1:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #15
+	bgt	.LBB11_3
+	b	.LBB11_2
+.LBB11_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #18]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #19]
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_50g_set_rx_drv_deemph
+	b	.LBB11_4
+.LBB11_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #18]
+	strb	r0, [r1, #19]
+	b	.LBB11_4
+.LBB11_4:
+	b	.LBB11_5
+.LBB11_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB11_10
+	b	.LBB11_6
+.LBB11_6:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #15
+	bgt	.LBB11_8
+	b	.LBB11_7
+.LBB11_7:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_10g_set_rx_drv_deemph
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #42]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #43]
+	b	.LBB11_9
+.LBB11_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #42]
+	strb.w	r0, [r1, #43]
+	b	.LBB11_9
+.LBB11_9:
+	b	.LBB11_10
+.LBB11_10:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI11_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end11:
+	.size	rx_deemph_i2c_reg_write, .Lfunc_end11-rx_deemph_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rx_los_threshold_i2c_reg_write,"ax",%progbits
+	.hidden	rx_los_threshold_i2c_reg_write  @ -- Begin function rx_los_threshold_i2c_reg_write
+	.globl	rx_los_threshold_i2c_reg_write
+	.p2align	3
+	.type	rx_los_threshold_i2c_reg_write,%function
+	.code	16                              @ @rx_los_threshold_i2c_reg_write
+	.thumb_func
+rx_los_threshold_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI12_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strb.w	r0, [sp, #1]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB12_5
+	b	.LBB12_1
+.LBB12_1:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #63
+	bgt	.LBB12_3
+	b	.LBB12_2
+.LBB12_2:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_50g_set_rx_los_threshold
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #20]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #21]
+	b	.LBB12_4
+.LBB12_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #20]
+	strb	r0, [r1, #21]
+	b	.LBB12_4
+.LBB12_4:
+	b	.LBB12_5
+.LBB12_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB12_10
+	b	.LBB12_6
+.LBB12_6:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #63
+	bgt	.LBB12_8
+	b	.LBB12_7
+.LBB12_7:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_10g_set_rx_los_threshold
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #44]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #45]
+	b	.LBB12_9
+.LBB12_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #44]
+	strb.w	r0, [r1, #45]
+	b	.LBB12_9
+.LBB12_9:
+	b	.LBB12_10
+.LBB12_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB12_15
+	b	.LBB12_11
+.LBB12_11:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #255
+	bgt	.LBB12_13
+	b	.LBB12_12
+.LBB12_12:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_1g_set_rx_los_threshold
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #58]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #59]
+	b	.LBB12_14
+.LBB12_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #58]
+	strb.w	r0, [r1, #59]
+	b	.LBB12_14
+.LBB12_14:
+	b	.LBB12_15
+.LBB12_15:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI12_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end12:
+	.size	rx_los_threshold_i2c_reg_write, .Lfunc_end12-rx_los_threshold_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rx_los_hyst_i2c_reg_write,"ax",%progbits
+	.hidden	rx_los_hyst_i2c_reg_write       @ -- Begin function rx_los_hyst_i2c_reg_write
+	.globl	rx_los_hyst_i2c_reg_write
+	.p2align	3
+	.type	rx_los_hyst_i2c_reg_write,%function
+	.code	16                              @ @rx_los_hyst_i2c_reg_write
+	.thumb_func
+rx_los_hyst_i2c_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	ldr	r0, [sp, #12]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	bl	get_u16
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI13_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strb.w	r0, [sp, #1]
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB13_5
+	b	.LBB13_1
+.LBB13_1:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #31
+	bgt	.LBB13_3
+	b	.LBB13_2
+.LBB13_2:
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #22]
+	ldrh.w	r0, [sp, #2]
+	strb	r0, [r1, #23]
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_50g_set_rx_los_hyst
+	b	.LBB13_4
+.LBB13_3:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb	r0, [r1, #22]
+	strb	r0, [r1, #23]
+	b	.LBB13_4
+.LBB13_4:
+	b	.LBB13_5
+.LBB13_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #1
+	bne	.LBB13_10
+	b	.LBB13_6
+.LBB13_6:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #31
+	bgt	.LBB13_8
+	b	.LBB13_7
+.LBB13_7:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_10g_set_rx_los_hyst
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #46]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #47]
+	b	.LBB13_9
+.LBB13_8:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #46]
+	strb.w	r0, [r1, #47]
+	b	.LBB13_9
+.LBB13_9:
+	b	.LBB13_10
+.LBB13_10:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB13_15
+	b	.LBB13_11
+.LBB13_11:
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #3
+	bgt	.LBB13_13
+	b	.LBB13_12
+.LBB13_12:
+	ldrb.w	r0, [sp, #1]
+	bl	ddm_1g_set_rx_los_hyst
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb.w	r0, [r1, #60]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [r1, #61]
+	b	.LBB13_14
+.LBB13_13:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	movs	r0, #0
+	strb.w	r0, [r1, #60]
+	strb.w	r0, [r1, #61]
+	b	.LBB13_14
+.LBB13_14:
+	b	.LBB13_15
+.LBB13_15:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.16:
+.LCPI13_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.Lfunc_end13:
+	.size	rx_los_hyst_i2c_reg_write, .Lfunc_end13-rx_los_hyst_i2c_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cmd_command_map_reg_write,"ax",%progbits
+	.hidden	cmd_command_map_reg_write       @ -- Begin function cmd_command_map_reg_write
+	.globl	cmd_command_map_reg_write
+	.p2align	2
+	.type	cmd_command_map_reg_write,%function
+	.code	16                              @ @cmd_command_map_reg_write
+	.thumb_func
+cmd_command_map_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	cbz	r0, .LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	ldr	r0, [sp, #8]
+	cmp	r0, #1
+	bhi	.LBB14_3
+	b	.LBB14_2
+.LBB14_2:
+	b	.LBB14_22
+.LBB14_3:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #1]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	str	r0, [sp]                        @ 4-byte Spill
+	cmp	r0, #13
+	bhi	.LBB14_20
+@ %bb.4:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI14_0:
+	tbb	[pc, r1]
+@ %bb.5:
+.LJTI14_0:
+	.byte	(.LBB14_6-(.LCPI14_0+4))/2
+	.byte	(.LBB14_7-(.LCPI14_0+4))/2
+	.byte	(.LBB14_8-(.LCPI14_0+4))/2
+	.byte	(.LBB14_9-(.LCPI14_0+4))/2
+	.byte	(.LBB14_10-(.LCPI14_0+4))/2
+	.byte	(.LBB14_11-(.LCPI14_0+4))/2
+	.byte	(.LBB14_12-(.LCPI14_0+4))/2
+	.byte	(.LBB14_13-(.LCPI14_0+4))/2
+	.byte	(.LBB14_14-(.LCPI14_0+4))/2
+	.byte	(.LBB14_15-(.LCPI14_0+4))/2
+	.byte	(.LBB14_16-(.LCPI14_0+4))/2
+	.byte	(.LBB14_17-(.LCPI14_0+4))/2
+	.byte	(.LBB14_18-(.LCPI14_0+4))/2
+	.byte	(.LBB14_19-(.LCPI14_0+4))/2
+	.p2align	1
+.LBB14_6:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	om_save_data_config_flash_write
+	b	.LBB14_21
+.LBB14_7:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	om_erase_data_config_flash_write
+	b	.LBB14_21
+.LBB14_8:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	apc_auto_enable_reg_write
+	b	.LBB14_21
+.LBB14_9:
+	b	.LBB14_21
+.LBB14_10:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	apc_target_voltage_reg_write
+	b	.LBB14_21
+.LBB14_11:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_i_50g_reg_write
+	b	.LBB14_21
+.LBB14_12:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_pwr_50g_reg_write
+	b	.LBB14_21
+.LBB14_13:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_rx_pwr_50g_reg_write
+	b	.LBB14_21
+.LBB14_14:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_i_10g_reg_write
+	b	.LBB14_21
+.LBB14_15:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_pwr_10g_reg_write
+	b	.LBB14_21
+.LBB14_16:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_rx_pwr_10g_reg_write
+	b	.LBB14_21
+.LBB14_17:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_i_1g_reg_write
+	b	.LBB14_21
+.LBB14_18:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_tx_pwr_1g_reg_write
+	b	.LBB14_21
+.LBB14_19:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	calibration_rx_pwr_1g_reg_write
+	b	.LBB14_21
+.LBB14_20:
+	b	.LBB14_21
+.LBB14_21:
+	b	.LBB14_22
+.LBB14_22:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	cmd_command_map_reg_write, .Lfunc_end14-cmd_command_map_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_i2c_switch_auto_process_reg_write,"ax",%progbits
+	.hidden	ddm_i2c_switch_auto_process_reg_write @ -- Begin function ddm_i2c_switch_auto_process_reg_write
+	.globl	ddm_i2c_switch_auto_process_reg_write
+	.p2align	2
+	.type	ddm_i2c_switch_auto_process_reg_write,%function
+	.code	16                              @ @ddm_i2c_switch_auto_process_reg_write
+	.thumb_func
+ddm_i2c_switch_auto_process_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	ldr	r0, [sp, #12]
+	cbz	r0, .LBB15_2
+	b	.LBB15_1
+.LBB15_1:
+	ldr	r0, [sp, #8]
+	cmp	r0, #2
+	bhi	.LBB15_3
+	b	.LBB15_2
+.LBB15_2:
+	b	.LBB15_12
+.LBB15_3:
+	ldr	r0, [sp, #12]
+	ldrb	r1, [r0]
+	ldrb.w	r0, [sp, #7]
+	orrs	r0, r1
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #18
+	beq	.LBB15_5
+	b	.LBB15_4
+.LBB15_4:
+	b	.LBB15_12
+.LBB15_5:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #1]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cbz	r0, .LBB15_8
+	b	.LBB15_6
+.LBB15_6:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB15_9
+	b	.LBB15_7
+.LBB15_7:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB15_10
+	b	.LBB15_11
+.LBB15_8:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #2]
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	strb	r0, [r1, #1]
+	b	.LBB15_12
+.LBB15_9:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #2]
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	strb	r0, [r1, #2]
+	b	.LBB15_12
+.LBB15_10:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #2]
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	strb	r0, [r1, #3]
+	b	.LBB15_12
+.LBB15_11:
+	b	.LBB15_12
+.LBB15_12:
+	add	sp, #16
+	bx	lr
+.Lfunc_end15:
+	.size	ddm_i2c_switch_auto_process_reg_write, .Lfunc_end15-ddm_i2c_switch_auto_process_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.import_binary_file_data_to_mcu_flash,"ax",%progbits
+	.hidden	import_binary_file_data_to_mcu_flash @ -- Begin function import_binary_file_data_to_mcu_flash
+	.globl	import_binary_file_data_to_mcu_flash
+	.p2align	2
+	.type	import_binary_file_data_to_mcu_flash,%function
+	.code	16                              @ @import_binary_file_data_to_mcu_flash
+	.thumb_func
+import_binary_file_data_to_mcu_flash:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #1
+	bhi	.LBB16_3
+	b	.LBB16_2
+.LBB16_2:
+	b	.LBB16_20
+.LBB16_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #40
+	beq	.LBB16_5
+	b	.LBB16_4
+.LBB16_4:
+	b	.LBB16_20
+.LBB16_5:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	mov	r1, r0
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	cbz	r0, .LBB16_8
+	b	.LBB16_6
+.LBB16_6:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB16_13
+	b	.LBB16_7
+.LBB16_7:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB16_18
+	b	.LBB16_19
+.LBB16_8:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #1
+	strb	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	cbnz	r0, .LBB16_12
+	b	.LBB16_9
+.LBB16_9:
+	bl	update_mem_malloc
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	cbnz	r0, .LBB16_11
+	b	.LBB16_10
+.LBB16_10:
+	b	.LBB16_20
+.LBB16_11:
+	b	.LBB16_12
+.LBB16_12:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB16_20
+.LBB16_13:
+	ldr	r0, [sp, #16]
+	subs	r0, #2
+	str	r0, [sp, #12]
+	ldr	r2, [sp, #12]
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	ldr	r0, [r1]
+	add	r0, r2
+	str	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	cbnz	r0, .LBB16_15
+	b	.LBB16_14
+.LBB16_14:
+	b	.LBB16_20
+.LBB16_15:
+	movw	r0, :lower16:g_update_mem_idx
+	movt	r0, :upper16:g_update_mem_idx
+	ldr	r0, [r0]
+	ldr	r1, [sp, #12]
+	add	r0, r1
+	cmp.w	r0, #1024
+	bls	.LBB16_17
+	b	.LBB16_16
+.LBB16_16:
+	movw	r0, #18432
+	movt	r0, #2054
+	bl	comm_update_write_to_flash
+	movw	r1, :lower16:g_update_mem_idx
+	movt	r1, :upper16:g_update_mem_idx
+	movs	r0, #0
+	str	r0, [r1]
+	b	.LBB16_17
+.LBB16_17:
+	movw	r0, :lower16:g_update_mem_ptr
+	movt	r0, :upper16:g_update_mem_ptr
+	ldr	r0, [r0]
+	movw	r1, :lower16:g_update_mem_idx
+	movt	r1, :upper16:g_update_mem_idx
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r1, [r1]
+	add	r0, r1
+	ldr	r1, [sp, #20]
+	adds	r1, #2
+	ldr	r2, [sp, #12]
+	bl	__aeabi_memcpy
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #12]
+	ldr	r0, [r1]
+	add	r0, r2
+	str	r0, [r1]
+	b	.LBB16_20
+.LBB16_18:
+	movw	r0, #18432
+	movt	r0, #2054
+	bl	comm_update_write_to_flash
+	b	.LBB16_20
+.LBB16_19:
+	b	.LBB16_20
+.LBB16_20:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end16:
+	.size	import_binary_file_data_to_mcu_flash, .Lfunc_end16-import_binary_file_data_to_mcu_flash
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_i2c_50g_monitor_reg_read,"ax",%progbits
+	.hidden	ddm_i2c_50g_monitor_reg_read    @ -- Begin function ddm_i2c_50g_monitor_reg_read
+	.globl	ddm_i2c_50g_monitor_reg_read
+	.p2align	3
+	.type	ddm_i2c_50g_monitor_reg_read,%function
+	.code	16                              @ @ddm_i2c_50g_monitor_reg_read
+	.thumb_func
+ddm_i2c_50g_monitor_reg_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #23]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+	strh.w	r0, [sp, #10]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #41
+	beq	.LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	b	.LBB17_3
+.LBB17_2:
+	bl	ddm_50g_get_monitor_adc
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI17_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #16]
+	ldrh.w	r1, [sp, #10]
+	bl	set_u16
+	b	.LBB17_3
+.LBB17_3:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.4:
+.LCPI17_0:
+	.long	0                               @ double 6.103515625E-4
+	.long	1061421056
+.Lfunc_end17:
+	.size	ddm_i2c_50g_monitor_reg_read, .Lfunc_end17-ddm_i2c_50g_monitor_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

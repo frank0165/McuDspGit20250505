@@ -1,0 +1,474 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_it.c"
+	.section	.text.NMI_Handler,"ax",%progbits
+	.hidden	NMI_Handler                     @ -- Begin function NMI_Handler
+	.globl	NMI_Handler
+	.p2align	2
+	.type	NMI_Handler,%function
+	.code	16                              @ @NMI_Handler
+	.thumb_func
+NMI_Handler:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	bx	lr
+.Lfunc_end0:
+	.size	NMI_Handler, .Lfunc_end0-NMI_Handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.HardFault_Handler,"ax",%progbits
+	.hidden	HardFault_Handler               @ -- Begin function HardFault_Handler
+	.globl	HardFault_Handler
+	.p2align	2
+	.type	HardFault_Handler,%function
+	.code	16                              @ @HardFault_Handler
+	.thumb_func
+HardFault_Handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	b	.LBB1_1
+.Lfunc_end1:
+	.size	HardFault_Handler, .Lfunc_end1-HardFault_Handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SVC_Handler,"ax",%progbits
+	.hidden	SVC_Handler                     @ -- Begin function SVC_Handler
+	.globl	SVC_Handler
+	.p2align	2
+	.type	SVC_Handler,%function
+	.code	16                              @ @SVC_Handler
+	.thumb_func
+SVC_Handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	bx	lr
+.Lfunc_end2:
+	.size	SVC_Handler, .Lfunc_end2-SVC_Handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PendSV_Handler,"ax",%progbits
+	.hidden	PendSV_Handler                  @ -- Begin function PendSV_Handler
+	.globl	PendSV_Handler
+	.p2align	2
+	.type	PendSV_Handler,%function
+	.code	16                              @ @PendSV_Handler
+	.thumb_func
+PendSV_Handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	bx	lr
+.Lfunc_end3:
+	.size	PendSV_Handler, .Lfunc_end3-PendSV_Handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C1_EV_IRQHandler,"ax",%progbits
+	.hidden	I2C1_EV_IRQHandler              @ -- Begin function I2C1_EV_IRQHandler
+	.globl	I2C1_EV_IRQHandler
+	.p2align	2
+	.type	I2C1_EV_IRQHandler,%function
+	.code	16                              @ @I2C1_EV_IRQHandler
+	.thumb_func
+I2C1_EV_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #22528
+	movt	r0, #16384
+	bl	master_i2c_event_irq_handler
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	I2C1_EV_IRQHandler, .Lfunc_end4-I2C1_EV_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C1_ER_IRQHandler,"ax",%progbits
+	.hidden	I2C1_ER_IRQHandler              @ -- Begin function I2C1_ER_IRQHandler
+	.globl	I2C1_ER_IRQHandler
+	.p2align	2
+	.type	I2C1_ER_IRQHandler,%function
+	.code	16                              @ @I2C1_ER_IRQHandler
+	.thumb_func
+I2C1_ER_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #22528
+	movt	r0, #16384
+	bl	master_i2c_error_irq_handler
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	I2C1_ER_IRQHandler, .Lfunc_end5-I2C1_ER_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C0_EV_IRQHandler,"ax",%progbits
+	.hidden	I2C0_EV_IRQHandler              @ -- Begin function I2C0_EV_IRQHandler
+	.globl	I2C0_EV_IRQHandler
+	.p2align	2
+	.type	I2C0_EV_IRQHandler,%function
+	.code	16                              @ @I2C0_EV_IRQHandler
+	.thumb_func
+I2C0_EV_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #21504
+	movt	r0, #16384
+	bl	master_i2c_event_irq_handler
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	I2C0_EV_IRQHandler, .Lfunc_end6-I2C0_EV_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C0_ER_IRQHandler,"ax",%progbits
+	.hidden	I2C0_ER_IRQHandler              @ -- Begin function I2C0_ER_IRQHandler
+	.globl	I2C0_ER_IRQHandler
+	.p2align	2
+	.type	I2C0_ER_IRQHandler,%function
+	.code	16                              @ @I2C0_ER_IRQHandler
+	.thumb_func
+I2C0_ER_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #21504
+	movt	r0, #16384
+	bl	master_i2c_error_irq_handler
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	I2C0_ER_IRQHandler, .Lfunc_end7-I2C0_ER_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C2_EV_IRQHandler,"ax",%progbits
+	.hidden	I2C2_EV_IRQHandler              @ -- Begin function I2C2_EV_IRQHandler
+	.globl	I2C2_EV_IRQHandler
+	.p2align	2
+	.type	I2C2_EV_IRQHandler,%function
+	.code	16                              @ @I2C2_EV_IRQHandler
+	.thumb_func
+I2C2_EV_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #49152
+	movt	r0, #16384
+	bl	slave_event_irq_handler
+	pop	{r7, pc}
+.Lfunc_end8:
+	.size	I2C2_EV_IRQHandler, .Lfunc_end8-I2C2_EV_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.I2C2_ER_IRQHandler,"ax",%progbits
+	.hidden	I2C2_ER_IRQHandler              @ -- Begin function I2C2_ER_IRQHandler
+	.globl	I2C2_ER_IRQHandler
+	.p2align	2
+	.type	I2C2_ER_IRQHandler,%function
+	.code	16                              @ @I2C2_ER_IRQHandler
+	.thumb_func
+I2C2_ER_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	slave_error_irq_handler
+	pop	{r7, pc}
+.Lfunc_end9:
+	.size	I2C2_ER_IRQHandler, .Lfunc_end9-I2C2_ER_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SysTick_Handler,"ax",%progbits
+	.hidden	SysTick_Handler                 @ -- Begin function SysTick_Handler
+	.globl	SysTick_Handler
+	.p2align	2
+	.type	SysTick_Handler,%function
+	.code	16                              @ @SysTick_Handler
+	.thumb_func
+SysTick_Handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	ldr	r0, [r1, #12]
+	adds	r0, #1
+	str	r0, [r1, #12]
+	ldr	r0, [r1, #20]
+	adds	r0, #1
+	str	r0, [r1, #20]
+	ldr	r0, [r1, #24]
+	adds	r0, #1
+	str	r0, [r1, #24]
+	ldr	r0, [r1, #16]
+	adds	r0, #1
+	str	r0, [r1, #16]
+	bl	delay_decrement
+	pop	{r7, pc}
+.Lfunc_end10:
+	.size	SysTick_Handler, .Lfunc_end10-SysTick_Handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.EXTI4_15_IRQHandler,"ax",%progbits
+	.hidden	EXTI4_15_IRQHandler             @ -- Begin function EXTI4_15_IRQHandler
+	.globl	EXTI4_15_IRQHandler
+	.p2align	2
+	.type	EXTI4_15_IRQHandler,%function
+	.code	16                              @ @EXTI4_15_IRQHandler
+	.thumb_func
+EXTI4_15_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	mov.w	r0, #32768
+	bl	exti_interrupt_flag_get
+	cbz	r0, .LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	ldr	r0, [r1, #8]
+	adds	r0, #1
+	str	r0, [r1, #8]
+	bl	ddm_50g_rssi_start_sample_adc_action
+	bl	ddm_10g_rssi_start_sample_adc_action
+	bl	ddm_1g_rssi_start_sample_adc_action
+	mov.w	r0, #32768
+	bl	exti_interrupt_flag_clear
+	b	.LBB11_2
+.LBB11_2:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end11:
+	.size	EXTI4_15_IRQHandler, .Lfunc_end11-EXTI4_15_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.USART0_IRQHandler,"ax",%progbits
+	.hidden	USART0_IRQHandler               @ -- Begin function USART0_IRQHandler
+	.globl	USART0_IRQHandler
+	.p2align	2
+	.type	USART0_IRQHandler,%function
+	.code	16                              @ @USART0_IRQHandler
+	.thumb_func
+USART0_IRQHandler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #14336
+	movt	r0, #16385
+	movs	r1, #5
+	movt	r1, #1797
+	bl	usart_interrupt_flag_get
+	cbz	r0, .LBB12_4
+	b	.LBB12_1
+.LBB12_1:
+	movw	r0, #14336
+	movt	r0, #16385
+	bl	usart_data_receive
+	mov	r1, r0
+	movw	r0, :lower16:g_usart_rxcount
+	movt	r0, :upper16:g_usart_rxcount
+	ldrh	r3, [r0]
+	adds	r2, r3, #1
+	strh	r2, [r0]
+	movw	r2, :lower16:g_usart_receiver_buffer
+	movt	r2, :upper16:g_usart_receiver_buffer
+	strb	r1, [r2, r3]
+	ldrh	r0, [r0]
+	movw	r1, :lower16:g_usart_receivesize
+	movt	r1, :upper16:g_usart_receivesize
+	ldrb	r1, [r1]
+	cmp	r0, r1
+	bne	.LBB12_3
+	b	.LBB12_2
+.LBB12_2:
+	movw	r0, #14336
+	movt	r0, #16385
+	movs	r1, #5
+	bl	usart_interrupt_disable
+	b	.LBB12_3
+.LBB12_3:
+	b	.LBB12_4
+.LBB12_4:
+	movw	r0, #14336
+	movt	r0, #16385
+	movs	r1, #7
+	movt	r1, #1799
+	bl	usart_interrupt_flag_get
+	cbz	r0, .LBB12_8
+	b	.LBB12_5
+.LBB12_5:
+	movw	r2, :lower16:g_usart_rxcount
+	movt	r2, :upper16:g_usart_rxcount
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	ldrh	r1, [r2]
+	adds	r0, r1, #1
+	strh	r0, [r2]
+	movw	r0, :lower16:g_usart_receiver_buffer
+	movt	r0, :upper16:g_usart_receiver_buffer
+	ldrb	r1, [r0, r1]
+	movw	r0, #14336
+	movt	r0, #16385
+	bl	usart_data_transmit
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r0, [r0]
+	movw	r1, :lower16:g_usart_receivesize
+	movt	r1, :upper16:g_usart_receivesize
+	ldrb	r1, [r1]
+	cmp	r0, r1
+	bne	.LBB12_7
+	b	.LBB12_6
+.LBB12_6:
+	movw	r0, #14336
+	movt	r0, #16385
+	movs	r1, #7
+	bl	usart_interrupt_disable
+	b	.LBB12_7
+.LBB12_7:
+	b	.LBB12_8
+.LBB12_8:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	USART0_IRQHandler, .Lfunc_end12-USART0_IRQHandler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_usart_receivesize             @ @g_usart_receivesize
+	.type	g_usart_receivesize,%object
+	.section	.data.g_usart_receivesize,"aw",%progbits
+	.globl	g_usart_receivesize
+g_usart_receivesize:
+	.byte	32                              @ 0x20
+	.size	g_usart_receivesize, 1
+
+	.hidden	g_usart_txcount                 @ @g_usart_txcount
+	.type	g_usart_txcount,%object
+	.section	.bss.g_usart_txcount,"aw",%nobits
+	.globl	g_usart_txcount
+g_usart_txcount:
+	.byte	0                               @ 0x0
+	.size	g_usart_txcount, 1
+
+	.hidden	g_usart_rxcount                 @ @g_usart_rxcount
+	.type	g_usart_rxcount,%object
+	.section	.bss.g_usart_rxcount,"aw",%nobits
+	.globl	g_usart_rxcount
+	.p2align	1, 0x0
+g_usart_rxcount:
+	.short	0                               @ 0x0
+	.size	g_usart_rxcount, 2
+
+	.hidden	g_usart_receiver_buffer         @ @g_usart_receiver_buffer
+	.type	g_usart_receiver_buffer,%object
+	.section	.bss.g_usart_receiver_buffer,"aw",%nobits
+	.globl	g_usart_receiver_buffer
+g_usart_receiver_buffer:
+	.zero	32
+	.size	g_usart_receiver_buffer, 32
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

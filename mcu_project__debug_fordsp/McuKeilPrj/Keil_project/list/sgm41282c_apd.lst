@@ -1,0 +1,513 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"sgm41282c_apd.c"
+	.section	.text.sgm41282c_init,"ax",%progbits
+	.hidden	sgm41282c_init                  @ -- Begin function sgm41282c_init
+	.globl	sgm41282c_init
+	.p2align	2
+	.type	sgm41282c_init,%function
+	.code	16                              @ @sgm41282c_init
+	.thumb_func
+sgm41282c_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	bl	sgm41282c_gpio_50g_init
+	movs	r0, #0
+	str	r0, [sp]                        @ 4-byte Spill
+	str	r0, [sp, #12]
+	vldr	s0, [sp, #12]
+	bl	sgm41282c_set_apd
+	bl	sgm41282c_gpio_10g_init
+	ldr	r0, [sp]                        @ 4-byte Reload
+	str	r0, [sp, #8]
+	vldr	s0, [sp, #8]
+	movs	r0, #1
+	bl	sgm41282c_set_apd
+	bl	sgm41282c_gpio_1g_init
+	ldr	r0, [sp]                        @ 4-byte Reload
+	str	r0, [sp, #4]
+	vldr	s0, [sp, #4]
+	movs	r0, #2
+	bl	sgm41282c_set_apd
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	sgm41282c_init, .Lfunc_end0-sgm41282c_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_set_apd,"ax",%progbits
+	.hidden	sgm41282c_set_apd               @ -- Begin function sgm41282c_set_apd
+	.globl	sgm41282c_set_apd
+	.p2align	3
+	.type	sgm41282c_set_apd,%function
+	.code	16                              @ @sgm41282c_set_apd
+	.thumb_func
+sgm41282c_set_apd:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	vstr	s0, [sp, #4]
+	strb.w	r0, [sp, #3]
+	ldr	r0, [sp, #4]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI1_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI1_1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI1_2
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI1_3
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp]
+	ldrh.w	r0, [sp]
+	ldrb.w	r1, [sp, #3]
+	bl	sgm41282c_set_apd_vcc
+	add	sp, #8
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI1_0:
+	.long	563499709                       @ double 0.034099999999999998
+	.long	1067545998
+.LCPI1_1:
+	.long	797145930                       @ double 0.1041
+	.long	1069196876
+.LCPI1_2:
+	.long	0                               @ double 2.5
+	.long	1074003968
+.LCPI1_3:
+	.long	0                               @ double 4096
+	.long	1085276160
+.Lfunc_end1:
+	.size	sgm41282c_set_apd, .Lfunc_end1-sgm41282c_set_apd
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_gpio_50g_init,"ax",%progbits
+	.hidden	sgm41282c_gpio_50g_init         @ -- Begin function sgm41282c_gpio_50g_init
+	.globl	sgm41282c_gpio_50g_init
+	.p2align	2
+	.type	sgm41282c_gpio_50g_init,%function
+	.code	16                              @ @sgm41282c_gpio_50g_init
+	.thumb_func
+sgm41282c_gpio_50g_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	mov.w	r3, #512
+	str	r3, [sp, #16]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #12]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	mov.w	r3, #2048
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	mov.w	r3, #1024
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_bit_reset
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_bit_reset
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	sgm41282c_gpio_50g_init, .Lfunc_end2-sgm41282c_gpio_50g_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_gpio_10g_init,"ax",%progbits
+	.hidden	sgm41282c_gpio_10g_init         @ -- Begin function sgm41282c_gpio_10g_init
+	.globl	sgm41282c_gpio_10g_init
+	.p2align	2
+	.type	sgm41282c_gpio_10g_init,%function
+	.code	16                              @ @sgm41282c_gpio_10g_init
+	.thumb_func
+sgm41282c_gpio_10g_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #20]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	movs	r3, #8
+	str	r3, [sp, #16]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	mov	r1, r3
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	mov.w	r3, #4096
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	sgm41282c_gpio_10g_init, .Lfunc_end3-sgm41282c_gpio_10g_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_gpio_1g_init,"ax",%progbits
+	.hidden	sgm41282c_gpio_1g_init          @ -- Begin function sgm41282c_gpio_1g_init
+	.globl	sgm41282c_gpio_1g_init
+	.p2align	2
+	.type	sgm41282c_gpio_1g_init,%function
+	.code	16                              @ @sgm41282c_gpio_1g_init
+	.thumb_func
+sgm41282c_gpio_1g_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #28]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	mov.w	r3, #32768
+	str	r3, [sp, #16]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	movw	r0, #5120
+	movt	r0, #18432
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r3, #2
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	mov	r1, r3
+	bl	gpio_mode_set
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	sgm41282c_gpio_1g_init, .Lfunc_end4-sgm41282c_gpio_1g_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_reset,"ax",%progbits
+	.hidden	sgm41282c_reset                 @ -- Begin function sgm41282c_reset
+	.globl	sgm41282c_reset
+	.p2align	2
+	.type	sgm41282c_reset,%function
+	.code	16                              @ @sgm41282c_reset
+	.thumb_func
+sgm41282c_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	bx	lr
+.Lfunc_end5:
+	.size	sgm41282c_reset, .Lfunc_end5-sgm41282c_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_get_rssi_value,"ax",%progbits
+	.hidden	sgm41282c_get_rssi_value        @ -- Begin function sgm41282c_get_rssi_value
+	.globl	sgm41282c_get_rssi_value
+	.p2align	2
+	.type	sgm41282c_get_rssi_value,%function
+	.code	16                              @ @sgm41282c_get_rssi_value
+	.thumb_func
+sgm41282c_get_rssi_value:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	sgm41282c_get_rssi_value, .Lfunc_end6-sgm41282c_get_rssi_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_set_rssi_value,"ax",%progbits
+	.hidden	sgm41282c_set_rssi_value        @ -- Begin function sgm41282c_set_rssi_value
+	.globl	sgm41282c_set_rssi_value
+	.p2align	2
+	.type	sgm41282c_set_rssi_value,%function
+	.code	16                              @ @sgm41282c_set_rssi_value
+	.thumb_func
+sgm41282c_set_rssi_value:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strh.w	r0, [sp, #2]
+	strb.w	r1, [sp, #1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	sgm41282c_set_rssi_value, .Lfunc_end7-sgm41282c_set_rssi_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.sgm41282c_set_apd_vcc,"ax",%progbits
+	.hidden	sgm41282c_set_apd_vcc           @ -- Begin function sgm41282c_set_apd_vcc
+	.globl	sgm41282c_set_apd_vcc
+	.p2align	2
+	.type	sgm41282c_set_apd_vcc,%function
+	.code	16                              @ @sgm41282c_set_apd_vcc
+	.thumb_func
+sgm41282c_set_apd_vcc:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strh.w	r0, [sp, #6]
+	strb.w	r1, [sp, #5]
+	ldrb.w	r0, [sp, #5]
+	cbnz	r0, .LBB8_2
+	b	.LBB8_1
+.LBB8_1:
+	ldrh.w	r3, [sp, #6]
+	movw	r0, #29696
+	movt	r0, #16384
+	movs	r2, #0
+	mov	r1, r2
+	bl	dac_data_set
+	b	.LBB8_8
+.LBB8_2:
+	ldrb.w	r0, [sp, #5]
+	cmp	r0, #1
+	bne	.LBB8_4
+	b	.LBB8_3
+.LBB8_3:
+	ldrh.w	r3, [sp, #6]
+	movw	r0, #53248
+	movt	r0, #16384
+	movs	r2, #0
+	mov	r1, r2
+	bl	dac_data_set
+	b	.LBB8_7
+.LBB8_4:
+	ldrb.w	r0, [sp, #5]
+	cmp	r0, #2
+	bne	.LBB8_6
+	b	.LBB8_5
+.LBB8_5:
+	ldrh.w	r3, [sp, #6]
+	movw	r0, #29696
+	movt	r0, #16384
+	movs	r1, #1
+	movs	r2, #0
+	bl	dac_data_set
+	b	.LBB8_6
+.LBB8_6:
+	b	.LBB8_7
+.LBB8_7:
+	b	.LBB8_8
+.LBB8_8:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end8:
+	.size	sgm41282c_set_apd_vcc, .Lfunc_end8-sgm41282c_set_apd_vcc
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

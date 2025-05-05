@@ -1,0 +1,1330 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;/*!
+    2 00000000         ;    \file    startup_gd32e501.s
+    3 00000000         ;    \brief   start up file
+    4 00000000         ;
+    5 00000000         ;    \version 2020-03-02, V1.0.0, firmware for GD32E501
+    6 00000000         ;    \version 2020-04-10, V1.0.1, firmware for GD32E501
+    7 00000000         ;    \version 2020-08-25, V1.0.2, firmware for GD32E501
+    8 00000000         ;*/
+    9 00000000         ;
+   10 00000000         ;/*
+   11 00000000         ;    Copyright (c) 2020, GigaDevice Semiconductor Inc.
+   12 00000000         ;
+   13 00000000         ;    Redistribution and use in source and binary forms, 
+                       with or without modification, 
+   14 00000000         ;are permitted provided that the following conditions ar
+                       e met:
+   15 00000000         ;
+   16 00000000         ;    1. Redistributions of source code must retain the a
+                       bove copyright notice, this 
+   17 00000000         ;       list of conditions and the following disclaimer.
+                       
+   18 00000000         ;    2. Redistributions in binary form must reproduce th
+                       e above copyright notice, 
+   19 00000000         ;       this list of conditions and the following discla
+                       imer in the documentation 
+   20 00000000         ;       and/or other materials provided with the distrib
+                       ution.
+   21 00000000         ;    3. Neither the name of the copyright holder nor the
+                        names of its contributors 
+   22 00000000         ;       may be used to endorse or promote products deriv
+                       ed from this software without 
+   23 00000000         ;       specific prior written permission.
+   24 00000000         ;
+   25 00000000         ;    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS 
+                       AND CONTRIBUTORS "AS IS" 
+   26 00000000         ;AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT N
+                       OT LIMITED TO, THE IMPLIED 
+   27 00000000         ;WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICU
+                       LAR PURPOSE ARE DISCLAIMED. 
+   28 00000000         ;IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS 
+                       BE LIABLE FOR ANY DIRECT, 
+   29 00000000         ;INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENT
+                       IAL DAMAGES (INCLUDING, BUT 
+   30 00000000         ;NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERV
+                       ICES; LOSS OF USE, DATA, OR 
+   31 00000000         ;PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND O
+                       N ANY THEORY OF LIABILITY, 
+   32 00000000         ;WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDI
+                       NG NEGLIGENCE OR OTHERWISE) 
+   33 00000000         ;ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVE
+                       N IF ADVISED OF THE POSSIBILITY 
+   34 00000000         ;OF SUCH DAMAGE.
+   35 00000000         ;*/
+   36 00000000         
+   37 00000000         ; <h> Stack Configuration
+   38 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   39 00000000         ; </h> 400
+   40 00000000         
+   41 00000000 00000400 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                       Stack_Size
+                               EQU              0x00000400
+   42 00000000         
+   43 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
+=3
+   44 00000000         Stack_Mem
+                               SPACE            Stack_Size
+   45 00000400         __initial_sp
+   46 00000400         
+   47 00000400         
+   48 00000400         ; <h> Heap Configuration
+   49 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   50 00000400         ; </h>
+   51 00000400         
+   52 00000400         ;Heap_Size       EQU     0x00000400  600
+   53 00000400 00000600 
+                       Heap_Size
+                               EQU              0x00000600
+   54 00000400         
+   55 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+3
+   56 00000000         __heap_base
+   57 00000000         Heap_Mem
+                               SPACE            Heap_Size
+   58 00000600         __heap_limit
+   59 00000600         
+   60 00000600                 PRESERVE8
+   61 00000600                 THUMB
+   62 00000600         
+   63 00000600         ;               /* reset Vector Mapped to at Address 0 *
+                       /
+   64 00000600                 AREA             RESET, DATA, READONLY
+   65 00000000                 EXPORT           __Vectors
+   66 00000000                 EXPORT           __Vectors_End
+   67 00000000                 EXPORT           __Vectors_Size
+   68 00000000         
+   69 00000000 00000000 
+                       __Vectors
+                               DCD              __initial_sp ; Top of Stack
+   70 00000004 00000000        DCD              Reset_Handler ; Reset Handler
+   71 00000008 00000000        DCD              NMI_Handler ; NMI Handler
+   72 0000000C 00000000        DCD              HardFault_Handler ; Hard Fault 
+                                                            Handler
+   73 00000010 00000000        DCD              MemManage_Handler 
+                                                            ; MPU Fault Handler
+                                                            
+   74 00000014 00000000        DCD              BusFault_Handler 
+                                                            ; Bus Fault Handler
+                                                            
+   75 00000018 00000000        DCD              UsageFault_Handler ; Usage Faul
+                                                            t Handler
+   76 0000001C 00000000        DCD              0           ; Reserved
+   77 00000020 00000000        DCD              0x0         ; Reserved, 8ºÅ
+   78 00000024 00000000        DCD              0x0         ; Reserved£¬9ºÅ
+   79 00000028 00000000        DCD              0           ; Reserved
+   80 0000002C 00000000        DCD              SVC_Handler ; SVCall Handler
+   81 00000030 00000000        DCD              DebugMon_Handler ; Debug Monito
+                                                            r Handler
+   82 00000034 00000000        DCD              0           ; Reserved
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   83 00000038 00000000        DCD              PendSV_Handler ; PendSV Handler
+                                                            
+   84 0000003C 00000000        DCD              SysTick_Handler 
+                                                            ; SysTick Handler
+   85 00000040         
+   86 00000040         ;               /* external interrupts handler */
+   87 00000040 00000000        DCD              WWDGT_IRQHandler ; 16:Window Wa
+                                                            tchdog Timer
+   88 00000044 00000000        DCD              LVD_IRQHandler ; 17:LVD through
+                                                             EXTI Line detect
+   89 00000048 00000000        DCD              RTC_IRQHandler ; 18:RTC through
+                                                             EXTI Line
+   90 0000004C 00000000        DCD              FMC_IRQHandler ; 19:FMC
+   91 00000050 00000000        DCD              RCU_IRQHandler ; 20:RCU
+   92 00000054 00000000        DCD              EXTI0_1_IRQHandler ; 21:EXTI Li
+                                                            ne 0 and EXTI Line 
+                                                            1
+   93 00000058 00000000        DCD              EXTI2_3_IRQHandler ; 22:EXTI Li
+                                                            ne 2 and EXTI Line 
+                                                            3
+   94 0000005C 00000000        DCD              EXTI4_15_IRQHandler ; 23:EXTI L
+                                                            ine 4 to EXTI Line 
+                                                            15
+   95 00000060 00000000        DCD              0           ; Reserved
+   96 00000064 00000000        DCD              DMA_Channel0_IRQHandler 
+                                                            ; 25:DMA Channel 0 
+                                                            
+   97 00000068 00000000        DCD              DMA_Channel1_2_IRQHandler ; 26:
+                                                            DMA Channel 1 and D
+                                                            MA Channel 2
+   98 0000006C 00000000        DCD              DMA_Channel3_4_IRQHandler ; 27:
+                                                            DMA Channel 3 and D
+                                                            MA Channel 4
+   99 00000070 00000000        DCD              ADC_CMP_IRQHandler ; 28:ADC and
+                                                             Comparator
+  100 00000074 00000000        DCD              TIMER0_BRK_UP_TRG_COM_IRQHandle
+r 
+                                                            ; 29:TIMER0 Break,U
+                                                            pdate,Trigger and C
+                                                            ommutation
+  101 00000078 00000000        DCD              TIMER0_Channel_IRQHandler ; 30:
+                                                            TIMER0 Channel Capt
+                                                            ure Compare
+  102 0000007C 00000000        DCD              TIMER1_IRQHandler ; 31:TIMER1
+  103 00000080 00000000        DCD              TIMER2_IRQHandler ; 32:TIMER2
+  104 00000084 00000000        DCD              TIMER5_DAC0_1_IRQHandler ; 33:T
+                                                            IMER5 and DAC0, DAC
+                                                            1
+  105 00000088 00000000        DCD              TIMER6_DAC2_3_IRQHandler ; 34:T
+                                                            IMER6 and DAC2, DAC
+                                                            3
+  106 0000008C 00000000        DCD              TIMER13_IRQHandler ; 35:TIMER13
+                                                            
+  107 00000090 00000000        DCD              TIMER14_IRQHandler ; 36:TIMER14
+                                                            
+  108 00000094 00000000        DCD              TIMER15_IRQHandler ; 37:TIMER15
+                                                            
+  109 00000098 00000000        DCD              TIMER16_IRQHandler ; 38:TIMER16
+                                                            
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+  110 0000009C 00000000        DCD              I2C0_EV_IRQHandler 
+                                                            ; 39:I2C0 Event
+  111 000000A0 00000000        DCD              I2C1_EV_IRQHandler 
+                                                            ; 40:I2C1 Event
+  112 000000A4 00000000        DCD              SPI0_IRQHandler ; 41:SPI0
+  113 000000A8 00000000        DCD              SPI1_IRQHandler ; 42:SPI1
+  114 000000AC 00000000        DCD              USART0_IRQHandler ; 43:USART0
+  115 000000B0 00000000        DCD              USART1_IRQHandler ; 44:USART1
+  116 000000B4 00000000        DCD              0           ; Reserved
+  117 000000B8 00000000        DCD              0           ; Reserved
+  118 000000BC 00000000        DCD              0           ; Reserved
+  119 000000C0 00000000        DCD              I2C0_ER_IRQHandler 
+                                                            ; 48:I2C0 Error
+  120 000000C4 00000000        DCD              0           ; Reserved
+  121 000000C8 00000000        DCD              I2C1_ER_IRQHandler 
+                                                            ; 50:I2C1 Error
+  122 000000CC 00000000        DCD              I2C2_EV_IRQHandler 
+                                                            ; 51:I2C2 event
+  123 000000D0 00000000        DCD              I2C2_ER_IRQHandler 
+                                                            ; 52:I2C2 Error
+  124 000000D4 00000000        DCD              0           ; Reserved
+  125 000000D8 00000000        DCD              0           ; Reserved
+  126 000000DC 00000000        DCD              CLA_IRQHandler ; 55:CLA
+  127 000000E0 00000000        DCD              MDIO_IRQHandler ; 56:MDIO
+  128 000000E4 00000000        DCD              0           ; Reserved
+  129 000000E8 00000000        DCD              0           ; Reserved
+  130 000000EC 00000000        DCD              0           ; Reserved
+  131 000000F0 00000000        DCD              0           ; Reserved
+  132 000000F4 00000000        DCD              0           ; Reserved
+  133 000000F8 00000000        DCD              0           ; Reserved
+  134 000000FC 00000000        DCD              0           ; Reserved
+  135 00000100 00000000        DCD              DMA_Channel5_6_IRQHandler ; 64:
+                                                            DMA Channel 5 and D
+                                                            MA Channel 6
+  136 00000104 00000000        DCD              0           ; Reserved
+  137 00000108 00000000        DCD              0           ; Reserved
+  138 0000010C 00000000        DCD              SPI2_IRQHandler ; 67:SPI2
+  139 00000110 00000000        DCD              0           ; Reserved
+  140 00000114 00000000        DCD              0           ; Reserved
+  141 00000118 00000000        DCD              0           ; Reserved
+  142 0000011C 00000000        DCD              0           ; Reserved
+  143 00000120 00000000        DCD              0           ; Reserved
+  144 00000124 00000000        DCD              0           ; Reserved
+  145 00000128 00000000        DCD              0           ; Reserved
+  146 0000012C 00000000        DCD              0           ; Reserved
+  147 00000130 00000000        DCD              0           ; Reserved
+  148 00000134 00000000        DCD              0           ; Reserved
+  149 00000138 00000000        DCD              0           ; Reserved
+  150 0000013C 00000000        DCD              0           ; Reserved
+  151 00000140 00000000        DCD              0           ; Reserved
+  152 00000144 00000000        DCD              0           ; Reserved
+  153 00000148 00000000        DCD              0           ; Reserved
+  154 0000014C 00000000        DCD              0           ; Reserved
+  155 00000150 00000000        DCD              FPU_IRQHandler ; Reserved
+  156 00000154         __Vectors_End
+  157 00000154         
+  158 00000154 00000154 
+                       __Vectors_Size
+                               EQU              __Vectors_End - __Vectors
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+  159 00000154         
+  160 00000154                 AREA             |.text|, CODE, READONLY
+  161 00000000         
+  162 00000000         ;/* reset Handler */
+  163 00000000         Reset_Handler
+                               PROC
+  164 00000000                 EXPORT           Reset_Handler                  
+   [WEAK]
+  165 00000000                 IMPORT           SystemInit
+  166 00000000                 IMPORT           __main
+  167 00000000 4806            LDR              R0, =SystemInit
+  168 00000002 4780            BLX              R0
+  169 00000004 4806            LDR              R0, =__main
+  170 00000006 4700            BX               R0
+  171 00000008                 ENDP
+  172 00000008         
+  173 00000008         ;/* dummy Exception Handlers */
+  175 00000008         NMI_Handler
+                               PROC
+  176 00000008                 EXPORT           NMI_Handler                    
+   [WEAK]
+  177 00000008 E7FE            B                .
+  178 0000000A                 ENDP
+  180 0000000A         HardFault_Handler
+                               PROC
+  181 0000000A                 EXPORT           HardFault_Handler              
+   [WEAK]
+  182 0000000A E7FE            B                .
+  183 0000000C                 ENDP
+  185 0000000C         MemManage_Handler
+                               PROC
+  186 0000000C                 EXPORT           MemManage_Handler              
+   [WEAK]
+  187 0000000C E7FE            B                .
+  188 0000000E                 ENDP
+  190 0000000E         BusFault_Handler
+                               PROC
+  191 0000000E                 EXPORT           BusFault_Handler               
+   [WEAK]
+  192 0000000E E7FE            B                .
+  193 00000010                 ENDP
+  195 00000010         UsageFault_Handler
+                               PROC
+  196 00000010                 EXPORT           UsageFault_Handler             
+   [WEAK]
+  197 00000010 E7FE            B                .
+  198 00000012                 ENDP
+  200 00000012         SVC_Handler
+                               PROC
+  201 00000012                 EXPORT           SVC_Handler                    
+   [WEAK]
+  202 00000012 E7FE            B                .
+  203 00000014                 ENDP
+  205 00000014         DebugMon_Handler
+                               PROC
+  206 00000014                 EXPORT           DebugMon_Handler               
+   [WEAK]
+  207 00000014 E7FE            B                .
+  208 00000016                 ENDP
+
+
+
+ARM Macro Assembler    Page 6 
+
+
+  210 00000016         PendSV_Handler
+                               PROC
+  211 00000016                 EXPORT           PendSV_Handler                 
+   [WEAK]
+  212 00000016 E7FE            B                .
+  213 00000018                 ENDP
+  215 00000018         SysTick_Handler
+                               PROC
+  216 00000018                 EXPORT           SysTick_Handler                
+   [WEAK]
+  217 00000018 E7FE            B                .
+  218 0000001A                 ENDP
+  219 0000001A         
+  220 0000001A         Default_Handler
+                               PROC
+  221 0000001A         ;               /* external interrupts handler */
+  222 0000001A                 EXPORT           WWDGT_IRQHandler               
+   [WEAK]
+  223 0000001A                 EXPORT           LVD_IRQHandler                 
+   [WEAK]
+  224 0000001A                 EXPORT           RTC_IRQHandler                 
+   [WEAK]
+  225 0000001A                 EXPORT           FMC_IRQHandler                 
+   [WEAK]
+  226 0000001A                 EXPORT           RCU_IRQHandler                 
+   [WEAK]
+  227 0000001A                 EXPORT           EXTI0_1_IRQHandler             
+   [WEAK]
+  228 0000001A                 EXPORT           EXTI2_3_IRQHandler             
+   [WEAK]
+  229 0000001A                 EXPORT           EXTI4_15_IRQHandler            
+   [WEAK]
+  230 0000001A                 EXPORT           DMA_Channel0_IRQHandler        
+   [WEAK]
+  231 0000001A                 EXPORT           DMA_Channel1_2_IRQHandler      
+   [WEAK]
+  232 0000001A                 EXPORT           DMA_Channel3_4_IRQHandler      
+   [WEAK]
+  233 0000001A                 EXPORT           ADC_CMP_IRQHandler             
+   [WEAK]
+  234 0000001A                 EXPORT           TIMER0_BRK_UP_TRG_COM_IRQHandle
+r  [WEAK]
+  235 0000001A                 EXPORT           TIMER0_Channel_IRQHandler      
+   [WEAK]
+  236 0000001A                 EXPORT           TIMER1_IRQHandler              
+   [WEAK]
+  237 0000001A                 EXPORT           TIMER2_IRQHandler              
+   [WEAK]
+  238 0000001A                 EXPORT           TIMER5_DAC0_1_IRQHandler       
+   [WEAK]
+  239 0000001A                 EXPORT           TIMER6_DAC2_3_IRQHandler       
+   [WEAK]
+  240 0000001A                 EXPORT           TIMER13_IRQHandler             
+   [WEAK]
+  241 0000001A                 EXPORT           TIMER14_IRQHandler             
+   [WEAK]
+  242 0000001A                 EXPORT           TIMER15_IRQHandler             
+   [WEAK]
+  243 0000001A                 EXPORT           TIMER16_IRQHandler             
+
+
+
+ARM Macro Assembler    Page 7 
+
+
+   [WEAK]
+  244 0000001A                 EXPORT           I2C0_EV_IRQHandler             
+   [WEAK]
+  245 0000001A                 EXPORT           I2C1_EV_IRQHandler             
+   [WEAK]
+  246 0000001A                 EXPORT           SPI0_IRQHandler                
+   [WEAK]
+  247 0000001A                 EXPORT           SPI1_IRQHandler                
+   [WEAK]
+  248 0000001A                 EXPORT           USART0_IRQHandler              
+   [WEAK]
+  249 0000001A                 EXPORT           USART1_IRQHandler              
+   [WEAK]
+  250 0000001A                 EXPORT           I2C0_ER_IRQHandler             
+   [WEAK]
+  251 0000001A                 EXPORT           I2C1_ER_IRQHandler             
+   [WEAK]
+  252 0000001A                 EXPORT           I2C2_EV_IRQHandler             
+   [WEAK]
+  253 0000001A                 EXPORT           I2C2_ER_IRQHandler             
+   [WEAK]
+  254 0000001A                 EXPORT           CLA_IRQHandler                 
+   [WEAK]
+  255 0000001A                 EXPORT           MDIO_IRQHandler                
+   [WEAK]
+  256 0000001A                 EXPORT           DMA_Channel5_6_IRQHandler      
+   [WEAK]
+  257 0000001A                 EXPORT           SPI2_IRQHandler                
+   [WEAK]
+  258 0000001A                 EXPORT           FPU_IRQHandler                 
+   [WEAK]
+  259 0000001A         
+  260 0000001A         ;/* external interrupts handler */
+  261 0000001A         WWDGT_IRQHandler
+  262 0000001A         LVD_IRQHandler
+  263 0000001A         RTC_IRQHandler
+  264 0000001A         FMC_IRQHandler
+  265 0000001A         RCU_IRQHandler
+  266 0000001A         EXTI0_1_IRQHandler
+  267 0000001A         EXTI2_3_IRQHandler
+  268 0000001A         EXTI4_15_IRQHandler
+  269 0000001A         DMA_Channel0_IRQHandler
+  270 0000001A         DMA_Channel1_2_IRQHandler
+  271 0000001A         DMA_Channel3_4_IRQHandler
+  272 0000001A         ADC_CMP_IRQHandler
+  273 0000001A         TIMER0_BRK_UP_TRG_COM_IRQHandler
+  274 0000001A         TIMER0_Channel_IRQHandler
+  275 0000001A         TIMER1_IRQHandler
+  276 0000001A         TIMER2_IRQHandler
+  277 0000001A         TIMER5_DAC0_1_IRQHandler
+  278 0000001A         TIMER6_DAC2_3_IRQHandler
+  279 0000001A         TIMER13_IRQHandler
+  280 0000001A         TIMER14_IRQHandler
+  281 0000001A         TIMER15_IRQHandler
+  282 0000001A         TIMER16_IRQHandler
+  283 0000001A         I2C0_EV_IRQHandler
+  284 0000001A         I2C1_EV_IRQHandler
+  285 0000001A         SPI0_IRQHandler
+  286 0000001A         SPI1_IRQHandler
+
+
+
+ARM Macro Assembler    Page 8 
+
+
+  287 0000001A         USART0_IRQHandler
+  288 0000001A         USART1_IRQHandler
+  289 0000001A         I2C0_ER_IRQHandler
+  290 0000001A         I2C1_ER_IRQHandler
+  291 0000001A         I2C2_EV_IRQHandler
+  292 0000001A         I2C2_ER_IRQHandler
+  293 0000001A         CLA_IRQHandler
+  294 0000001A         MDIO_IRQHandler
+  295 0000001A         DMA_Channel5_6_IRQHandler
+  296 0000001A         SPI2_IRQHandler
+  297 0000001A         FPU_IRQHandler
+  298 0000001A         
+  299 0000001A E7FE            B                .
+  300 0000001C                 ENDP
+  301 0000001C         
+  302 0000001C                 ALIGN
+  303 0000001C         
+  304 0000001C         ; user Initial Stack & Heap
+  305 0000001C         
+  306 0000001C                 IF               :DEF:__MICROLIB
+  307 0000001C         
+  308 0000001C                 EXPORT           __initial_sp
+  309 0000001C                 EXPORT           __heap_base
+  310 0000001C                 EXPORT           __heap_limit
+  311 0000001C         
+  312 0000001C                 ELSE
+  327                          ENDIF
+  328 0000001C         
+  329 0000001C                 END
+              00000000 
+              00000000 
+Command Line: --xref --diag_suppress=9931,A1950W --cpu=Cortex-M33.no_dsp --fpu=
+FPv5-SP --depend=.\output\startup_gd32e501.d -o.\output\startup_gd32e501.o -I.\
+RTE\_GD32E501 -ID:\D\app\kevil5\ARM\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -I
+D:\D\app\kevil5\ARM\Packs\GigaDevice\GD32E501_DFP\1.0.2\Device\Include --predef
+ine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 538" --predefine="_
+RTE_ SETA 1" --predefine="GD32E501 SETA 1" --predefine="_RTE_ SETA 1" --list=.\
+list\startup_gd32e501.lst ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STACK 00000000
+
+Symbol: STACK
+   Definitions
+      At line 43 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: STACK unused
+Stack_Mem 00000000
+
+Symbol: Stack_Mem
+   Definitions
+      At line 44 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: Stack_Mem unused
+__initial_sp 00000400
+
+Symbol: __initial_sp
+   Definitions
+      At line 45 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 69 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 308 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+HEAP 00000000
+
+Symbol: HEAP
+   Definitions
+      At line 55 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: HEAP unused
+Heap_Mem 00000000
+
+Symbol: Heap_Mem
+   Definitions
+      At line 57 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: Heap_Mem unused
+__heap_base 00000000
+
+Symbol: __heap_base
+   Definitions
+      At line 56 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 309 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+Comment: __heap_base used once
+__heap_limit 00000600
+
+Symbol: __heap_limit
+   Definitions
+      At line 58 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 310 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+Comment: __heap_limit used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 64 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 69 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 65 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 158 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+__Vectors_End 00000154
+
+Symbol: __Vectors_End
+   Definitions
+      At line 156 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 66 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 158 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 160 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: .text unused
+ADC_CMP_IRQHandler 0000001A
+
+Symbol: ADC_CMP_IRQHandler
+   Definitions
+      At line 272 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 99 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 233 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+BusFault_Handler 0000000E
+
+Symbol: BusFault_Handler
+   Definitions
+      At line 190 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 74 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 191 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+CLA_IRQHandler 0000001A
+
+Symbol: CLA_IRQHandler
+   Definitions
+      At line 293 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 126 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 254 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+DMA_Channel0_IRQHandler 0000001A
+
+Symbol: DMA_Channel0_IRQHandler
+   Definitions
+      At line 269 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 96 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 230 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+DMA_Channel1_2_IRQHandler 0000001A
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: DMA_Channel1_2_IRQHandler
+   Definitions
+      At line 270 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 97 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 231 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+DMA_Channel3_4_IRQHandler 0000001A
+
+Symbol: DMA_Channel3_4_IRQHandler
+   Definitions
+      At line 271 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 98 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 232 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+DMA_Channel5_6_IRQHandler 0000001A
+
+Symbol: DMA_Channel5_6_IRQHandler
+   Definitions
+      At line 295 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 135 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 256 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+DebugMon_Handler 00000014
+
+Symbol: DebugMon_Handler
+   Definitions
+      At line 205 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 81 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 206 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+Default_Handler 0000001A
+
+Symbol: Default_Handler
+   Definitions
+      At line 220 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      None
+Comment: Default_Handler unused
+EXTI0_1_IRQHandler 0000001A
+
+Symbol: EXTI0_1_IRQHandler
+   Definitions
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Relocatable symbols
+
+      At line 266 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 92 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 227 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+EXTI2_3_IRQHandler 0000001A
+
+Symbol: EXTI2_3_IRQHandler
+   Definitions
+      At line 267 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 93 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 228 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+EXTI4_15_IRQHandler 0000001A
+
+Symbol: EXTI4_15_IRQHandler
+   Definitions
+      At line 268 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 94 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 229 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+FMC_IRQHandler 0000001A
+
+Symbol: FMC_IRQHandler
+   Definitions
+      At line 264 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 90 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 225 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+FPU_IRQHandler 0000001A
+
+Symbol: FPU_IRQHandler
+   Definitions
+      At line 297 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 155 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 258 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+HardFault_Handler 0000000A
+
+Symbol: HardFault_Handler
+
+
+
+ARM Macro Assembler    Page 4 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 180 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 72 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 181 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C0_ER_IRQHandler 0000001A
+
+Symbol: I2C0_ER_IRQHandler
+   Definitions
+      At line 289 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 119 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 250 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C0_EV_IRQHandler 0000001A
+
+Symbol: I2C0_EV_IRQHandler
+   Definitions
+      At line 283 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 110 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 244 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C1_ER_IRQHandler 0000001A
+
+Symbol: I2C1_ER_IRQHandler
+   Definitions
+      At line 290 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 121 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 251 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C1_EV_IRQHandler 0000001A
+
+Symbol: I2C1_EV_IRQHandler
+   Definitions
+      At line 284 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 111 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 245 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C2_ER_IRQHandler 0000001A
+
+
+
+
+ARM Macro Assembler    Page 5 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: I2C2_ER_IRQHandler
+   Definitions
+      At line 292 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 123 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 253 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+I2C2_EV_IRQHandler 0000001A
+
+Symbol: I2C2_EV_IRQHandler
+   Definitions
+      At line 291 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 122 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 252 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+LVD_IRQHandler 0000001A
+
+Symbol: LVD_IRQHandler
+   Definitions
+      At line 262 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 88 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 223 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+MDIO_IRQHandler 0000001A
+
+Symbol: MDIO_IRQHandler
+   Definitions
+      At line 294 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 127 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 255 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+MemManage_Handler 0000000C
+
+Symbol: MemManage_Handler
+   Definitions
+      At line 185 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 73 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 186 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+NMI_Handler 00000008
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Relocatable symbols
+
+
+Symbol: NMI_Handler
+   Definitions
+      At line 175 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 71 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 176 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+PendSV_Handler 00000016
+
+Symbol: PendSV_Handler
+   Definitions
+      At line 210 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 83 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 211 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+RCU_IRQHandler 0000001A
+
+Symbol: RCU_IRQHandler
+   Definitions
+      At line 265 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 91 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 226 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+RTC_IRQHandler 0000001A
+
+Symbol: RTC_IRQHandler
+   Definitions
+      At line 263 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 89 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 224 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 163 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 70 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 164 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+
+
+
+ARM Macro Assembler    Page 7 Alphabetic symbol ordering
+Relocatable symbols
+
+SPI0_IRQHandler 0000001A
+
+Symbol: SPI0_IRQHandler
+   Definitions
+      At line 285 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 112 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 246 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+SPI1_IRQHandler 0000001A
+
+Symbol: SPI1_IRQHandler
+   Definitions
+      At line 286 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 113 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 247 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+SPI2_IRQHandler 0000001A
+
+Symbol: SPI2_IRQHandler
+   Definitions
+      At line 296 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 138 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 257 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+SVC_Handler 00000012
+
+Symbol: SVC_Handler
+   Definitions
+      At line 200 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 80 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 201 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+SysTick_Handler 00000018
+
+Symbol: SysTick_Handler
+   Definitions
+      At line 215 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 84 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 216 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+
+
+ARM Macro Assembler    Page 8 Alphabetic symbol ordering
+Relocatable symbols
+
+
+TIMER0_BRK_UP_TRG_COM_IRQHandler 0000001A
+
+Symbol: TIMER0_BRK_UP_TRG_COM_IRQHandler
+   Definitions
+      At line 273 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 100 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 234 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER0_Channel_IRQHandler 0000001A
+
+Symbol: TIMER0_Channel_IRQHandler
+   Definitions
+      At line 274 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 101 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 235 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER13_IRQHandler 0000001A
+
+Symbol: TIMER13_IRQHandler
+   Definitions
+      At line 279 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 106 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 240 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER14_IRQHandler 0000001A
+
+Symbol: TIMER14_IRQHandler
+   Definitions
+      At line 280 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 107 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 241 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER15_IRQHandler 0000001A
+
+Symbol: TIMER15_IRQHandler
+   Definitions
+      At line 281 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 108 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 242 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+
+
+
+ARM Macro Assembler    Page 9 Alphabetic symbol ordering
+Relocatable symbols
+
+501\Source\ARM\startup_gd32e501.s
+
+TIMER16_IRQHandler 0000001A
+
+Symbol: TIMER16_IRQHandler
+   Definitions
+      At line 282 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 109 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 243 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER1_IRQHandler 0000001A
+
+Symbol: TIMER1_IRQHandler
+   Definitions
+      At line 275 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 102 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 236 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER2_IRQHandler 0000001A
+
+Symbol: TIMER2_IRQHandler
+   Definitions
+      At line 276 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 103 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 237 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER5_DAC0_1_IRQHandler 0000001A
+
+Symbol: TIMER5_DAC0_1_IRQHandler
+   Definitions
+      At line 277 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 104 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 238 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+TIMER6_DAC2_3_IRQHandler 0000001A
+
+Symbol: TIMER6_DAC2_3_IRQHandler
+   Definitions
+      At line 278 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 105 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+
+
+ARM Macro Assembler    Page 10 Alphabetic symbol ordering
+Relocatable symbols
+
+      At line 239 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+USART0_IRQHandler 0000001A
+
+Symbol: USART0_IRQHandler
+   Definitions
+      At line 287 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 114 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 248 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+USART1_IRQHandler 0000001A
+
+Symbol: USART1_IRQHandler
+   Definitions
+      At line 288 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 115 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+      At line 249 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+UsageFault_Handler 00000010
+
+Symbol: UsageFault_Handler
+   Definitions
+      At line 195 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 75 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 196 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+WWDGT_IRQHandler 0000001A
+
+Symbol: WWDGT_IRQHandler
+   Definitions
+      At line 261 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 87 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+      At line 222 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+
+49 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+Heap_Size 00000600
+
+Symbol: Heap_Size
+   Definitions
+      At line 53 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 57 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+Comment: Heap_Size used once
+Stack_Size 00000400
+
+Symbol: Stack_Size
+   Definitions
+      At line 41 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 44 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+Comment: Stack_Size used once
+__Vectors_Size 00000154
+
+Symbol: __Vectors_Size
+   Definitions
+      At line 158 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 67 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E5
+01\Source\ARM\startup_gd32e501.s
+Comment: __Vectors_Size used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+SystemInit 00000000
+
+Symbol: SystemInit
+   Definitions
+      At line 165 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 167 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+Comment: SystemInit used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 166 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+   Uses
+      At line 169 in file ..\..\src\mcu\GDE501_fireware\Firmware\CMSIS\GD\GD32E
+501\Source\ARM\startup_gd32e501.s
+Comment: __main used once
+2 symbols
+401 symbols in table

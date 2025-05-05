@@ -1,0 +1,1624 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_dac.c"
+	.section	.text.dac_deinit,"ax",%progbits
+	.hidden	dac_deinit                      @ -- Begin function dac_deinit
+	.globl	dac_deinit
+	.p2align	2
+	.type	dac_deinit,%function
+	.code	16                              @ @dac_deinit
+	.thumb_func
+dac_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #20]
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movw	r1, #29696
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_4
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #52224
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_5
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #53248
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_6
+	b	.LBB0_3
+.LBB0_3:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #54272
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_7
+	b	.LBB0_8
+.LBB0_4:
+	movw	r0, #1053
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_9
+.LBB0_5:
+	movw	r0, #1055
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_9
+.LBB0_6:
+	movw	r0, #1050
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_9
+.LBB0_7:
+	movw	r0, #1051
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_9
+.LBB0_8:
+	b	.LBB0_9
+.LBB0_9:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	dac_deinit, .Lfunc_end0-dac_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_enable,"ax",%progbits
+	.hidden	dac_enable                      @ -- Begin function dac_enable
+	.globl	dac_enable
+	.p2align	2
+	.type	dac_enable,%function
+	.code	16                              @ @dac_enable
+	.thumb_func
+dac_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB1_3
+.LBB1_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #65536
+	str	r0, [r1]
+	b	.LBB1_3
+.LBB1_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end1:
+	.size	dac_enable, .Lfunc_end1-dac_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_disable,"ax",%progbits
+	.hidden	dac_disable                     @ -- Begin function dac_disable
+	.globl	dac_disable
+	.p2align	2
+	.type	dac_disable,%function
+	.code	16                              @ @dac_disable
+	.thumb_func
+dac_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB2_3
+.LBB2_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #65536
+	str	r0, [r1]
+	b	.LBB2_3
+.LBB2_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	dac_disable, .Lfunc_end2-dac_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_dma_enable,"ax",%progbits
+	.hidden	dac_dma_enable                  @ -- Begin function dac_dma_enable
+	.globl	dac_dma_enable
+	.p2align	2
+	.type	dac_dma_enable,%function
+	.code	16                              @ @dac_dma_enable
+	.thumb_func
+dac_dma_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #4096
+	str	r0, [r1]
+	b	.LBB3_3
+.LBB3_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #268435456
+	str	r0, [r1]
+	b	.LBB3_3
+.LBB3_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end3:
+	.size	dac_dma_enable, .Lfunc_end3-dac_dma_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_dma_disable,"ax",%progbits
+	.hidden	dac_dma_disable                 @ -- Begin function dac_dma_disable
+	.globl	dac_dma_disable
+	.p2align	2
+	.type	dac_dma_disable,%function
+	.code	16                              @ @dac_dma_disable
+	.thumb_func
+dac_dma_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #4096
+	str	r0, [r1]
+	b	.LBB4_3
+.LBB4_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #268435456
+	str	r0, [r1]
+	b	.LBB4_3
+.LBB4_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end4:
+	.size	dac_dma_disable, .Lfunc_end4-dac_dma_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_output_buffer_enable,"ax",%progbits
+	.hidden	dac_output_buffer_enable        @ -- Begin function dac_output_buffer_enable
+	.globl	dac_output_buffer_enable
+	.p2align	2
+	.type	dac_output_buffer_enable,%function
+	.code	16                              @ @dac_output_buffer_enable
+	.thumb_func
+dac_output_buffer_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB5_3
+.LBB5_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #131072
+	str	r0, [r1]
+	b	.LBB5_3
+.LBB5_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end5:
+	.size	dac_output_buffer_enable, .Lfunc_end5-dac_output_buffer_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_output_buffer_disable,"ax",%progbits
+	.hidden	dac_output_buffer_disable       @ -- Begin function dac_output_buffer_disable
+	.globl	dac_output_buffer_disable
+	.p2align	2
+	.type	dac_output_buffer_disable,%function
+	.code	16                              @ @dac_output_buffer_disable
+	.thumb_func
+dac_output_buffer_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB6_3
+.LBB6_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #131072
+	str	r0, [r1]
+	b	.LBB6_3
+.LBB6_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	dac_output_buffer_disable, .Lfunc_end6-dac_output_buffer_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_output_value_get,"ax",%progbits
+	.hidden	dac_output_value_get            @ -- Begin function dac_output_value_get
+	.globl	dac_output_value_get
+	.p2align	2
+	.type	dac_output_value_get,%function
+	.code	16                              @ @dac_output_value_get
+	.thumb_func
+dac_output_value_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	movs	r0, #0
+	strh.w	r0, [sp]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #44]
+	strh.w	r0, [sp]
+	b	.LBB7_3
+.LBB7_2:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #48]
+	strh.w	r0, [sp]
+	b	.LBB7_3
+.LBB7_3:
+	ldrh.w	r0, [sp]
+	add	sp, #8
+	bx	lr
+.Lfunc_end7:
+	.size	dac_output_value_get, .Lfunc_end7-dac_output_value_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_data_set,"ax",%progbits
+	.hidden	dac_data_set                    @ -- Begin function dac_data_set
+	.globl	dac_data_set
+	.p2align	2
+	.type	dac_data_set,%function
+	.code	16                              @ @dac_data_set
+	.thumb_func
+dac_data_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r12 killed $r3
+                                        @ kill: def $r12 killed $r1
+	str	r0, [sp, #20]
+	strb.w	r1, [sp, #19]
+	str	r2, [sp, #12]
+	strh.w	r3, [sp, #10]
+	ldrb.w	r0, [sp, #19]
+	cbnz	r0, .LBB8_9
+	b	.LBB8_1
+.LBB8_1:
+	ldr	r0, [sp, #12]
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbz	r0, .LBB8_4
+	b	.LBB8_2
+.LBB8_2:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB8_5
+	b	.LBB8_3
+.LBB8_3:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB8_6
+	b	.LBB8_7
+.LBB8_4:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #8]
+	b	.LBB8_8
+.LBB8_5:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #12]
+	b	.LBB8_8
+.LBB8_6:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #16]
+	b	.LBB8_8
+.LBB8_7:
+	b	.LBB8_8
+.LBB8_8:
+	b	.LBB8_17
+.LBB8_9:
+	ldr	r0, [sp, #12]
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r0, .LBB8_12
+	b	.LBB8_10
+.LBB8_10:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB8_13
+	b	.LBB8_11
+.LBB8_11:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB8_14
+	b	.LBB8_15
+.LBB8_12:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #20]
+	b	.LBB8_16
+.LBB8_13:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #24]
+	b	.LBB8_16
+.LBB8_14:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #28]
+	b	.LBB8_16
+.LBB8_15:
+	b	.LBB8_16
+.LBB8_16:
+	b	.LBB8_17
+.LBB8_17:
+	add	sp, #24
+	bx	lr
+.Lfunc_end8:
+	.size	dac_data_set, .Lfunc_end8-dac_data_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_reset_mode_enable,"ax",%progbits
+	.hidden	dac_reset_mode_enable           @ -- Begin function dac_reset_mode_enable
+	.globl	dac_reset_mode_enable
+	.p2align	2
+	.type	dac_reset_mode_enable,%function
+	.code	16                              @ @dac_reset_mode_enable
+	.thumb_func
+dac_reset_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB9_3
+.LBB9_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #-2147483648
+	str	r0, [r1]
+	b	.LBB9_3
+.LBB9_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end9:
+	.size	dac_reset_mode_enable, .Lfunc_end9-dac_reset_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_reset_mode_disable,"ax",%progbits
+	.hidden	dac_reset_mode_disable          @ -- Begin function dac_reset_mode_disable
+	.globl	dac_reset_mode_disable
+	.p2align	2
+	.type	dac_reset_mode_disable,%function
+	.code	16                              @ @dac_reset_mode_disable
+	.thumb_func
+dac_reset_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB10_2
+	b	.LBB10_1
+.LBB10_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB10_3
+.LBB10_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #-2147483648
+	str	r0, [r1]
+	b	.LBB10_3
+.LBB10_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end10:
+	.size	dac_reset_mode_disable, .Lfunc_end10-dac_reset_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_trigger_enable,"ax",%progbits
+	.hidden	dac_trigger_enable              @ -- Begin function dac_trigger_enable
+	.globl	dac_trigger_enable
+	.p2align	2
+	.type	dac_trigger_enable,%function
+	.code	16                              @ @dac_trigger_enable
+	.thumb_func
+dac_trigger_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB11_3
+.LBB11_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #262144
+	str	r0, [r1]
+	b	.LBB11_3
+.LBB11_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	dac_trigger_enable, .Lfunc_end11-dac_trigger_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_trigger_disable,"ax",%progbits
+	.hidden	dac_trigger_disable             @ -- Begin function dac_trigger_disable
+	.globl	dac_trigger_disable
+	.p2align	2
+	.type	dac_trigger_disable,%function
+	.code	16                              @ @dac_trigger_disable
+	.thumb_func
+dac_trigger_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB12_3
+.LBB12_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #262144
+	str	r0, [r1]
+	b	.LBB12_3
+.LBB12_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end12:
+	.size	dac_trigger_disable, .Lfunc_end12-dac_trigger_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_trigger_source_config,"ax",%progbits
+	.hidden	dac_trigger_source_config       @ -- Begin function dac_trigger_source_config
+	.globl	dac_trigger_source_config
+	.p2align	2
+	.type	dac_trigger_source_config,%function
+	.code	16                              @ @dac_trigger_source_config
+	.thumb_func
+dac_trigger_source_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	movw	r2, #16440
+	bics	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB13_3
+.LBB13_2:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	movw	r2, #65535
+	movt	r2, #49095
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	b	.LBB13_3
+.LBB13_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end13:
+	.size	dac_trigger_source_config, .Lfunc_end13-dac_trigger_source_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_software_trigger_enable,"ax",%progbits
+	.hidden	dac_software_trigger_enable     @ -- Begin function dac_software_trigger_enable
+	.globl	dac_software_trigger_enable
+	.p2align	2
+	.type	dac_software_trigger_enable,%function
+	.code	16                              @ @dac_software_trigger_enable
+	.thumb_func
+dac_software_trigger_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB14_3
+.LBB14_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #2
+	str	r0, [r1, #4]
+	b	.LBB14_3
+.LBB14_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end14:
+	.size	dac_software_trigger_enable, .Lfunc_end14-dac_software_trigger_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_software_trigger_disable,"ax",%progbits
+	.hidden	dac_software_trigger_disable    @ -- Begin function dac_software_trigger_disable
+	.globl	dac_software_trigger_disable
+	.p2align	2
+	.type	dac_software_trigger_disable,%function
+	.code	16                              @ @dac_software_trigger_disable
+	.thumb_func
+dac_software_trigger_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB15_2
+	b	.LBB15_1
+.LBB15_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB15_3
+.LBB15_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #2
+	str	r0, [r1, #4]
+	b	.LBB15_3
+.LBB15_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end15:
+	.size	dac_software_trigger_disable, .Lfunc_end15-dac_software_trigger_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_wave_mode_config,"ax",%progbits
+	.hidden	dac_wave_mode_config            @ -- Begin function dac_wave_mode_config
+	.globl	dac_wave_mode_config
+	.p2align	2
+	.type	dac_wave_mode_config,%function
+	.code	16                              @ @dac_wave_mode_config
+	.thumb_func
+dac_wave_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #192
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB16_3
+.LBB16_2:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #12582912
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	b	.LBB16_3
+.LBB16_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end16:
+	.size	dac_wave_mode_config, .Lfunc_end16-dac_wave_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_wave_bit_width_config,"ax",%progbits
+	.hidden	dac_wave_bit_width_config       @ -- Begin function dac_wave_bit_width_config
+	.globl	dac_wave_bit_width_config
+	.p2align	2
+	.type	dac_wave_bit_width_config,%function
+	.code	16                              @ @dac_wave_bit_width_config
+	.thumb_func
+dac_wave_bit_width_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #3840
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB17_3
+.LBB17_2:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #251658240
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	b	.LBB17_3
+.LBB17_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end17:
+	.size	dac_wave_bit_width_config, .Lfunc_end17-dac_wave_bit_width_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_lfsr_noise_config,"ax",%progbits
+	.hidden	dac_lfsr_noise_config           @ -- Begin function dac_lfsr_noise_config
+	.globl	dac_lfsr_noise_config
+	.p2align	2
+	.type	dac_lfsr_noise_config,%function
+	.code	16                              @ @dac_lfsr_noise_config
+	.thumb_func
+dac_lfsr_noise_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #3840
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_2:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #251658240
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end18:
+	.size	dac_lfsr_noise_config, .Lfunc_end18-dac_lfsr_noise_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_triangle_noise_config,"ax",%progbits
+	.hidden	dac_triangle_noise_config       @ -- Begin function dac_triangle_noise_config
+	.globl	dac_triangle_noise_config
+	.p2align	2
+	.type	dac_triangle_noise_config,%function
+	.code	16                              @ @dac_triangle_noise_config
+	.thumb_func
+dac_triangle_noise_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #3840
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB19_3
+.LBB19_2:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	bic	r0, r0, #251658240
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1]
+	b	.LBB19_3
+.LBB19_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end19:
+	.size	dac_triangle_noise_config, .Lfunc_end19-dac_triangle_noise_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_buffer_gain_config,"ax",%progbits
+	.hidden	dac_buffer_gain_config          @ -- Begin function dac_buffer_gain_config
+	.globl	dac_buffer_gain_config
+	.p2align	2
+	.type	dac_buffer_gain_config,%function
+	.code	16                              @ @dac_buffer_gain_config
+	.thumb_func
+dac_buffer_gain_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	ldr	r1, [sp, #8]
+	ldr.w	r0, [r1, #128]
+	bic	r0, r0, #1
+	str.w	r0, [r1, #128]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr.w	r0, [r1, #128]
+	orrs	r0, r2
+	str.w	r0, [r1, #128]
+	b	.LBB20_3
+.LBB20_2:
+	ldr	r1, [sp, #8]
+	ldr.w	r0, [r1, #128]
+	bic	r0, r0, #65536
+	str.w	r0, [r1, #128]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr.w	r0, [r1, #128]
+	orr.w	r0, r0, r2, lsl #16
+	str.w	r0, [r1, #128]
+	b	.LBB20_3
+.LBB20_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end20:
+	.size	dac_buffer_gain_config, .Lfunc_end20-dac_buffer_gain_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_enable,"ax",%progbits
+	.hidden	dac_concurrent_enable           @ -- Begin function dac_concurrent_enable
+	.globl	dac_concurrent_enable
+	.p2align	2
+	.type	dac_concurrent_enable,%function
+	.code	16                              @ @dac_concurrent_enable
+	.thumb_func
+dac_concurrent_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	mov.w	r0, #65537
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end21:
+	.size	dac_concurrent_enable, .Lfunc_end21-dac_concurrent_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_disable,"ax",%progbits
+	.hidden	dac_concurrent_disable          @ -- Begin function dac_concurrent_disable
+	.globl	dac_concurrent_disable
+	.p2align	2
+	.type	dac_concurrent_disable,%function
+	.code	16                              @ @dac_concurrent_disable
+	.thumb_func
+dac_concurrent_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	mov.w	r0, #65537
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end22:
+	.size	dac_concurrent_disable, .Lfunc_end22-dac_concurrent_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_software_trigger_enable,"ax",%progbits
+	.hidden	dac_concurrent_software_trigger_enable @ -- Begin function dac_concurrent_software_trigger_enable
+	.globl	dac_concurrent_software_trigger_enable
+	.p2align	2
+	.type	dac_concurrent_software_trigger_enable,%function
+	.code	16                              @ @dac_concurrent_software_trigger_enable
+	.thumb_func
+dac_concurrent_software_trigger_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movs	r0, #3
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end23:
+	.size	dac_concurrent_software_trigger_enable, .Lfunc_end23-dac_concurrent_software_trigger_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_software_trigger_disable,"ax",%progbits
+	.hidden	dac_concurrent_software_trigger_disable @ -- Begin function dac_concurrent_software_trigger_disable
+	.globl	dac_concurrent_software_trigger_disable
+	.p2align	2
+	.type	dac_concurrent_software_trigger_disable,%function
+	.code	16                              @ @dac_concurrent_software_trigger_disable
+	.thumb_func
+dac_concurrent_software_trigger_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movs	r0, #3
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bics	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end24:
+	.size	dac_concurrent_software_trigger_disable, .Lfunc_end24-dac_concurrent_software_trigger_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_output_buffer_enable,"ax",%progbits
+	.hidden	dac_concurrent_output_buffer_enable @ -- Begin function dac_concurrent_output_buffer_enable
+	.globl	dac_concurrent_output_buffer_enable
+	.p2align	2
+	.type	dac_concurrent_output_buffer_enable,%function
+	.code	16                              @ @dac_concurrent_output_buffer_enable
+	.thumb_func
+dac_concurrent_output_buffer_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	mov.w	r0, #131074
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end25:
+	.size	dac_concurrent_output_buffer_enable, .Lfunc_end25-dac_concurrent_output_buffer_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_output_buffer_disable,"ax",%progbits
+	.hidden	dac_concurrent_output_buffer_disable @ -- Begin function dac_concurrent_output_buffer_disable
+	.globl	dac_concurrent_output_buffer_disable
+	.p2align	2
+	.type	dac_concurrent_output_buffer_disable,%function
+	.code	16                              @ @dac_concurrent_output_buffer_disable
+	.thumb_func
+dac_concurrent_output_buffer_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	mov.w	r0, #131074
+	str	r0, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end26:
+	.size	dac_concurrent_output_buffer_disable, .Lfunc_end26-dac_concurrent_output_buffer_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_concurrent_data_set,"ax",%progbits
+	.hidden	dac_concurrent_data_set         @ -- Begin function dac_concurrent_data_set
+	.globl	dac_concurrent_data_set
+	.p2align	2
+	.type	dac_concurrent_data_set,%function
+	.code	16                              @ @dac_concurrent_data_set
+	.thumb_func
+dac_concurrent_data_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+                                        @ kill: def $r12 killed $r3
+                                        @ kill: def $r12 killed $r2
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	strh.w	r2, [sp, #10]
+	strh.w	r3, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r0, .LBB27_3
+	b	.LBB27_1
+.LBB27_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB27_4
+	b	.LBB27_2
+.LBB27_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB27_5
+	b	.LBB27_6
+.LBB27_3:
+	ldrh.w	r1, [sp, #8]
+	ldrh.w	r0, [sp, #10]
+	orr.w	r0, r0, r1, lsl #16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #32]
+	b	.LBB27_7
+.LBB27_4:
+	ldrh.w	r1, [sp, #8]
+	ldrh.w	r0, [sp, #10]
+	orr.w	r0, r0, r1, lsl #16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #36]
+	b	.LBB27_7
+.LBB27_5:
+	ldrh.w	r1, [sp, #8]
+	ldrh.w	r0, [sp, #10]
+	orr.w	r0, r0, r1, lsl #8
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #40]
+	b	.LBB27_7
+.LBB27_6:
+	b	.LBB27_7
+.LBB27_7:
+	add	sp, #20
+	bx	lr
+.Lfunc_end27:
+	.size	dac_concurrent_data_set, .Lfunc_end27-dac_concurrent_data_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_flag_get,"ax",%progbits
+	.hidden	dac_flag_get                    @ -- Begin function dac_flag_get
+	.globl	dac_flag_get
+	.p2align	2
+	.type	dac_flag_get,%function
+	.code	16                              @ @dac_flag_get
+	.thumb_func
+dac_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB28_4
+	b	.LBB28_1
+.LBB28_1:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #52]
+	lsls	r0, r0, #18
+	cmp	r0, #0
+	bpl	.LBB28_3
+	b	.LBB28_2
+.LBB28_2:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB28_7
+.LBB28_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB28_7
+.LBB28_4:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #52]
+	lsls	r0, r0, #2
+	cmp	r0, #0
+	bpl	.LBB28_6
+	b	.LBB28_5
+.LBB28_5:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB28_7
+.LBB28_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB28_7
+.LBB28_7:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end28:
+	.size	dac_flag_get, .Lfunc_end28-dac_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_flag_clear,"ax",%progbits
+	.hidden	dac_flag_clear                  @ -- Begin function dac_flag_clear
+	.globl	dac_flag_clear
+	.p2align	2
+	.type	dac_flag_clear,%function
+	.code	16                              @ @dac_flag_clear
+	.thumb_func
+dac_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB29_2
+	b	.LBB29_1
+.LBB29_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #52]
+	orr	r0, r0, #8192
+	str	r0, [r1, #52]
+	b	.LBB29_3
+.LBB29_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #52]
+	orr	r0, r0, #536870912
+	str	r0, [r1, #52]
+	b	.LBB29_3
+.LBB29_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end29:
+	.size	dac_flag_clear, .Lfunc_end29-dac_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_interrupt_enable,"ax",%progbits
+	.hidden	dac_interrupt_enable            @ -- Begin function dac_interrupt_enable
+	.globl	dac_interrupt_enable
+	.p2align	2
+	.type	dac_interrupt_enable,%function
+	.code	16                              @ @dac_interrupt_enable
+	.thumb_func
+dac_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB30_2
+	b	.LBB30_1
+.LBB30_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #8192
+	str	r0, [r1]
+	b	.LBB30_3
+.LBB30_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #536870912
+	str	r0, [r1]
+	b	.LBB30_3
+.LBB30_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end30:
+	.size	dac_interrupt_enable, .Lfunc_end30-dac_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_interrupt_disable,"ax",%progbits
+	.hidden	dac_interrupt_disable           @ -- Begin function dac_interrupt_disable
+	.globl	dac_interrupt_disable
+	.p2align	2
+	.type	dac_interrupt_disable,%function
+	.code	16                              @ @dac_interrupt_disable
+	.thumb_func
+dac_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB31_2
+	b	.LBB31_1
+.LBB31_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #8192
+	str	r0, [r1]
+	b	.LBB31_3
+.LBB31_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #536870912
+	str	r0, [r1]
+	b	.LBB31_3
+.LBB31_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end31:
+	.size	dac_interrupt_disable, .Lfunc_end31-dac_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_interrupt_flag_get,"ax",%progbits
+	.hidden	dac_interrupt_flag_get          @ -- Begin function dac_interrupt_flag_get
+	.globl	dac_interrupt_flag_get
+	.p2align	2
+	.type	dac_interrupt_flag_get,%function
+	.code	16                              @ @dac_interrupt_flag_get
+	.thumb_func
+dac_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #12]
+	strb.w	r1, [sp, #11]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #11]
+	cbnz	r0, .LBB32_2
+	b	.LBB32_1
+.LBB32_1:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #52]
+	and	r0, r0, #8192
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0]
+	and	r0, r0, #8192
+	str	r0, [sp]
+	b	.LBB32_3
+.LBB32_2:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #52]
+	and	r0, r0, #536870912
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0]
+	and	r0, r0, #536870912
+	str	r0, [sp]
+	b	.LBB32_3
+.LBB32_3:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB32_6
+	b	.LBB32_4
+.LBB32_4:
+	ldr	r0, [sp]
+	cbz	r0, .LBB32_6
+	b	.LBB32_5
+.LBB32_5:
+	movs	r0, #1
+	strb.w	r0, [sp, #19]
+	b	.LBB32_7
+.LBB32_6:
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	b	.LBB32_7
+.LBB32_7:
+	ldrb.w	r0, [sp, #19]
+	add	sp, #20
+	bx	lr
+.Lfunc_end32:
+	.size	dac_interrupt_flag_get, .Lfunc_end32-dac_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dac_interrupt_flag_clear,"ax",%progbits
+	.hidden	dac_interrupt_flag_clear        @ -- Begin function dac_interrupt_flag_clear
+	.globl	dac_interrupt_flag_clear
+	.p2align	2
+	.type	dac_interrupt_flag_clear,%function
+	.code	16                              @ @dac_interrupt_flag_clear
+	.thumb_func
+dac_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB33_2
+	b	.LBB33_1
+.LBB33_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #52]
+	orr	r0, r0, #8192
+	str	r0, [r1, #52]
+	b	.LBB33_3
+.LBB33_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #52]
+	orr	r0, r0, #536870912
+	str	r0, [r1, #52]
+	b	.LBB33_3
+.LBB33_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end33:
+	.size	dac_interrupt_flag_clear, .Lfunc_end33-dac_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

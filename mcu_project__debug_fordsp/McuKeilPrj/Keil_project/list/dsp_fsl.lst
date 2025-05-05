@@ -1,0 +1,584 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"dsp_fsl.c"
+	.section	.text.dsp_fsl_reset,"ax",%progbits
+	.hidden	dsp_fsl_reset                   @ -- Begin function dsp_fsl_reset
+	.globl	dsp_fsl_reset
+	.p2align	2
+	.type	dsp_fsl_reset,%function
+	.code	16                              @ @dsp_fsl_reset
+	.thumb_func
+dsp_fsl_reset:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #1207959552
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	mov.w	r1, #4096
+	str	r1, [sp]                        @ 4-byte Spill
+	bl	gpio_bit_reset
+	mov.w	r0, #1000
+	bl	fh_delay_ms
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #2
+	bl	gpio_bit_set
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	dsp_fsl_reset, .Lfunc_end0-dsp_fsl_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_gpio_init,"ax",%progbits
+	.hidden	dsp_gpio_init                   @ -- Begin function dsp_gpio_init
+	.globl	dsp_gpio_init
+	.p2align	2
+	.type	dsp_gpio_init,%function
+	.code	16                              @ @dsp_gpio_init
+	.thumb_func
+dsp_gpio_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	mov.w	r0, #1207959552
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #28]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #36]                   @ 4-byte Spill
+	mov.w	r3, #4096
+	str	r3, [sp]                        @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #40]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r3, #2
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	mov.w	r3, #2048
+	str	r3, [sp, #12]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r3, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movs	r3, #16
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r3, #32
+	str	r3, [sp, #24]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #24]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movw	r0, #5120
+	movt	r0, #18432
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r3, [sp, #24]                   @ 4-byte Reload
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	bl	gpio_mode_set
+	ldr	r3, [sp, #24]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #28]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r3, #64
+	str	r3, [sp, #44]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	ldr	r2, [sp, #40]                   @ 4-byte Reload
+	ldr	r3, [sp, #44]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	dsp_gpio_init, .Lfunc_end1-dsp_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_txdisable_ctrl,"ax",%progbits
+	.hidden	dsp_fsl_txdisable_ctrl          @ -- Begin function dsp_fsl_txdisable_ctrl
+	.globl	dsp_fsl_txdisable_ctrl
+	.p2align	2
+	.type	dsp_fsl_txdisable_ctrl,%function
+	.code	16                              @ @dsp_fsl_txdisable_ctrl
+	.thumb_func
+dsp_fsl_txdisable_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cbnz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	mov.w	r0, #1207959552
+	movs	r1, #2
+	bl	gpio_bit_reset
+	b	.LBB2_3
+.LBB2_2:
+	mov.w	r0, #1207959552
+	movs	r1, #2
+	bl	gpio_bit_set
+	b	.LBB2_3
+.LBB2_3:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	dsp_fsl_txdisable_ctrl, .Lfunc_end2-dsp_fsl_txdisable_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_init,"ax",%progbits
+	.hidden	dsp_fsl_init                    @ -- Begin function dsp_fsl_init
+	.globl	dsp_fsl_init
+	.p2align	2
+	.type	dsp_fsl_init,%function
+	.code	16                              @ @dsp_fsl_init
+	.thumb_func
+dsp_fsl_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov.w	r0, #-1
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	bl	dsp_gpio_init
+	bl	dsp_fsl_reset
+	movs	r0, #10
+	bl	fh_delay_ms
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	dsp_fsl_init, .Lfunc_end3-dsp_fsl_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_ic_download,"ax",%progbits
+	.hidden	dsp_fsl_ic_download             @ -- Begin function dsp_fsl_ic_download
+	.globl	dsp_fsl_ic_download
+	.p2align	2
+	.type	dsp_fsl_ic_download,%function
+	.code	16                              @ @dsp_fsl_ic_download
+	.thumb_func
+dsp_fsl_ic_download:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movs	r0, #0
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	movs	r0, #18
+	movw	r1, #19456
+	movt	r1, #2054
+	bl	SRE_DspSetUp
+	str	r0, [sp, #12]
+	mov.w	r0, #1000
+	bl	system_delay_ms
+	ldr	r0, [sp, #12]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	dsp_fsl_ic_download, .Lfunc_end4-dsp_fsl_ic_download
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_reg_write,"ax",%progbits
+	.hidden	dsp_fsl_reg_write               @ -- Begin function dsp_fsl_reg_write
+	.globl	dsp_fsl_reg_write
+	.p2align	2
+	.type	dsp_fsl_reg_write,%function
+	.code	16                              @ @dsp_fsl_reg_write
+	.thumb_func
+dsp_fsl_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r1, [sp, #20]
+	add	r0, sp, #4
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	set_u32
+	ldr	r0, [sp]                        @ 4-byte Reload
+	adds	r0, #4
+	ldr	r1, [sp, #16]
+	bl	set_u32
+	ldr	r1, [sp]                        @ 4-byte Reload
+	movs	r0, #174
+	movs	r2, #8
+	bl	master_dsp_fsl_reg_4byte_write
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	dsp_fsl_reg_write, .Lfunc_end5-dsp_fsl_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_reg_read,"ax",%progbits
+	.hidden	dsp_fsl_reg_read                @ -- Begin function dsp_fsl_reg_read
+	.globl	dsp_fsl_reg_read
+	.p2align	2
+	.type	dsp_fsl_reg_read,%function
+	.code	16                              @ @dsp_fsl_reg_read
+	.thumb_func
+dsp_fsl_reg_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #16]
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	b	.LBB6_3
+.LBB6_2:
+	ldr	r1, [sp, #20]
+	movs	r0, #174
+	add	r2, sp, #4
+	str	r2, [sp]                        @ 4-byte Spill
+	movs	r3, #4
+	bl	master_dsp_fsl_reg_4byte_size_read
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	get_u32
+	ldr	r1, [sp, #16]
+	str	r0, [r1]
+	b	.LBB6_3
+.LBB6_3:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	dsp_fsl_reg_read, .Lfunc_end6-dsp_fsl_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_continue_write,"ax",%progbits
+	.hidden	dsp_fsl_continue_write          @ -- Begin function dsp_fsl_continue_write
+	.globl	dsp_fsl_continue_write
+	.p2align	2
+	.type	dsp_fsl_continue_write,%function
+	.code	16                              @ @dsp_fsl_continue_write
+	.thumb_func
+dsp_fsl_continue_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#224
+	sub	sp, #224
+	.cfi_def_cfa_offset 232
+	str	r0, [sp, #220]
+	str	r1, [sp, #216]
+	str	r2, [sp, #212]
+	movs	r0, #4
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #212]
+	add	r0, r1
+	cmp	r0, #200
+	bhi	.LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	ldr	r0, [sp, #216]
+	cbnz	r0, .LBB7_3
+	b	.LBB7_2
+.LBB7_2:
+	b	.LBB7_4
+.LBB7_3:
+	ldr	r1, [sp, #220]
+	add	r0, sp, #12
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	set_u32
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	adds	r0, #4
+	ldr	r1, [sp, #216]
+	ldr	r2, [sp, #212]
+	bl	__aeabi_memcpy
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #212]
+	ldr	r2, [sp, #8]
+	add	r2, r0
+	movs	r0, #174
+	bl	master_dsp_fsl_reg_4byte_write
+	b	.LBB7_4
+.LBB7_4:
+	add	sp, #224
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	dsp_fsl_continue_write, .Lfunc_end7-dsp_fsl_continue_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_continue_read,"ax",%progbits
+	.hidden	dsp_fsl_continue_read           @ -- Begin function dsp_fsl_continue_read
+	.globl	dsp_fsl_continue_read
+	.p2align	2
+	.type	dsp_fsl_continue_read,%function
+	.code	16                              @ @dsp_fsl_continue_read
+	.thumb_func
+dsp_fsl_continue_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	ldr	r0, [sp, #8]
+	cbnz	r0, .LBB8_2
+	b	.LBB8_1
+.LBB8_1:
+	b	.LBB8_3
+.LBB8_2:
+	ldr	r1, [sp, #12]
+	ldr	r2, [sp, #8]
+	ldr	r3, [sp, #4]
+	movs	r0, #174
+	bl	master_dsp_fsl_reg_4byte_size_read
+	b	.LBB8_3
+.LBB8_3:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end8:
+	.size	dsp_fsl_continue_read, .Lfunc_end8-dsp_fsl_continue_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_apc_auto_enable_ctrl,"ax",%progbits
+	.hidden	dsp_fsl_apc_auto_enable_ctrl    @ -- Begin function dsp_fsl_apc_auto_enable_ctrl
+	.globl	dsp_fsl_apc_auto_enable_ctrl
+	.p2align	2
+	.type	dsp_fsl_apc_auto_enable_ctrl,%function
+	.code	16                              @ @dsp_fsl_apc_auto_enable_ctrl
+	.thumb_func
+dsp_fsl_apc_auto_enable_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbz	r0, .LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	b	.LBB9_3
+.LBB9_2:
+	b	.LBB9_3
+.LBB9_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	dsp_fsl_apc_auto_enable_ctrl, .Lfunc_end9-dsp_fsl_apc_auto_enable_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_run_hpll,"ax",%progbits
+	.hidden	dsp_fsl_run_hpll                @ -- Begin function dsp_fsl_run_hpll
+	.globl	dsp_fsl_run_hpll
+	.p2align	2
+	.type	dsp_fsl_run_hpll,%function
+	.code	16                              @ @dsp_fsl_run_hpll
+	.thumb_func
+dsp_fsl_run_hpll:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	SREI_PllIsLock
+	cmp	r0, #1
+	beq	.LBB10_2
+	b	.LBB10_1
+.LBB10_1:
+	movs	r0, #18
+	bl	SRE_HpllSetup
+	b	.LBB10_2
+.LBB10_2:
+	pop	{r7, pc}
+.Lfunc_end10:
+	.size	dsp_fsl_run_hpll, .Lfunc_end10-dsp_fsl_run_hpll
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_run_ds_cali,"ax",%progbits
+	.hidden	dsp_fsl_run_ds_cali             @ -- Begin function dsp_fsl_run_ds_cali
+	.globl	dsp_fsl_run_ds_cali
+	.p2align	2
+	.type	dsp_fsl_run_ds_cali,%function
+	.code	16                              @ @dsp_fsl_run_ds_cali
+	.thumb_func
+dsp_fsl_run_ds_cali:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	bx	lr
+.Lfunc_end11:
+	.size	dsp_fsl_run_ds_cali, .Lfunc_end11-dsp_fsl_run_ds_cali
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

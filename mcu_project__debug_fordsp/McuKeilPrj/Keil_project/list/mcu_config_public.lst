@@ -1,0 +1,109 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"mcu_config_public.c"
+	.section	.text.rcu_config_init,"ax",%progbits
+	.hidden	rcu_config_init                 @ -- Begin function rcu_config_init
+	.globl	rcu_config_init
+	.p2align	2
+	.type	rcu_config_init,%function
+	.code	16                              @ @rcu_config_init
+	.thumb_func
+rcu_config_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #1297
+	bl	rcu_periph_clock_enable
+	movw	r0, #1298
+	bl	rcu_periph_clock_enable
+	movw	r0, #1299
+	bl	rcu_periph_clock_enable
+	movw	r0, #1302
+	bl	rcu_periph_clock_enable
+	movw	r0, #1550
+	bl	rcu_periph_clock_enable
+	mov.w	r0, #1816
+	bl	rcu_periph_clock_enable
+	movw	r0, #1814
+	bl	rcu_periph_clock_enable
+	movw	r0, #1813
+	bl	rcu_periph_clock_enable
+	movw	r0, #1821
+	bl	rcu_periph_clock_enable
+	movw	r0, #1823
+	bl	rcu_periph_clock_enable
+	movw	r0, #1818
+	bl	rcu_periph_clock_enable
+	mov.w	r0, #1536
+	bl	rcu_periph_clock_enable
+	movw	r0, #1545
+	bl	rcu_periph_clock_enable
+	mov.w	r0, #1280
+	bl	rcu_periph_clock_enable
+	movs	r0, #6
+	bl	rcu_adc_clock_config
+	movw	r0, #1286
+	bl	rcu_periph_clock_enable
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	rcu_config_init, .Lfunc_end0-rcu_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_config,"ax",%progbits
+	.hidden	syscfg_config                   @ -- Begin function syscfg_config
+	.globl	syscfg_config
+	.p2align	2
+	.type	syscfg_config,%function
+	.code	16                              @ @syscfg_config
+	.thumb_func
+syscfg_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	syscfg_deinit
+	bl	syscfg_vref_enable
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	syscfg_config, .Lfunc_end1-syscfg_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

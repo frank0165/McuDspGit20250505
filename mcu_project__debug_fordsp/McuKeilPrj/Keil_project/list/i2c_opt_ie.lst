@@ -1,0 +1,4191 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"i2c_opt_ie.c"
+	.section	.text.reset_master_i2c,"ax",%progbits
+	.hidden	reset_master_i2c                @ -- Begin function reset_master_i2c
+	.globl	reset_master_i2c
+	.p2align	2
+	.type	reset_master_i2c,%function
+	.code	16                              @ @reset_master_i2c
+	.thumb_func
+reset_master_i2c:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_3
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #4]
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:
+	b	.LBB0_4
+.LBB0_3:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r2, [sp, #4]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bl	i2c_master_info_buffer_clear
+	ldr	r0, [sp, #4]
+	bl	i2c_disable
+	ldr	r0, [sp, #4]
+	bl	i2c_enable
+	b	.LBB0_4
+.LBB0_4:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	reset_master_i2c, .Lfunc_end0-reset_master_i2c
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_master_info_buffer_clear,"ax",%progbits
+	.hidden	i2c_master_info_buffer_clear    @ -- Begin function i2c_master_info_buffer_clear
+	.globl	i2c_master_info_buffer_clear
+	.p2align	2
+	.type	i2c_master_info_buffer_clear,%function
+	.code	16                              @ @i2c_master_info_buffer_clear
+	.thumb_func
+i2c_master_info_buffer_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	b	.LBB1_3
+.LBB1_2:
+	ldr	r0, [sp, #4]
+	movs	r1, #244
+	bl	__aeabi_memclr4
+	b	.LBB1_3
+.LBB1_3:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	i2c_master_info_buffer_clear, .Lfunc_end1-i2c_master_info_buffer_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_func_register_read_callback,"ax",%progbits
+	.hidden	i2c_slave_func_register_read_callback @ -- Begin function i2c_slave_func_register_read_callback
+	.globl	i2c_slave_func_register_read_callback
+	.p2align	2
+	.type	i2c_slave_func_register_read_callback,%function
+	.code	16                              @ @i2c_slave_func_register_read_callback
+	.thumb_func
+i2c_slave_func_register_read_callback:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	str	r0, [sp]
+	b	.LBB2_1
+.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	movw	r1, :lower16:g_slave_read_cfg_idx
+	movt	r1, :upper16:g_slave_read_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB2_6
+	b	.LBB2_2
+.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
+	ldr	r0, [sp, #8]
+	ldr	r2, [sp]
+	movw	r1, :lower16:g_slave_read_cfg_callback_array
+	movt	r1, :upper16:g_slave_read_cfg_callback_array
+	ldr.w	r1, [r1, r2, lsl #3]
+	cmp	r0, r1
+	bne	.LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	b	.LBB2_9
+.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
+	b	.LBB2_5
+.LBB2_5:                                @   in Loop: Header=BB2_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB2_1
+.LBB2_6:
+	movw	r0, :lower16:g_slave_read_cfg_idx
+	movt	r0, :upper16:g_slave_read_cfg_idx
+	ldr	r0, [r0]
+	cmp	r0, #19
+	bhi	.LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+	ldr	r0, [sp, #4]
+	movw	r1, :lower16:g_slave_read_cfg_idx
+	movt	r1, :upper16:g_slave_read_cfg_idx
+	ldr	r3, [r1]
+	movw	r2, :lower16:g_slave_read_cfg_callback_array
+	movt	r2, :upper16:g_slave_read_cfg_callback_array
+	add.w	r3, r2, r3, lsl #3
+	str	r0, [r3, #4]
+	ldr	r0, [sp, #8]
+	ldr	r3, [r1]
+	str.w	r0, [r2, r3, lsl #3]
+	ldr	r0, [r1]
+	adds	r0, #1
+	str	r0, [r1]
+	b	.LBB2_8
+.LBB2_8:
+	b	.LBB2_9
+.LBB2_9:
+	add	sp, #12
+	bx	lr
+.Lfunc_end2:
+	.size	i2c_slave_func_register_read_callback, .Lfunc_end2-i2c_slave_func_register_read_callback
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_func_register_write_callback,"ax",%progbits
+	.hidden	i2c_slave_func_register_write_callback @ -- Begin function i2c_slave_func_register_write_callback
+	.globl	i2c_slave_func_register_write_callback
+	.p2align	2
+	.type	i2c_slave_func_register_write_callback,%function
+	.code	16                              @ @i2c_slave_func_register_write_callback
+	.thumb_func
+i2c_slave_func_register_write_callback:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	str	r0, [sp]
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	movw	r1, :lower16:g_slave_write_cfg_idx
+	movt	r1, :upper16:g_slave_write_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB3_6
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp, #8]
+	ldr	r2, [sp]
+	movw	r1, :lower16:g_slave_write_cfg_callback_array
+	movt	r1, :upper16:g_slave_write_cfg_callback_array
+	ldr.w	r1, [r1, r2, lsl #3]
+	cmp	r0, r1
+	bne	.LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+	b	.LBB3_8
+.LBB3_4:                                @   in Loop: Header=BB3_1 Depth=1
+	b	.LBB3_5
+.LBB3_5:                                @   in Loop: Header=BB3_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB3_1
+.LBB3_6:
+	movw	r0, :lower16:g_slave_write_cfg_idx
+	movt	r0, :upper16:g_slave_write_cfg_idx
+	ldr	r0, [r0]
+	cmp	r0, #19
+	bhi	.LBB3_8
+	b	.LBB3_7
+.LBB3_7:
+	ldr	r0, [sp, #4]
+	movw	r1, :lower16:g_slave_write_cfg_idx
+	movt	r1, :upper16:g_slave_write_cfg_idx
+	ldr	r3, [r1]
+	movw	r2, :lower16:g_slave_write_cfg_callback_array
+	movt	r2, :upper16:g_slave_write_cfg_callback_array
+	add.w	r3, r2, r3, lsl #3
+	str	r0, [r3, #4]
+	ldr	r0, [sp, #8]
+	ldr	r3, [r1]
+	str.w	r0, [r2, r3, lsl #3]
+	ldr	r0, [r1]
+	adds	r0, #1
+	str	r0, [r1]
+	b	.LBB3_8
+.LBB3_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end3:
+	.size	i2c_slave_func_register_write_callback, .Lfunc_end3-i2c_slave_func_register_write_callback
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_buffer_info_clear,"ax",%progbits
+	.hidden	i2c_slave_buffer_info_clear     @ -- Begin function i2c_slave_buffer_info_clear
+	.globl	i2c_slave_buffer_info_clear
+	.p2align	2
+	.type	i2c_slave_buffer_info_clear,%function
+	.code	16                              @ @i2c_slave_buffer_info_clear
+	.thumb_func
+i2c_slave_buffer_info_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	mov.w	r1, #288
+	bl	__aeabi_memclr4
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	i2c_slave_buffer_info_clear, .Lfunc_end4-i2c_slave_buffer_info_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_info_slave_address_add,"ax",%progbits
+	.hidden	i2c_slave_info_slave_address_add @ -- Begin function i2c_slave_info_slave_address_add
+	.globl	i2c_slave_info_slave_address_add
+	.p2align	2
+	.type	i2c_slave_info_slave_address_add,%function
+	.code	16                              @ @i2c_slave_info_slave_address_add
+	.thumb_func
+i2c_slave_info_slave_address_add:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, :lower16:g_i2c_slave_info_cfg
+	movt	r1, :upper16:g_i2c_slave_info_cfg
+	str	r0, [r1, #12]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	i2c_slave_info_slave_address_add, .Lfunc_end5-i2c_slave_info_slave_address_add
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_buffer_info_data_add,"ax",%progbits
+	.hidden	i2c_slave_buffer_info_data_add  @ -- Begin function i2c_slave_buffer_info_data_add
+	.globl	i2c_slave_buffer_info_data_add
+	.p2align	2
+	.type	i2c_slave_buffer_info_data_add,%function
+	.code	16                              @ @i2c_slave_buffer_info_data_add
+	.thumb_func
+i2c_slave_buffer_info_data_add:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	ldr	r0, [r0, #4]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	lsrs	r0, r0, #3
+	cmp	r0, #32
+	bhi	.LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	ldr	r0, [sp, #4]
+	ldr	r2, [sp]
+	movw	r1, :lower16:g_i2c_slave_info_cfg
+	movt	r1, :upper16:g_i2c_slave_info_cfg
+	add	r2, r1
+	strb	r0, [r2, #24]
+	ldr	r0, [r1, #4]
+	adds	r0, #1
+	str	r0, [r1, #4]
+	b	.LBB6_2
+.LBB6_2:
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	i2c_slave_buffer_info_data_add, .Lfunc_end6-i2c_slave_buffer_info_data_add
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_buffer_mng_regaddress_info,"ax",%progbits
+	.hidden	i2c_slave_buffer_mng_regaddress_info @ -- Begin function i2c_slave_buffer_mng_regaddress_info
+	.globl	i2c_slave_buffer_mng_regaddress_info
+	.p2align	2
+	.type	i2c_slave_buffer_mng_regaddress_info,%function
+	.code	16                              @ @i2c_slave_buffer_mng_regaddress_info
+	.thumb_func
+i2c_slave_buffer_mng_regaddress_info:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	ldr	r0, [r0, #4]
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	cmp	r0, #7
+	bhi	.LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	movs	r1, #0
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	str	r1, [r0, #16]!
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	str	r1, [r0, #4]
+	ldr	r2, [sp, #12]
+	add.w	r1, r0, #8
+	str	r1, [sp]                        @ 4-byte Spill
+	bl	__aeabi_memcpy4
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #12]
+	strb	r1, [r2, #-8]
+	mov.w	r1, #264
+	bl	__aeabi_memclr4
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r0, [r1, #-12]
+	b	.LBB7_2
+.LBB7_2:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	i2c_slave_buffer_mng_regaddress_info, .Lfunc_end7-i2c_slave_buffer_mng_regaddress_info
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_info_get_buff_info,"ax",%progbits
+	.hidden	i2c_slave_info_get_buff_info    @ -- Begin function i2c_slave_info_get_buff_info
+	.globl	i2c_slave_info_get_buff_info
+	.p2align	2
+	.type	i2c_slave_info_get_buff_info,%function
+	.code	16                              @ @i2c_slave_info_get_buff_info
+	.thumb_func
+i2c_slave_info_get_buff_info:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	i2c_slave_info_get_buff_info, .Lfunc_end8-i2c_slave_info_get_buff_info
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_info_popup_data_from_buffer,"ax",%progbits
+	.hidden	i2c_slave_info_popup_data_from_buffer @ -- Begin function i2c_slave_info_popup_data_from_buffer
+	.globl	i2c_slave_info_popup_data_from_buffer
+	.p2align	2
+	.type	i2c_slave_info_popup_data_from_buffer,%function
+	.code	16                              @ @i2c_slave_info_popup_data_from_buffer
+	.thumb_func
+i2c_slave_info_popup_data_from_buffer:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	ldr	r1, [r0, #4]
+	str	r1, [sp, #4]
+	movs	r1, #0
+	strb.w	r1, [sp, #3]
+	ldr	r0, [r0, #4]
+	lsrs	r0, r0, #2
+	cmp	r0, #64
+	bhi	.LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	ldr	r0, [sp, #4]
+	movw	r1, :lower16:g_i2c_slave_info_cfg
+	movt	r1, :upper16:g_i2c_slave_info_cfg
+	add	r0, r1
+	ldrb	r0, [r0, #24]
+	strb.w	r0, [sp, #3]
+	ldr	r0, [r1, #4]
+	adds	r0, #1
+	str	r0, [r1, #4]
+	ldrb.w	r0, [sp, #3]
+	strb.w	r0, [sp, #11]
+	b	.LBB9_3
+.LBB9_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB9_3
+.LBB9_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end9:
+	.size	i2c_slave_info_popup_data_from_buffer, .Lfunc_end9-i2c_slave_info_popup_data_from_buffer
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_info_state_is_read,"ax",%progbits
+	.hidden	i2c_slave_info_state_is_read    @ -- Begin function i2c_slave_info_state_is_read
+	.globl	i2c_slave_info_state_is_read
+	.p2align	2
+	.type	i2c_slave_info_state_is_read,%function
+	.code	16                              @ @i2c_slave_info_state_is_read
+	.thumb_func
+i2c_slave_info_state_is_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, :lower16:g_i2c_slave_info_cfg
+	movt	r0, :upper16:g_i2c_slave_info_cfg
+	ldrb	r0, [r0]
+	bx	lr
+.Lfunc_end10:
+	.size	i2c_slave_info_state_is_read, .Lfunc_end10-i2c_slave_info_state_is_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_info_set_state_read_flag,"ax",%progbits
+	.hidden	i2c_slave_info_set_state_read_flag @ -- Begin function i2c_slave_info_set_state_read_flag
+	.globl	i2c_slave_info_set_state_read_flag
+	.p2align	2
+	.type	i2c_slave_info_set_state_read_flag,%function
+	.code	16                              @ @i2c_slave_info_set_state_read_flag
+	.thumb_func
+i2c_slave_info_set_state_read_flag:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	movw	r1, :lower16:g_i2c_slave_info_cfg
+	movt	r1, :upper16:g_i2c_slave_info_cfg
+	strb	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	i2c_slave_info_set_state_read_flag, .Lfunc_end11-i2c_slave_info_set_state_read_flag
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_master_buffer_info_data_add,"ax",%progbits
+	.hidden	i2c_master_buffer_info_data_add @ -- Begin function i2c_master_buffer_info_data_add
+	.globl	i2c_master_buffer_info_data_add
+	.p2align	2
+	.type	i2c_master_buffer_info_data_add,%function
+	.code	16                              @ @i2c_master_buffer_info_data_add
+	.thumb_func
+i2c_master_buffer_info_data_add:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB12_3
+	b	.LBB12_1
+.LBB12_1:
+	ldr	r0, [sp, #12]
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB12_3
+	b	.LBB12_2
+.LBB12_2:
+	b	.LBB12_6
+.LBB12_3:
+	ldr	r2, [sp, #12]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #4]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	lsrs	r0, r0, #3
+	cmp	r0, #32
+	bhi	.LBB12_5
+	b	.LBB12_4
+.LBB12_4:
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #4]
+	ldr	r2, [sp]
+	add	r1, r2
+	adds	r2, #1
+	str	r2, [sp]
+	strb	r0, [r1, #24]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #4]
+	b	.LBB12_5
+.LBB12_5:
+	b	.LBB12_6
+.LBB12_6:
+	add	sp, #16
+	bx	lr
+.Lfunc_end12:
+	.size	i2c_master_buffer_info_data_add, .Lfunc_end12-i2c_master_buffer_info_data_add
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_master_info_popup_data_from_buffer,"ax",%progbits
+	.hidden	i2c_master_info_popup_data_from_buffer @ -- Begin function i2c_master_info_popup_data_from_buffer
+	.globl	i2c_master_info_popup_data_from_buffer
+	.p2align	2
+	.type	i2c_master_info_popup_data_from_buffer,%function
+	.code	16                              @ @i2c_master_info_popup_data_from_buffer
+	.thumb_func
+i2c_master_info_popup_data_from_buffer:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	ldr	r3, [sp, #12]
+	movw	r2, :lower16:g_ai2c_master_info_cfg
+	movt	r2, :upper16:g_ai2c_master_info_cfg
+	movw	r1, :lower16:g_bi2c_master_info_cfg
+	movt	r1, :upper16:g_bi2c_master_info_cfg
+	movw	r12, #22528
+	movt	r12, #16384
+	cmp	r3, r12
+	it	eq
+	moveq	r1, r2
+	str	r1, [sp, #8]
+	ldr	r1, [sp, #8]
+	ldr	r1, [r1, #4]
+	str	r1, [sp, #4]
+	strb.w	r0, [sp, #3]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #4]
+	lsrs	r0, r0, #2
+	cmp	r0, #64
+	bhi	.LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #4]
+	add	r0, r1
+	ldrb	r0, [r0, #24]
+	strb.w	r0, [sp, #3]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	adds	r0, #1
+	str	r0, [r1, #4]
+	ldrb.w	r0, [sp, #3]
+	strb.w	r0, [sp, #19]
+	b	.LBB13_3
+.LBB13_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	b	.LBB13_3
+.LBB13_3:
+	ldrb.w	r0, [sp, #19]
+	add	sp, #20
+	bx	lr
+.Lfunc_end13:
+	.size	i2c_master_info_popup_data_from_buffer, .Lfunc_end13-i2c_master_info_popup_data_from_buffer
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_write_lock,"ax",%progbits
+	.hidden	i2c_write_lock                  @ -- Begin function i2c_write_lock
+	.globl	i2c_write_lock
+	.p2align	2
+	.type	i2c_write_lock,%function
+	.code	16                              @ @i2c_write_lock
+	.thumb_func
+i2c_write_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #21]
+	bx	lr
+.Lfunc_end14:
+	.size	i2c_write_lock, .Lfunc_end14-i2c_write_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_write_unlock,"ax",%progbits
+	.hidden	i2c_write_unlock                @ -- Begin function i2c_write_unlock
+	.globl	i2c_write_unlock
+	.p2align	2
+	.type	i2c_write_unlock,%function
+	.code	16                              @ @i2c_write_unlock
+	.thumb_func
+i2c_write_unlock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #21]
+	bx	lr
+.Lfunc_end15:
+	.size	i2c_write_unlock, .Lfunc_end15-i2c_write_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_get_write_lock,"ax",%progbits
+	.hidden	i2c_get_write_lock              @ -- Begin function i2c_get_write_lock
+	.globl	i2c_get_write_lock
+	.p2align	2
+	.type	i2c_get_write_lock,%function
+	.code	16                              @ @i2c_get_write_lock
+	.thumb_func
+i2c_get_write_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #21]
+	bx	lr
+.Lfunc_end16:
+	.size	i2c_get_write_lock, .Lfunc_end16-i2c_get_write_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_read_lock,"ax",%progbits
+	.hidden	i2c_read_lock                   @ -- Begin function i2c_read_lock
+	.globl	i2c_read_lock
+	.p2align	2
+	.type	i2c_read_lock,%function
+	.code	16                              @ @i2c_read_lock
+	.thumb_func
+i2c_read_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #22]
+	bx	lr
+.Lfunc_end17:
+	.size	i2c_read_lock, .Lfunc_end17-i2c_read_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_read_unlock,"ax",%progbits
+	.hidden	i2c_read_unlock                 @ -- Begin function i2c_read_unlock
+	.globl	i2c_read_unlock
+	.p2align	2
+	.type	i2c_read_unlock,%function
+	.code	16                              @ @i2c_read_unlock
+	.thumb_func
+i2c_read_unlock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #22]
+	bx	lr
+.Lfunc_end18:
+	.size	i2c_read_unlock, .Lfunc_end18-i2c_read_unlock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_get_read_lock,"ax",%progbits
+	.hidden	i2c_get_read_lock               @ -- Begin function i2c_get_read_lock
+	.globl	i2c_get_read_lock
+	.p2align	2
+	.type	i2c_get_read_lock,%function
+	.code	16                              @ @i2c_get_read_lock
+	.thumb_func
+i2c_get_read_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #22]
+	bx	lr
+.Lfunc_end19:
+	.size	i2c_get_read_lock, .Lfunc_end19-i2c_get_read_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.reset_slave_i2c,"ax",%progbits
+	.hidden	reset_slave_i2c                 @ -- Begin function reset_slave_i2c
+	.globl	reset_slave_i2c
+	.p2align	2
+	.type	reset_slave_i2c,%function
+	.code	16                              @ @reset_slave_i2c
+	.thumb_func
+reset_slave_i2c:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bl	i2c_disable
+	ldr	r0, [sp, #4]
+	bl	i2c_enable
+	bl	i2c_slave_buffer_info_clear
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #17]
+	strb	r0, [r1, #18]
+	strb	r0, [r1, #19]
+	strb	r0, [r1, #20]
+	bl	i2c_write_unlock
+	bl	i2c_read_unlock
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end20:
+	.size	reset_slave_i2c, .Lfunc_end20-reset_slave_i2c
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_write_special_handleing,"ax",%progbits
+	.hidden	slave_i2c_write_special_handleing @ -- Begin function slave_i2c_write_special_handleing
+	.globl	slave_i2c_write_special_handleing
+	.p2align	2
+	.type	slave_i2c_write_special_handleing,%function
+	.code	16                              @ @slave_i2c_write_special_handleing
+	.thumb_func
+slave_i2c_write_special_handleing:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	str	r0, [sp, #4]
+	add	r0, sp, #4
+	bl	i2c_slave_info_get_buff_info
+	ldr	r0, [sp, #4]
+	cbnz	r0, .LBB21_2
+	b	.LBB21_1
+.LBB21_1:
+	b	.LBB21_6
+.LBB21_2:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #24]
+	cmp	r0, #8
+	beq	.LBB21_5
+	b	.LBB21_3
+.LBB21_3:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #24]
+	cmp	r0, #12
+	beq	.LBB21_5
+	b	.LBB21_4
+.LBB21_4:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0, #24]
+	cmp	r0, #40
+	bne	.LBB21_6
+	b	.LBB21_5
+.LBB21_5:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #1
+	strb	r0, [r1]
+	b	.LBB21_6
+.LBB21_6:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end21:
+	.size	slave_i2c_write_special_handleing, .Lfunc_end21-slave_i2c_write_special_handleing
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_event_irq_handler,"ax",%progbits
+	.hidden	slave_event_irq_handler         @ -- Begin function slave_event_irq_handler
+	.globl	slave_event_irq_handler
+	.p2align	2
+	.type	slave_event_irq_handler,%function
+	.code	16                              @ @slave_event_irq_handler
+	.thumb_func
+slave_event_irq_handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	strb.w	r0, [sp, #7]
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	str	r0, [r1, #36]
+	ldr	r0, [sp, #20]
+	movs	r1, #3
+	movt	r1, #1539
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB22_5
+	b	.LBB22_1
+.LBB22_1:
+	bl	i2c_get_write_lock
+	cbnz	r0, .LBB22_3
+	b	.LBB22_2
+.LBB22_2:
+	bl	slave_i2c_address_match_handle
+	b	.LBB22_4
+.LBB22_3:
+	ldr	r0, [sp, #20]
+	movs	r1, #8
+	bl	i2c_interrupt_disable
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #20]
+	b	.LBB22_4
+.LBB22_4:
+	b	.LBB22_17
+.LBB22_5:
+	ldr	r0, [sp, #20]
+	movs	r1, #2
+	movt	r1, #1538
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB22_7
+	b	.LBB22_6
+.LBB22_6:
+	ldr	r0, [sp, #20]
+	movs	r1, #38
+	bl	i2c_interrupt_disable
+	ldr	r0, [sp, #20]
+	movs	r1, #3
+	movt	r1, #1539
+	bl	i2c_interrupt_flag_clear
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #19]
+	bl	slave_i2c_receive_handle
+	b	.LBB22_16
+.LBB22_7:
+	ldr	r0, [sp, #20]
+	movs	r1, #1
+	movt	r1, #1537
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB22_9
+	b	.LBB22_8
+.LBB22_8:
+	ldr	r0, [sp, #20]
+	movs	r1, #34
+	bl	i2c_interrupt_disable
+	ldr	r0, [sp, #20]
+	movs	r1, #1
+	movt	r1, #1537
+	bl	i2c_interrupt_flag_clear
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #17]
+	b	.LBB22_15
+.LBB22_9:
+	ldr	r0, [sp, #20]
+	movs	r1, #5
+	movt	r1, #1541
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB22_14
+	b	.LBB22_10
+.LBB22_10:
+	ldr	r0, [sp, #20]
+	movs	r1, #38
+	bl	i2c_interrupt_disable
+	ldr	r0, [sp, #20]
+	movs	r1, #5
+	movt	r1, #1541
+	bl	i2c_interrupt_flag_clear
+	bl	i2c_write_lock
+	bl	i2c_slave_info_state_is_read
+	cmp	r0, #1
+	beq	.LBB22_12
+	b	.LBB22_11
+.LBB22_11:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #18]
+	bl	slave_i2c_write_special_handleing
+	b	.LBB22_13
+.LBB22_12:
+	bl	i2c_slave_buffer_info_clear
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldr	r0, [r1]
+	movs	r0, #0
+	str	r0, [r1]
+	bl	i2c_write_unlock
+	b	.LBB22_13
+.LBB22_13:
+	b	.LBB22_14
+.LBB22_14:
+	b	.LBB22_15
+.LBB22_15:
+	b	.LBB22_16
+.LBB22_16:
+	b	.LBB22_17
+.LBB22_17:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end22:
+	.size	slave_event_irq_handler, .Lfunc_end22-slave_event_irq_handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_receive_handle,"ax",%progbits
+	.hidden	slave_i2c_receive_handle        @ -- Begin function slave_i2c_receive_handle
+	.globl	slave_i2c_receive_handle
+	.p2align	2
+	.type	slave_i2c_receive_handle,%function
+	.code	16                              @ @slave_i2c_receive_handle
+	.thumb_func
+slave_i2c_receive_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	str	r0, [sp]
+	bl	i2c_get_write_lock
+	cmp	r0, #1
+	bne	.LBB23_2
+	b	.LBB23_1
+.LBB23_1:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #18]
+	b	.LBB23_7
+.LBB23_2:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #19]
+	movw	r0, #49152
+	movt	r0, #16384
+	bl	i2c_data_receive
+	strb.w	r0, [sp, #7]
+	mov	r0, sp
+	bl	i2c_slave_info_get_buff_info
+	ldr	r0, [sp]
+	cbz	r0, .LBB23_6
+	b	.LBB23_3
+.LBB23_3:
+	ldr	r0, [sp]
+	ldr	r0, [r0, #4]
+	cmp.w	r0, #264
+	bhi	.LBB23_5
+	b	.LBB23_4
+.LBB23_4:
+	ldrb.w	r0, [sp, #7]
+	bl	i2c_slave_buffer_info_data_add
+	b	.LBB23_5
+.LBB23_5:
+	b	.LBB23_6
+.LBB23_6:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #38
+	bl	i2c_interrupt_enable
+	b	.LBB23_7
+.LBB23_7:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end23:
+	.size	slave_i2c_receive_handle, .Lfunc_end23-slave_i2c_receive_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_address_match_handle,"ax",%progbits
+	.hidden	slave_i2c_address_match_handle  @ -- Begin function slave_i2c_address_match_handle
+	.globl	slave_i2c_address_match_handle
+	.p2align	2
+	.type	slave_i2c_address_match_handle,%function
+	.code	16                              @ @slave_i2c_address_match_handle
+	.thumb_func
+slave_i2c_address_match_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	bl	i2c_get_write_lock
+	cmp	r0, #1
+	bne	.LBB24_2
+	b	.LBB24_1
+.LBB24_1:
+	b	.LBB24_8
+.LBB24_2:
+	movw	r0, #49152
+	movt	r0, #16384
+	mov.w	r1, #65536
+	bl	i2c_flag_get
+	cmp	r0, #1
+	bne	.LBB24_4
+	b	.LBB24_3
+.LBB24_3:
+	movw	r1, #49176
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB24_4
+.LBB24_4:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #3
+	movt	r1, #1539
+	bl	i2c_interrupt_flag_clear
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #20]
+	cmp	r0, #1
+	bne	.LBB24_6
+	b	.LBB24_5
+.LBB24_5:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #46
+	bl	i2c_interrupt_enable
+	b	.LBB24_7
+.LBB24_6:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #38
+	bl	i2c_interrupt_enable
+	b	.LBB24_7
+.LBB24_7:
+	movw	r0, #49152
+	movt	r0, #16384
+	bl	i2c_recevied_address_get
+	lsls	r1, r0, #1
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	str	r1, [r0]
+	ldr	r0, [r0]
+	bl	i2c_slave_info_slave_address_add
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	movs	r0, #0
+	strb	r0, [r1, #20]
+	b	.LBB24_8
+.LBB24_8:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end24:
+	.size	slave_i2c_address_match_handle, .Lfunc_end24-slave_i2c_address_match_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_read_handle,"ax",%progbits
+	.hidden	slave_i2c_read_handle           @ -- Begin function slave_i2c_read_handle
+	.globl	slave_i2c_read_handle
+	.p2align	2
+	.type	slave_i2c_read_handle,%function
+	.code	16                              @ @slave_i2c_read_handle
+	.thumb_func
+slave_i2c_read_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	strb	r0, [r1, #17]
+	str	r0, [sp, #8]
+	bl	i2c_slave_info_state_is_read
+	cbnz	r0, .LBB25_4
+	b	.LBB25_1
+.LBB25_1:
+	bl	i2c_slave_buffer_mng_regaddress_info
+	movs	r0, #1
+	bl	i2c_slave_info_set_state_read_flag
+	add	r0, sp, #8
+	bl	i2c_slave_info_get_buff_info
+	ldr	r0, [sp, #8]
+	cbnz	r0, .LBB25_3
+	b	.LBB25_2
+.LBB25_2:
+	b	.LBB25_5
+.LBB25_3:
+	ldr	r1, [sp, #8]
+	add.w	r0, r1, #8
+	adds	r1, #24
+	mov.w	r2, #260
+	bl	slave_v2_reg_byte_read
+	b	.LBB25_4
+.LBB25_4:
+	bl	i2c_slave_info_popup_data_from_buffer
+	strb.w	r0, [sp, #15]
+	ldrb.w	r1, [sp, #15]
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	i2c_data_transmit
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #34
+	bl	i2c_interrupt_enable
+	b	.LBB25_5
+.LBB25_5:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end25:
+	.size	slave_i2c_read_handle, .Lfunc_end25-slave_i2c_read_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_v2_reg_byte_read,"ax",%progbits
+	.hidden	slave_v2_reg_byte_read          @ -- Begin function slave_v2_reg_byte_read
+	.globl	slave_v2_reg_byte_read
+	.p2align	2
+	.type	slave_v2_reg_byte_read,%function
+	.code	16                              @ @slave_v2_reg_byte_read
+	.thumb_func
+slave_v2_reg_byte_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	cmp.w	r0, #260
+	bls	.LBB26_2
+	b	.LBB26_1
+.LBB26_1:
+	mov.w	r0, #260
+	str	r0, [sp, #12]
+	b	.LBB26_2
+.LBB26_2:
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB26_4
+	b	.LBB26_3
+.LBB26_3:
+	b	.LBB26_17
+.LBB26_4:
+	movs	r0, #0
+	str	r0, [sp, #8]
+	b	.LBB26_5
+.LBB26_5:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:g_slave_read_cfg_idx
+	movt	r1, :upper16:g_slave_read_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB26_10
+	b	.LBB26_6
+.LBB26_6:                               @   in Loop: Header=BB26_5 Depth=1
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #4]
+	ldr	r2, [sp, #8]
+	movw	r1, :lower16:g_slave_read_cfg_callback_array
+	movt	r1, :upper16:g_slave_read_cfg_callback_array
+	ldr.w	r1, [r1, r2, lsl #3]
+	cmp	r0, r1
+	bne	.LBB26_8
+	b	.LBB26_7
+.LBB26_7:
+	b	.LBB26_10
+.LBB26_8:                               @   in Loop: Header=BB26_5 Depth=1
+	b	.LBB26_9
+.LBB26_9:                               @   in Loop: Header=BB26_5 Depth=1
+	ldr	r0, [sp, #8]
+	adds	r0, #1
+	str	r0, [sp, #8]
+	b	.LBB26_5
+.LBB26_10:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:g_slave_read_cfg_idx
+	movt	r1, :upper16:g_slave_read_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB26_12
+	b	.LBB26_11
+.LBB26_11:
+	ldr	r1, [sp, #8]
+	movw	r0, :lower16:g_slave_read_cfg_callback_array
+	movt	r0, :upper16:g_slave_read_cfg_callback_array
+	add.w	r0, r0, r1, lsl #3
+	ldr	r3, [r0, #4]
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #16]
+	ldr	r2, [sp, #12]
+	blx	r3
+	b	.LBB26_16
+.LBB26_12:
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #4]
+	cmp	r0, #174
+	bne	.LBB26_14
+	b	.LBB26_13
+.LBB26_13:
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #8
+	bl	get_u32
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #4]
+	ldr	r1, [sp, #4]
+	ldr	r2, [sp, #16]
+	movs	r3, #200
+	bl	master_dsp_fsl_reg_4byte_size_read
+	b	.LBB26_15
+.LBB26_14:
+	ldr	r0, [sp, #20]
+	ldr	r1, [r0, #4]
+	ldr	r2, [sp, #16]
+	movs	r3, #1
+	bl	master_reg_byte_read
+	ldr	r0, [sp, #16]
+	ldrb	r0, [r0]
+	str	r0, [sp, #8]
+	b	.LBB26_15
+.LBB26_15:
+	b	.LBB26_16
+.LBB26_16:
+	b	.LBB26_17
+.LBB26_17:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end26:
+	.size	slave_v2_reg_byte_read, .Lfunc_end26-slave_v2_reg_byte_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_write_handle,"ax",%progbits
+	.hidden	slave_i2c_write_handle          @ -- Begin function slave_i2c_write_handle
+	.globl	slave_i2c_write_handle
+	.p2align	2
+	.type	slave_i2c_write_handle,%function
+	.code	16                              @ @slave_i2c_write_handle
+	.thumb_func
+slave_i2c_write_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	str	r0, [sp, #4]
+	bl	i2c_get_write_lock
+	cbnz	r0, .LBB27_2
+	b	.LBB27_1
+.LBB27_1:
+	b	.LBB27_5
+.LBB27_2:
+	add	r0, sp, #4
+	bl	i2c_slave_info_get_buff_info
+	ldr	r0, [sp, #4]
+	cbnz	r0, .LBB27_4
+	b	.LBB27_3
+.LBB27_3:
+	b	.LBB27_5
+.LBB27_4:
+	ldr	r1, [sp, #4]
+	ldr	r2, [r1, #4]
+	ldr	r0, [r1, #12]
+	adds	r1, #24
+	bl	slave_reg_byte_write
+	bl	i2c_slave_buffer_info_clear
+	bl	i2c_write_unlock
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #18]
+	b	.LBB27_5
+.LBB27_5:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end27:
+	.size	slave_i2c_write_handle, .Lfunc_end27-slave_i2c_write_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_reg_byte_write,"ax",%progbits
+	.hidden	slave_reg_byte_write            @ -- Begin function slave_reg_byte_write
+	.globl	slave_reg_byte_write
+	.p2align	2
+	.type	slave_reg_byte_write,%function
+	.code	16                              @ @slave_reg_byte_write
+	.thumb_func
+slave_reg_byte_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cmp.w	r0, #260
+	bls	.LBB28_2
+	b	.LBB28_1
+.LBB28_1:
+	mov.w	r0, #260
+	str	r0, [sp, #4]
+	b	.LBB28_2
+.LBB28_2:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB28_4
+	b	.LBB28_3
+.LBB28_3:
+	ldr	r0, [sp, #4]
+	cmp	r0, #1
+	bhi	.LBB28_5
+	b	.LBB28_4
+.LBB28_4:
+	b	.LBB28_18
+.LBB28_5:
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB28_6
+.LBB28_6:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	movw	r1, :lower16:g_slave_write_cfg_idx
+	movt	r1, :upper16:g_slave_write_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB28_11
+	b	.LBB28_7
+.LBB28_7:                               @   in Loop: Header=BB28_6 Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r2, [sp]
+	movw	r1, :lower16:g_slave_write_cfg_callback_array
+	movt	r1, :upper16:g_slave_write_cfg_callback_array
+	ldr.w	r1, [r1, r2, lsl #3]
+	cmp	r0, r1
+	bne	.LBB28_9
+	b	.LBB28_8
+.LBB28_8:
+	b	.LBB28_11
+.LBB28_9:                               @   in Loop: Header=BB28_6 Depth=1
+	b	.LBB28_10
+.LBB28_10:                              @   in Loop: Header=BB28_6 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB28_6
+.LBB28_11:
+	ldr	r0, [sp]
+	movw	r1, :lower16:g_slave_write_cfg_idx
+	movt	r1, :upper16:g_slave_write_cfg_idx
+	ldr	r1, [r1]
+	cmp	r0, r1
+	bhs	.LBB28_13
+	b	.LBB28_12
+.LBB28_12:
+	ldr	r1, [sp]
+	movw	r0, :lower16:g_slave_write_cfg_callback_array
+	movt	r0, :upper16:g_slave_write_cfg_callback_array
+	add.w	r0, r0, r1, lsl #3
+	ldr	r3, [r0, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	blx	r3
+	b	.LBB28_17
+.LBB28_13:
+	ldr	r0, [sp, #12]
+	cmp	r0, #174
+	bne	.LBB28_15
+	b	.LBB28_14
+.LBB28_14:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	bl	master_dsp_fsl_reg_4byte_write
+	b	.LBB28_16
+.LBB28_15:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	bl	master_reg_byte_write
+	b	.LBB28_16
+.LBB28_16:
+	b	.LBB28_17
+.LBB28_17:
+	bl	i2c_slave_buffer_info_clear
+	b	.LBB28_18
+.LBB28_18:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end28:
+	.size	slave_reg_byte_write, .Lfunc_end28-slave_reg_byte_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_lock_reset,"ax",%progbits
+	.hidden	slave_i2c_lock_reset            @ -- Begin function slave_i2c_lock_reset
+	.globl	slave_i2c_lock_reset
+	.p2align	2
+	.type	slave_i2c_lock_reset,%function
+	.code	16                              @ @slave_i2c_lock_reset
+	.thumb_func
+slave_i2c_lock_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #64
+	bl	gpio_input_bit_get
+	mov	r1, r0
+	ldr	r0, [sp]                        @ 4-byte Reload
+	strb.w	r1, [sp, #7]
+	movs	r1, #128
+	bl	gpio_input_bit_get
+	strb.w	r0, [sp, #6]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB29_9
+	b	.LBB29_1
+.LBB29_1:
+	ldrb.w	r0, [sp, #6]
+	cmp	r0, #0
+	bne	.LBB29_9
+	b	.LBB29_2
+.LBB29_2:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r1, [r0, #36]
+	adds	r1, #1
+	str	r1, [r0, #36]
+	ldr	r0, [r0, #36]
+	cmp	r0, #1
+	bne	.LBB29_4
+	b	.LBB29_3
+.LBB29_3:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	movw	r1, #19923
+	movt	r1, #4194
+	umull	r1, r0, r0, r1
+	lsrs	r0, r0, #6
+	movw	r1, :lower16:slave_i2c_lock_reset.pre_ticks
+	movt	r1, :upper16:slave_i2c_lock_reset.pre_ticks
+	str	r0, [r1]
+	b	.LBB29_4
+.LBB29_4:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #36]
+	cmp	r0, #4
+	blo	.LBB29_8
+	b	.LBB29_5
+.LBB29_5:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #12]
+	movw	r1, #19923
+	movt	r1, #4194
+	umull	r0, r1, r0, r1
+	movw	r0, :lower16:slave_i2c_lock_reset.pre_ticks
+	movt	r0, :upper16:slave_i2c_lock_reset.pre_ticks
+	ldr	r0, [r0]
+	adds	r0, #10
+	cmp.w	r0, r1, lsr #6
+	bhi	.LBB29_7
+	b	.LBB29_6
+.LBB29_6:
+	movw	r0, #49152
+	movt	r0, #16384
+	bl	reset_slave_i2c
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	str	r0, [r1, #36]
+	b	.LBB29_7
+.LBB29_7:
+	b	.LBB29_8
+.LBB29_8:
+	b	.LBB29_9
+.LBB29_9:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end29:
+	.size	slave_i2c_lock_reset, .Lfunc_end29-slave_i2c_lock_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_middle_handle,"ax",%progbits
+	.hidden	slave_i2c_middle_handle         @ -- Begin function slave_i2c_middle_handle
+	.globl	slave_i2c_middle_handle
+	.p2align	2
+	.type	slave_i2c_middle_handle,%function
+	.code	16                              @ @slave_i2c_middle_handle
+	.thumb_func
+slave_i2c_middle_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #64
+	bl	gpio_input_bit_get
+	mov	r1, r0
+	ldr	r0, [sp]                        @ 4-byte Reload
+	strb.w	r1, [sp, #7]
+	movs	r1, #128
+	bl	gpio_input_bit_get
+	strb.w	r0, [sp, #6]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB30_2
+	b	.LBB30_1
+.LBB30_1:
+	ldrb.w	r0, [sp, #6]
+	cbz	r0, .LBB30_3
+	b	.LBB30_2
+.LBB30_2:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	str	r0, [r1, #36]
+	b	.LBB30_3
+.LBB30_3:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #17]
+	cmp	r0, #1
+	bne	.LBB30_5
+	b	.LBB30_4
+.LBB30_4:
+	bl	slave_i2c_read_handle
+	b	.LBB30_5
+.LBB30_5:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #19]
+	cmp	r0, #1
+	bne	.LBB30_7
+	b	.LBB30_6
+.LBB30_6:
+	bl	slave_i2c_receive_handle
+	b	.LBB30_7
+.LBB30_7:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #18]
+	cmp	r0, #1
+	bne	.LBB30_9
+	b	.LBB30_8
+.LBB30_8:
+	bl	slave_i2c_write_handle
+	b	.LBB30_9
+.LBB30_9:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #20]
+	cmp	r0, #1
+	bne	.LBB30_11
+	b	.LBB30_10
+.LBB30_10:
+	bl	slave_i2c_address_match_handle
+	b	.LBB30_11
+.LBB30_11:
+	bl	slave_i2c_lock_reset
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end30:
+	.size	slave_i2c_middle_handle, .Lfunc_end30-slave_i2c_middle_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_read_write_handle,"ax",%progbits
+	.hidden	i2c_slave_read_write_handle     @ -- Begin function i2c_slave_read_write_handle
+	.globl	i2c_slave_read_write_handle
+	.p2align	2
+	.type	i2c_slave_read_write_handle,%function
+	.code	16                              @ @i2c_slave_read_write_handle
+	.thumb_func
+i2c_slave_read_write_handle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	slave_i2c_middle_handle
+	pop	{r7, pc}
+.Lfunc_end31:
+	.size	i2c_slave_read_write_handle, .Lfunc_end31-i2c_slave_read_write_handle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_error_irq_handler,"ax",%progbits
+	.hidden	slave_error_irq_handler         @ -- Begin function slave_error_irq_handler
+	.globl	slave_error_irq_handler
+	.p2align	2
+	.type	slave_error_irq_handler,%function
+	.code	16                              @ @slave_error_irq_handler
+	.thumb_func
+slave_error_irq_handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1544
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_2
+	b	.LBB32_1
+.LBB32_1:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	movs	r1, #7
+	movt	r1, #1544
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	reset_slave_i2c
+	b	.LBB32_2
+.LBB32_2:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1545
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_4
+	b	.LBB32_3
+.LBB32_3:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movs	r1, #7
+	movt	r1, #1545
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	bl	reset_slave_i2c
+	b	.LBB32_4
+.LBB32_4:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1546
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_6
+	b	.LBB32_5
+.LBB32_5:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #7
+	movt	r1, #1546
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	reset_slave_i2c
+	b	.LBB32_6
+.LBB32_6:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1547
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_8
+	b	.LBB32_7
+.LBB32_7:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1547
+	bl	i2c_interrupt_flag_clear
+	b	.LBB32_8
+.LBB32_8:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1548
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_10
+	b	.LBB32_9
+.LBB32_9:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movs	r1, #7
+	movt	r1, #1548
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	reset_slave_i2c
+	b	.LBB32_10
+.LBB32_10:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #7
+	movt	r1, #1549
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_12
+	b	.LBB32_11
+.LBB32_11:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #7
+	movt	r1, #1549
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	reset_slave_i2c
+	b	.LBB32_12
+.LBB32_12:
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #4
+	movt	r1, #1540
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB32_14
+	b	.LBB32_13
+.LBB32_13:
+	movw	r0, #49152
+	movt	r0, #16384
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	i2c_stop_on_bus
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movs	r1, #4
+	movt	r1, #1540
+	bl	i2c_interrupt_flag_clear
+	b	.LBB32_14
+.LBB32_14:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end32:
+	.size	slave_error_irq_handler, .Lfunc_end32-slave_error_irq_handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_i2c_event_irq_handler,"ax",%progbits
+	.hidden	master_i2c_event_irq_handler    @ -- Begin function master_i2c_event_irq_handler
+	.globl	master_i2c_event_irq_handler
+	.p2align	2
+	.type	master_i2c_event_irq_handler,%function
+	.code	16                              @ @master_i2c_event_irq_handler
+	.thumb_func
+master_i2c_event_irq_handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	ldr	r0, [sp, #12]
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB33_3
+	b	.LBB33_1
+.LBB33_1:
+	ldr	r0, [sp, #12]
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB33_3
+	b	.LBB33_2
+.LBB33_2:
+	b	.LBB33_23
+.LBB33_3:
+	ldr	r0, [sp, #12]
+	movs	r1, #2
+	movt	r1, #1538
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB33_9
+	b	.LBB33_4
+.LBB33_4:
+	ldr	r0, [sp, #12]
+	movs	r1, #96
+	bl	i2c_interrupt_enable
+	ldr	r0, [sp, #12]
+	bl	i2c_data_receive
+	strb.w	r0, [sp, #11]
+	ldr	r2, [sp, #12]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB33_8
+	b	.LBB33_5
+.LBB33_5:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB33_7
+	b	.LBB33_6
+.LBB33_6:
+	ldr	r1, [sp, #4]
+	movs	r0, #1
+	strb	r0, [r1]
+	ldr	r0, [sp, #4]
+	adds	r0, #24
+	movs	r1, #220
+	bl	__aeabi_memclr4
+	ldr	r1, [sp, #4]
+	movs	r0, #0
+	str	r0, [r1, #4]
+	b	.LBB33_7
+.LBB33_7:
+	b	.LBB33_8
+.LBB33_8:
+	ldr	r0, [sp, #12]
+	ldrb.w	r1, [sp, #11]
+	bl	i2c_master_buffer_info_data_add
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #16]
+	b	.LBB33_23
+.LBB33_9:
+	ldr	r0, [sp, #12]
+	movs	r1, #1
+	movt	r1, #1537
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB33_11
+	b	.LBB33_10
+.LBB33_10:
+	ldr	r0, [sp, #12]
+	bl	i2c_master_info_popup_data_from_buffer
+	strb.w	r0, [sp, #11]
+	ldr	r0, [sp, #12]
+	ldrb.w	r1, [sp, #11]
+	bl	i2c_data_transmit
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #4
+	strb	r0, [r1, #16]
+	b	.LBB33_22
+.LBB33_11:
+	ldr	r0, [sp, #12]
+	movs	r1, #6
+	movt	r1, #1542
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB33_18
+	b	.LBB33_12
+.LBB33_12:
+	ldr	r2, [sp, #12]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #4]
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cbnz	r0, .LBB33_14
+	b	.LBB33_13
+.LBB33_13:
+	ldr	r0, [sp, #12]
+	bl	i2c_stop_on_bus
+	b	.LBB33_14
+.LBB33_14:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cmp	r0, #4
+	bne	.LBB33_17
+	b	.LBB33_15
+.LBB33_15:
+	ldr	r0, [sp, #4]
+	ldrb	r0, [r0]
+	cmp	r0, #2
+	bne	.LBB33_17
+	b	.LBB33_16
+.LBB33_16:
+	ldr	r0, [sp, #12]
+	bl	i2c_stop_on_bus
+	b	.LBB33_17
+.LBB33_17:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #12]
+	movs	r1, #64
+	bl	i2c_interrupt_disable
+	b	.LBB33_21
+.LBB33_18:
+	ldr	r0, [sp, #12]
+	movs	r1, #5
+	movt	r1, #1541
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB33_20
+	b	.LBB33_19
+.LBB33_19:
+	ldr	r0, [sp, #12]
+	movs	r1, #5
+	movt	r1, #1541
+	bl	i2c_interrupt_flag_clear
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	b	.LBB33_20
+.LBB33_20:
+	b	.LBB33_21
+.LBB33_21:
+	b	.LBB33_22
+.LBB33_22:
+	b	.LBB33_23
+.LBB33_23:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end33:
+	.size	master_i2c_event_irq_handler, .Lfunc_end33-master_i2c_event_irq_handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_i2c_error_irq_handler,"ax",%progbits
+	.hidden	master_i2c_error_irq_handler    @ -- Begin function master_i2c_error_irq_handler
+	.globl	master_i2c_error_irq_handler
+	.p2align	2
+	.type	master_i2c_error_irq_handler,%function
+	.code	16                              @ @master_i2c_error_irq_handler
+	.thumb_func
+master_i2c_error_irq_handler:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1544
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_2
+	b	.LBB34_1
+.LBB34_1:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1544
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]
+	bl	reset_master_i2c
+	b	.LBB34_2
+.LBB34_2:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1545
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_4
+	b	.LBB34_3
+.LBB34_3:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1545
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]
+	bl	reset_master_i2c
+	b	.LBB34_4
+.LBB34_4:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1546
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_6
+	b	.LBB34_5
+.LBB34_5:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1546
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]
+	bl	reset_master_i2c
+	b	.LBB34_6
+.LBB34_6:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1547
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_8
+	b	.LBB34_7
+.LBB34_7:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1547
+	bl	i2c_interrupt_flag_clear
+	b	.LBB34_8
+.LBB34_8:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1548
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_10
+	b	.LBB34_9
+.LBB34_9:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1548
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]
+	bl	reset_master_i2c
+	b	.LBB34_10
+.LBB34_10:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1549
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_12
+	b	.LBB34_11
+.LBB34_11:
+	ldr	r0, [sp, #4]
+	movs	r1, #7
+	movt	r1, #1549
+	bl	i2c_interrupt_flag_clear
+	ldr	r0, [sp, #4]
+	bl	reset_master_i2c
+	b	.LBB34_12
+.LBB34_12:
+	ldr	r0, [sp, #4]
+	movs	r1, #4
+	movt	r1, #1540
+	bl	i2c_interrupt_flag_get
+	cbz	r0, .LBB34_14
+	b	.LBB34_13
+.LBB34_13:
+	ldr	r0, [sp, #4]
+	bl	i2c_stop_on_bus
+	ldr	r0, [sp, #4]
+	movs	r1, #4
+	movt	r1, #1540
+	bl	i2c_interrupt_flag_clear
+	b	.LBB34_14
+.LBB34_14:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end34:
+	.size	master_i2c_error_irq_handler, .Lfunc_end34-master_i2c_error_irq_handler
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_dev_config,"ax",%progbits
+	.hidden	slave_i2c_dev_config            @ -- Begin function slave_i2c_dev_config
+	.globl	slave_i2c_dev_config
+	.p2align	2
+	.type	slave_i2c_dev_config,%function
+	.code	16                              @ @slave_i2c_dev_config
+	.thumb_func
+slave_i2c_dev_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r12 killed $r3
+                                        @ kill: def $r12 killed $r2
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	strb.w	r2, [sp, #7]
+	strb.w	r3, [sp, #6]
+	bl	i2c_slave_buffer_info_clear
+	ldr	r0, [sp, #12]
+	movs	r1, #4
+	bl	rcu_i2c_clock_config
+	ldr	r0, [sp, #12]
+	movs	r2, #9
+	movs	r3, #0
+	str	r3, [sp]                        @ 4-byte Spill
+	mov	r1, r3
+	bl	i2c_timing_config
+	ldr	r0, [sp, #12]
+	movs	r1, #57
+	movs	r2, #187
+	bl	i2c_master_clock_config
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	movs	r2, #7
+	bl	i2c_second_address_config
+	ldr	r0, [sp, #12]
+	bl	i2c_enable
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldrb.w	r0, [sp, #7]
+	movs	r2, #1
+	bl	nvic_irq_enable
+	ldr	r2, [sp]                        @ 4-byte Reload
+	ldrb.w	r0, [sp, #6]
+	mov	r1, r2
+	bl	nvic_irq_enable
+	ldr	r0, [sp, #12]
+	movs	r1, #174
+	bl	i2c_interrupt_enable
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end35:
+	.size	slave_i2c_dev_config, .Lfunc_end35-slave_i2c_dev_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.slave_i2c_config_init,"ax",%progbits
+	.hidden	slave_i2c_config_init           @ -- Begin function slave_i2c_config_init
+	.globl	slave_i2c_config_init
+	.p2align	2
+	.type	slave_i2c_config_init,%function
+	.code	16                              @ @slave_i2c_config_init
+	.thumb_func
+slave_i2c_config_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, #49152
+	movt	r0, #16384
+	movs	r1, #131
+	movs	r2, #35
+	movs	r3, #36
+	bl	slave_i2c_dev_config
+	pop	{r7, pc}
+.Lfunc_end36:
+	.size	slave_i2c_config_init, .Lfunc_end36-slave_i2c_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.get_master_i2c_by_dev_address,"ax",%progbits
+	.hidden	get_master_i2c_by_dev_address   @ -- Begin function get_master_i2c_by_dev_address
+	.globl	get_master_i2c_by_dev_address
+	.p2align	2
+	.type	get_master_i2c_by_dev_address,%function
+	.code	16                              @ @get_master_i2c_by_dev_address
+	.thumb_func
+get_master_i2c_by_dev_address:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movw	r0, #50760
+	strh.w	r0, [sp, #6]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB37_8
+	b	.LBB37_1
+.LBB37_1:
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB37_2
+.LBB37_2:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	cmp	r0, #1
+	bhi	.LBB37_7
+	b	.LBB37_3
+.LBB37_3:                               @   in Loop: Header=BB37_2 Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r2, [sp]
+	add.w	r1, sp, #6
+	ldrb	r1, [r1, r2]
+	cmp	r0, r1
+	bne	.LBB37_5
+	b	.LBB37_4
+.LBB37_4:
+	ldr	r1, [sp, #8]
+	movw	r0, #21504
+	movt	r0, #16384
+	str	r0, [r1]
+	b	.LBB37_9
+.LBB37_5:                               @   in Loop: Header=BB37_2 Depth=1
+	b	.LBB37_6
+.LBB37_6:                               @   in Loop: Header=BB37_2 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB37_2
+.LBB37_7:
+	ldr	r1, [sp, #8]
+	movw	r0, #22528
+	movt	r0, #16384
+	str	r0, [r1]
+	b	.LBB37_8
+.LBB37_8:
+	b	.LBB37_9
+.LBB37_9:
+	add	sp, #16
+	bx	lr
+.Lfunc_end37:
+	.size	get_master_i2c_by_dev_address, .Lfunc_end37-get_master_i2c_by_dev_address
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_i2c_set_irq_status_info,"ax",%progbits
+	.hidden	master_i2c_set_irq_status_info  @ -- Begin function master_i2c_set_irq_status_info
+	.globl	master_i2c_set_irq_status_info
+	.p2align	2
+	.type	master_i2c_set_irq_status_info,%function
+	.code	16                              @ @master_i2c_set_irq_status_info
+	.thumb_func
+master_i2c_set_irq_status_info:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+                                        @ kill: def $r12 killed $r3
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	strb.w	r3, [sp, #3]
+	ldr	r0, [sp, #12]
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB38_2
+	b	.LBB38_1
+.LBB38_1:
+	ldr	r2, [sp, #8]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldr	r0, [r1, #12]
+	and	r2, r2, #15
+	bic	r0, r0, #120
+	orr.w	r0, r0, r2, lsl #3
+	str	r0, [r1, #12]
+	ldrb.w	r2, [sp, #3]
+	ldr	r0, [r1, #12]
+	bfi	r0, r2, #0, #1
+	str	r0, [r1, #12]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #4]
+	b	.LBB38_6
+.LBB38_2:
+	ldr	r0, [sp, #12]
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB38_4
+	b	.LBB38_3
+.LBB38_3:
+	ldr	r2, [sp, #8]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldr	r0, [r1, #12]
+	and	r2, r2, #15
+	bic	r0, r0, #15360
+	orr.w	r0, r0, r2, lsl #10
+	str	r0, [r1, #12]
+	ldrb.w	r2, [sp, #3]
+	ldr	r0, [r1, #12]
+	and	r2, r2, #1
+	bic	r0, r0, #128
+	orr.w	r0, r0, r2, lsl #7
+	str	r0, [r1, #12]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #8]
+	b	.LBB38_5
+.LBB38_4:
+	movs	r0, #1
+	str	r0, [sp, #16]
+	b	.LBB38_7
+.LBB38_5:
+	b	.LBB38_6
+.LBB38_6:
+	movs	r0, #0
+	str	r0, [sp, #16]
+	b	.LBB38_7
+.LBB38_7:
+	ldr	r0, [sp, #16]
+	add	sp, #20
+	bx	lr
+.Lfunc_end38:
+	.size	master_i2c_set_irq_status_info, .Lfunc_end38-master_i2c_set_irq_status_info
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_reg_byte_write,"ax",%progbits
+	.hidden	master_reg_byte_write           @ -- Begin function master_reg_byte_write
+	.globl	master_reg_byte_write
+	.p2align	2
+	.type	master_reg_byte_write,%function
+	.code	16                              @ @master_reg_byte_write
+	.thumb_func
+master_reg_byte_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	str	r0, [sp, #44]
+	str	r1, [sp, #40]
+	str	r2, [sp, #36]
+	movs	r0, #0
+	str	r0, [sp, #32]
+	strb.w	r0, [sp, #31]
+	str	r0, [sp, #24]
+	movw	r1, #22528
+	movt	r1, #16384
+	str	r1, [sp, #20]
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #40]
+	cbz	r0, .LBB39_3
+	b	.LBB39_1
+.LBB39_1:
+	ldr	r0, [sp, #36]
+	cmp	r0, #2
+	blo	.LBB39_3
+	b	.LBB39_2
+.LBB39_2:
+	ldr	r0, [sp, #36]
+	cmp	r0, #220
+	blo	.LBB39_4
+	b	.LBB39_3
+.LBB39_3:
+	b	.LBB39_35
+.LBB39_4:
+	ldr	r0, [sp, #44]
+	cmp	r0, #174
+	bne	.LBB39_6
+	b	.LBB39_5
+.LBB39_5:
+	ldr	r0, [sp, #40]
+	bl	get_u32
+	str	r0, [sp, #16]
+	b	.LBB39_7
+.LBB39_6:
+	ldr	r0, [sp, #40]
+	ldrb	r0, [r0]
+	str	r0, [sp, #16]
+	b	.LBB39_7
+.LBB39_7:
+	ldr	r0, [sp, #44]
+	add	r1, sp, #20
+	bl	get_master_i2c_by_dev_address
+	mov.w	r0, #500
+	str	r0, [sp, #32]
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB39_8
+.LBB39_8:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB39_12
+	b	.LBB39_9
+.LBB39_9:                               @   in Loop: Header=BB39_8 Depth=1
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cmp	r0, #3
+	bne	.LBB39_11
+	b	.LBB39_10
+.LBB39_10:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB39_12
+.LBB39_11:                              @   in Loop: Header=BB39_8 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB39_8
+.LBB39_12:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB39_14
+	b	.LBB39_13
+.LBB39_13:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB39_14
+.LBB39_14:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB39_16
+	b	.LBB39_15
+.LBB39_15:
+	ldr	r0, [sp, #20]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #16]
+	movs	r3, #0
+	bl	master_i2c_set_irq_status_info
+	b	.LBB39_35
+.LBB39_16:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #6
+	strb	r0, [r1, #16]
+	ldr	r1, [sp, #20]
+	ldr	r0, [r1, #24]
+	orr	r0, r0, #1
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #44]
+	movs	r2, #0
+	str	r2, [sp, #12]                   @ 4-byte Spill
+	bl	i2c_master_addressing
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #36]
+	bl	i2c_transfer_byte_number_config
+	ldr	r0, [sp, #20]
+	movs	r1, #230
+	bl	i2c_interrupt_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	mov.w	r1, #500
+	str	r1, [sp, #32]
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB39_17
+.LBB39_17:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB39_21
+	b	.LBB39_18
+.LBB39_18:                              @   in Loop: Header=BB39_17 Depth=1
+	ldr	r0, [sp, #20]
+	mov.w	r1, #32768
+	bl	i2c_flag_get
+	cbnz	r0, .LBB39_20
+	b	.LBB39_19
+.LBB39_19:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB39_21
+.LBB39_20:                              @   in Loop: Header=BB39_17 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB39_17
+.LBB39_21:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB39_23
+	b	.LBB39_22
+.LBB39_22:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB39_23
+.LBB39_23:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB39_25
+	b	.LBB39_24
+.LBB39_24:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #20]
+	bl	i2c_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #16]
+	movs	r3, #0
+	bl	master_i2c_set_irq_status_info
+	b	.LBB39_35
+.LBB39_25:
+	ldr	r2, [sp, #20]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #24]
+	bl	i2c_master_info_buffer_clear
+	ldr	r1, [sp, #24]
+	movs	r0, #2
+	strb	r0, [r1]
+	ldr	r0, [sp, #24]
+	adds	r0, #24
+	ldr	r1, [sp, #40]
+	ldr	r2, [sp, #36]
+	bl	__aeabi_memcpy
+	ldr	r0, [sp, #20]
+	bl	i2c_start_on_bus
+	mov.w	r0, #500
+	str	r0, [sp, #32]
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB39_26
+.LBB39_26:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB39_30
+	b	.LBB39_27
+.LBB39_27:                              @   in Loop: Header=BB39_26 Depth=1
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cmp	r0, #3
+	bne	.LBB39_29
+	b	.LBB39_28
+.LBB39_28:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB39_30
+.LBB39_29:                              @   in Loop: Header=BB39_26 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB39_26
+.LBB39_30:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB39_32
+	b	.LBB39_31
+.LBB39_31:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB39_32
+.LBB39_32:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB39_34
+	b	.LBB39_33
+.LBB39_33:
+	ldr	r0, [sp, #20]
+	movs	r1, #230
+	bl	i2c_interrupt_disable
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #20]
+	bl	i2c_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #16]
+	movs	r3, #0
+	bl	master_i2c_set_irq_status_info
+	b	.LBB39_34
+.LBB39_34:
+	ldr	r0, [sp, #20]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #16]
+	movs	r3, #0
+	bl	master_i2c_set_irq_status_info
+	b	.LBB39_35
+.LBB39_35:
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end39:
+	.size	master_reg_byte_write, .Lfunc_end39-master_reg_byte_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_dsp_fsl_reg_4byte_write,"ax",%progbits
+	.hidden	master_dsp_fsl_reg_4byte_write  @ -- Begin function master_dsp_fsl_reg_4byte_write
+	.globl	master_dsp_fsl_reg_4byte_write
+	.p2align	2
+	.type	master_dsp_fsl_reg_4byte_write,%function
+	.code	16                              @ @master_dsp_fsl_reg_4byte_write
+	.thumb_func
+master_dsp_fsl_reg_4byte_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	str	r2, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	cmp	r0, #7
+	bhi	.LBB40_2
+	b	.LBB40_1
+.LBB40_1:
+	b	.LBB40_3
+.LBB40_2:
+	ldr	r0, [sp, #24]
+	bl	get_u32
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	lsrs	r0, r0, #2
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #24]
+	adds	r0, #1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #20]
+	subs	r0, #1
+	str	r0, [sp, #4]
+	ldrh.w	r0, [sp, #14]
+	ldr	r1, [sp, #8]
+	strb	r0, [r1]
+	ldr	r0, [sp, #12]
+	lsrs	r0, r0, #8
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #1]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #2]
+	ldr	r0, [sp, #28]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	bl	master_reg_byte_write
+	b	.LBB40_3
+.LBB40_3:
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end40:
+	.size	master_dsp_fsl_reg_4byte_write, .Lfunc_end40-master_dsp_fsl_reg_4byte_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_reg_1byte_size_read,"ax",%progbits
+	.hidden	master_reg_1byte_size_read      @ -- Begin function master_reg_1byte_size_read
+	.globl	master_reg_1byte_size_read
+	.p2align	2
+	.type	master_reg_1byte_size_read,%function
+	.code	16                              @ @master_reg_1byte_size_read
+	.thumb_func
+master_reg_1byte_size_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r12 killed $r1
+	str	r0, [sp, #28]
+	strb.w	r1, [sp, #27]
+	str	r2, [sp, #20]
+	str	r3, [sp, #16]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #28]
+	str	r0, [sp, #4]
+	movs	r0, #1
+	strb.w	r0, [sp]
+	ldrb.w	r0, [sp, #27]
+	strb.w	r0, [sp, #8]
+	ldr	r1, [sp, #28]
+	ldr	r2, [sp, #20]
+	ldr	r3, [sp, #16]
+	mov	r0, sp
+	bl	master_reg_byte_read
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end41:
+	.size	master_reg_1byte_size_read, .Lfunc_end41-master_reg_1byte_size_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_reg_byte_read,"ax",%progbits
+	.hidden	master_reg_byte_read            @ -- Begin function master_reg_byte_read
+	.globl	master_reg_byte_read
+	.p2align	2
+	.type	master_reg_byte_read,%function
+	.code	16                              @ @master_reg_byte_read
+	.thumb_func
+master_reg_byte_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+	str	r0, [sp, #52]
+	str	r1, [sp, #48]
+	str	r2, [sp, #44]
+	str	r3, [sp, #40]
+	movs	r0, #0
+	str	r0, [sp, #36]
+	str	r0, [sp, #32]
+	strb.w	r0, [sp, #31]
+	str	r0, [sp, #24]
+	movw	r0, #22528
+	movt	r0, #16384
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #44]
+	cbz	r0, .LBB42_3
+	b	.LBB42_1
+.LBB42_1:
+	ldr	r0, [sp, #40]
+	cbz	r0, .LBB42_3
+	b	.LBB42_2
+.LBB42_2:
+	ldr	r0, [sp, #40]
+	cmp	r0, #221
+	blo	.LBB42_4
+	b	.LBB42_3
+.LBB42_3:
+	b	.LBB42_43
+.LBB42_4:
+	ldr	r0, [sp, #52]
+	cbnz	r0, .LBB42_6
+	b	.LBB42_5
+.LBB42_5:
+	b	.LBB42_43
+.LBB42_6:
+	ldr	r0, [sp, #52]
+	ldr	r0, [r0, #4]
+	add	r1, sp, #20
+	bl	get_master_i2c_by_dev_address
+	mov.w	r0, #500
+	str	r0, [sp, #32]
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB42_7
+.LBB42_7:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB42_11
+	b	.LBB42_8
+.LBB42_8:                               @   in Loop: Header=BB42_7 Depth=1
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cmp	r0, #3
+	bne	.LBB42_10
+	b	.LBB42_9
+.LBB42_9:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB42_11
+.LBB42_10:                              @   in Loop: Header=BB42_7 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB42_7
+.LBB42_11:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB42_13
+	b	.LBB42_12
+.LBB42_12:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB42_13
+.LBB42_13:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB42_15
+	b	.LBB42_14
+.LBB42_14:
+	ldr	r0, [sp, #20]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #48]
+	movs	r3, #1
+	bl	master_i2c_set_irq_status_info
+	b	.LBB42_43
+.LBB42_15:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #6
+	strb	r0, [r1, #16]
+	ldr	r2, [sp, #20]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #24]
+	bl	i2c_master_info_buffer_clear
+	ldr	r0, [sp, #20]
+	movs	r1, #238
+	bl	i2c_interrupt_enable
+	ldr	r1, [sp, #20]
+	ldr	r0, [r1, #24]
+	orr	r0, r0, #1
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #52]
+	ldr	r1, [r1, #4]
+	movs	r2, #0
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	bl	i2c_master_addressing
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #52]
+	ldrb	r1, [r1]
+	bl	i2c_transfer_byte_number_config
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	mov.w	r1, #500
+	str	r1, [sp, #32]
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB42_16
+.LBB42_16:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB42_20
+	b	.LBB42_17
+.LBB42_17:                              @   in Loop: Header=BB42_16 Depth=1
+	ldr	r0, [sp, #20]
+	mov.w	r1, #32768
+	bl	i2c_flag_get
+	cbnz	r0, .LBB42_19
+	b	.LBB42_18
+.LBB42_18:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB42_20
+.LBB42_19:                              @   in Loop: Header=BB42_16 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB42_16
+.LBB42_20:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB42_22
+	b	.LBB42_21
+.LBB42_21:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB42_22
+.LBB42_22:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB42_24
+	b	.LBB42_23
+.LBB42_23:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #20]
+	bl	i2c_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #48]
+	movs	r3, #1
+	bl	master_i2c_set_irq_status_info
+	b	.LBB42_43
+.LBB42_24:
+	ldr	r1, [sp, #24]
+	ldr.w	r12, [sp, #52]
+	ldr.w	r0, [r12]
+	ldr.w	r2, [r12, #4]
+	ldr.w	r3, [r12, #8]
+	ldr.w	r12, [r12, #12]
+	str.w	r12, [r1, #20]
+	str	r3, [r1, #16]
+	str	r2, [r1, #12]
+	str	r0, [r1, #8]
+	ldr	r2, [sp, #24]
+	add.w	r0, r2, #24
+	add.w	r1, r2, #16
+	ldrb	r2, [r2, #8]
+	bl	__aeabi_memcpy4
+	ldr	r0, [sp, #20]
+	bl	i2c_start_on_bus
+	mov.w	r0, #500
+	str	r0, [sp, #32]
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB42_25
+.LBB42_25:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB42_29
+	b	.LBB42_26
+.LBB42_26:                              @   in Loop: Header=BB42_25 Depth=1
+	ldr	r0, [sp, #20]
+	movs	r1, #64
+	bl	i2c_flag_get
+	cbz	r0, .LBB42_28
+	b	.LBB42_27
+.LBB42_27:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB42_29
+.LBB42_28:                              @   in Loop: Header=BB42_25 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB42_25
+.LBB42_29:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB42_31
+	b	.LBB42_30
+.LBB42_30:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB42_31
+.LBB42_31:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB42_33
+	b	.LBB42_32
+.LBB42_32:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #20]
+	bl	i2c_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #48]
+	movs	r3, #1
+	bl	master_i2c_set_irq_status_info
+	b	.LBB42_43
+.LBB42_33:
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #48]
+	mov.w	r2, #1024
+	bl	i2c_master_addressing
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #40]
+	bl	i2c_transfer_byte_number_config
+	ldr	r0, [sp, #20]
+	bl	i2c_start_on_bus
+	mov.w	r0, #500
+	str	r0, [sp, #32]
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	ldr	r0, [sp, #32]
+	add.w	r0, r0, r0, lsl #3
+	lsls	r0, r0, #3
+	str	r0, [sp, #32]
+	b	.LBB42_34
+.LBB42_34:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #32]
+	cmp	r0, #2
+	blo	.LBB42_38
+	b	.LBB42_35
+.LBB42_35:                              @   in Loop: Header=BB42_34 Depth=1
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #16]
+	cmp	r0, #3
+	bne	.LBB42_37
+	b	.LBB42_36
+.LBB42_36:
+	movs	r0, #0
+	strb.w	r0, [sp, #31]
+	b	.LBB42_38
+.LBB42_37:                              @   in Loop: Header=BB42_34 Depth=1
+	ldr	r0, [sp, #32]
+	subs	r0, #1
+	str	r0, [sp, #32]
+	b	.LBB42_34
+.LBB42_38:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bne	.LBB42_40
+	b	.LBB42_39
+.LBB42_39:
+	movs	r0, #1
+	strb.w	r0, [sp, #31]
+	b	.LBB42_40
+.LBB42_40:
+	ldrb.w	r0, [sp, #31]
+	cmp	r0, #1
+	bne	.LBB42_42
+	b	.LBB42_41
+.LBB42_41:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r0, #3
+	strb	r0, [r1, #16]
+	ldr	r0, [sp, #20]
+	bl	i2c_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #48]
+	movs	r3, #1
+	bl	master_i2c_set_irq_status_info
+	b	.LBB42_43
+.LBB42_42:
+	ldr	r0, [sp, #20]
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	ldrb	r1, [r1, #16]
+	ldr	r2, [sp, #48]
+	movs	r3, #1
+	bl	master_i2c_set_irq_status_info
+	ldr	r0, [sp, #44]
+	ldr	r1, [sp, #24]
+	adds	r1, #24
+	ldr	r2, [sp, #40]
+	bl	__aeabi_memcpy
+	b	.LBB42_43
+.LBB42_43:
+	add	sp, #56
+	pop	{r7, pc}
+.Lfunc_end42:
+	.size	master_reg_byte_read, .Lfunc_end42-master_reg_byte_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_reg_2byte_size_read,"ax",%progbits
+	.hidden	master_reg_2byte_size_read      @ -- Begin function master_reg_2byte_size_read
+	.globl	master_reg_2byte_size_read
+	.p2align	2
+	.type	master_reg_2byte_size_read,%function
+	.code	16                              @ @master_reg_2byte_size_read
+	.thumb_func
+master_reg_2byte_size_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r12 killed $r1
+	str	r0, [sp, #36]
+	strh.w	r1, [sp, #34]
+	str	r2, [sp, #28]
+	str	r3, [sp, #24]
+	movs	r0, #0
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	add	r0, sp, #8
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	adds	r0, #8
+	ldr	r1, [sp, #36]
+	str	r1, [sp, #12]
+	movs	r1, #2
+	strb.w	r1, [sp, #8]
+	ldrh.w	r1, [sp, #34]
+	bl	set_u16
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #36]
+	ldr	r2, [sp, #28]
+	ldr	r3, [sp, #24]
+	bl	master_reg_byte_read
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end43:
+	.size	master_reg_2byte_size_read, .Lfunc_end43-master_reg_2byte_size_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_dsp_fsl_reg_4byte_size_read,"ax",%progbits
+	.hidden	master_dsp_fsl_reg_4byte_size_read @ -- Begin function master_dsp_fsl_reg_4byte_size_read
+	.globl	master_dsp_fsl_reg_4byte_size_read
+	.p2align	2
+	.type	master_dsp_fsl_reg_4byte_size_read,%function
+	.code	16                              @ @master_dsp_fsl_reg_4byte_size_read
+	.thumb_func
+master_dsp_fsl_reg_4byte_size_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #36]
+	str	r1, [sp, #32]
+	str	r2, [sp, #28]
+	str	r3, [sp, #24]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #28]
+	cbnz	r0, .LBB44_2
+	b	.LBB44_1
+.LBB44_1:
+	b	.LBB44_3
+.LBB44_2:
+	ldr	r0, [sp, #36]
+	movs	r1, #4
+	bfi	r0, r1, #0, #3
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #32]
+	lsrs	r0, r0, #2
+	str	r0, [sp]
+	ldr	r0, [sp, #36]
+	str	r0, [sp, #12]
+	movs	r0, #3
+	strb.w	r0, [sp, #8]
+	ldrh.w	r0, [sp, #2]
+	strb.w	r0, [sp, #16]
+	ldr	r0, [sp]
+	lsrs	r0, r0, #8
+	strb.w	r0, [sp, #17]
+	ldr	r0, [sp]
+	strb.w	r0, [sp, #18]
+	ldr	r1, [sp, #4]
+	ldr	r2, [sp, #28]
+	ldr	r3, [sp, #24]
+	add	r0, sp, #8
+	bl	master_reg_byte_read
+	b	.LBB44_3
+.LBB44_3:
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end44:
+	.size	master_dsp_fsl_reg_4byte_size_read, .Lfunc_end44-master_dsp_fsl_reg_4byte_size_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_i2c_dev_config,"ax",%progbits
+	.hidden	master_i2c_dev_config           @ -- Begin function master_i2c_dev_config
+	.globl	master_i2c_dev_config
+	.p2align	2
+	.type	master_i2c_dev_config,%function
+	.code	16                              @ @master_i2c_dev_config
+	.thumb_func
+master_i2c_dev_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r12 killed $r3
+                                        @ kill: def $r12 killed $r2
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	strb.w	r2, [sp, #15]
+	strb.w	r3, [sp, #14]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #20]
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB45_3
+	b	.LBB45_1
+.LBB45_1:
+	ldr	r0, [sp, #20]
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB45_3
+	b	.LBB45_2
+.LBB45_2:
+	b	.LBB45_4
+.LBB45_3:
+	ldr	r2, [sp, #20]
+	movw	r1, :lower16:g_ai2c_master_info_cfg
+	movt	r1, :upper16:g_ai2c_master_info_cfg
+	movw	r0, :lower16:g_bi2c_master_info_cfg
+	movt	r0, :upper16:g_bi2c_master_info_cfg
+	movw	r3, #22528
+	movt	r3, #16384
+	cmp	r2, r3
+	it	eq
+	moveq	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	bl	i2c_master_info_buffer_clear
+	ldr	r0, [sp, #20]
+	movs	r1, #4
+	bl	rcu_i2c_clock_config
+	ldr	r0, [sp, #20]
+	movs	r2, #9
+	movs	r3, #0
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	mov	r1, r3
+	bl	i2c_timing_config
+	ldr	r0, [sp, #20]
+	movs	r1, #57
+	movs	r2, #187
+	bl	i2c_master_clock_config
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]
+	ldr	r0, [r1, #24]
+	orr	r0, r0, #1
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #16]
+	bl	i2c_address_config
+	ldr	r0, [sp, #20]
+	bl	i2c_automatic_end_disable
+	ldr	r0, [sp, #20]
+	bl	i2c_enable
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [sp, #15]
+	movs	r2, #3
+	bl	nvic_irq_enable
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [sp, #14]
+	movs	r2, #2
+	bl	nvic_irq_enable
+	ldr	r0, [sp, #20]
+	movs	r1, #238
+	bl	i2c_interrupt_enable
+	b	.LBB45_4
+.LBB45_4:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end45:
+	.size	master_i2c_dev_config, .Lfunc_end45-master_i2c_dev_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.master_i2c_config_init,"ax",%progbits
+	.hidden	master_i2c_config_init          @ -- Begin function master_i2c_config_init
+	.globl	master_i2c_config_init
+	.p2align	2
+	.type	master_i2c_config_init,%function
+	.code	16                              @ @master_i2c_config_init
+	.thumb_func
+master_i2c_config_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #21504
+	movt	r0, #16384
+	movs	r1, #130
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	movs	r2, #23
+	movs	r3, #32
+	bl	master_i2c_dev_config
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	movw	r0, #22528
+	movt	r0, #16384
+	movs	r2, #24
+	movs	r3, #34
+	bl	master_i2c_dev_config
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end46:
+	.size	master_i2c_config_init, .Lfunc_end46-master_i2c_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_global_param_init,"ax",%progbits
+	.hidden	i2c_global_param_init           @ -- Begin function i2c_global_param_init
+	.globl	i2c_global_param_init
+	.p2align	2
+	.type	i2c_global_param_init,%function
+	.code	16                              @ @i2c_global_param_init
+	.thumb_func
+i2c_global_param_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	str	r0, [r1]
+	strb	r0, [r1, #17]
+	strb	r0, [r1, #18]
+	strb	r0, [r1, #19]
+	strb	r0, [r1, #20]
+	strb	r0, [r1, #21]
+	strb	r0, [r1, #22]
+	movs	r2, #3
+	strb	r2, [r1, #16]
+	strb	r0, [r1, #23]
+	str	r0, [r1, #4]
+	str	r0, [r1, #8]
+	str	r0, [r1, #12]
+	movw	r0, :lower16:g_slave_write_cfg_callback_array
+	movt	r0, :upper16:g_slave_write_cfg_callback_array
+	movs	r1, #160
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	__aeabi_memclr4
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	movw	r0, :lower16:g_slave_read_cfg_callback_array
+	movt	r0, :upper16:g_slave_read_cfg_callback_array
+	bl	__aeabi_memclr4
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end47:
+	.size	i2c_global_param_init, .Lfunc_end47-i2c_global_param_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.monitor_i2c_status_reg_read,"ax",%progbits
+	.hidden	monitor_i2c_status_reg_read     @ -- Begin function monitor_i2c_status_reg_read
+	.globl	monitor_i2c_status_reg_read
+	.p2align	2
+	.type	monitor_i2c_status_reg_read,%function
+	.code	16                              @ @monitor_i2c_status_reg_read
+	.thumb_func
+monitor_i2c_status_reg_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #15]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #44
+	beq	.LBB48_2
+	b	.LBB48_1
+.LBB48_1:
+	b	.LBB48_3
+.LBB48_2:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	str	r0, [sp]                        @ 4-byte Spill
+	ldr	r1, [r0, #12]
+	ldr	r2, [sp, #8]
+	strb	r1, [r2]
+	ldr	r1, [r0, #12]
+	lsrs	r1, r1, #8
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #1]
+	ldr	r1, [r0, #12]
+	lsrs	r1, r1, #16
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #2]
+	ldr	r1, [r0, #12]
+	lsrs	r1, r1, #24
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #3]
+	ldr	r1, [r0, #4]
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #4]
+	ldr	r1, [r0, #4]
+	lsrs	r1, r1, #8
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #5]
+	ldr	r1, [r0, #4]
+	lsrs	r1, r1, #16
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #6]
+	ldr	r1, [r0, #4]
+	lsrs	r1, r1, #24
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #7]
+	ldr	r1, [r0, #8]
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #8]
+	ldr	r1, [r0, #8]
+	lsrs	r1, r1, #8
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #9]
+	ldr	r1, [r0, #8]
+	lsrs	r1, r1, #16
+	ldr	r2, [sp, #8]
+	strb	r1, [r2, #10]
+	ldr	r0, [r0, #8]
+	lsrs	r0, r0, #24
+	ldr	r1, [sp, #8]
+	strb	r0, [r1, #11]
+	b	.LBB48_3
+.LBB48_3:
+	add	sp, #16
+	bx	lr
+.Lfunc_end48:
+	.size	monitor_i2c_status_reg_read, .Lfunc_end48-monitor_i2c_status_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.test_i2c_restart_reg_write,"ax",%progbits
+	.hidden	test_i2c_restart_reg_write      @ -- Begin function test_i2c_restart_reg_write
+	.globl	test_i2c_restart_reg_write
+	.p2align	2
+	.type	test_i2c_restart_reg_write,%function
+	.code	16                              @ @test_i2c_restart_reg_write
+	.thumb_func
+test_i2c_restart_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #229
+	beq	.LBB49_2
+	b	.LBB49_1
+.LBB49_1:
+	b	.LBB49_11
+.LBB49_2:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #1]
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #97
+	beq	.LBB49_4
+	b	.LBB49_3
+.LBB49_3:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #65
+	bne	.LBB49_5
+	b	.LBB49_4
+.LBB49_4:
+	movw	r0, #22528
+	movt	r0, #16384
+	str	r0, [sp]
+	b	.LBB49_10
+.LBB49_5:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #98
+	beq	.LBB49_7
+	b	.LBB49_6
+.LBB49_6:
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #66
+	bne	.LBB49_8
+	b	.LBB49_7
+.LBB49_7:
+	movw	r0, #21504
+	movt	r0, #16384
+	str	r0, [sp]
+	b	.LBB49_9
+.LBB49_8:
+	b	.LBB49_11
+.LBB49_9:
+	b	.LBB49_10
+.LBB49_10:
+	ldr	r0, [sp]
+	bl	i2c_disable
+	ldr	r0, [sp]
+	bl	i2c_enable
+	b	.LBB49_11
+.LBB49_11:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end49:
+	.size	test_i2c_restart_reg_write, .Lfunc_end49-test_i2c_restart_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.user_check_password_write_reg,"ax",%progbits
+	.hidden	user_check_password_write_reg   @ -- Begin function user_check_password_write_reg
+	.globl	user_check_password_write_reg
+	.p2align	2
+	.type	user_check_password_write_reg,%function
+	.code	16                              @ @user_check_password_write_reg
+	.thumb_func
+user_check_password_write_reg:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #36]
+	str	r1, [sp, #32]
+	movs	r0, #0
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #36]
+	cbz	r0, .LBB50_2
+	b	.LBB50_1
+.LBB50_1:
+	ldr	r0, [sp, #32]
+	cmp	r0, #16
+	bhi	.LBB50_3
+	b	.LBB50_2
+.LBB50_2:
+	b	.LBB50_13
+.LBB50_3:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0]
+	cmp	r0, #9
+	beq	.LBB50_5
+	b	.LBB50_4
+.LBB50_4:
+	b	.LBB50_13
+.LBB50_5:
+	movs	r0, #0
+	strb.w	r0, [sp, #24]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	ldr	r3, [sp, #36]
+	ldr.w	r0, [r3, #1]
+	ldr.w	r1, [r3, #5]
+	ldr.w	r2, [r3, #9]
+	ldr.w	r3, [r3, #13]
+	str	r3, [sp, #20]
+	str	r2, [sp, #16]
+	str	r1, [sp, #12]
+	str	r0, [sp, #8]
+	add	r0, sp, #8
+	bl	strlen
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #28]
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movw	r0, :lower16:g_optical_limit_pwd
+	movt	r0, :upper16:g_optical_limit_pwd
+	bl	strlen
+	mov	r1, r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, r1
+	beq	.LBB50_7
+	b	.LBB50_6
+.LBB50_6:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #23]
+	b	.LBB50_13
+.LBB50_7:
+	ldr	r2, [sp, #28]
+	movw	r0, :lower16:g_optical_limit_pwd
+	movt	r0, :upper16:g_optical_limit_pwd
+	add	r1, sp, #8
+	bl	memcmp
+	cbnz	r0, .LBB50_9
+	b	.LBB50_8
+.LBB50_8:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #23]
+	b	.LBB50_13
+.LBB50_9:
+	movw	r1, :lower16:.L.str
+	movt	r1, :upper16:.L.str
+	add	r0, sp, #8
+	movs	r2, #7
+	bl	memcmp
+	cbnz	r0, .LBB50_11
+	b	.LBB50_10
+.LBB50_10:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #1
+	strb	r0, [r1, #23]
+	b	.LBB50_12
+.LBB50_11:
+	movw	r1, :lower16:g_i2c_global_vars
+	movt	r1, :upper16:g_i2c_global_vars
+	movs	r0, #0
+	strb	r0, [r1, #23]
+	b	.LBB50_13
+.LBB50_12:
+	b	.LBB50_13
+.LBB50_13:
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end50:
+	.size	user_check_password_write_reg, .Lfunc_end50-user_check_password_write_reg
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.user_optical_pwd_limit_init,"ax",%progbits
+	.hidden	user_optical_pwd_limit_init     @ -- Begin function user_optical_pwd_limit_init
+	.globl	user_optical_pwd_limit_init
+	.p2align	2
+	.type	user_optical_pwd_limit_init,%function
+	.code	16                              @ @user_optical_pwd_limit_init
+	.thumb_func
+user_optical_pwd_limit_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_optical_limit_pwd
+	movt	r1, :upper16:g_optical_limit_pwd
+	movs	r0, #101
+	strh	r0, [r1, #8]
+	movw	r0, #26738
+	movt	r0, #28015
+	str	r0, [r1, #4]
+	movw	r0, #26982
+	movt	r0, #25954
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end51:
+	.size	user_optical_pwd_limit_init, .Lfunc_end51-user_optical_pwd_limit_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.user_check_write_reg_flag,"ax",%progbits
+	.hidden	user_check_write_reg_flag       @ -- Begin function user_check_write_reg_flag
+	.globl	user_check_write_reg_flag
+	.p2align	2
+	.type	user_check_write_reg_flag,%function
+	.code	16                              @ @user_check_write_reg_flag
+	.thumb_func
+user_check_write_reg_flag:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #6]
+	movs	r0, #0
+	str	r0, [sp]
+	str	r0, [sp]
+	b	.LBB52_1
+.LBB52_1:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	cbnz	r0, .LBB52_6
+	b	.LBB52_2
+.LBB52_2:                               @   in Loop: Header=BB52_1 Depth=1
+	ldrb.w	r0, [sp, #6]
+	ldr	r2, [sp]
+	movw	r1, :lower16:g_user_authority_access_array_write_reg
+	movt	r1, :upper16:g_user_authority_access_array_write_reg
+	ldrb	r1, [r1, r2]
+	cmp	r0, r1
+	bne	.LBB52_4
+	b	.LBB52_3
+.LBB52_3:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB52_7
+.LBB52_4:                               @   in Loop: Header=BB52_1 Depth=1
+	b	.LBB52_5
+.LBB52_5:                               @   in Loop: Header=BB52_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB52_1
+.LBB52_6:
+	movw	r0, :lower16:g_i2c_global_vars
+	movt	r0, :upper16:g_i2c_global_vars
+	ldrb	r0, [r0, #23]
+	strb.w	r0, [sp, #7]
+	b	.LBB52_7
+.LBB52_7:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	bx	lr
+.Lfunc_end52:
+	.size	user_check_write_reg_flag, .Lfunc_end52-user_check_write_reg_flag
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_slave_write_cfg_idx           @ @g_slave_write_cfg_idx
+	.type	g_slave_write_cfg_idx,%object
+	.section	.bss.g_slave_write_cfg_idx,"aw",%nobits
+	.globl	g_slave_write_cfg_idx
+	.p2align	2, 0x0
+g_slave_write_cfg_idx:
+	.long	0                               @ 0x0
+	.size	g_slave_write_cfg_idx, 4
+
+	.hidden	g_slave_read_cfg_idx            @ @g_slave_read_cfg_idx
+	.type	g_slave_read_cfg_idx,%object
+	.section	.bss.g_slave_read_cfg_idx,"aw",%nobits
+	.globl	g_slave_read_cfg_idx
+	.p2align	2, 0x0
+g_slave_read_cfg_idx:
+	.long	0                               @ 0x0
+	.size	g_slave_read_cfg_idx, 4
+
+	.hidden	g_user_authority_access_array_write_reg @ @g_user_authority_access_array_write_reg
+	.type	g_user_authority_access_array_write_reg,%object
+	.section	.data.g_user_authority_access_array_write_reg,"aw",%progbits
+	.globl	g_user_authority_access_array_write_reg
+g_user_authority_access_array_write_reg:
+	.byte	9
+	.size	g_user_authority_access_array_write_reg, 1
+
+	.hidden	g_i2c_global_vars               @ @g_i2c_global_vars
+	.type	g_i2c_global_vars,%object
+	.section	.bss.g_i2c_global_vars,"aw",%nobits
+	.globl	g_i2c_global_vars
+	.p2align	2, 0x0
+g_i2c_global_vars:
+	.zero	24
+	.size	g_i2c_global_vars, 24
+
+	.hidden	g_ai2c_master_info_cfg          @ @g_ai2c_master_info_cfg
+	.type	g_ai2c_master_info_cfg,%object
+	.section	.bss.g_ai2c_master_info_cfg,"aw",%nobits
+	.globl	g_ai2c_master_info_cfg
+	.p2align	2, 0x0
+g_ai2c_master_info_cfg:
+	.zero	244
+	.size	g_ai2c_master_info_cfg, 244
+
+	.hidden	g_bi2c_master_info_cfg          @ @g_bi2c_master_info_cfg
+	.type	g_bi2c_master_info_cfg,%object
+	.section	.bss.g_bi2c_master_info_cfg,"aw",%nobits
+	.globl	g_bi2c_master_info_cfg
+	.p2align	2, 0x0
+g_bi2c_master_info_cfg:
+	.zero	244
+	.size	g_bi2c_master_info_cfg, 244
+
+	.hidden	g_slave_read_cfg_callback_array @ @g_slave_read_cfg_callback_array
+	.type	g_slave_read_cfg_callback_array,%object
+	.section	.bss.g_slave_read_cfg_callback_array,"aw",%nobits
+	.globl	g_slave_read_cfg_callback_array
+	.p2align	2, 0x0
+g_slave_read_cfg_callback_array:
+	.zero	160
+	.size	g_slave_read_cfg_callback_array, 160
+
+	.hidden	g_slave_write_cfg_callback_array @ @g_slave_write_cfg_callback_array
+	.type	g_slave_write_cfg_callback_array,%object
+	.section	.bss.g_slave_write_cfg_callback_array,"aw",%nobits
+	.globl	g_slave_write_cfg_callback_array
+	.p2align	2, 0x0
+g_slave_write_cfg_callback_array:
+	.zero	160
+	.size	g_slave_write_cfg_callback_array, 160
+
+	.hidden	g_i2c_slave_info_cfg            @ @g_i2c_slave_info_cfg
+	.type	g_i2c_slave_info_cfg,%object
+	.section	.bss.g_i2c_slave_info_cfg,"aw",%nobits
+	.globl	g_i2c_slave_info_cfg
+	.p2align	2, 0x0
+g_i2c_slave_info_cfg:
+	.zero	288
+	.size	g_i2c_slave_info_cfg, 288
+
+	.type	slave_i2c_lock_reset.pre_ticks,%object @ @slave_i2c_lock_reset.pre_ticks
+	.section	.bss.slave_i2c_lock_reset.pre_ticks,"aw",%nobits
+	.p2align	2, 0x0
+slave_i2c_lock_reset.pre_ticks:
+	.long	0                               @ 0x0
+	.size	slave_i2c_lock_reset.pre_ticks, 4
+
+	.type	.L__const.get_master_i2c_by_dev_address.masterBi2c_mapAddress,%object @ @__const.get_master_i2c_by_dev_address.masterBi2c_mapAddress
+	.section	.rodata..L__const.get_master_i2c_by_dev_address.masterBi2c_mapAddress,"a",%progbits
+.L__const.get_master_i2c_by_dev_address.masterBi2c_mapAddress:
+	.ascii	"H\306"
+	.size	.L__const.get_master_i2c_by_dev_address.masterBi2c_mapAddress, 2
+
+	.hidden	g_optical_limit_pwd             @ @g_optical_limit_pwd
+	.type	g_optical_limit_pwd,%object
+	.section	.bss.g_optical_limit_pwd,"aw",%nobits
+	.globl	g_optical_limit_pwd
+g_optical_limit_pwd:
+	.zero	16
+	.size	g_optical_limit_pwd, 16
+
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"666666"
+	.size	.L.str, 7
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"fiberhome"
+	.size	.L.str.1, 10
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

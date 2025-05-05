@@ -1,0 +1,201 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_dbg.c"
+	.section	.text.dbg_deinit,"ax",%progbits
+	.hidden	dbg_deinit                      @ -- Begin function dbg_deinit
+	.globl	dbg_deinit
+	.p2align	2
+	.type	dbg_deinit,%function
+	.code	16                              @ @dbg_deinit
+	.thumb_func
+dbg_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #16388
+	movt	r1, #57348
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, #16392
+	movt	r1, #57348
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end0:
+	.size	dbg_deinit, .Lfunc_end0-dbg_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dbg_id_get,"ax",%progbits
+	.hidden	dbg_id_get                      @ -- Begin function dbg_id_get
+	.globl	dbg_id_get
+	.p2align	2
+	.type	dbg_id_get,%function
+	.code	16                              @ @dbg_id_get
+	.thumb_func
+dbg_id_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #16384
+	movt	r0, #57348
+	ldr	r0, [r0]
+	bx	lr
+.Lfunc_end1:
+	.size	dbg_id_get, .Lfunc_end1-dbg_id_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dbg_low_power_enable,"ax",%progbits
+	.hidden	dbg_low_power_enable            @ -- Begin function dbg_low_power_enable
+	.globl	dbg_low_power_enable
+	.p2align	2
+	.type	dbg_low_power_enable,%function
+	.code	16                              @ @dbg_low_power_enable
+	.thumb_func
+dbg_low_power_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #16388
+	movt	r1, #57348
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end2:
+	.size	dbg_low_power_enable, .Lfunc_end2-dbg_low_power_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dbg_low_power_disable,"ax",%progbits
+	.hidden	dbg_low_power_disable           @ -- Begin function dbg_low_power_disable
+	.globl	dbg_low_power_disable
+	.p2align	2
+	.type	dbg_low_power_disable,%function
+	.code	16                              @ @dbg_low_power_disable
+	.thumb_func
+dbg_low_power_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #16388
+	movt	r1, #57348
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	dbg_low_power_disable, .Lfunc_end3-dbg_low_power_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dbg_periph_enable,"ax",%progbits
+	.hidden	dbg_periph_enable               @ -- Begin function dbg_periph_enable
+	.globl	dbg_periph_enable
+	.p2align	2
+	.type	dbg_periph_enable,%function
+	.code	16                              @ @dbg_periph_enable
+	.thumb_func
+dbg_periph_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #31
+	movs	r1, #1
+	lsl.w	r3, r1, r2
+	lsrs	r1, r0, #6
+	movw	r2, #16384
+	movt	r2, #57348
+	ldr	r0, [r1, r2]
+	orrs	r0, r3
+	str	r0, [r1, r2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	dbg_periph_enable, .Lfunc_end4-dbg_periph_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dbg_periph_disable,"ax",%progbits
+	.hidden	dbg_periph_disable              @ -- Begin function dbg_periph_disable
+	.globl	dbg_periph_disable
+	.p2align	2
+	.type	dbg_periph_disable,%function
+	.code	16                              @ @dbg_periph_disable
+	.thumb_func
+dbg_periph_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #31
+	movs	r1, #1
+	lsl.w	r3, r1, r2
+	lsrs	r1, r0, #6
+	movw	r2, #16384
+	movt	r2, #57348
+	ldr	r0, [r1, r2]
+	bics	r0, r3
+	str	r0, [r1, r2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	dbg_periph_disable, .Lfunc_end5-dbg_periph_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

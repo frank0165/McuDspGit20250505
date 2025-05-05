@@ -1,0 +1,1921 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_adc.c"
+	.section	.text.adc_deinit,"ax",%progbits
+	.hidden	adc_deinit                      @ -- Begin function adc_deinit
+	.globl	adc_deinit
+	.p2align	2
+	.type	adc_deinit,%function
+	.code	16                              @ @adc_deinit
+	.thumb_func
+adc_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #777
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	adc_deinit, .Lfunc_end0-adc_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_enable,"ax",%progbits
+	.hidden	adc_enable                      @ -- Begin function adc_enable
+	.globl	adc_enable
+	.p2align	2
+	.type	adc_enable,%function
+	.code	16                              @ @adc_enable
+	.thumb_func
+adc_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #9224
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #31
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB1_2
+.LBB1_2:
+	bx	lr
+.Lfunc_end1:
+	.size	adc_enable, .Lfunc_end1-adc_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_disable,"ax",%progbits
+	.hidden	adc_disable                     @ -- Begin function adc_disable
+	.globl	adc_disable
+	.p2align	2
+	.type	adc_disable,%function
+	.code	16                              @ @adc_disable
+	.thumb_func
+adc_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end2:
+	.size	adc_disable, .Lfunc_end2-adc_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_calibration_enable,"ax",%progbits
+	.hidden	adc_calibration_enable          @ -- Begin function adc_calibration_enable
+	.globl	adc_calibration_enable
+	.p2align	2
+	.type	adc_calibration_enable,%function
+	.code	16                              @ @adc_calibration_enable
+	.thumb_func
+adc_calibration_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #9224
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #28
+	cmp	r0, #0
+	bpl	.LBB3_3
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	b	.LBB3_1
+.LBB3_3:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB3_4
+.LBB3_4:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #9224
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB3_6
+	b	.LBB3_5
+.LBB3_5:                                @   in Loop: Header=BB3_4 Depth=1
+	b	.LBB3_4
+.LBB3_6:
+	bx	lr
+.Lfunc_end3:
+	.size	adc_calibration_enable, .Lfunc_end3-adc_calibration_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_dma_mode_enable,"ax",%progbits
+	.hidden	adc_dma_mode_enable             @ -- Begin function adc_dma_mode_enable
+	.globl	adc_dma_mode_enable
+	.p2align	2
+	.type	adc_dma_mode_enable,%function
+	.code	16                              @ @adc_dma_mode_enable
+	.thumb_func
+adc_dma_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #256
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end4:
+	.size	adc_dma_mode_enable, .Lfunc_end4-adc_dma_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_dma_mode_disable,"ax",%progbits
+	.hidden	adc_dma_mode_disable            @ -- Begin function adc_dma_mode_disable
+	.globl	adc_dma_mode_disable
+	.p2align	2
+	.type	adc_dma_mode_disable,%function
+	.code	16                              @ @adc_dma_mode_disable
+	.thumb_func
+adc_dma_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end5:
+	.size	adc_dma_mode_disable, .Lfunc_end5-adc_dma_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_idma_mode_enable,"ax",%progbits
+	.hidden	adc_idma_mode_enable            @ -- Begin function adc_idma_mode_enable
+	.globl	adc_idma_mode_enable
+	.p2align	2
+	.type	adc_idma_mode_enable,%function
+	.code	16                              @ @adc_idma_mode_enable
+	.thumb_func
+adc_idma_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9352
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end6:
+	.size	adc_idma_mode_enable, .Lfunc_end6-adc_idma_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_idma_mode_disable,"ax",%progbits
+	.hidden	adc_idma_mode_disable           @ -- Begin function adc_idma_mode_disable
+	.globl	adc_idma_mode_disable
+	.p2align	2
+	.type	adc_idma_mode_disable,%function
+	.code	16                              @ @adc_idma_mode_disable
+	.thumb_func
+adc_idma_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9352
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end7:
+	.size	adc_idma_mode_disable, .Lfunc_end7-adc_idma_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_tempsensor_vrefint_enable,"ax",%progbits
+	.hidden	adc_tempsensor_vrefint_enable   @ -- Begin function adc_tempsensor_vrefint_enable
+	.globl	adc_tempsensor_vrefint_enable
+	.p2align	2
+	.type	adc_tempsensor_vrefint_enable,%function
+	.code	16                              @ @adc_tempsensor_vrefint_enable
+	.thumb_func
+adc_tempsensor_vrefint_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #8388608
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end8:
+	.size	adc_tempsensor_vrefint_enable, .Lfunc_end8-adc_tempsensor_vrefint_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_tempsensor_vrefint_disable,"ax",%progbits
+	.hidden	adc_tempsensor_vrefint_disable  @ -- Begin function adc_tempsensor_vrefint_disable
+	.globl	adc_tempsensor_vrefint_disable
+	.p2align	2
+	.type	adc_tempsensor_vrefint_disable,%function
+	.code	16                              @ @adc_tempsensor_vrefint_disable
+	.thumb_func
+adc_tempsensor_vrefint_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #8388608
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end9:
+	.size	adc_tempsensor_vrefint_disable, .Lfunc_end9-adc_tempsensor_vrefint_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_discontinuous_mode_config,"ax",%progbits
+	.hidden	adc_discontinuous_mode_config   @ -- Begin function adc_discontinuous_mode_config
+	.globl	adc_discontinuous_mode_config
+	.p2align	2
+	.type	adc_discontinuous_mode_config,%function
+	.code	16                              @ @adc_discontinuous_mode_config
+	.thumb_func
+adc_discontinuous_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #6144
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #1
+	beq	.LBB10_3
+	b	.LBB10_1
+.LBB10_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB10_4
+	b	.LBB10_2
+.LBB10_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #4
+	beq	.LBB10_5
+	b	.LBB10_6
+.LBB10_3:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #57344
+	str	r0, [r1]
+	ldrb.w	r2, [sp, #6]
+	movw	r0, #57344
+	movt	r0, #65535
+	add.w	r0, r0, r2, lsl #13
+	uxth	r2, r0
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #2048
+	str	r0, [r1]
+	b	.LBB10_7
+.LBB10_4:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #4096
+	str	r0, [r1]
+	b	.LBB10_7
+.LBB10_5:
+	b	.LBB10_6
+.LBB10_6:
+	b	.LBB10_7
+.LBB10_7:
+	add	sp, #8
+	bx	lr
+.Lfunc_end10:
+	.size	adc_discontinuous_mode_config, .Lfunc_end10-adc_discontinuous_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_special_function_config,"ax",%progbits
+	.hidden	adc_special_function_config     @ -- Begin function adc_special_function_config
+	.globl	adc_special_function_config
+	.p2align	2
+	.type	adc_special_function_config,%function
+	.code	16                              @ @adc_special_function_config
+	.thumb_func
+adc_special_function_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbz	r0, .LBB11_8
+	b	.LBB11_1
+.LBB11_1:
+	ldrb.w	r0, [sp, #5]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB11_3
+	b	.LBB11_2
+.LBB11_2:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #256
+	str	r0, [r1]
+	b	.LBB11_3
+.LBB11_3:
+	ldrb.w	r0, [sp, #5]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB11_5
+	b	.LBB11_4
+.LBB11_4:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #1024
+	str	r0, [r1]
+	b	.LBB11_5
+.LBB11_5:
+	ldrb.w	r0, [sp, #4]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB11_7
+	b	.LBB11_6
+.LBB11_6:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB11_7
+.LBB11_7:
+	b	.LBB11_15
+.LBB11_8:
+	ldrb.w	r0, [sp, #5]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB11_10
+	b	.LBB11_9
+.LBB11_9:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	b	.LBB11_10
+.LBB11_10:
+	ldrb.w	r0, [sp, #5]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB11_12
+	b	.LBB11_11
+.LBB11_11:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #1024
+	str	r0, [r1]
+	b	.LBB11_12
+.LBB11_12:
+	ldrb.w	r0, [sp, #4]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB11_14
+	b	.LBB11_13
+.LBB11_13:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB11_14
+.LBB11_14:
+	b	.LBB11_15
+.LBB11_15:
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	adc_special_function_config, .Lfunc_end11-adc_special_function_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_data_alignment_config,"ax",%progbits
+	.hidden	adc_data_alignment_config       @ -- Begin function adc_data_alignment_config
+	.globl	adc_data_alignment_config
+	.p2align	2
+	.type	adc_data_alignment_config,%function
+	.code	16                              @ @adc_data_alignment_config
+	.thumb_func
+adc_data_alignment_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	cbz	r0, .LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #2048
+	str	r0, [r1]
+	b	.LBB12_3
+.LBB12_2:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	b	.LBB12_3
+.LBB12_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end12:
+	.size	adc_data_alignment_config, .Lfunc_end12-adc_data_alignment_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_channel_length_config,"ax",%progbits
+	.hidden	adc_channel_length_config       @ -- Begin function adc_channel_length_config
+	.globl	adc_channel_length_config
+	.p2align	2
+	.type	adc_channel_length_config,%function
+	.code	16                              @ @adc_channel_length_config
+	.thumb_func
+adc_channel_length_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #1
+	beq	.LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB13_3
+	b	.LBB13_4
+.LBB13_2:
+	movw	r1, #9260
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #15728640
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	movs	r0, #0
+	movt	r0, #65520
+	add.w	r0, r0, r2, lsl #20
+	and	r2, r0, #15728640
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB13_5
+.LBB13_3:
+	movw	r1, #9272
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #3145728
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	movs	r0, #0
+	movt	r0, #65520
+	add.w	r0, r0, r2, lsl #20
+	and	r2, r0, #3145728
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB13_5
+.LBB13_4:
+	b	.LBB13_5
+.LBB13_5:
+	add	sp, #12
+	bx	lr
+.Lfunc_end13:
+	.size	adc_channel_length_config, .Lfunc_end13-adc_channel_length_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_regular_channel_config,"ax",%progbits
+	.hidden	adc_regular_channel_config      @ -- Begin function adc_regular_channel_config
+	.globl	adc_regular_channel_config
+	.p2align	2
+	.type	adc_regular_channel_config,%function
+	.code	16                              @ @adc_regular_channel_config
+	.thumb_func
+adc_regular_channel_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r3 killed $r1
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #15]
+	strb.w	r1, [sp, #14]
+	str	r2, [sp, #8]
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #5
+	bhi	.LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	movw	r1, #9268
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r0, #31
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	bics	r0, r2
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #14]
+	ldrb.w	r2, [sp, #15]
+	add.w	r2, r2, r2, lsl #2
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	orrs	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	str	r0, [r1]
+	b	.LBB14_9
+.LBB14_2:
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #11
+	bhi	.LBB14_4
+	b	.LBB14_3
+.LBB14_3:
+	movw	r1, #9264
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #15]
+	add.w	r0, r0, r0, lsl #2
+	sub.w	r2, r0, #30
+	movs	r0, #31
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	bics	r0, r2
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #14]
+	ldrb.w	r2, [sp, #15]
+	add.w	r2, r2, r2, lsl #2
+	subs	r2, #30
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	orrs	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	str	r0, [r1]
+	b	.LBB14_8
+.LBB14_4:
+	ldrb.w	r0, [sp, #15]
+	cmp	r0, #15
+	bhi	.LBB14_6
+	b	.LBB14_5
+.LBB14_5:
+	movw	r1, #9260
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #15]
+	add.w	r0, r0, r0, lsl #2
+	sub.w	r2, r0, #60
+	movs	r0, #31
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	bics	r0, r2
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #14]
+	ldrb.w	r2, [sp, #15]
+	add.w	r2, r2, r2, lsl #2
+	subs	r2, #60
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	orrs	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	str	r0, [r1]
+	b	.LBB14_7
+.LBB14_6:
+	b	.LBB14_7
+.LBB14_7:
+	b	.LBB14_8
+.LBB14_8:
+	b	.LBB14_9
+.LBB14_9:
+	ldrb.w	r0, [sp, #14]
+	cmp	r0, #9
+	bhi	.LBB14_11
+	b	.LBB14_10
+.LBB14_10:
+	movw	r1, #9232
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #14]
+	add.w	r2, r0, r0, lsl #1
+	movs	r0, #7
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	bics	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldrb.w	r2, [sp, #14]
+	add.w	r2, r2, r2, lsl #1
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	b	.LBB14_15
+.LBB14_11:
+	ldrb.w	r0, [sp, #14]
+	cmp	r0, #18
+	bhi	.LBB14_13
+	b	.LBB14_12
+.LBB14_12:
+	movw	r1, #9228
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #14]
+	add.w	r0, r0, r0, lsl #1
+	sub.w	r2, r0, #30
+	movs	r0, #7
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	bics	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldrb.w	r2, [sp, #14]
+	add.w	r2, r2, r2, lsl #1
+	subs	r2, #30
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	b	.LBB14_14
+.LBB14_13:
+	b	.LBB14_14
+.LBB14_14:
+	b	.LBB14_15
+.LBB14_15:
+	add	sp, #16
+	bx	lr
+.Lfunc_end14:
+	.size	adc_regular_channel_config, .Lfunc_end14-adc_regular_channel_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_inserted_channel_config,"ax",%progbits
+	.hidden	adc_inserted_channel_config     @ -- Begin function adc_inserted_channel_config
+	.globl	adc_inserted_channel_config
+	.p2align	2
+	.type	adc_inserted_channel_config,%function
+	.code	16                              @ @adc_inserted_channel_config
+	.thumb_func
+adc_inserted_channel_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+                                        @ kill: def $r3 killed $r1
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #19]
+	strb.w	r1, [sp, #18]
+	str	r2, [sp, #12]
+	movw	r1, #9272
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ubfx	r0, r0, #20, #2
+	strb.w	r0, [sp, #11]
+	ldr	r0, [r1]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	ldrb.w	r2, [sp, #19]
+	subs	r0, r0, r2
+	add.w	r0, r0, r0, lsl #2
+	rsb.w	r2, r0, #15
+	movs	r0, #31
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	bics	r0, r2
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #18]
+	ldrb.w	r2, [sp, #11]
+	ldrb.w	r3, [sp, #19]
+	subs	r2, r2, r3
+	add.w	r2, r2, r2, lsl #2
+	rsb.w	r2, r2, #15
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp, #4]
+	orrs	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #18]
+	cmp	r0, #9
+	bhi	.LBB15_2
+	b	.LBB15_1
+.LBB15_1:
+	movw	r1, #9232
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #18]
+	add.w	r2, r0, r0, lsl #1
+	movs	r0, #7
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	bics	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrb.w	r2, [sp, #18]
+	add.w	r2, r2, r2, lsl #1
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	b	.LBB15_6
+.LBB15_2:
+	ldrb.w	r0, [sp, #18]
+	cmp	r0, #18
+	bhi	.LBB15_4
+	b	.LBB15_3
+.LBB15_3:
+	movw	r1, #9228
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #18]
+	add.w	r0, r0, r0, lsl #1
+	sub.w	r2, r0, #30
+	movs	r0, #7
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	bics	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrb.w	r2, [sp, #18]
+	add.w	r2, r2, r2, lsl #1
+	subs	r2, #30
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	b	.LBB15_5
+.LBB15_4:
+	b	.LBB15_5
+.LBB15_5:
+	b	.LBB15_6
+.LBB15_6:
+	add	sp, #20
+	bx	lr
+.Lfunc_end15:
+	.size	adc_inserted_channel_config, .Lfunc_end15-adc_inserted_channel_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_inserted_channel_offset_config,"ax",%progbits
+	.hidden	adc_inserted_channel_offset_config @ -- Begin function adc_inserted_channel_offset_config
+	.globl	adc_inserted_channel_offset_config
+	.p2align	2
+	.type	adc_inserted_channel_offset_config,%function
+	.code	16                              @ @adc_inserted_channel_offset_config
+	.thumb_func
+adc_inserted_channel_offset_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	strh.w	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r0, #9272
+	movt	r0, #16385
+	ldr	r0, [r0]
+	ubfx	r0, r0, #20, #2
+	strb.w	r0, [sp, #7]
+	ldrb.w	r1, [sp, #7]
+	ldrb.w	r0, [sp, #11]
+	subs	r0, r0, r1
+	adds	r0, #3
+	str	r0, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #3
+	bhi	.LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	ldr	r0, [sp]
+	lsls	r0, r0, #2
+	str	r0, [sp]
+	ldrh.w	r0, [sp, #8]
+	bfc	r0, #12, #20
+	ldr	r1, [sp]
+	movw	r2, #9236
+	movt	r2, #16385
+	str	r0, [r1, r2]
+	b	.LBB16_2
+.LBB16_2:
+	add	sp, #12
+	bx	lr
+.Lfunc_end16:
+	.size	adc_inserted_channel_offset_config, .Lfunc_end16-adc_inserted_channel_offset_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_inserted_channel_repeat_time_config,"ax",%progbits
+	.hidden	adc_inserted_channel_repeat_time_config @ -- Begin function adc_inserted_channel_repeat_time_config
+	.globl	adc_inserted_channel_repeat_time_config
+	.p2align	2
+	.type	adc_inserted_channel_repeat_time_config,%function
+	.code	16                              @ @adc_inserted_channel_repeat_time_config
+	.thumb_func
+adc_inserted_channel_repeat_time_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	movw	r1, #9352
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #252
+	str	r0, [r1]
+	ldrb.w	r2, [sp, #3]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	adc_inserted_channel_repeat_time_config, .Lfunc_end17-adc_inserted_channel_repeat_time_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_external_trigger_config,"ax",%progbits
+	.hidden	adc_external_trigger_config     @ -- Begin function adc_external_trigger_config
+	.globl	adc_external_trigger_config
+	.p2align	2
+	.type	adc_external_trigger_config,%function
+	.code	16                              @ @adc_external_trigger_config
+	.thumb_func
+adc_external_trigger_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #3]
+	strb.w	r1, [sp, #2]
+	ldrb.w	r0, [sp, #2]
+	cbz	r0, .LBB18_6
+	b	.LBB18_1
+.LBB18_1:
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB18_3
+	b	.LBB18_2
+.LBB18_2:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #1048576
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_3:
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB18_5
+	b	.LBB18_4
+.LBB18_4:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB18_5
+.LBB18_5:
+	b	.LBB18_11
+.LBB18_6:
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB18_8
+	b	.LBB18_7
+.LBB18_7:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #1048576
+	str	r0, [r1]
+	b	.LBB18_8
+.LBB18_8:
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB18_10
+	b	.LBB18_9
+.LBB18_9:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB18_10
+.LBB18_10:
+	b	.LBB18_11
+.LBB18_11:
+	add	sp, #4
+	bx	lr
+.Lfunc_end18:
+	.size	adc_external_trigger_config, .Lfunc_end18-adc_external_trigger_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_external_trigger_source_config,"ax",%progbits
+	.hidden	adc_external_trigger_source_config @ -- Begin function adc_external_trigger_source_config
+	.globl	adc_external_trigger_source_config
+	.p2align	2
+	.type	adc_external_trigger_source_config,%function
+	.code	16                              @ @adc_external_trigger_source_config
+	.thumb_func
+adc_external_trigger_source_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #1
+	beq	.LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB19_3
+	b	.LBB19_4
+.LBB19_2:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	movw	r2, #65535
+	movt	r2, #64497
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB19_5
+.LBB19_3:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	movw	r2, #36863
+	movt	r2, #65023
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB19_5
+.LBB19_4:
+	b	.LBB19_5
+.LBB19_5:
+	add	sp, #12
+	bx	lr
+.Lfunc_end19:
+	.size	adc_external_trigger_source_config, .Lfunc_end19-adc_external_trigger_source_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_software_trigger_enable,"ax",%progbits
+	.hidden	adc_software_trigger_enable     @ -- Begin function adc_software_trigger_enable
+	.globl	adc_software_trigger_enable
+	.p2align	2
+	.type	adc_software_trigger_enable,%function
+	.code	16                              @ @adc_software_trigger_enable
+	.thumb_func
+adc_software_trigger_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #4194304
+	str	r0, [r1]
+	b	.LBB20_2
+.LBB20_2:
+	ldrb.w	r0, [sp, #3]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB20_4
+	b	.LBB20_3
+.LBB20_3:
+	movw	r1, #9224
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #2097152
+	str	r0, [r1]
+	b	.LBB20_4
+.LBB20_4:
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	adc_software_trigger_enable, .Lfunc_end20-adc_software_trigger_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_regular_data_read,"ax",%progbits
+	.hidden	adc_regular_data_read           @ -- Begin function adc_regular_data_read
+	.globl	adc_regular_data_read
+	.p2align	2
+	.type	adc_regular_data_read,%function
+	.code	16                              @ @adc_regular_data_read
+	.thumb_func
+adc_regular_data_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #9292
+	movt	r0, #16385
+	ldr	r0, [r0]
+	uxth	r0, r0
+	bx	lr
+.Lfunc_end21:
+	.size	adc_regular_data_read, .Lfunc_end21-adc_regular_data_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_inserted_data_read,"ax",%progbits
+	.hidden	adc_inserted_data_read          @ -- Begin function adc_inserted_data_read
+	.globl	adc_inserted_data_read
+	.p2align	2
+	.type	adc_inserted_data_read,%function
+	.code	16                              @ @adc_inserted_data_read
+	.thumb_func
+adc_inserted_data_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #11]
+	ldrb.w	r0, [sp, #11]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB22_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI22_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI22_0:
+	.byte	(.LBB22_3-(.LCPI22_0+4))/2
+	.byte	(.LBB22_4-(.LCPI22_0+4))/2
+	.byte	(.LBB22_5-(.LCPI22_0+4))/2
+	.byte	(.LBB22_6-(.LCPI22_0+4))/2
+	.p2align	1
+.LBB22_3:
+	movw	r0, #9276
+	movt	r0, #16385
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	b	.LBB22_8
+.LBB22_4:
+	movw	r0, #9280
+	movt	r0, #16385
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	b	.LBB22_8
+.LBB22_5:
+	movw	r0, #9284
+	movt	r0, #16385
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	b	.LBB22_8
+.LBB22_6:
+	movw	r0, #9288
+	movt	r0, #16385
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	b	.LBB22_8
+.LBB22_7:
+	movs	r0, #0
+	str	r0, [sp, #4]
+	b	.LBB22_8
+.LBB22_8:
+	ldrh.w	r0, [sp, #4]
+	add	sp, #12
+	bx	lr
+.Lfunc_end22:
+	.size	adc_inserted_data_read, .Lfunc_end22-adc_inserted_data_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_watchdog_single_channel_enable,"ax",%progbits
+	.hidden	adc_watchdog_single_channel_enable @ -- Begin function adc_watchdog_single_channel_enable
+	.globl	adc_watchdog_single_channel_enable
+	.p2align	2
+	.type	adc_watchdog_single_channel_enable,%function
+	.code	16                              @ @adc_watchdog_single_channel_enable
+	.thumb_func
+adc_watchdog_single_channel_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	movw	r2, #64992
+	movt	r2, #65343
+	ands	r0, r2
+	str	r0, [r1]
+	ldrb.w	r2, [sp, #3]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldr	r0, [r1]
+	movw	r2, #512
+	movt	r2, #192
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end23:
+	.size	adc_watchdog_single_channel_enable, .Lfunc_end23-adc_watchdog_single_channel_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_watchdog_group_channel_enable,"ax",%progbits
+	.hidden	adc_watchdog_group_channel_enable @ -- Begin function adc_watchdog_group_channel_enable
+	.globl	adc_watchdog_group_channel_enable
+	.p2align	2
+	.type	adc_watchdog_group_channel_enable,%function
+	.code	16                              @ @adc_watchdog_group_channel_enable
+	.thumb_func
+adc_watchdog_group_channel_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	movw	r2, #65023
+	movt	r2, #65343
+	ands	r0, r2
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #1
+	beq	.LBB24_3
+	b	.LBB24_1
+.LBB24_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB24_4
+	b	.LBB24_2
+.LBB24_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #3
+	beq	.LBB24_5
+	b	.LBB24_6
+.LBB24_3:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #8388608
+	str	r0, [r1]
+	b	.LBB24_7
+.LBB24_4:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #4194304
+	str	r0, [r1]
+	b	.LBB24_7
+.LBB24_5:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #12582912
+	str	r0, [r1]
+	b	.LBB24_7
+.LBB24_6:
+	b	.LBB24_7
+.LBB24_7:
+	add	sp, #8
+	bx	lr
+.Lfunc_end24:
+	.size	adc_watchdog_group_channel_enable, .Lfunc_end24-adc_watchdog_group_channel_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_watchdog_disable,"ax",%progbits
+	.hidden	adc_watchdog_disable            @ -- Begin function adc_watchdog_disable
+	.globl	adc_watchdog_disable
+	.p2align	2
+	.type	adc_watchdog_disable,%function
+	.code	16                              @ @adc_watchdog_disable
+	.thumb_func
+adc_watchdog_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	movw	r2, #64992
+	movt	r2, #65343
+	ands	r0, r2
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end25:
+	.size	adc_watchdog_disable, .Lfunc_end25-adc_watchdog_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_watchdog_threshold_config,"ax",%progbits
+	.hidden	adc_watchdog_threshold_config   @ -- Begin function adc_watchdog_threshold_config
+	.globl	adc_watchdog_threshold_config
+	.p2align	2
+	.type	adc_watchdog_threshold_config,%function
+	.code	16                              @ @adc_watchdog_threshold_config
+	.thumb_func
+adc_watchdog_threshold_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strh.w	r0, [sp, #2]
+	strh.w	r1, [sp]
+	ldrh.w	r0, [sp, #2]
+	bfc	r0, #12, #20
+	movw	r1, #9256
+	movt	r1, #16385
+	str	r0, [r1]
+	ldrh.w	r0, [sp]
+	bfc	r0, #12, #20
+	movw	r1, #9252
+	movt	r1, #16385
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end26:
+	.size	adc_watchdog_threshold_config, .Lfunc_end26-adc_watchdog_threshold_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_resolution_config,"ax",%progbits
+	.hidden	adc_resolution_config           @ -- Begin function adc_resolution_config
+	.globl	adc_resolution_config
+	.p2align	2
+	.type	adc_resolution_config,%function
+	.code	16                              @ @adc_resolution_config
+	.thumb_func
+adc_resolution_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #50331648
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end27:
+	.size	adc_resolution_config, .Lfunc_end27-adc_resolution_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_oversample_mode_config,"ax",%progbits
+	.hidden	adc_oversample_mode_config      @ -- Begin function adc_oversample_mode_config
+	.globl	adc_oversample_mode_config
+	.p2align	2
+	.type	adc_oversample_mode_config,%function
+	.code	16                              @ @adc_oversample_mode_config
+	.thumb_func
+adc_oversample_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #7]
+	strh.w	r1, [sp, #4]
+	strb.w	r2, [sp, #3]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB28_2
+	b	.LBB28_1
+.LBB28_1:
+	movw	r1, #9344
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #512
+	str	r0, [r1]
+	b	.LBB28_3
+.LBB28_2:
+	movw	r1, #9344
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #512
+	str	r0, [r1]
+	b	.LBB28_3
+.LBB28_3:
+	movw	r1, #9344
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #508
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #4]
+	ldrb.w	r2, [sp, #3]
+	orrs	r2, r0
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end28:
+	.size	adc_oversample_mode_config, .Lfunc_end28-adc_oversample_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_oversample_mode_enable,"ax",%progbits
+	.hidden	adc_oversample_mode_enable      @ -- Begin function adc_oversample_mode_enable
+	.globl	adc_oversample_mode_enable
+	.p2align	2
+	.type	adc_oversample_mode_enable,%function
+	.code	16                              @ @adc_oversample_mode_enable
+	.thumb_func
+adc_oversample_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9344
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end29:
+	.size	adc_oversample_mode_enable, .Lfunc_end29-adc_oversample_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_oversample_mode_disable,"ax",%progbits
+	.hidden	adc_oversample_mode_disable     @ -- Begin function adc_oversample_mode_disable
+	.globl	adc_oversample_mode_disable
+	.p2align	2
+	.type	adc_oversample_mode_disable,%function
+	.code	16                              @ @adc_oversample_mode_disable
+	.thumb_func
+adc_oversample_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #9344
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end30:
+	.size	adc_oversample_mode_disable, .Lfunc_end30-adc_oversample_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_flag_get,"ax",%progbits
+	.hidden	adc_flag_get                    @ -- Begin function adc_flag_get
+	.globl	adc_flag_get
+	.p2align	2
+	.type	adc_flag_get,%function
+	.code	16                              @ @adc_flag_get
+	.thumb_func
+adc_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #9216
+	movt	r0, #16385
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB31_2
+	b	.LBB31_1
+.LBB31_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB31_2
+.LBB31_2:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end31:
+	.size	adc_flag_get, .Lfunc_end31-adc_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_flag_clear,"ax",%progbits
+	.hidden	adc_flag_clear                  @ -- Begin function adc_flag_clear
+	.globl	adc_flag_clear
+	.p2align	2
+	.type	adc_flag_clear,%function
+	.code	16                              @ @adc_flag_clear
+	.thumb_func
+adc_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #9216
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end32:
+	.size	adc_flag_clear, .Lfunc_end32-adc_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_interrupt_enable,"ax",%progbits
+	.hidden	adc_interrupt_enable            @ -- Begin function adc_interrupt_enable
+	.globl	adc_interrupt_enable
+	.p2align	2
+	.type	adc_interrupt_enable,%function
+	.code	16                              @ @adc_interrupt_enable
+	.thumb_func
+adc_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB33_2
+	b	.LBB33_1
+.LBB33_1:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB33_2
+.LBB33_2:
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB33_4
+	b	.LBB33_3
+.LBB33_3:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB33_4
+.LBB33_4:
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB33_6
+	b	.LBB33_5
+.LBB33_5:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB33_6
+.LBB33_6:
+	add	sp, #4
+	bx	lr
+.Lfunc_end33:
+	.size	adc_interrupt_enable, .Lfunc_end33-adc_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_interrupt_disable,"ax",%progbits
+	.hidden	adc_interrupt_disable           @ -- Begin function adc_interrupt_disable
+	.globl	adc_interrupt_disable
+	.p2align	2
+	.type	adc_interrupt_disable,%function
+	.code	16                              @ @adc_interrupt_disable
+	.thumb_func
+adc_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB34_2
+	b	.LBB34_1
+.LBB34_1:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB34_2
+.LBB34_2:
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB34_4
+	b	.LBB34_3
+.LBB34_3:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB34_4
+.LBB34_4:
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB34_6
+	b	.LBB34_5
+.LBB34_5:
+	movw	r1, #9220
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB34_6
+.LBB34_6:
+	add	sp, #4
+	bx	lr
+.Lfunc_end34:
+	.size	adc_interrupt_disable, .Lfunc_end34-adc_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_interrupt_flag_get,"ax",%progbits
+	.hidden	adc_interrupt_flag_get          @ -- Begin function adc_interrupt_flag_get
+	.globl	adc_interrupt_flag_get
+	.p2align	2
+	.type	adc_interrupt_flag_get,%function
+	.code	16                              @ @adc_interrupt_flag_get
+	.thumb_func
+adc_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	ldr	r0, [sp, #12]
+	str	r0, [sp]                        @ 4-byte Spill
+	cmp	r0, #1
+	beq	.LBB35_3
+	b	.LBB35_1
+.LBB35_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB35_7
+	b	.LBB35_2
+.LBB35_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #4
+	beq	.LBB35_11
+	b	.LBB35_15
+.LBB35_3:
+	movw	r0, #9216
+	movt	r0, #16385
+	ldr	r0, [r0]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	movw	r0, #9220
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #25
+	cmp	r0, #0
+	bpl	.LBB35_6
+	b	.LBB35_4
+.LBB35_4:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB35_6
+	b	.LBB35_5
+.LBB35_5:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB35_6
+.LBB35_6:
+	b	.LBB35_16
+.LBB35_7:
+	movw	r0, #9216
+	movt	r0, #16385
+	ldr	r0, [r0]
+	and	r0, r0, #2
+	str	r0, [sp, #4]
+	movw	r0, #9220
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #26
+	cmp	r0, #0
+	bpl	.LBB35_10
+	b	.LBB35_8
+.LBB35_8:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB35_10
+	b	.LBB35_9
+.LBB35_9:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB35_10
+.LBB35_10:
+	b	.LBB35_16
+.LBB35_11:
+	movw	r0, #9216
+	movt	r0, #16385
+	ldr	r0, [r0]
+	and	r0, r0, #4
+	str	r0, [sp, #4]
+	movw	r0, #9220
+	movt	r0, #16385
+	ldr	r0, [r0]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB35_14
+	b	.LBB35_12
+.LBB35_12:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB35_14
+	b	.LBB35_13
+.LBB35_13:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB35_14
+.LBB35_14:
+	b	.LBB35_16
+.LBB35_15:
+	b	.LBB35_16
+.LBB35_16:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #16
+	bx	lr
+.Lfunc_end35:
+	.size	adc_interrupt_flag_get, .Lfunc_end35-adc_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_interrupt_flag_clear,"ax",%progbits
+	.hidden	adc_interrupt_flag_clear        @ -- Begin function adc_interrupt_flag_clear
+	.globl	adc_interrupt_flag_clear
+	.p2align	2
+	.type	adc_interrupt_flag_clear,%function
+	.code	16                              @ @adc_interrupt_flag_clear
+	.thumb_func
+adc_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #9216
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end36:
+	.size	adc_interrupt_flag_clear, .Lfunc_end36-adc_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	adc_temp_tt                     @ @adc_temp_tt
+	.type	adc_temp_tt,%object
+	.section	.bss.adc_temp_tt,"aw",%nobits
+	.globl	adc_temp_tt
+	.p2align	2, 0x0
+adc_temp_tt:
+	.long	0                               @ 0x0
+	.size	adc_temp_tt, 4
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

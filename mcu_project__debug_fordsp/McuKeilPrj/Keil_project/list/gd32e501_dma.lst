@@ -1,0 +1,1178 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_dma.c"
+	.section	.text.dma_deinit,"ax",%progbits
+	.hidden	dma_deinit                      @ -- Begin function dma_deinit
+	.globl	dma_deinit
+	.p2align	2
+	.type	dma_deinit,%function
+	.code	16                              @ @dma_deinit
+	.thumb_func
+dma_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #1
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r0, #0
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r1, [sp, #3]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #12
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r1, [sp, #3]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #16
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r1, [sp, #3]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #20
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r0, [sp, #3]
+	lsls	r1, r0, #2
+	movs	r0, #15
+	lsl.w	r2, r0, r1
+	movs	r1, #4
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end0:
+	.size	dma_deinit, .Lfunc_end0-dma_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_struct_para_init,"ax",%progbits
+	.hidden	dma_struct_para_init            @ -- Begin function dma_struct_para_init
+	.globl	dma_struct_para_init
+	.p2align	2
+	.type	dma_struct_para_init,%function
+	.code	16                              @ @dma_struct_para_init
+	.thumb_func
+dma_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	str	r0, [r1]
+	ldr	r1, [sp]
+	str	r0, [r1, #4]
+	ldr	r1, [sp]
+	strb	r0, [r1, #24]
+	ldr	r1, [sp]
+	str	r0, [r1, #8]
+	ldr	r1, [sp]
+	str	r0, [r1, #12]
+	ldr	r1, [sp]
+	strb	r0, [r1, #25]
+	ldr	r1, [sp]
+	str	r0, [r1, #16]
+	ldr	r1, [sp]
+	strb	r0, [r1, #26]
+	ldr	r1, [sp]
+	str	r0, [r1, #20]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	dma_struct_para_init, .Lfunc_end1-dma_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_init,"ax",%progbits
+	.hidden	dma_init                        @ -- Begin function dma_init
+	.globl	dma_init
+	.p2align	2
+	.type	dma_init,%function
+	.code	16                              @ @dma_init
+	.thumb_func
+dma_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #15]
+	str	r1, [sp, #8]
+	ldrb.w	r0, [sp, #15]
+	bl	dma_channel_disable
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0]
+	ldrb.w	r1, [sp, #15]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #16
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #8]
+	ldrb.w	r1, [sp, #15]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #20
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r0, [sp, #8]
+	ldrh	r0, [r0, #16]
+	ldrb.w	r1, [sp, #15]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #12
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r0, [sp, #15]
+	add.w	r0, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r0, lsl #2]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bic	r0, r0, #16128
+	str	r0, [sp, #4]
+	ldr	r2, [sp, #8]
+	ldr	r0, [r2, #4]
+	ldr	r3, [r2, #12]
+	ldr	r2, [r2, #20]
+	orrs	r0, r3
+	orrs	r2, r0
+	ldr	r0, [sp, #4]
+	orrs	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldrb.w	r2, [sp, #15]
+	add.w	r2, r2, r2, lsl #2
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r0, [sp, #8]
+	ldrb	r0, [r0, #24]
+	cmp	r0, #1
+	bne	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_3
+.LBB2_2:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_3
+.LBB2_3:
+	ldr	r0, [sp, #8]
+	ldrb	r0, [r0, #25]
+	cmp	r0, #1
+	bne	.LBB2_5
+	b	.LBB2_4
+.LBB2_4:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #128
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_6
+.LBB2_5:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #128
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_6
+.LBB2_6:
+	ldr	r0, [sp, #8]
+	ldrb	r0, [r0, #26]
+	cbnz	r0, .LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #16
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_9
+.LBB2_8:
+	ldrb.w	r0, [sp, #15]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #16
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB2_9
+.LBB2_9:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	dma_init, .Lfunc_end2-dma_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_channel_disable,"ax",%progbits
+	.hidden	dma_channel_disable             @ -- Begin function dma_channel_disable
+	.globl	dma_channel_disable
+	.p2align	2
+	.type	dma_channel_disable,%function
+	.code	16                              @ @dma_channel_disable
+	.thumb_func
+dma_channel_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #1
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	dma_channel_disable, .Lfunc_end3-dma_channel_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_circulation_enable,"ax",%progbits
+	.hidden	dma_circulation_enable          @ -- Begin function dma_circulation_enable
+	.globl	dma_circulation_enable
+	.p2align	2
+	.type	dma_circulation_enable,%function
+	.code	16                              @ @dma_circulation_enable
+	.thumb_func
+dma_circulation_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #32
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	dma_circulation_enable, .Lfunc_end4-dma_circulation_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_circulation_disable,"ax",%progbits
+	.hidden	dma_circulation_disable         @ -- Begin function dma_circulation_disable
+	.globl	dma_circulation_disable
+	.p2align	2
+	.type	dma_circulation_disable,%function
+	.code	16                              @ @dma_circulation_disable
+	.thumb_func
+dma_circulation_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #32
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	dma_circulation_disable, .Lfunc_end5-dma_circulation_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_to_memory_enable,"ax",%progbits
+	.hidden	dma_memory_to_memory_enable     @ -- Begin function dma_memory_to_memory_enable
+	.globl	dma_memory_to_memory_enable
+	.p2align	2
+	.type	dma_memory_to_memory_enable,%function
+	.code	16                              @ @dma_memory_to_memory_enable
+	.thumb_func
+dma_memory_to_memory_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #16384
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	dma_memory_to_memory_enable, .Lfunc_end6-dma_memory_to_memory_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_to_memory_disable,"ax",%progbits
+	.hidden	dma_memory_to_memory_disable    @ -- Begin function dma_memory_to_memory_disable
+	.globl	dma_memory_to_memory_disable
+	.p2align	2
+	.type	dma_memory_to_memory_disable,%function
+	.code	16                              @ @dma_memory_to_memory_disable
+	.thumb_func
+dma_memory_to_memory_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #16384
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	dma_memory_to_memory_disable, .Lfunc_end7-dma_memory_to_memory_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_channel_enable,"ax",%progbits
+	.hidden	dma_channel_enable              @ -- Begin function dma_channel_enable
+	.globl	dma_channel_enable
+	.p2align	2
+	.type	dma_channel_enable,%function
+	.code	16                              @ @dma_channel_enable
+	.thumb_func
+dma_channel_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #1
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	dma_channel_enable, .Lfunc_end8-dma_channel_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_periph_address_config,"ax",%progbits
+	.hidden	dma_periph_address_config       @ -- Begin function dma_periph_address_config
+	.globl	dma_periph_address_config
+	.p2align	2
+	.type	dma_periph_address_config,%function
+	.code	16                              @ @dma_periph_address_config
+	.thumb_func
+dma_periph_address_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r1, [sp, #7]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #16
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end9:
+	.size	dma_periph_address_config, .Lfunc_end9-dma_periph_address_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_address_config,"ax",%progbits
+	.hidden	dma_memory_address_config       @ -- Begin function dma_memory_address_config
+	.globl	dma_memory_address_config
+	.p2align	2
+	.type	dma_memory_address_config,%function
+	.code	16                              @ @dma_memory_address_config
+	.thumb_func
+dma_memory_address_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r1, [sp, #7]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #20
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end10:
+	.size	dma_memory_address_config, .Lfunc_end10-dma_memory_address_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_transfer_number_config,"ax",%progbits
+	.hidden	dma_transfer_number_config      @ -- Begin function dma_transfer_number_config
+	.globl	dma_transfer_number_config
+	.p2align	2
+	.type	dma_transfer_number_config,%function
+	.code	16                              @ @dma_transfer_number_config
+	.thumb_func
+dma_transfer_number_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldrh.w	r0, [sp]
+	ldrb.w	r1, [sp, #7]
+	add.w	r2, r1, r1, lsl #2
+	movs	r1, #12
+	movt	r1, #16386
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	dma_transfer_number_config, .Lfunc_end11-dma_transfer_number_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_transfer_number_get,"ax",%progbits
+	.hidden	dma_transfer_number_get         @ -- Begin function dma_transfer_number_get
+	.globl	dma_transfer_number_get
+	.p2align	2
+	.type	dma_transfer_number_get,%function
+	.code	16                              @ @dma_transfer_number_get
+	.thumb_func
+dma_transfer_number_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r1, r0, r0, lsl #2
+	movs	r0, #12
+	movt	r0, #16386
+	ldr.w	r0, [r0, r1, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end12:
+	.size	dma_transfer_number_get, .Lfunc_end12-dma_transfer_number_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_priority_config,"ax",%progbits
+	.hidden	dma_priority_config             @ -- Begin function dma_priority_config
+	.globl	dma_priority_config
+	.p2align	2
+	.type	dma_priority_config,%function
+	.code	16                              @ @dma_priority_config
+	.thumb_func
+dma_priority_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	add.w	r0, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r0, lsl #2]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #12288
+	str	r0, [sp]
+	ldr	r2, [sp, #4]
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r2, [sp, #11]
+	add.w	r2, r2, r2, lsl #2
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #12
+	bx	lr
+.Lfunc_end13:
+	.size	dma_priority_config, .Lfunc_end13-dma_priority_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_width_config,"ax",%progbits
+	.hidden	dma_memory_width_config         @ -- Begin function dma_memory_width_config
+	.globl	dma_memory_width_config
+	.p2align	2
+	.type	dma_memory_width_config,%function
+	.code	16                              @ @dma_memory_width_config
+	.thumb_func
+dma_memory_width_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	add.w	r0, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r0, lsl #2]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #3072
+	str	r0, [sp]
+	ldr	r2, [sp, #4]
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r2, [sp, #11]
+	add.w	r2, r2, r2, lsl #2
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #12
+	bx	lr
+.Lfunc_end14:
+	.size	dma_memory_width_config, .Lfunc_end14-dma_memory_width_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_periph_width_config,"ax",%progbits
+	.hidden	dma_periph_width_config         @ -- Begin function dma_periph_width_config
+	.globl	dma_periph_width_config
+	.p2align	2
+	.type	dma_periph_width_config,%function
+	.code	16                              @ @dma_periph_width_config
+	.thumb_func
+dma_periph_width_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	ldrb.w	r0, [sp, #11]
+	add.w	r0, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r0, lsl #2]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #768
+	str	r0, [sp]
+	ldr	r2, [sp, #4]
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r2, [sp, #11]
+	add.w	r2, r2, r2, lsl #2
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #12
+	bx	lr
+.Lfunc_end15:
+	.size	dma_periph_width_config, .Lfunc_end15-dma_periph_width_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_increase_enable,"ax",%progbits
+	.hidden	dma_memory_increase_enable      @ -- Begin function dma_memory_increase_enable
+	.globl	dma_memory_increase_enable
+	.p2align	2
+	.type	dma_memory_increase_enable,%function
+	.code	16                              @ @dma_memory_increase_enable
+	.thumb_func
+dma_memory_increase_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #128
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end16:
+	.size	dma_memory_increase_enable, .Lfunc_end16-dma_memory_increase_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_memory_increase_disable,"ax",%progbits
+	.hidden	dma_memory_increase_disable     @ -- Begin function dma_memory_increase_disable
+	.globl	dma_memory_increase_disable
+	.p2align	2
+	.type	dma_memory_increase_disable,%function
+	.code	16                              @ @dma_memory_increase_disable
+	.thumb_func
+dma_memory_increase_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #128
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	dma_memory_increase_disable, .Lfunc_end17-dma_memory_increase_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_periph_increase_enable,"ax",%progbits
+	.hidden	dma_periph_increase_enable      @ -- Begin function dma_periph_increase_enable
+	.globl	dma_periph_increase_enable
+	.p2align	2
+	.type	dma_periph_increase_enable,%function
+	.code	16                              @ @dma_periph_increase_enable
+	.thumb_func
+dma_periph_increase_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end18:
+	.size	dma_periph_increase_enable, .Lfunc_end18-dma_periph_increase_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_periph_increase_disable,"ax",%progbits
+	.hidden	dma_periph_increase_disable     @ -- Begin function dma_periph_increase_disable
+	.globl	dma_periph_increase_disable
+	.p2align	2
+	.type	dma_periph_increase_disable,%function
+	.code	16                              @ @dma_periph_increase_disable
+	.thumb_func
+dma_periph_increase_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end19:
+	.size	dma_periph_increase_disable, .Lfunc_end19-dma_periph_increase_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_transfer_direction_config,"ax",%progbits
+	.hidden	dma_transfer_direction_config   @ -- Begin function dma_transfer_direction_config
+	.globl	dma_transfer_direction_config
+	.p2align	2
+	.type	dma_transfer_direction_config,%function
+	.code	16                              @ @dma_transfer_direction_config
+	.thumb_func
+dma_transfer_direction_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #3]
+	strb.w	r1, [sp, #2]
+	ldrb.w	r0, [sp, #2]
+	cbnz	r0, .LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #16
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB20_3
+.LBB20_2:
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #16
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB20_3
+.LBB20_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	dma_transfer_direction_config, .Lfunc_end20-dma_transfer_direction_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_flag_get,"ax",%progbits
+	.hidden	dma_flag_get                    @ -- Begin function dma_flag_get
+	.globl	dma_flag_get
+	.p2align	2
+	.type	dma_flag_get,%function
+	.code	16                              @ @dma_flag_get
+	.thumb_func
+dma_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #11]
+	str	r1, [sp, #4]
+	movs	r0, #0
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	ldrb.w	r2, [sp, #11]
+	lsls	r2, r2, #2
+	lsls	r1, r2
+	tst	r0, r1
+	beq	.LBB21_2
+	b	.LBB21_1
+.LBB21_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB21_3
+.LBB21_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	b	.LBB21_3
+.LBB21_3:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #12
+	bx	lr
+.Lfunc_end21:
+	.size	dma_flag_get, .Lfunc_end21-dma_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_flag_clear,"ax",%progbits
+	.hidden	dma_flag_clear                  @ -- Begin function dma_flag_clear
+	.globl	dma_flag_clear
+	.p2align	2
+	.type	dma_flag_clear,%function
+	.code	16                              @ @dma_flag_clear
+	.thumb_func
+dma_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r1, [sp, #7]
+	lsls	r1, r1, #2
+	lsl.w	r2, r0, r1
+	movs	r1, #4
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end22:
+	.size	dma_flag_clear, .Lfunc_end22-dma_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_interrupt_enable,"ax",%progbits
+	.hidden	dma_interrupt_enable            @ -- Begin function dma_interrupt_enable
+	.globl	dma_interrupt_enable
+	.p2align	2
+	.type	dma_interrupt_enable,%function
+	.code	16                              @ @dma_interrupt_enable
+	.thumb_func
+dma_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end23:
+	.size	dma_interrupt_enable, .Lfunc_end23-dma_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_interrupt_disable,"ax",%progbits
+	.hidden	dma_interrupt_disable           @ -- Begin function dma_interrupt_disable
+	.globl	dma_interrupt_disable
+	.p2align	2
+	.type	dma_interrupt_disable,%function
+	.code	16                              @ @dma_interrupt_disable
+	.thumb_func
+dma_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #2
+	movs	r1, #8
+	movt	r1, #16386
+	ldr.w	r0, [r1, r2, lsl #2]
+	bics	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end24:
+	.size	dma_interrupt_disable, .Lfunc_end24-dma_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_interrupt_flag_get,"ax",%progbits
+	.hidden	dma_interrupt_flag_get          @ -- Begin function dma_interrupt_flag_get
+	.globl	dma_interrupt_flag_get
+	.p2align	2
+	.type	dma_interrupt_flag_get,%function
+	.code	16                              @ @dma_interrupt_flag_get
+	.thumb_func
+dma_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #18]
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	str	r0, [sp]                        @ 4-byte Spill
+	cmp	r0, #2
+	beq	.LBB25_3
+	b	.LBB25_1
+.LBB25_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #4
+	beq	.LBB25_4
+	b	.LBB25_2
+.LBB25_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #8
+	beq	.LBB25_5
+	b	.LBB25_6
+.LBB25_3:
+	movs	r0, #0
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #12]
+	ldrb.w	r2, [sp, #18]
+	lsls	r2, r2, #2
+	lsls	r1, r2
+	ands	r0, r1
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #18]
+	add.w	r1, r0, r0, lsl #2
+	movs	r0, #8
+	movt	r0, #16386
+	ldr.w	r0, [r0, r1, lsl #2]
+	and	r0, r0, #2
+	str	r0, [sp, #8]
+	b	.LBB25_7
+.LBB25_4:
+	movs	r0, #0
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #12]
+	ldrb.w	r2, [sp, #18]
+	lsls	r2, r2, #2
+	lsls	r1, r2
+	ands	r0, r1
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #18]
+	add.w	r1, r0, r0, lsl #2
+	movs	r0, #8
+	movt	r0, #16386
+	ldr.w	r0, [r0, r1, lsl #2]
+	and	r0, r0, #4
+	str	r0, [sp, #8]
+	b	.LBB25_7
+.LBB25_5:
+	movs	r0, #0
+	movt	r0, #16386
+	ldr	r0, [r0]
+	ldr	r1, [sp, #12]
+	ldrb.w	r2, [sp, #18]
+	lsls	r2, r2, #2
+	lsls	r1, r2
+	ands	r0, r1
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #18]
+	add.w	r1, r0, r0, lsl #2
+	movs	r0, #8
+	movt	r0, #16386
+	ldr.w	r0, [r0, r1, lsl #2]
+	and	r0, r0, #8
+	str	r0, [sp, #8]
+	b	.LBB25_7
+.LBB25_6:
+	b	.LBB25_7
+.LBB25_7:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB25_10
+	b	.LBB25_8
+.LBB25_8:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB25_10
+	b	.LBB25_9
+.LBB25_9:
+	movs	r0, #1
+	strb.w	r0, [sp, #19]
+	b	.LBB25_11
+.LBB25_10:
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	b	.LBB25_11
+.LBB25_11:
+	ldrb.w	r0, [sp, #19]
+	add	sp, #20
+	bx	lr
+.Lfunc_end25:
+	.size	dma_interrupt_flag_get, .Lfunc_end25-dma_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dma_interrupt_flag_clear,"ax",%progbits
+	.hidden	dma_interrupt_flag_clear        @ -- Begin function dma_interrupt_flag_clear
+	.globl	dma_interrupt_flag_clear
+	.p2align	2
+	.type	dma_interrupt_flag_clear,%function
+	.code	16                              @ @dma_interrupt_flag_clear
+	.thumb_func
+dma_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldrb.w	r1, [sp, #7]
+	lsls	r1, r1, #2
+	lsl.w	r2, r0, r1
+	movs	r1, #4
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end26:
+	.size	dma_interrupt_flag_clear, .Lfunc_end26-dma_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,498 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_pmu.c"
+	.section	.text.pmu_deinit,"ax",%progbits
+	.hidden	pmu_deinit                      @ -- Begin function pmu_deinit
+	.globl	pmu_deinit
+	.p2align	2
+	.type	pmu_deinit,%function
+	.code	16                              @ @pmu_deinit
+	.thumb_func
+pmu_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #1052
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	pmu_deinit, .Lfunc_end0-pmu_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_lvd_select,"ax",%progbits
+	.hidden	pmu_lvd_select                  @ -- Begin function pmu_lvd_select
+	.globl	pmu_lvd_select
+	.p2align	2
+	.type	pmu_lvd_select,%function
+	.code	16                              @ @pmu_lvd_select
+	.thumb_func
+pmu_lvd_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	ldr	r0, [r1]
+	bic	r0, r0, #224
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	pmu_lvd_select, .Lfunc_end1-pmu_lvd_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_ldo_output_select,"ax",%progbits
+	.hidden	pmu_ldo_output_select           @ -- Begin function pmu_ldo_output_select
+	.globl	pmu_ldo_output_select
+	.p2align	2
+	.type	pmu_ldo_output_select,%function
+	.code	16                              @ @pmu_ldo_output_select
+	.thumb_func
+pmu_ldo_output_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #49152
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end2:
+	.size	pmu_ldo_output_select, .Lfunc_end2-pmu_ldo_output_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_lvd_disable,"ax",%progbits
+	.hidden	pmu_lvd_disable                 @ -- Begin function pmu_lvd_disable
+	.globl	pmu_lvd_disable
+	.p2align	2
+	.type	pmu_lvd_disable,%function
+	.code	16                              @ @pmu_lvd_disable
+	.thumb_func
+pmu_lvd_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end3:
+	.size	pmu_lvd_disable, .Lfunc_end3-pmu_lvd_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_to_sleepmode,"ax",%progbits
+	.hidden	pmu_to_sleepmode                @ -- Begin function pmu_to_sleepmode
+	.globl	pmu_to_sleepmode
+	.p2align	2
+	.type	pmu_to_sleepmode,%function
+	.code	16                              @ @pmu_to_sleepmode
+	.thumb_func
+pmu_to_sleepmode:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	wfi
+	b	.LBB4_3
+.LBB4_2:
+	wfe
+	b	.LBB4_3
+.LBB4_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	pmu_to_sleepmode, .Lfunc_end4-pmu_to_sleepmode
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_to_deepsleepmode,"ax",%progbits
+	.hidden	pmu_to_deepsleepmode            @ -- Begin function pmu_to_deepsleepmode
+	.globl	pmu_to_deepsleepmode
+	.p2align	2
+	.type	pmu_to_deepsleepmode,%function
+	.code	16                              @ @pmu_to_deepsleepmode
+	.thumb_func
+pmu_to_deepsleepmode:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #3
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	wfi
+	b	.LBB5_3
+.LBB5_2:
+	sev
+	wfe
+	wfe
+	b	.LBB5_3
+.LBB5_3:
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end5:
+	.size	pmu_to_deepsleepmode, .Lfunc_end5-pmu_to_deepsleepmode
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_to_standbymode,"ax",%progbits
+	.hidden	pmu_to_standbymode              @ -- Begin function pmu_to_standbymode
+	.globl	pmu_to_standbymode
+	.p2align	2
+	.type	pmu_to_standbymode,%function
+	.code	16                              @ @pmu_to_standbymode
+	.thumb_func
+pmu_to_standbymode:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	movw	r1, #4100
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #3
+	str	r0, [r1]
+	movw	r1, #4096
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #65536
+	str	r0, [r1]
+	movw	r1, #60688
+	movt	r1, #57344
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	wfi
+	b	.LBB6_3
+.LBB6_2:
+	wfe
+	wfe
+	b	.LBB6_3
+.LBB6_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	pmu_to_standbymode, .Lfunc_end6-pmu_to_standbymode
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_wakeup_pin_enable,"ax",%progbits
+	.hidden	pmu_wakeup_pin_enable           @ -- Begin function pmu_wakeup_pin_enable
+	.globl	pmu_wakeup_pin_enable
+	.p2align	2
+	.type	pmu_wakeup_pin_enable,%function
+	.code	16                              @ @pmu_wakeup_pin_enable
+	.thumb_func
+pmu_wakeup_pin_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #28676
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	pmu_wakeup_pin_enable, .Lfunc_end7-pmu_wakeup_pin_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_wakeup_pin_disable,"ax",%progbits
+	.hidden	pmu_wakeup_pin_disable          @ -- Begin function pmu_wakeup_pin_disable
+	.globl	pmu_wakeup_pin_disable
+	.p2align	2
+	.type	pmu_wakeup_pin_disable,%function
+	.code	16                              @ @pmu_wakeup_pin_disable
+	.thumb_func
+pmu_wakeup_pin_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #28676
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	pmu_wakeup_pin_disable, .Lfunc_end8-pmu_wakeup_pin_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_backup_write_enable,"ax",%progbits
+	.hidden	pmu_backup_write_enable         @ -- Begin function pmu_backup_write_enable
+	.globl	pmu_backup_write_enable
+	.p2align	2
+	.type	pmu_backup_write_enable,%function
+	.code	16                              @ @pmu_backup_write_enable
+	.thumb_func
+pmu_backup_write_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #256
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end9:
+	.size	pmu_backup_write_enable, .Lfunc_end9-pmu_backup_write_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_backup_write_disable,"ax",%progbits
+	.hidden	pmu_backup_write_disable        @ -- Begin function pmu_backup_write_disable
+	.globl	pmu_backup_write_disable
+	.p2align	2
+	.type	pmu_backup_write_disable,%function
+	.code	16                              @ @pmu_backup_write_disable
+	.thumb_func
+pmu_backup_write_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end10:
+	.size	pmu_backup_write_disable, .Lfunc_end10-pmu_backup_write_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_flag_clear,"ax",%progbits
+	.hidden	pmu_flag_clear                  @ -- Begin function pmu_flag_clear
+	.globl	pmu_flag_clear
+	.p2align	2
+	.type	pmu_flag_clear,%function
+	.code	16                              @ @pmu_flag_clear
+	.thumb_func
+pmu_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB11_2
+.LBB11_2:
+	ldrb.w	r0, [sp]
+	lsls	r0, r0, #28
+	cmp	r0, #0
+	bpl	.LBB11_4
+	b	.LBB11_3
+.LBB11_3:
+	movw	r1, #28672
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB11_4
+.LBB11_4:
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	pmu_flag_clear, .Lfunc_end11-pmu_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.pmu_flag_get,"ax",%progbits
+	.hidden	pmu_flag_get                    @ -- Begin function pmu_flag_get
+	.globl	pmu_flag_get
+	.p2align	2
+	.type	pmu_flag_get,%function
+	.code	16                              @ @pmu_flag_get
+	.thumb_func
+pmu_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movw	r0, #28676
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #3]
+	b	.LBB12_2
+.LBB12_2:
+	ldrb.w	r0, [sp, #3]
+	add	sp, #8
+	bx	lr
+.Lfunc_end12:
+	.size	pmu_flag_get, .Lfunc_end12-pmu_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

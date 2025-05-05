@@ -1,0 +1,70 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"mcu_global_vars_param.c"
+	.section	.text.global_vars_param_init,"ax",%progbits
+	.hidden	global_vars_param_init          @ -- Begin function global_vars_param_init
+	.globl	global_vars_param_init
+	.p2align	2
+	.type	global_vars_param_init,%function
+	.code	16                              @ @global_vars_param_init
+	.thumb_func
+global_vars_param_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	strb	r0, [r1]
+	strb	r0, [r1, #1]
+	strb	r0, [r1, #2]
+	strb	r0, [r1, #3]
+	movs	r2, #1
+	strb	r2, [r1, #4]
+	str	r0, [r1, #12]
+	str	r0, [r1, #16]
+	str	r0, [r1, #20]
+	str	r0, [r1, #24]
+	str	r0, [r1, #36]
+	bx	lr
+.Lfunc_end0:
+	.size	global_vars_param_init, .Lfunc_end0-global_vars_param_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_mcu_vars_param                @ @g_mcu_vars_param
+	.type	g_mcu_vars_param,%object
+	.section	.bss.g_mcu_vars_param,"aw",%nobits
+	.globl	g_mcu_vars_param
+	.p2align	2, 0x0
+g_mcu_vars_param:
+	.zero	40
+	.size	g_mcu_vars_param, 40
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,6 @@
+目标文件:D:\E\code\mcu_project\source\Keil_project\merge\merge_boot_app.bin   大小:0x0000E5D0
+各部分大小如下:
+
+索引                        文件名                                            大小              偏移量            强制插入
+ 1      D:\E\code\mcu_project\source\Keil_project\merge\boot.bin            0x00003290        0x00000000             否
+ 2      D:\E\code\mcu_project\source\Keil_project\merge\App_20230921.bin        0x00006DD0        0x00007800             否

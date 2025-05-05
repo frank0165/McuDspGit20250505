@@ -1,0 +1,1846 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"dsp_hpll_init.c"
+	.section	.text.SREI_PllFreCodeSet,"ax",%progbits
+	.hidden	SREI_PllFreCodeSet              @ -- Begin function SREI_PllFreCodeSet
+	.globl	SREI_PllFreCodeSet
+	.p2align	2
+	.type	SREI_PllFreCodeSet,%function
+	.code	16                              @ @SREI_PllFreCodeSet
+	.thumb_func
+SREI_PllFreCodeSet:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	ldr	r0, [sp, #20]
+	adds	r0, #8
+	ldr	r1, [sp, #16]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #20]
+	adds	r0, #4
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r1, [sp, #12]
+	ldr	r0, [sp, #8]
+	bic	r1, r1, #-16777216
+	bfc	r0, #4, #24
+	orr.w	r0, r0, r1, lsl #4
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #20]
+	adds	r0, #4
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrh.w	r0, [sp, #4]
+	bfc	r0, #15, #17
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	movs	r0, #1
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	MCU_DelayUs
+	ldrh.w	r0, [sp, #4]
+	orr	r0, r0, #32768
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	MCU_DelayUs
+	ldrh.w	r0, [sp, #4]
+	bfc	r0, #15, #17
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	MCU_DelayUs
+	ldrh.w	r0, [sp, #4]
+	orr	r0, r0, #32768
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	bl	MCU_DelayUs
+	ldrh.w	r0, [sp, #4]
+	bfc	r0, #15, #17
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	SREI_PllFreCodeSet, .Lfunc_end0-SREI_PllFreCodeSet
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllDutyCycleSet,"ax",%progbits
+	.hidden	SREI_PllDutyCycleSet            @ -- Begin function SREI_PllDutyCycleSet
+	.globl	SREI_PllDutyCycleSet
+	.p2align	2
+	.type	SREI_PllDutyCycleSet,%function
+	.code	16                              @ @SREI_PllDutyCycleSet
+	.thumb_func
+SREI_PllDutyCycleSet:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #12]
+	strb.w	r1, [sp, #11]
+	ldr	r0, [sp, #12]
+	adds	r0, #40
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrh.w	r0, [sp, #4]
+	orr	r0, r0, #16384
+	strh.w	r0, [sp, #4]
+	ldrh.w	r0, [sp, #4]
+	orr	r0, r0, #2048
+	strh.w	r0, [sp, #4]
+	ldrh.w	r0, [sp, #4]
+	orr	r0, r0, #1024
+	strh.w	r0, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	orr	r0, r0, #4096
+	strh.w	r0, [sp, #6]
+	ldr	r0, [sp, #12]
+	adds	r0, #4
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	SREI_PllDutyCycleSet, .Lfunc_end1-SREI_PllDutyCycleSet
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_HostPllSllpBypass,"ax",%progbits
+	.hidden	SREI_HostPllSllpBypass          @ -- Begin function SREI_HostPllSllpBypass
+	.globl	SREI_HostPllSllpBypass
+	.p2align	2
+	.type	SREI_HostPllSllpBypass,%function
+	.code	16                              @ @SREI_HostPllSllpBypass
+	.thumb_func
+SREI_HostPllSllpBypass:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #20
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #15]
+	ldrb.w	r0, [sp, #4]
+	and	r1, r1, #1
+	and	r0, r0, #191
+	orr.w	r0, r0, r1, lsl #6
+	strb.w	r0, [sp, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #20
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	SREI_HostPllSllpBypass, .Lfunc_end2-SREI_HostPllSllpBypass
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaRxAcqEn,"ax",%progbits
+	.hidden	SREI_AnaRxAcqEn                 @ -- Begin function SREI_AnaRxAcqEn
+	.globl	SREI_AnaRxAcqEn
+	.p2align	2
+	.type	SREI_AnaRxAcqEn,%function
+	.code	16                              @ @SREI_AnaRxAcqEn
+	.thumb_func
+SREI_AnaRxAcqEn:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1024
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	bic	r0, r0, #134217728
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #27
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #8]
+	bic	r0, r0, #67108864
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #26
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	SREI_AnaRxAcqEn, .Lfunc_end3-SREI_AnaRxAcqEn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaRxCdrEn,"ax",%progbits
+	.hidden	SREI_AnaRxCdrEn                 @ -- Begin function SREI_AnaRxCdrEn
+	.globl	SREI_AnaRxCdrEn
+	.p2align	2
+	.type	SREI_AnaRxCdrEn,%function
+	.code	16                              @ @SREI_AnaRxCdrEn
+	.thumb_func
+SREI_AnaRxCdrEn:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1024
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	bic	r0, r0, #-2147483648
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #31
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	SREI_AnaRxCdrEn, .Lfunc_end4-SREI_AnaRxCdrEn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PllFreqCodeGet,"ax",%progbits
+	.hidden	PllFreqCodeGet                  @ -- Begin function PllFreqCodeGet
+	.globl	PllFreqCodeGet
+	.p2align	2
+	.type	PllFreqCodeGet,%function
+	.code	16                              @ @PllFreqCodeGet
+	.thumb_func
+PllFreqCodeGet:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, :lower16:g_acqCode
+	movt	r0, :upper16:g_acqCode
+	ldrh	r0, [r0]
+	bx	lr
+.Lfunc_end5:
+	.size	PllFreqCodeGet, .Lfunc_end5-PllFreqCodeGet
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_HostPllAcqSet,"ax",%progbits
+	.hidden	SREI_HostPllAcqSet              @ -- Begin function SREI_HostPllAcqSet
+	.globl	SREI_HostPllAcqSet
+	.p2align	2
+	.type	SREI_HostPllAcqSet,%function
+	.code	16                              @ @SREI_HostPllAcqSet
+	.thumb_func
+SREI_HostPllAcqSet:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #23]
+	strb.w	r1, [sp, #22]
+	mov.w	r0, #1792
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	adds	r0, #20
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #23]
+	ldrb.w	r0, [sp, #8]
+	and	r1, r1, #1
+	and	r0, r0, #239
+	orr.w	r0, r0, r1, lsl #4
+	strb.w	r0, [sp, #8]
+	ldrb.w	r1, [sp, #23]
+	ldrb.w	r0, [sp, #8]
+	and	r1, r1, #1
+	and	r0, r0, #223
+	orr.w	r0, r0, r1, lsl #5
+	strb.w	r0, [sp, #8]
+	ldrb.w	r1, [sp, #23]
+	ldrb.w	r0, [sp, #8]
+	and	r1, r1, #1
+	and	r0, r0, #191
+	orr.w	r0, r0, r1, lsl #6
+	strb.w	r0, [sp, #8]
+	ldr	r0, [sp, #16]
+	adds	r0, #20
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #1
+	bne	.LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	ldrb.w	r0, [sp, #23]
+	bl	SREI_AnaRxAcqEn
+	ldrb.w	r0, [sp, #23]
+	bl	SREI_AnaRxCdrEn
+	b	.LBB6_2
+.LBB6_2:
+	ldrb.w	r0, [sp, #22]
+	cmp	r0, #1
+	bne	.LBB6_4
+	b	.LBB6_3
+.LBB6_3:
+	bl	PllFreqCodeGet
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #16]
+	adds	r0, #24
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #12]
+	strh.w	r0, [sp, #6]
+	ldr	r0, [sp, #16]
+	adds	r0, #24
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	b	.LBB6_4
+.LBB6_4:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	SREI_HostPllAcqSet, .Lfunc_end6-SREI_HostPllAcqSet
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_HostPllOpenLoop,"ax",%progbits
+	.hidden	SREI_HostPllOpenLoop            @ -- Begin function SREI_HostPllOpenLoop
+	.globl	SREI_HostPllOpenLoop
+	.p2align	2
+	.type	SREI_HostPllOpenLoop,%function
+	.code	16                              @ @SREI_HostPllOpenLoop
+	.thumb_func
+SREI_HostPllOpenLoop:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #15]
+	strb.w	r1, [sp, #14]
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #68
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #14]
+	ldrb.w	r0, [sp, #4]
+	and	r1, r1, #1
+	and	r0, r0, #253
+	orr.w	r0, r0, r1, lsl #1
+	strb.w	r0, [sp, #4]
+	ldrb.w	r1, [sp, #15]
+	ldrb.w	r0, [sp, #4]
+	and	r1, r1, #1
+	and	r0, r0, #254
+	add	r0, r1
+	strb.w	r0, [sp, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #68
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	SREI_HostPllOpenLoop, .Lfunc_end7-SREI_HostPllOpenLoop
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_HostPllSllpLoopFromRx,"ax",%progbits
+	.hidden	SREI_HostPllSllpLoopFromRx      @ -- Begin function SREI_HostPllSllpLoopFromRx
+	.globl	SREI_HostPllSllpLoopFromRx
+	.p2align	2
+	.type	SREI_HostPllSllpLoopFromRx,%function
+	.code	16                              @ @SREI_HostPllSllpLoopFromRx
+	.thumb_func
+SREI_HostPllSllpLoopFromRx:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #68
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #4]
+	and	r0, r0, #251
+	strb.w	r0, [sp, #4]
+	ldrb.w	r1, [sp, #15]
+	ldrb.w	r0, [sp, #4]
+	and	r1, r1, #1
+	and	r0, r0, #247
+	orr.w	r0, r0, r1, lsl #3
+	strb.w	r0, [sp, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #68
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end8:
+	.size	SREI_HostPllSllpLoopFromRx, .Lfunc_end8-SREI_HostPllSllpLoopFromRx
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllClkSel,"ax",%progbits
+	.hidden	SREI_PllClkSel                  @ -- Begin function SREI_PllClkSel
+	.globl	SREI_PllClkSel
+	.p2align	2
+	.type	SREI_PllClkSel,%function
+	.code	16                              @ @SREI_PllClkSel
+	.thumb_func
+SREI_PllClkSel:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #23]
+	mov.w	r0, #1792
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	adds	r0, #20
+	add	r1, sp, #12
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #23]
+	cbz	r0, .LBB9_3
+	b	.LBB9_1
+.LBB9_1:
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #2
+	beq	.LBB9_3
+	b	.LBB9_2
+.LBB9_2:
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #3
+	bne	.LBB9_4
+	b	.LBB9_3
+.LBB9_3:
+	ldrb.w	r0, [sp, #13]
+	and	r0, r0, #253
+	strb.w	r0, [sp, #13]
+	b	.LBB9_5
+.LBB9_4:
+	ldrb.w	r0, [sp, #13]
+	orr	r0, r0, #2
+	strb.w	r0, [sp, #13]
+	b	.LBB9_5
+.LBB9_5:
+	ldr	r0, [sp, #16]
+	adds	r0, #20
+	ldr	r1, [sp, #12]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #1
+	bgt	.LBB9_7
+	b	.LBB9_6
+.LBB9_6:
+	b	.LBB9_14
+.LBB9_7:
+	ldr	r0, [sp, #16]
+	adds	r0, #64
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #16]
+	adds	r0, #4
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #2
+	bne	.LBB9_9
+	b	.LBB9_8
+.LBB9_8:
+	ldrb.w	r0, [sp, #8]
+	and	r0, r0, #254
+	strb.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #8]
+	and	r0, r0, #253
+	strb.w	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	orr	r0, r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bic	r0, r0, #2
+	str	r0, [sp, #4]
+	b	.LBB9_13
+.LBB9_9:
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #3
+	bne	.LBB9_11
+	b	.LBB9_10
+.LBB9_10:
+	ldrb.w	r0, [sp, #8]
+	and	r0, r0, #254
+	strb.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #8]
+	and	r0, r0, #253
+	strb.w	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	bic	r0, r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	orr	r0, r0, #2
+	str	r0, [sp, #4]
+	b	.LBB9_12
+.LBB9_11:
+	ldrb.w	r0, [sp, #8]
+	orr	r0, r0, #1
+	strb.w	r0, [sp, #8]
+	ldrb.w	r0, [sp, #8]
+	orr	r0, r0, #2
+	strb.w	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	bic	r0, r0, #1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bic	r0, r0, #2
+	str	r0, [sp, #4]
+	b	.LBB9_12
+.LBB9_12:
+	b	.LBB9_13
+.LBB9_13:
+	ldr	r0, [sp, #16]
+	adds	r0, #64
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #16]
+	adds	r0, #4
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	b	.LBB9_14
+.LBB9_14:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end9:
+	.size	SREI_PllClkSel, .Lfunc_end9-SREI_PllClkSel
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllFbdivEnReflessMode,"ax",%progbits
+	.hidden	SREI_PllFbdivEnReflessMode      @ -- Begin function SREI_PllFbdivEnReflessMode
+	.globl	SREI_PllFbdivEnReflessMode
+	.p2align	2
+	.type	SREI_PllFbdivEnReflessMode,%function
+	.code	16                              @ @SREI_PllFbdivEnReflessMode
+	.thumb_func
+SREI_PllFbdivEnReflessMode:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #64
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #15]
+	ldrh.w	r0, [sp, #6]
+	bfc	r0, #15, #17
+	orr.w	r0, r0, r1, lsl #15
+	strh.w	r0, [sp, #6]
+	ldr	r0, [sp, #8]
+	adds	r0, #64
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end10:
+	.size	SREI_PllFbdivEnReflessMode, .Lfunc_end10-SREI_PllFbdivEnReflessMode
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaRxDtlManualEn,"ax",%progbits
+	.hidden	SREI_AnaRxDtlManualEn           @ -- Begin function SREI_AnaRxDtlManualEn
+	.globl	SREI_AnaRxDtlManualEn
+	.p2align	2
+	.type	SREI_AnaRxDtlManualEn,%function
+	.code	16                              @ @SREI_AnaRxDtlManualEn
+	.thumb_func
+SREI_AnaRxDtlManualEn:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1024
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #60
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	bic	r0, r0, #3
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #60
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end11:
+	.size	SREI_AnaRxDtlManualEn, .Lfunc_end11-SREI_AnaRxDtlManualEn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaRxCdrAcqEn,"ax",%progbits
+	.hidden	SREI_AnaRxCdrAcqEn              @ -- Begin function SREI_AnaRxCdrAcqEn
+	.globl	SREI_AnaRxCdrAcqEn
+	.p2align	2
+	.type	SREI_AnaRxCdrAcqEn,%function
+	.code	16                              @ @SREI_AnaRxCdrAcqEn
+	.thumb_func
+SREI_AnaRxCdrAcqEn:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1024
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #116
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	bic	r0, r0, #33554432
+	str	r0, [sp, #8]
+	ldrb.w	r1, [sp, #15]
+	ldr	r0, [sp, #8]
+	orr.w	r0, r0, r1, lsl #25
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #116
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	SREI_AnaRxCdrAcqEn, .Lfunc_end12-SREI_AnaRxCdrAcqEn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaRxDtlLowGainEn,"ax",%progbits
+	.hidden	SREI_AnaRxDtlLowGainEn          @ -- Begin function SREI_AnaRxDtlLowGainEn
+	.globl	SREI_AnaRxDtlLowGainEn
+	.p2align	2
+	.type	SREI_AnaRxDtlLowGainEn,%function
+	.code	16                              @ @SREI_AnaRxDtlLowGainEn
+	.thumb_func
+SREI_AnaRxDtlLowGainEn:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1024
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add.w	r0, r0, #272
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	orr	r0, r0, #16777216
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	adds	r0, #136
+	ldr	r1, [sp, #8]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end13:
+	.size	SREI_AnaRxDtlLowGainEn, .Lfunc_end13-SREI_AnaRxDtlLowGainEn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_AnaCdrIsLock,"ax",%progbits
+	.hidden	SREI_AnaCdrIsLock               @ -- Begin function SREI_AnaCdrIsLock
+	.globl	SREI_AnaCdrIsLock
+	.p2align	2
+	.type	SREI_AnaCdrIsLock,%function
+	.code	16                              @ @SREI_AnaCdrIsLock
+	.thumb_func
+SREI_AnaCdrIsLock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov.w	r0, #1024
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #248
+	add	r1, sp, #8
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #8]
+	lsls	r0, r0, #31
+	cbz	r0, .LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB14_3
+.LBB14_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB14_3
+.LBB14_3:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	SREI_AnaCdrIsLock, .Lfunc_end14-SREI_AnaCdrIsLock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllAcqCodeGet,"ax",%progbits
+	.hidden	SREI_PllAcqCodeGet              @ -- Begin function SREI_PllAcqCodeGet
+	.globl	SREI_PllAcqCodeGet
+	.p2align	2
+	.type	SREI_PllAcqCodeGet,%function
+	.code	16                              @ @SREI_PllAcqCodeGet
+	.thumb_func
+SREI_PllAcqCodeGet:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #1792
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #76
+	mov	r1, sp
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp]
+	bfc	r0, #12, #20
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end15:
+	.size	SREI_PllAcqCodeGet, .Lfunc_end15-SREI_PllAcqCodeGet
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllIsLock,"ax",%progbits
+	.hidden	SREI_PllIsLock                  @ -- Begin function SREI_PllIsLock
+	.globl	SREI_PllIsLock
+	.p2align	2
+	.type	SREI_PllIsLock,%function
+	.code	16                              @ @SREI_PllIsLock
+	.thumb_func
+SREI_PllIsLock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #88
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #4]
+	cmp	r0, #1
+	bne	.LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB16_3
+.LBB16_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB16_3
+.LBB16_3:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end16:
+	.size	SREI_PllIsLock, .Lfunc_end16-SREI_PllIsLock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllIsHisUnLock,"ax",%progbits
+	.hidden	SREI_PllIsHisUnLock             @ -- Begin function SREI_PllIsHisUnLock
+	.globl	SREI_PllIsHisUnLock
+	.p2align	2
+	.type	SREI_PllIsHisUnLock,%function
+	.code	16                              @ @SREI_PllIsHisUnLock
+	.thumb_func
+SREI_PllIsHisUnLock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #92
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #8]
+	adds	r0, #92
+	movs	r1, #1
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #4]
+	cmp	r0, #1
+	bne	.LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB17_3
+.LBB17_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB17_3
+.LBB17_3:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end17:
+	.size	SREI_PllIsHisUnLock, .Lfunc_end17-SREI_PllIsHisUnLock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllFracDsmDivConfig,"ax",%progbits
+	.hidden	SREI_PllFracDsmDivConfig        @ -- Begin function SREI_PllFracDsmDivConfig
+	.globl	SREI_PllFracDsmDivConfig
+	.p2align	2
+	.type	SREI_PllFracDsmDivConfig,%function
+	.code	16                              @ @SREI_PllFracDsmDivConfig
+	.thumb_func
+SREI_PllFracDsmDivConfig:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #1792
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	adds	r0, #36
+	mov	r1, sp
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #2]
+	and	r0, r0, #63
+	strb.w	r0, [sp, #2]
+	ldr	r0, [sp, #4]
+	adds	r0, #36
+	ldr	r1, [sp]
+	bl	dsp_fsl_reg_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end18:
+	.size	SREI_PllFracDsmDivConfig, .Lfunc_end18-SREI_PllFracDsmDivConfig
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SREI_PllFracModeCfg,"ax",%progbits
+	.hidden	SREI_PllFracModeCfg             @ -- Begin function SREI_PllFracModeCfg
+	.globl	SREI_PllFracModeCfg
+	.p2align	2
+	.type	SREI_PllFracModeCfg,%function
+	.code	16                              @ @SREI_PllFracModeCfg
+	.thumb_func
+SREI_PllFracModeCfg:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	mov.w	r0, #1792
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #32
+	add	r1, sp, #4
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #15]
+	ldrh.w	r0, [sp, #4]
+	and	r1, r1, #1
+	bic	r0, r0, #16384
+	orr.w	r0, r0, r1, lsl #14
+	strh.w	r0, [sp, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #32
+	ldr	r1, [sp, #4]
+	bl	dsp_fsl_reg_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end19:
+	.size	SREI_PllFracModeCfg, .Lfunc_end19-SREI_PllFracModeCfg
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_HpllInit,"ax",%progbits
+	.hidden	SRE_HpllInit                    @ -- Begin function SRE_HpllInit
+	.globl	SRE_HpllInit
+	.p2align	3
+	.type	SRE_HpllInit,%function
+	.code	16                              @ @SRE_HpllInit
+	.thumb_func
+SRE_HpllInit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#112
+	sub	sp, #112
+	.cfi_def_cfa_offset 120
+	add	r3, sp, #88
+	str	r3, [sp, #32]                   @ 4-byte Spill
+	mov	r3, r0
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+                                        @ kill: def $r12 killed $r2
+                                        @ kill: def $r12 killed $r1
+                                        @ kill: def $r12 killed $r3
+	strb.w	r3, [sp, #107]
+	vstr	d0, [r0, #8]
+	vstr	d1, [r0]
+	strb.w	r1, [sp, #87]
+	strb.w	r2, [sp, #86]
+	mov.w	r0, #1792
+	str	r0, [sp, #80]
+	mov.w	r0, #512
+	str	r0, [sp, #76]
+	movs	r0, #0
+	str	r0, [sp, #64]
+	ldr	r0, [sp, #76]
+	adds	r0, #4
+	ldr	r1, [sp, #64]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #107]
+	cbnz	r0, .LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	movs	r0, #0
+	str	r0, [sp, #108]
+	b	.LBB20_50
+.LBB20_2:
+	ldrh.w	r0, [sp, #64]
+	orr	r0, r0, #1
+	strh.w	r0, [sp, #64]
+	ldr	r0, [sp, #76]
+	adds	r0, #4
+	ldr	r1, [sp, #64]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #80]
+	adds	r0, #68
+	add	r1, sp, #68
+	bl	dsp_fsl_reg_read
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	vldr	d0, [r0]
+	vldr	d1, .LCPI20_7
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	bl	__hardfp_ceil
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_8
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_9
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	str	r0, [sp, #40]
+	ldrh.w	r1, [sp, #40]
+	ldrh.w	r0, [sp, #70]
+	bfc	r1, #13, #19
+	and	r0, r0, #57344
+	add	r0, r1
+	strh.w	r0, [sp, #70]
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_4
+	b	.LBB20_3
+.LBB20_3:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_5
+	b	.LBB20_4
+.LBB20_4:
+	ldrb.w	r0, [sp, #68]
+	orr	r0, r0, #32
+	strb.w	r0, [sp, #68]
+	ldrb.w	r0, [sp, #68]
+	orr	r0, r0, #16
+	strb.w	r0, [sp, #68]
+	ldr	r0, [sp, #80]
+	adds	r0, #68
+	ldr	r1, [sp, #68]
+	bl	dsp_fsl_reg_write
+	b	.LBB20_6
+.LBB20_5:
+	ldrb.w	r0, [sp, #68]
+	and	r0, r0, #223
+	strb.w	r0, [sp, #68]
+	ldrb.w	r0, [sp, #68]
+	and	r0, r0, #239
+	strb.w	r0, [sp, #68]
+	ldr	r0, [sp, #80]
+	adds	r0, #68
+	ldr	r1, [sp, #68]
+	bl	dsp_fsl_reg_write
+	b	.LBB20_6
+.LBB20_6:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_8
+	b	.LBB20_7
+.LBB20_7:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_9
+	b	.LBB20_8
+.LBB20_8:
+	movs	r1, #1
+	str	r1, [sp, #28]                   @ 4-byte Spill
+	mov	r0, r1
+	bl	SREI_HostPllAcqSet
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	bl	SREI_AnaRxDtlManualEn
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	bl	SREI_AnaRxCdrAcqEn
+	movs	r0, #0
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	bl	SREI_AnaRxDtlLowGainEn
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	bl	SREI_HostPllOpenLoop
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	bl	SREI_PllFbdivEnReflessMode
+	b	.LBB20_12
+.LBB20_9:
+	ldrb.w	r0, [sp, #87]
+	cbnz	r0, .LBB20_11
+	b	.LBB20_10
+.LBB20_10:
+	movs	r1, #0
+	str	r1, [sp, #20]                   @ 4-byte Spill
+	mov	r0, r1
+	bl	SREI_HostPllAcqSet
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	SREI_AnaRxDtlManualEn
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	SREI_AnaRxCdrAcqEn
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	SREI_AnaRxDtlLowGainEn
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	mov	r0, r1
+	bl	SREI_HostPllOpenLoop
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	SREI_PllFbdivEnReflessMode
+	b	.LBB20_11
+.LBB20_11:
+	b	.LBB20_12
+.LBB20_12:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_14
+	b	.LBB20_13
+.LBB20_13:
+	movs	r0, #1
+	bl	SREI_HostPllSllpLoopFromRx
+	b	.LBB20_18
+.LBB20_14:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_16
+	b	.LBB20_15
+.LBB20_15:
+	ldrb.w	r0, [sp, #87]
+	cbnz	r0, .LBB20_17
+	b	.LBB20_16
+.LBB20_16:
+	movs	r0, #0
+	bl	SREI_HostPllSllpLoopFromRx
+	b	.LBB20_17
+.LBB20_17:
+	b	.LBB20_18
+.LBB20_18:
+	ldrb.w	r0, [sp, #87]
+	cbnz	r0, .LBB20_20
+	b	.LBB20_19
+.LBB20_19:
+	movs	r0, #0
+	strb.w	r0, [sp, #54]
+	b	.LBB20_28
+.LBB20_20:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_22
+	b	.LBB20_21
+.LBB20_21:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_23
+	b	.LBB20_22
+.LBB20_22:
+	movs	r0, #1
+	strb.w	r0, [sp, #54]
+	b	.LBB20_27
+.LBB20_23:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #3
+	bne	.LBB20_25
+	b	.LBB20_24
+.LBB20_24:
+	movs	r0, #2
+	strb.w	r0, [sp, #54]
+	b	.LBB20_26
+.LBB20_25:
+	movs	r0, #4
+	strb.w	r0, [sp, #54]
+	b	.LBB20_26
+.LBB20_26:
+	b	.LBB20_27
+.LBB20_27:
+	b	.LBB20_28
+.LBB20_28:
+	ldrb.w	r0, [sp, #54]
+	bl	SREI_PllClkSel
+	ldr	r0, [sp, #80]
+	adds	r0, #52
+	add	r1, sp, #72
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #72]
+	and	r0, r0, #243
+	strb.w	r0, [sp, #72]
+	ldr	r0, [sp, #80]
+	adds	r0, #52
+	ldr	r1, [sp, #72]
+	bl	dsp_fsl_reg_write
+	movs	r0, #1
+	strb.w	r0, [sp, #39]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #0
+	bne	.LBB20_30
+	b	.LBB20_29
+.LBB20_29:
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	vldr	d1, [r0]
+	vldr	d0, [r0, #8]
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	bl	__hardfp_floor
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	mov	r1, r0
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	str	r1, [sp, #60]
+	vldr	d1, [r0]
+	vldr	d0, [r0, #8]
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #8]                    @ 8-byte Spill
+	ldr	r0, [sp, #60]
+	bl	__aeabi_ui2d
+	vldr	d1, [sp, #8]                    @ 8-byte Reload
+	vmov	d0, r0, r1
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_4
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_6
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	bic	r0, r0, #-16777216
+	str	r0, [sp, #56]
+	ldr	r0, [sp, #80]
+	ldr	r1, [sp, #60]
+	ldr	r2, [sp, #56]
+	bl	SREI_PllFreCodeSet
+	b	.LBB20_31
+.LBB20_30:
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	vldr	d1, [r0]
+	vldr	d0, [r0, #8]
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_3
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	bl	__hardfp_floor
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	mov	r1, r0
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	str	r1, [sp, #60]
+	vldr	d1, [r0]
+	vldr	d0, [r0, #8]
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vstr	d0, [sp]                        @ 8-byte Spill
+	ldr	r0, [sp, #60]
+	bl	__aeabi_ui2d
+	vldr	d1, [sp]                        @ 8-byte Reload
+	vmov	d0, r0, r1
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_4
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI20_5
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	bic	r0, r0, #-16777216
+	str	r0, [sp, #56]
+	ldr	r0, [sp, #80]
+	ldr	r1, [sp, #60]
+	ldr	r2, [sp, #56]
+	bl	SREI_PllFreCodeSet
+	bl	SREI_PllFracDsmDivConfig
+	b	.LBB20_31
+.LBB20_31:
+	ldrb.w	r0, [sp, #39]
+	bl	SREI_PllFracModeCfg
+	ldrb.w	r0, [sp, #86]
+	strb.w	r0, [sp, #55]
+	ldr	r0, [sp, #80]
+	adds	r0, #4
+	add	r1, sp, #48
+	bl	dsp_fsl_reg_read
+	ldrb.w	r1, [sp, #55]
+	ldr	r0, [sp, #48]
+	and	r1, r1, #3
+	bic	r0, r0, #12
+	orr.w	r0, r0, r1, lsl #2
+	str	r0, [sp, #48]
+	ldr	r0, [sp, #80]
+	adds	r0, #4
+	ldr	r1, [sp, #48]
+	bl	dsp_fsl_reg_write
+	ldr	r0, [sp, #80]
+	adds	r0, #64
+	add	r1, sp, #44
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #55]
+	cmp	r0, #1
+	bne	.LBB20_36
+	b	.LBB20_35
+	.p2align	3
+@ %bb.32:
+.LCPI20_7:
+	.long	0                               @ double 2.0E+8
+	.long	1101518724
+	.p2align	3
+@ %bb.33:
+.LCPI20_8:
+	.long	0                               @ double 2
+	.long	1073741824
+	.p2align	3
+@ %bb.34:
+.LCPI20_9:
+	.long	0                               @ double 1
+	.long	1072693248
+	.p2align	1
+.LBB20_35:
+	ldrh.w	r0, [sp, #46]
+	and	r0, r0, #57344
+	adds	r0, #40
+	strh.w	r0, [sp, #46]
+	b	.LBB20_37
+.LBB20_36:
+	ldrh.w	r0, [sp, #46]
+	and	r0, r0, #57344
+	adds	r0, #80
+	strh.w	r0, [sp, #46]
+	b	.LBB20_37
+.LBB20_37:
+	ldr	r0, [sp, #80]
+	adds	r0, #64
+	ldr	r1, [sp, #44]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_39
+	b	.LBB20_38
+.LBB20_38:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_40
+	b	.LBB20_39
+.LBB20_39:
+	ldr	r0, [sp, #80]
+	adds	r0, #68
+	add	r1, sp, #68
+	bl	dsp_fsl_reg_read
+	ldrb.w	r0, [sp, #68]
+	orr	r0, r0, #32
+	strb.w	r0, [sp, #68]
+	ldrb.w	r0, [sp, #68]
+	and	r0, r0, #239
+	strb.w	r0, [sp, #68]
+	ldr	r0, [sp, #80]
+	adds	r0, #68
+	ldr	r1, [sp, #68]
+	bl	dsp_fsl_reg_write
+	b	.LBB20_40
+.LBB20_40:
+	ldrh.w	r0, [sp, #66]
+	orr	r0, r0, #1
+	strh.w	r0, [sp, #66]
+	ldr	r0, [sp, #76]
+	adds	r0, #4
+	ldr	r1, [sp, #64]
+	bl	dsp_fsl_reg_write
+	mov.w	r0, #1000
+	bl	MCU_DelayUs
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	beq	.LBB20_42
+	b	.LBB20_41
+.LBB20_41:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #2
+	bne	.LBB20_47
+	b	.LBB20_42
+.LBB20_42:
+	bl	SREI_AnaCdrIsLock
+	cbnz	r0, .LBB20_44
+	b	.LBB20_43
+.LBB20_43:
+	movs	r0, #9
+	movt	r0, #4352
+	str	r0, [sp, #108]
+	b	.LBB20_50
+.LBB20_44:
+	ldrb.w	r0, [sp, #87]
+	cmp	r0, #1
+	bne	.LBB20_46
+	b	.LBB20_45
+.LBB20_45:
+	movs	r1, #1
+	mov	r0, r1
+	bl	SREI_HostPllOpenLoop
+	b	.LBB20_46
+.LBB20_46:
+	b	.LBB20_47
+.LBB20_47:
+	ldrb.w	r0, [sp, #87]
+	cbnz	r0, .LBB20_49
+	b	.LBB20_48
+.LBB20_48:
+	bl	SREI_PllAcqCodeGet
+	movw	r1, :lower16:g_acqCode
+	movt	r1, :upper16:g_acqCode
+	strh	r0, [r1]
+	b	.LBB20_49
+.LBB20_49:
+	movs	r0, #0
+	str	r0, [sp, #108]
+	b	.LBB20_50
+.LBB20_50:
+	ldr	r0, [sp, #108]
+	add	sp, #112
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.51:
+.LCPI20_3:
+	.long	0                               @ double 4
+	.long	1074790400
+.LCPI20_4:
+	.long	0                               @ double -1
+	.long	3220176896
+.LCPI20_5:
+	.long	0                               @ double 33554432
+	.long	1098907648
+.LCPI20_6:
+	.long	0                               @ double 67108864
+	.long	1099956224
+.Lfunc_end20:
+	.size	SRE_HpllInit, .Lfunc_end20-SRE_HpllInit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SRE_HpllSetup,"ax",%progbits
+	.hidden	SRE_HpllSetup                   @ -- Begin function SRE_HpllSetup
+	.globl	SRE_HpllSetup
+	.p2align	3
+	.type	SRE_HpllSetup,%function
+	.code	16                              @ @SRE_HpllSetup
+	.thumb_func
+SRE_HpllSetup:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #27]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	ldrb.w	r1, [sp, #27]
+	bl	dsp_fsl_reg_write
+	ldrb.w	r0, [sp, #27]
+	cmp	r0, #11
+	blt	.LBB21_3
+	b	.LBB21_1
+.LBB21_1:
+	ldrb.w	r0, [sp, #27]
+	cmp	r0, #16
+	bgt	.LBB21_3
+	b	.LBB21_2
+.LBB21_2:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB21_4
+.LBB21_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB21_4
+.LBB21_4:
+	ldrb.w	r2, [sp, #27]
+	movw	r0, :lower16:g_hpllFre
+	movt	r0, :upper16:g_hpllFre
+	add.w	r1, r0, r2, lsl #3
+	ldr.w	r0, [r0, r2, lsl #3]
+	ldr	r1, [r1, #4]
+	bl	__aeabi_ul2d
+	vmov	d1, r0, r1
+	ldrb.w	r2, [sp, #15]
+	movs	r0, #1
+	vldr	d0, .LCPI21_0
+	movs	r1, #0
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	bl	SRE_HpllInit
+                                        @ kill: def $r1 killed $r0
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r0, [sp, #20]
+	b	.LBB21_5
+.LBB21_5:                               @ =>This Inner Loop Header: Depth=1
+	movs	r0, #10
+	bl	MCU_DelayUs
+	bl	SREI_PllIsLock
+	strb.w	r0, [sp, #26]
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	b	.LBB21_6
+.LBB21_6:                               @   in Loop: Header=BB21_5 Depth=1
+	ldrb.w	r1, [sp, #26]
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbnz	r1, .LBB21_8
+	b	.LBB21_7
+.LBB21_7:                               @   in Loop: Header=BB21_5 Depth=1
+	ldr	r1, [sp, #20]
+	movs	r0, #0
+	cmp.w	r1, #1000
+	it	lo
+	movlo	r0, #1
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB21_8
+.LBB21_8:                               @   in Loop: Header=BB21_5 Depth=1
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB21_5
+	b	.LBB21_9
+.LBB21_9:
+	bl	SREI_PllIsLock
+	strb.w	r0, [sp, #26]
+	ldrb.w	r0, [sp, #26]
+	cmp	r0, #1
+	beq	.LBB21_11
+	b	.LBB21_10
+.LBB21_10:
+	movs	r0, #37
+	movt	r0, #4352
+	str	r0, [sp, #28]
+	b	.LBB21_12
+.LBB21_11:
+	bl	SREI_PllAcqCodeGet
+	strh.w	r0, [sp, #24]
+	movs	r0, #0
+	str	r0, [sp, #28]
+	b	.LBB21_12
+.LBB21_12:
+	ldr	r0, [sp, #28]
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.13:
+.LCPI21_0:
+	.long	0                               @ double 3.84E+7
+	.long	1099059072
+.Lfunc_end21:
+	.size	SRE_HpllSetup, .Lfunc_end21-SRE_HpllSetup
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_acqCode                       @ @g_acqCode
+	.type	g_acqCode,%object
+	.section	.bss.g_acqCode,"aw",%nobits
+	.globl	g_acqCode
+	.p2align	1, 0x0
+g_acqCode:
+	.short	0                               @ 0x0
+	.size	g_acqCode, 2
+
+	.hidden	g_hpllFre                       @ @g_hpllFre
+	.type	g_hpllFre,%object
+	.section	.data.g_hpllFre,"aw",%progbits
+	.globl	g_hpllFre
+	.p2align	3, 0x0
+g_hpllFre:
+	.long	3851665408                      @ 0x2e593c000
+	.long	2
+	.long	681672704                       @ 0x128a18000
+	.long	1
+	.long	1410065408                      @ 0x2540be400
+	.long	2
+	.long	681672704                       @ 0x128a18000
+	.long	1
+	.long	1410065408                      @ 0x2540be400
+	.long	2
+	.long	1955032704                      @ 0x174876e80
+	.long	1
+	.long	705032704                       @ 0x12a05f200
+	.long	1
+	.long	681672704                       @ 0x128a18000
+	.long	1
+	.long	1722565408                      @ 0x266ac4320
+	.long	2
+	.long	1925832704                      @ 0x172c9e000
+	.long	1
+	.long	1955032704                      @ 0x174876e80
+	.long	1
+	.long	3851665408                      @ 0x2e593c000
+	.long	2
+	.long	3851665408                      @ 0x2e593c000
+	.long	2
+	.long	5723112                         @ 0x3005753e8
+	.long	3
+	.long	5723112                         @ 0x3005753e8
+	.long	3
+	.long	396348112                       @ 0x3179fcad0
+	.long	3
+	.long	396348112                       @ 0x3179fcad0
+	.long	3
+	.long	3851665408                      @ 0x2e593c000
+	.long	2
+	.long	3851665408                      @ 0x2e593c000
+	.long	2
+	.long	5723112                         @ 0x3005753e8
+	.long	3
+	.long	5723112                         @ 0x3005753e8
+	.long	3
+	.long	396348112                       @ 0x3179fcad0
+	.long	3
+	.long	396348112                       @ 0x3179fcad0
+	.long	3
+	.size	g_hpllFre, 184
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

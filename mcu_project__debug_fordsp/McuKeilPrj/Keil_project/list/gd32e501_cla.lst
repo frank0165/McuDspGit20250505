@@ -1,0 +1,1494 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_cla.c"
+	.section	.text.cla_deinit,"ax",%progbits
+	.hidden	cla_deinit                      @ -- Begin function cla_deinit
+	.globl	cla_deinit
+	.p2align	2
+	.type	cla_deinit,%function
+	.code	16                              @ @cla_deinit
+	.thumb_func
+cla_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #2575
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	cla_deinit, .Lfunc_end0-cla_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_enable,"ax",%progbits
+	.hidden	cla_enable                      @ -- Begin function cla_enable
+	.globl	cla_enable
+	.p2align	2
+	.type	cla_enable,%function
+	.code	16                              @ @cla_enable
+	.thumb_func
+cla_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #7
+	bhi	.LBB1_11
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI1_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI1_0:
+	.byte	(.LBB1_3-(.LCPI1_0+4))/2
+	.byte	(.LBB1_4-(.LCPI1_0+4))/2
+	.byte	(.LBB1_5-(.LCPI1_0+4))/2
+	.byte	(.LBB1_6-(.LCPI1_0+4))/2
+	.byte	(.LBB1_7-(.LCPI1_0+4))/2
+	.byte	(.LBB1_8-(.LCPI1_0+4))/2
+	.byte	(.LBB1_9-(.LCPI1_0+4))/2
+	.byte	(.LBB1_10-(.LCPI1_0+4))/2
+	.p2align	1
+.LBB1_3:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_4:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_5:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_6:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_7:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_8:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_9:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_10:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_11:
+	b	.LBB1_12
+.LBB1_12:
+	add	sp, #8
+	bx	lr
+.Lfunc_end1:
+	.size	cla_enable, .Lfunc_end1-cla_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_disable,"ax",%progbits
+	.hidden	cla_disable                     @ -- Begin function cla_disable
+	.globl	cla_disable
+	.p2align	2
+	.type	cla_disable,%function
+	.code	16                              @ @cla_disable
+	.thumb_func
+cla_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #7
+	bhi	.LBB2_11
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI2_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI2_0:
+	.byte	(.LBB2_3-(.LCPI2_0+4))/2
+	.byte	(.LBB2_4-(.LCPI2_0+4))/2
+	.byte	(.LBB2_5-(.LCPI2_0+4))/2
+	.byte	(.LBB2_6-(.LCPI2_0+4))/2
+	.byte	(.LBB2_7-(.LCPI2_0+4))/2
+	.byte	(.LBB2_8-(.LCPI2_0+4))/2
+	.byte	(.LBB2_9-(.LCPI2_0+4))/2
+	.byte	(.LBB2_10-(.LCPI2_0+4))/2
+	.p2align	1
+.LBB2_3:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_4:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_5:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_6:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_7:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_8:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_9:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_10:
+	movw	r1, #32768
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_11:
+	b	.LBB2_12
+.LBB2_12:
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	cla_disable, .Lfunc_end2-cla_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_output_state_get,"ax",%progbits
+	.hidden	cla_output_state_get            @ -- Begin function cla_output_state_get
+	.globl	cla_output_state_get
+	.p2align	2
+	.type	cla_output_state_get,%function
+	.code	16                              @ @cla_output_state_get
+	.thumb_func
+cla_output_state_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #14]
+	movw	r0, #32780
+	movt	r0, #16387
+	ldr	r0, [r0]
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #14]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #7
+	bhi	.LBB3_11
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI3_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI3_0:
+	.byte	(.LBB3_3-(.LCPI3_0+4))/2
+	.byte	(.LBB3_4-(.LCPI3_0+4))/2
+	.byte	(.LBB3_5-(.LCPI3_0+4))/2
+	.byte	(.LBB3_6-(.LCPI3_0+4))/2
+	.byte	(.LBB3_7-(.LCPI3_0+4))/2
+	.byte	(.LBB3_8-(.LCPI3_0+4))/2
+	.byte	(.LBB3_9-(.LCPI3_0+4))/2
+	.byte	(.LBB3_10-(.LCPI3_0+4))/2
+	.p2align	1
+.LBB3_3:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_4:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #1, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_5:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #2, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_6:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #3, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_7:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #4, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_8:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #5, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_9:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #6, #1
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_10:
+	ldrb.w	r0, [sp, #8]
+	lsrs	r0, r0, #7
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_11:
+	movs	r0, #0
+	str	r0, [sp, #4]
+	b	.LBB3_12
+.LBB3_12:
+	ldr	r0, [sp, #4]
+	cmp	r0, #1
+	bne	.LBB3_14
+	b	.LBB3_13
+.LBB3_13:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB3_15
+.LBB3_14:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB3_15
+.LBB3_15:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end3:
+	.size	cla_output_state_get, .Lfunc_end3-cla_output_state_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_sigs_input_config,"ax",%progbits
+	.hidden	cla_sigs_input_config           @ -- Begin function cla_sigs_input_config
+	.globl	cla_sigs_input_config
+	.p2align	2
+	.type	cla_sigs_input_config,%function
+	.code	16                              @ @cla_sigs_input_config
+	.thumb_func
+cla_sigs_input_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r3 killed $r1
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+	str	r2, [sp]
+	ldrb.w	r0, [sp, #6]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32784
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #240
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB4_3
+.LBB4_2:
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32784
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #15
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	b	.LBB4_3
+.LBB4_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end4:
+	.size	cla_sigs_input_config, .Lfunc_end4-cla_sigs_input_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_lcu_control_config,"ax",%progbits
+	.hidden	cla_lcu_control_config          @ -- Begin function cla_lcu_control_config
+	.globl	cla_lcu_control_config
+	.p2align	2
+	.type	cla_lcu_control_config,%function
+	.code	16                              @ @cla_lcu_control_config
+	.thumb_func
+cla_lcu_control_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #3]
+	strb.w	r1, [sp, #2]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32788
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #255
+	str.w	r0, [r1, r2, lsl #2]
+	ldrb.w	r3, [sp, #2]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	cla_lcu_control_config, .Lfunc_end5-cla_lcu_control_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_output_config,"ax",%progbits
+	.hidden	cla_output_config               @ -- Begin function cla_output_config
+	.globl	cla_output_config
+	.p2align	2
+	.type	cla_output_config,%function
+	.code	16                              @ @cla_output_config
+	.thumb_func
+cla_output_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #128
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	cla_output_config, .Lfunc_end6-cla_output_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_output_enable,"ax",%progbits
+	.hidden	cla_output_enable               @ -- Begin function cla_output_enable
+	.globl	cla_output_enable
+	.p2align	2
+	.type	cla_output_enable,%function
+	.code	16                              @ @cla_output_enable
+	.thumb_func
+cla_output_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	cla_output_enable, .Lfunc_end7-cla_output_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_output_disable,"ax",%progbits
+	.hidden	cla_output_disable              @ -- Begin function cla_output_disable
+	.globl	cla_output_disable
+	.p2align	2
+	.type	cla_output_disable,%function
+	.code	16                              @ @cla_output_disable
+	.thumb_func
+cla_output_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #64
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	cla_output_disable, .Lfunc_end8-cla_output_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_flip_flop_output_reset,"ax",%progbits
+	.hidden	cla_flip_flop_output_reset      @ -- Begin function cla_flip_flop_output_reset
+	.globl	cla_flip_flop_output_reset
+	.p2align	2
+	.type	cla_flip_flop_output_reset,%function
+	.code	16                              @ @cla_flip_flop_output_reset
+	.thumb_func
+cla_flip_flop_output_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	orr	r0, r0, #8
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	cla_flip_flop_output_reset, .Lfunc_end9-cla_flip_flop_output_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_flip_flop_clockpolarity_config,"ax",%progbits
+	.hidden	cla_flip_flop_clockpolarity_config @ -- Begin function cla_flip_flop_clockpolarity_config
+	.globl	cla_flip_flop_clockpolarity_config
+	.p2align	2
+	.type	cla_flip_flop_clockpolarity_config,%function
+	.code	16                              @ @cla_flip_flop_clockpolarity_config
+	.thumb_func
+cla_flip_flop_clockpolarity_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #4
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end10:
+	.size	cla_flip_flop_clockpolarity_config, .Lfunc_end10-cla_flip_flop_clockpolarity_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_flip_flop_clocksource_config,"ax",%progbits
+	.hidden	cla_flip_flop_clocksource_config @ -- Begin function cla_flip_flop_clocksource_config
+	.globl	cla_flip_flop_clocksource_config
+	.p2align	2
+	.type	cla_flip_flop_clocksource_config,%function
+	.code	16                              @ @cla_flip_flop_clocksource_config
+	.thumb_func
+cla_flip_flop_clocksource_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	movw	r1, #32792
+	movt	r1, #16387
+	ldr.w	r0, [r1, r2, lsl #2]
+	bic	r0, r0, #3
+	str.w	r0, [r1, r2, lsl #2]
+	ldr	r3, [sp]
+	ldrb.w	r0, [sp, #7]
+	add.w	r2, r0, r0, lsl #1
+	ldr.w	r0, [r1, r2, lsl #2]
+	orrs	r0, r3
+	str.w	r0, [r1, r2, lsl #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	cla_flip_flop_clocksource_config, .Lfunc_end11-cla_flip_flop_clocksource_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_flag_get,"ax",%progbits
+	.hidden	cla_flag_get                    @ -- Begin function cla_flag_get
+	.globl	cla_flag_get
+	.p2align	2
+	.type	cla_flag_get,%function
+	.code	16                              @ @cla_flag_get
+	.thumb_func
+cla_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #14]
+	movw	r0, #32776
+	movt	r0, #16387
+	ldr	r0, [r0]
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #14]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #15
+	bhi	.LBB12_19
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI12_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI12_0:
+	.byte	(.LBB12_3-(.LCPI12_0+4))/2
+	.byte	(.LBB12_4-(.LCPI12_0+4))/2
+	.byte	(.LBB12_5-(.LCPI12_0+4))/2
+	.byte	(.LBB12_6-(.LCPI12_0+4))/2
+	.byte	(.LBB12_7-(.LCPI12_0+4))/2
+	.byte	(.LBB12_8-(.LCPI12_0+4))/2
+	.byte	(.LBB12_9-(.LCPI12_0+4))/2
+	.byte	(.LBB12_10-(.LCPI12_0+4))/2
+	.byte	(.LBB12_11-(.LCPI12_0+4))/2
+	.byte	(.LBB12_12-(.LCPI12_0+4))/2
+	.byte	(.LBB12_13-(.LCPI12_0+4))/2
+	.byte	(.LBB12_14-(.LCPI12_0+4))/2
+	.byte	(.LBB12_15-(.LCPI12_0+4))/2
+	.byte	(.LBB12_16-(.LCPI12_0+4))/2
+	.byte	(.LBB12_17-(.LCPI12_0+4))/2
+	.byte	(.LBB12_18-(.LCPI12_0+4))/2
+	.p2align	1
+.LBB12_3:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_4:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #1, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_5:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #2, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_6:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #3, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_7:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #4, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_8:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #5, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_9:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #6, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_10:
+	ldrb.w	r0, [sp, #8]
+	lsrs	r0, r0, #7
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_11:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #8, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_12:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #9, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_13:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #10, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_14:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #11, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_15:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #12, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_16:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #13, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_17:
+	ldr	r0, [sp, #8]
+	ubfx	r0, r0, #14, #1
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_18:
+	ldrh.w	r0, [sp, #8]
+	lsrs	r0, r0, #15
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_19:
+	movs	r0, #0
+	str	r0, [sp, #4]
+	b	.LBB12_20
+.LBB12_20:
+	ldr	r0, [sp, #4]
+	cmp	r0, #1
+	bne	.LBB12_22
+	b	.LBB12_21
+.LBB12_21:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB12_23
+.LBB12_22:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB12_23
+.LBB12_23:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end12:
+	.size	cla_flag_get, .Lfunc_end12-cla_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_flag_clear,"ax",%progbits
+	.hidden	cla_flag_clear                  @ -- Begin function cla_flag_clear
+	.globl	cla_flag_clear
+	.p2align	2
+	.type	cla_flag_clear,%function
+	.code	16                              @ @cla_flag_clear
+	.thumb_func
+cla_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #15
+	bhi.w	.LBB13_19
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI13_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI13_0:
+	.byte	(.LBB13_3-(.LCPI13_0+4))/2
+	.byte	(.LBB13_4-(.LCPI13_0+4))/2
+	.byte	(.LBB13_5-(.LCPI13_0+4))/2
+	.byte	(.LBB13_6-(.LCPI13_0+4))/2
+	.byte	(.LBB13_7-(.LCPI13_0+4))/2
+	.byte	(.LBB13_8-(.LCPI13_0+4))/2
+	.byte	(.LBB13_9-(.LCPI13_0+4))/2
+	.byte	(.LBB13_10-(.LCPI13_0+4))/2
+	.byte	(.LBB13_11-(.LCPI13_0+4))/2
+	.byte	(.LBB13_12-(.LCPI13_0+4))/2
+	.byte	(.LBB13_13-(.LCPI13_0+4))/2
+	.byte	(.LBB13_14-(.LCPI13_0+4))/2
+	.byte	(.LBB13_15-(.LCPI13_0+4))/2
+	.byte	(.LBB13_16-(.LCPI13_0+4))/2
+	.byte	(.LBB13_17-(.LCPI13_0+4))/2
+	.byte	(.LBB13_18-(.LCPI13_0+4))/2
+	.p2align	1
+.LBB13_3:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_4:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_5:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_6:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_7:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_8:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_9:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_10:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_11:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_12:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #512
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_13:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #1024
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_14:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_15:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #4096
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_16:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #8192
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_17:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_18:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB13_20
+.LBB13_19:
+	b	.LBB13_20
+.LBB13_20:
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	cla_flag_clear, .Lfunc_end13-cla_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_negedge_interrupt_enable,"ax",%progbits
+	.hidden	cla_negedge_interrupt_enable    @ -- Begin function cla_negedge_interrupt_enable
+	.globl	cla_negedge_interrupt_enable
+	.p2align	2
+	.type	cla_negedge_interrupt_enable,%function
+	.code	16                              @ @cla_negedge_interrupt_enable
+	.thumb_func
+cla_negedge_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #32772
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end14:
+	.size	cla_negedge_interrupt_enable, .Lfunc_end14-cla_negedge_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_negedge_interrupt_disable,"ax",%progbits
+	.hidden	cla_negedge_interrupt_disable   @ -- Begin function cla_negedge_interrupt_disable
+	.globl	cla_negedge_interrupt_disable
+	.p2align	2
+	.type	cla_negedge_interrupt_disable,%function
+	.code	16                              @ @cla_negedge_interrupt_disable
+	.thumb_func
+cla_negedge_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #32772
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end15:
+	.size	cla_negedge_interrupt_disable, .Lfunc_end15-cla_negedge_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_posedge_interrupt_enable,"ax",%progbits
+	.hidden	cla_posedge_interrupt_enable    @ -- Begin function cla_posedge_interrupt_enable
+	.globl	cla_posedge_interrupt_enable
+	.p2align	2
+	.type	cla_posedge_interrupt_enable,%function
+	.code	16                              @ @cla_posedge_interrupt_enable
+	.thumb_func
+cla_posedge_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #32772
+	movt	r1, #16387
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end16:
+	.size	cla_posedge_interrupt_enable, .Lfunc_end16-cla_posedge_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_posedge_interrupt_disable,"ax",%progbits
+	.hidden	cla_posedge_interrupt_disable   @ -- Begin function cla_posedge_interrupt_disable
+	.globl	cla_posedge_interrupt_disable
+	.p2align	2
+	.type	cla_posedge_interrupt_disable,%function
+	.code	16                              @ @cla_posedge_interrupt_disable
+	.thumb_func
+cla_posedge_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #32772
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	cla_posedge_interrupt_disable, .Lfunc_end17-cla_posedge_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_interrupt_flag_get,"ax",%progbits
+	.hidden	cla_interrupt_flag_get          @ -- Begin function cla_interrupt_flag_get
+	.globl	cla_interrupt_flag_get
+	.p2align	2
+	.type	cla_interrupt_flag_get,%function
+	.code	16                              @ @cla_interrupt_flag_get
+	.thumb_func
+cla_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #14]
+	movw	r0, #32772
+	movt	r0, #16387
+	ldr	r0, [r0]
+	str	r0, [sp, #8]
+	movw	r0, #32776
+	movt	r0, #16387
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #14]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #15
+	bhi.w	.LBB18_19
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI18_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI18_0:
+	.byte	(.LBB18_3-(.LCPI18_0+4))/2
+	.byte	(.LBB18_4-(.LCPI18_0+4))/2
+	.byte	(.LBB18_5-(.LCPI18_0+4))/2
+	.byte	(.LBB18_6-(.LCPI18_0+4))/2
+	.byte	(.LBB18_7-(.LCPI18_0+4))/2
+	.byte	(.LBB18_8-(.LCPI18_0+4))/2
+	.byte	(.LBB18_9-(.LCPI18_0+4))/2
+	.byte	(.LBB18_10-(.LCPI18_0+4))/2
+	.byte	(.LBB18_11-(.LCPI18_0+4))/2
+	.byte	(.LBB18_12-(.LCPI18_0+4))/2
+	.byte	(.LBB18_13-(.LCPI18_0+4))/2
+	.byte	(.LBB18_14-(.LCPI18_0+4))/2
+	.byte	(.LBB18_15-(.LCPI18_0+4))/2
+	.byte	(.LBB18_16-(.LCPI18_0+4))/2
+	.byte	(.LBB18_17-(.LCPI18_0+4))/2
+	.byte	(.LBB18_18-(.LCPI18_0+4))/2
+	.p2align	1
+.LBB18_3:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #1
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_4:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #2
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #2
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_5:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #4
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #4
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_6:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #8
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #8
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_7:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #16
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #16
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_8:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #32
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_9:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #64
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #64
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_10:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #128
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #128
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_11:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #256
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #256
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_12:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #512
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #512
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_13:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #1024
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #1024
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_14:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #2048
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #2048
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_15:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #4096
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #4096
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_16:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #8192
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #8192
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_17:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #16384
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #16384
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_18:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #32768
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32768
+	str	r0, [sp, #4]
+	b	.LBB18_20
+.LBB18_19:
+	b	.LBB18_20
+.LBB18_20:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB18_23
+	b	.LBB18_21
+.LBB18_21:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB18_23
+	b	.LBB18_22
+.LBB18_22:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB18_24
+.LBB18_23:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB18_24
+.LBB18_24:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end18:
+	.size	cla_interrupt_flag_get, .Lfunc_end18-cla_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.cla_interrupt_flag_clear,"ax",%progbits
+	.hidden	cla_interrupt_flag_clear        @ -- Begin function cla_interrupt_flag_clear
+	.globl	cla_interrupt_flag_clear
+	.p2align	2
+	.type	cla_interrupt_flag_clear,%function
+	.code	16                              @ @cla_interrupt_flag_clear
+	.thumb_func
+cla_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #15
+	bhi.w	.LBB19_19
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI19_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI19_0:
+	.byte	(.LBB19_3-(.LCPI19_0+4))/2
+	.byte	(.LBB19_4-(.LCPI19_0+4))/2
+	.byte	(.LBB19_5-(.LCPI19_0+4))/2
+	.byte	(.LBB19_6-(.LCPI19_0+4))/2
+	.byte	(.LBB19_7-(.LCPI19_0+4))/2
+	.byte	(.LBB19_8-(.LCPI19_0+4))/2
+	.byte	(.LBB19_9-(.LCPI19_0+4))/2
+	.byte	(.LBB19_10-(.LCPI19_0+4))/2
+	.byte	(.LBB19_11-(.LCPI19_0+4))/2
+	.byte	(.LBB19_12-(.LCPI19_0+4))/2
+	.byte	(.LBB19_13-(.LCPI19_0+4))/2
+	.byte	(.LBB19_14-(.LCPI19_0+4))/2
+	.byte	(.LBB19_15-(.LCPI19_0+4))/2
+	.byte	(.LBB19_16-(.LCPI19_0+4))/2
+	.byte	(.LBB19_17-(.LCPI19_0+4))/2
+	.byte	(.LBB19_18-(.LCPI19_0+4))/2
+	.p2align	1
+.LBB19_3:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_4:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_5:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_6:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_7:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_8:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #32
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_9:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_10:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_11:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_12:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #512
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_13:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #1024
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_14:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_15:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #4096
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_16:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #8192
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_17:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_18:
+	movw	r1, #32776
+	movt	r1, #16387
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB19_20
+.LBB19_19:
+	b	.LBB19_20
+.LBB19_20:
+	add	sp, #8
+	bx	lr
+.Lfunc_end19:
+	.size	cla_interrupt_flag_clear, .Lfunc_end19-cla_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

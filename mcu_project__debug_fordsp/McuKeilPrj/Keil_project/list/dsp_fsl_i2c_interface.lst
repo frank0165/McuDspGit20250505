@@ -1,0 +1,427 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"dsp_fsl_i2c_interface.c"
+	.section	.text.dsp_fsl_i2c_start_download_reg_write,"ax",%progbits
+	.hidden	dsp_fsl_i2c_start_download_reg_write @ -- Begin function dsp_fsl_i2c_start_download_reg_write
+	.globl	dsp_fsl_i2c_start_download_reg_write
+	.p2align	2
+	.type	dsp_fsl_i2c_start_download_reg_write,%function
+	.code	16                              @ @dsp_fsl_i2c_start_download_reg_write
+	.thumb_func
+dsp_fsl_i2c_start_download_reg_write:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	printf
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	ldr	r0, [sp, #12]
+	cbnz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	b	.LBB0_5
+.LBB0_2:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #233
+	beq	.LBB0_4
+	b	.LBB0_3
+.LBB0_3:
+	b	.LBB0_5
+.LBB0_4:
+	bl	dsp_fsl_ic_download
+	b	.LBB0_5
+.LBB0_5:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	dsp_fsl_i2c_start_download_reg_write, .Lfunc_end0-dsp_fsl_i2c_start_download_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_i2c_info_reg_read,"ax",%progbits
+	.hidden	dsp_fsl_i2c_info_reg_read       @ -- Begin function dsp_fsl_i2c_info_reg_read
+	.globl	dsp_fsl_i2c_info_reg_read
+	.p2align	2
+	.type	dsp_fsl_i2c_info_reg_read,%function
+	.code	16                              @ @dsp_fsl_i2c_info_reg_read
+	.thumb_func
+dsp_fsl_i2c_info_reg_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#96
+	sub	sp, #96
+	.cfi_def_cfa_offset 96
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #95]
+	str	r1, [sp, #88]
+	str	r2, [sp, #84]
+	movs	r0, #0
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #95]
+	cmp	r0, #232
+	beq	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	b	.LBB1_5
+.LBB1_2:
+	ldr	r0, [sp, #88]
+	cbnz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	b	.LBB1_5
+.LBB1_4:
+	ldr	r1, [sp, #88]
+	movw	r12, :lower16:g_dsp_info
+	movt	r12, :upper16:g_dsp_info
+	ldr.w	r0, [r12]
+	ldr.w	r2, [r12, #4]
+	ldr.w	r3, [r12, #8]
+	ldr.w	r12, [r12, #12]
+	str.w	r12, [r1, #12]
+	str	r3, [r1, #8]
+	str	r2, [r1, #4]
+	str	r0, [r1]
+	ldr	r1, [sp, #88]
+	movw	r2, :lower16:g_dsp_pll
+	movt	r2, :upper16:g_dsp_pll
+	ldr	r0, [r2]
+	ldr	r2, [r2, #4]
+	str	r2, [r1, #20]
+	str	r0, [r1, #16]
+	b	.LBB1_5
+.LBB1_5:
+	add	sp, #96
+	bx	lr
+.Lfunc_end1:
+	.size	dsp_fsl_i2c_info_reg_read, .Lfunc_end1-dsp_fsl_i2c_info_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.data_path_config_init,"ax",%progbits
+	.hidden	data_path_config_init           @ -- Begin function data_path_config_init
+	.globl	data_path_config_init
+	.p2align	2
+	.type	data_path_config_init,%function
+	.code	16                              @ @data_path_config_init
+	.thumb_func
+data_path_config_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#104
+	sub	sp, #104
+	.cfi_def_cfa_offset 112
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #103]
+	movs	r0, #0
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	str	r0, [sp, #16]
+	str	r0, [sp, #72]
+	str	r0, [sp, #68]
+	str	r0, [sp, #64]
+	str	r0, [sp, #60]
+	str	r0, [sp, #32]
+	str	r0, [sp, #28]
+	str	r0, [sp, #24]
+	str	r0, [sp, #20]
+	add	r2, sp, #60
+	str	r2, [sp, #12]
+	ldr	r0, [sp, #12]
+	movs	r1, #1
+	str	r1, [r0]
+	ldr	r3, [sp, #12]
+	movs	r0, #3
+	str	r0, [r3, #4]
+	ldr	r3, [sp, #12]
+	str	r0, [r3, #8]
+	ldr	r3, [sp, #12]
+	ldrb	r0, [r3, #12]
+	orr	r0, r0, #8
+	strb	r0, [r3, #12]
+	ldr	r3, [sp, #12]
+	ldrb	r0, [r3, #12]
+	orr	r0, r0, #16
+	strb	r0, [r3, #12]
+	ldr	r3, [sp, #12]
+	ldrb	r0, [r3, #14]
+	orr	r0, r0, #8
+	strb	r0, [r3, #14]
+	ldr	r3, [sp, #12]
+	ldrb	r0, [r3, #14]
+	orr	r0, r0, #16
+	strb	r0, [r3, #14]
+	ldrb.w	r12, [sp, #103]
+	ldr	r3, [sp, #12]
+	ldrb	r0, [r3, #15]
+	and	r12, r12, #1
+	and	r0, r0, #223
+	orr.w	r0, r0, r12, lsl #5
+	strb	r0, [r3, #15]
+	mov	r3, sp
+	movs	r0, #9
+	str	r0, [r3]
+	add	r3, sp, #20
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	cbz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	b	.LBB2_2
+.LBB2_2:
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	str	r0, [sp, #72]
+	str	r0, [sp, #68]
+	str	r0, [sp, #64]
+	str	r0, [sp, #60]
+	str	r0, [sp, #32]
+	str	r0, [sp, #28]
+	str	r0, [sp, #24]
+	str	r0, [sp, #20]
+	ldr	r1, [sp, #12]
+	str	r0, [r1]
+	mov	r1, sp
+	movs	r0, #9
+	str	r0, [r1]
+	movs	r1, #1
+	add	r2, sp, #60
+	add	r3, sp, #20
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	cbz	r0, .LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	b	.LBB2_4
+.LBB2_4:
+	movs	r0, #1
+	str	r0, [sp, #60]
+	movs	r0, #2
+	str	r0, [sp, #64]
+	mov	r1, sp
+	movs	r0, #9
+	str	r0, [r1]
+	movs	r1, #0
+	add	r2, sp, #60
+	add	r3, sp, #20
+	mov	r0, r1
+	bl	SRE_CmdSend
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	cbz	r0, .LBB2_6
+	b	.LBB2_5
+.LBB2_5:
+	b	.LBB2_6
+.LBB2_6:
+	add	sp, #104
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	data_path_config_init, .Lfunc_end2-data_path_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_i2c_data_path_reg_write,"ax",%progbits
+	.hidden	dsp_fsl_i2c_data_path_reg_write @ -- Begin function dsp_fsl_i2c_data_path_reg_write
+	.globl	dsp_fsl_i2c_data_path_reg_write
+	.p2align	2
+	.type	dsp_fsl_i2c_data_path_reg_write,%function
+	.code	16                              @ @dsp_fsl_i2c_data_path_reg_write
+	.thumb_func
+dsp_fsl_i2c_data_path_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	cbnz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	b	.LBB3_7
+.LBB3_2:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0]
+	cmp	r0, #232
+	beq	.LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+	b	.LBB3_7
+.LBB3_4:
+	ldr	r0, [sp, #12]
+	ldrb	r0, [r0, #1]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB3_6
+	b	.LBB3_5
+.LBB3_5:
+	movs	r0, #1
+	bl	data_path_config_init
+	b	.LBB3_7
+.LBB3_6:
+	movs	r0, #0
+	bl	data_path_config_init
+	b	.LBB3_7
+.LBB3_7:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	dsp_fsl_i2c_data_path_reg_write, .Lfunc_end3-dsp_fsl_i2c_data_path_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.dsp_fsl_i2c_rst_pin_reg_write,"ax",%progbits
+	.hidden	dsp_fsl_i2c_rst_pin_reg_write   @ -- Begin function dsp_fsl_i2c_rst_pin_reg_write
+	.globl	dsp_fsl_i2c_rst_pin_reg_write
+	.p2align	2
+	.type	dsp_fsl_i2c_rst_pin_reg_write,%function
+	.code	16                              @ @dsp_fsl_i2c_rst_pin_reg_write
+	.thumb_func
+dsp_fsl_i2c_rst_pin_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	b	.LBB4_7
+.LBB4_2:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #231
+	beq	.LBB4_4
+	b	.LBB4_3
+.LBB4_3:
+	b	.LBB4_7
+.LBB4_4:
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	bl	get_u32
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #12]
+	cbnz	r0, .LBB4_6
+	b	.LBB4_5
+.LBB4_5:
+	mov.w	r0, #500
+	str	r0, [sp, #12]
+	b	.LBB4_6
+.LBB4_6:
+	mov.w	r0, #1207959552
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	mov.w	r1, #4096
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_bit_reset
+	ldr	r0, [sp, #12]
+	bl	fh_delay_ms
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	gpio_bit_set
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #2
+	bl	gpio_bit_set
+	b	.LBB4_7
+.LBB4_7:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	dsp_fsl_i2c_rst_pin_reg_write, .Lfunc_end4-dsp_fsl_i2c_rst_pin_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"download\r\n"
+	.size	.L.str, 11
+
+	.hidden	g_dsp_info                      @ @g_dsp_info
+	.type	g_dsp_info,%object
+	.section	.bss.g_dsp_info,"aw",%nobits
+	.globl	g_dsp_info
+g_dsp_info:
+	.zero	40
+	.size	g_dsp_info, 40
+
+	.hidden	g_dsp_pll                       @ @g_dsp_pll
+	.type	g_dsp_pll,%object
+	.section	.bss.g_dsp_pll,"aw",%nobits
+	.globl	g_dsp_pll
+g_dsp_pll:
+	.zero	20
+	.size	g_dsp_pll, 20
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

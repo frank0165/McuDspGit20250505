@@ -1,0 +1,446 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"main.c"
+	.section	.text.main,"ax",%progbits
+	.hidden	main                            @ -- Begin function main
+	.globl	main
+	.p2align	2
+	.type	main,%function
+	.code	16                              @ @main
+	.thumb_func
+main:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	str	r0, [sp, #4]
+	mov.w	r0, #134217728
+	movw	r1, #30720
+	movt	r1, #2048
+	bl	nvic_vector_table_set
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	printf
+	bl	rcu_config_init
+	bl	systick_config
+	bl	syscfg_config
+	bl	global_vars_param_init
+	bl	com_usart_init
+	bl	i2c_config_init
+	bl	dac_config_init
+	bl	adc_sample_init
+	bl	i2c_cmd_register_init
+	bl	flash_config_init
+	bl	tec_config_init
+	movs	r0, #100
+	bl	system_delay_ms
+	bl	ddm_50g_dev_init
+	bl	ddm_10g_dev_init
+	bl	ddm_1g_dev_init
+	bl	mcu_trigger_mode_init
+	bl	tec_start_auto_adjust
+	bl	om_default_config_flash_init
+	bl	dsp_fsl_ic_download
+	bl	tec_set_default_mini_status
+	b	.LBB0_1
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	bl	i2c_slave_read_write_handle
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #24]
+	cmp.w	r0, #1000
+	bls	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	str	r0, [r1, #24]
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	bl	printf
+	b	.LBB0_3
+.LBB0_3:                                @   in Loop: Header=BB0_1 Depth=1
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0, #4]
+	cmp	r0, #1
+	bne	.LBB0_5
+	b	.LBB0_4
+.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
+	bl	tec_process
+	bl	ddm_process
+	b	.LBB0_5
+.LBB0_5:                                @   in Loop: Header=BB0_1 Depth=1
+	b	.LBB0_1
+.Lfunc_end0:
+	.size	main, .Lfunc_end0-main
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.fputc,"ax",%progbits
+	.hidden	fputc                           @ -- Begin function fputc
+	.globl	fputc
+	.p2align	2
+	.type	fputc,%function
+	.code	16                              @ @fputc
+	.thumb_func
+fputc:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldrb.w	r1, [sp, #4]
+	movw	r0, #14336
+	movt	r0, #16385
+	bl	usart_data_transmit
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, #14336
+	movt	r0, #16385
+	movw	r1, #1799
+	bl	usart_flag_get
+	cbnz	r0, .LBB1_3
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+	b	.LBB1_1
+.LBB1_3:
+	ldr	r0, [sp, #4]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	fputc, .Lfunc_end1-fputc
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_cmd_register_init,"ax",%progbits
+	.p2align	2                               @ -- Begin function i2c_cmd_register_init
+	.type	i2c_cmd_register_init,%function
+	.code	16                              @ @i2c_cmd_register_init
+	.thumb_func
+i2c_cmd_register_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+	movw	r1, :lower16:mcu_addr0xspec_reg_byte_write
+	movt	r1, :upper16:mcu_addr0xspec_reg_byte_write
+	movs	r0, #206
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movw	r1, :lower16:mcu_addr0xspec_reg_byte_read
+	movt	r1, :upper16:mcu_addr0xspec_reg_byte_read
+	bl	i2c_slave_func_register_read_callback
+	movw	r1, :lower16:om_flash_write_reg_byte
+	movt	r1, :upper16:om_flash_write_reg_byte
+	str	r1, [sp, #24]                   @ 4-byte Spill
+	movs	r0, #160
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movw	r1, :lower16:om_v2_flash_read_reg_byte
+	movt	r1, :upper16:om_v2_flash_read_reg_byte
+	str	r1, [sp, #32]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movs	r0, #162
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movs	r0, #176
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movs	r0, #178
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movs	r0, #192
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movs	r0, #194
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_read_callback
+	movw	r1, :lower16:om_v2_memory_read_reg_byte
+	movt	r1, :upper16:om_v2_memory_read_reg_byte
+	str	r1, [sp, #36]                   @ 4-byte Spill
+	movs	r0, #210
+	str	r0, [sp, #44]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r0, #226
+	str	r0, [sp, #48]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_read_callback
+	ldr	r1, [sp, #36]                   @ 4-byte Reload
+	movs	r0, #232
+	str	r0, [sp, #56]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_read_callback
+	movw	r1, :lower16:cfg_v2_flash_read_reg_byte
+	movt	r1, :upper16:cfg_v2_flash_read_reg_byte
+	movs	r0, #168
+	bl	i2c_slave_func_register_read_callback
+	movw	r1, :lower16:update_app_write_reg_byte
+	movt	r1, :upper16:update_app_write_reg_byte
+	movs	r0, #8
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:update_firmware_write_reg_byte
+	movt	r1, :upper16:update_firmware_write_reg_byte
+	movs	r0, #12
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:upgrade_dev_version_reg_read
+	movt	r1, :upper16:upgrade_dev_version_reg_read
+	movs	r0, #11
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:om_cmd_ddm_read_reg_byte
+	movt	r1, :upper16:om_cmd_ddm_read_reg_byte
+	movs	r0, #16
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:user_check_password_write_reg
+	movt	r1, :upper16:user_check_password_write_reg
+	movs	r0, #9
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:ddm_i2c_switch_auto_process_reg_write
+	movt	r1, :upper16:ddm_i2c_switch_auto_process_reg_write
+	movs	r0, #18
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:apd_i2c_vcc_reg_write
+	movt	r1, :upper16:apd_i2c_vcc_reg_write
+	movs	r0, #7
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:soa_i2c_ild_reg_write
+	movt	r1, :upper16:soa_i2c_ild_reg_write
+	movs	r0, #13
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:vea_i2c_vcc_reg_write
+	movt	r1, :upper16:vea_i2c_vcc_reg_write
+	movs	r0, #15
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:ibias_i2c_reg_write
+	movt	r1, :upper16:ibias_i2c_reg_write
+	movs	r0, #19
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:imod_i2c_reg_write
+	movt	r1, :upper16:imod_i2c_reg_write
+	movs	r0, #20
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:swing_i2c_reg_write
+	movt	r1, :upper16:swing_i2c_reg_write
+	movs	r0, #21
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:rx_eq_i2c_reg_write
+	movt	r1, :upper16:rx_eq_i2c_reg_write
+	movs	r0, #22
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:cpa_i2c_reg_write
+	movt	r1, :upper16:cpa_i2c_reg_write
+	movs	r0, #23
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:tx_deemph_i2c_reg_write
+	movt	r1, :upper16:tx_deemph_i2c_reg_write
+	movs	r0, #24
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:rx_deemph_i2c_reg_write
+	movt	r1, :upper16:rx_deemph_i2c_reg_write
+	movs	r0, #25
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:rx_los_threshold_i2c_reg_write
+	movt	r1, :upper16:rx_los_threshold_i2c_reg_write
+	movs	r0, #26
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:rx_los_hyst_i2c_reg_write
+	movt	r1, :upper16:rx_los_hyst_i2c_reg_write
+	movs	r0, #27
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:import_binary_file_data_to_mcu_flash
+	movt	r1, :upper16:import_binary_file_data_to_mcu_flash
+	movs	r0, #40
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:tec_i2_ctl_temperature_reg_read
+	movt	r1, :upper16:tec_i2_ctl_temperature_reg_read
+	movs	r0, #2
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:tec_i2c_vtec_ctl_reg_write
+	movt	r1, :upper16:tec_i2c_vtec_ctl_reg_write
+	movs	r0, #0
+	str	r0, [sp, #40]                   @ 4-byte Spill
+	bl	mcu_register_reg_addr_write_callback
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, :lower16:tec_i2c_vtec_ctl_reg_read
+	movt	r1, :upper16:tec_i2c_vtec_ctl_reg_read
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:tec_i2c_calc_ctl_auto_reg_write
+	movt	r1, :upper16:tec_i2c_calc_ctl_auto_reg_write
+	movs	r0, #4
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:tec_xtec_value_reg_read
+	movt	r1, :upper16:tec_xtec_value_reg_read
+	movs	r0, #10
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:tec_i2c_temperature_obj_write
+	movt	r1, :upper16:tec_i2c_temperature_obj_write
+	movs	r0, #5
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:cmd_command_map_reg_write
+	movt	r1, :upper16:cmd_command_map_reg_write
+	movs	r0, #28
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:cmd_common_reg_read
+	movt	r1, :upper16:cmd_common_reg_read
+	movs	r0, #39
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:ddm_i2c_50g_monitor_reg_read
+	movt	r1, :upper16:ddm_i2c_50g_monitor_reg_read
+	movs	r0, #41
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:monitor_i2c_status_reg_read
+	movt	r1, :upper16:monitor_i2c_status_reg_read
+	movs	r0, #44
+	bl	mcu_register_reg_addr_read_callback
+	ldr	r0, [sp, #44]                   @ 4-byte Reload
+	movw	r1, :lower16:om_memory_state_ctrl_write_reg_byte
+	movt	r1, :upper16:om_memory_state_ctrl_write_reg_byte
+	str	r1, [sp, #52]                   @ 4-byte Spill
+	bl	i2c_slave_func_register_write_callback
+	ldr	r0, [sp, #48]                   @ 4-byte Reload
+	ldr	r1, [sp, #52]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_write_callback
+	ldr	r1, [sp, #52]                   @ 4-byte Reload
+	ldr	r0, [sp, #56]                   @ 4-byte Reload
+	bl	i2c_slave_func_register_write_callback
+	movw	r1, :lower16:test_i2c_restart_reg_write
+	movt	r1, :upper16:test_i2c_restart_reg_write
+	movs	r0, #229
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:test_tec_i2c_rest_gpio_write
+	movt	r1, :upper16:test_tec_i2c_rest_gpio_write
+	movs	r0, #230
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:dsp_fsl_i2c_rst_pin_reg_write
+	movt	r1, :upper16:dsp_fsl_i2c_rst_pin_reg_write
+	movs	r0, #231
+	bl	mcu_register_reg_addr_write_callback
+	ldr	r0, [sp, #56]                   @ 4-byte Reload
+	movw	r1, :lower16:dsp_fsl_i2c_data_path_reg_write
+	movt	r1, :upper16:dsp_fsl_i2c_data_path_reg_write
+	bl	mcu_register_reg_addr_write_callback
+	ldr	r0, [sp, #56]                   @ 4-byte Reload
+	movw	r1, :lower16:dsp_fsl_i2c_info_reg_read
+	movt	r1, :upper16:dsp_fsl_i2c_info_reg_read
+	bl	mcu_register_reg_addr_read_callback
+	movw	r1, :lower16:dsp_fsl_i2c_start_download_reg_write
+	movt	r1, :upper16:dsp_fsl_i2c_start_download_reg_write
+	movs	r0, #233
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:test_dac_value_write_reg
+	movt	r1, :upper16:test_dac_value_write_reg
+	movs	r0, #238
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:test_gpio_value_write_reg
+	movt	r1, :upper16:test_gpio_value_write_reg
+	movs	r0, #237
+	bl	mcu_register_reg_addr_write_callback
+	movw	r1, :lower16:test_gpio_info_write_reg
+	movt	r1, :upper16:test_gpio_info_write_reg
+	movs	r0, #236
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	bl	mcu_register_reg_addr_write_callback
+	ldr	r0, [sp, #60]                   @ 4-byte Reload
+	movw	r1, :lower16:test_gpio_info_read_reg
+	movt	r1, :upper16:test_gpio_info_read_reg
+	bl	mcu_register_reg_addr_read_callback
+	add	sp, #64
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	i2c_cmd_register_init, .Lfunc_end2-i2c_cmd_register_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"start Ab_Sf\r\n"
+	.size	.L.str, 14
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"."
+	.size	.L.str.1, 2
+
+	.type	__ARM_use_no_argv,%object       @ @__ARM_use_no_argv
+	.section	.ARM.use_no_argv,"awR",%progbits,unique,1
+	.globl	__ARM_use_no_argv
+	.p2align	2, 0x0
+__ARM_use_no_argv:
+	.long	1                               @ 0x1
+	.size	__ARM_use_no_argv, 4
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,1886 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_i2c.c"
+	.section	.text.i2c_deinit,"ax",%progbits
+	.hidden	i2c_deinit                      @ -- Begin function i2c_deinit
+	.globl	i2c_deinit
+	.p2align	2
+	.type	i2c_deinit,%function
+	.code	16                              @ @i2c_deinit
+	.thumb_func
+i2c_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #20]
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movw	r1, #21504
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_3
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #22528
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_4
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #49152
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_5
+	b	.LBB0_6
+.LBB0_3:
+	movw	r0, #1045
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_4:
+	movw	r0, #1046
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_5:
+	mov.w	r0, #1048
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_6:
+	b	.LBB0_7
+.LBB0_7:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	i2c_deinit, .Lfunc_end0-i2c_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_timing_config,"ax",%progbits
+	.hidden	i2c_timing_config               @ -- Begin function i2c_timing_config
+	.globl	i2c_timing_config
+	.p2align	2
+	.type	i2c_timing_config,%function
+	.code	16                              @ @i2c_timing_config
+	.thumb_func
+i2c_timing_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #-268435456
+	str	r0, [r1, #16]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #15728640
+	str	r0, [r1, #16]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #983040
+	str	r0, [r1, #16]
+	ldr	r0, [sp, #8]
+	lsls	r0, r0, #28
+	str	r0, [sp, #8]
+	ldr	r1, [sp, #4]
+	mov.w	r0, #15728640
+	and.w	r0, r0, r1, lsl #20
+	str	r0, [sp, #4]
+	ldr	r1, [sp]
+	mov.w	r0, #983040
+	and.w	r0, r0, r1, lsl #16
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #4]
+	orrs	r0, r1
+	ldr	r1, [sp]
+	orr.w	r2, r0, r1
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #16]
+	orrs	r0, r2
+	str	r0, [r1, #16]
+	add	sp, #16
+	bx	lr
+.Lfunc_end1:
+	.size	i2c_timing_config, .Lfunc_end1-i2c_timing_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_digital_noise_filter_config,"ax",%progbits
+	.hidden	i2c_digital_noise_filter_config @ -- Begin function i2c_digital_noise_filter_config
+	.globl	i2c_digital_noise_filter_config
+	.p2align	2
+	.type	i2c_digital_noise_filter_config,%function
+	.code	16                              @ @i2c_digital_noise_filter_config
+	.thumb_func
+i2c_digital_noise_filter_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #3840
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	i2c_digital_noise_filter_config, .Lfunc_end2-i2c_digital_noise_filter_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_master_clock_config,"ax",%progbits
+	.hidden	i2c_master_clock_config         @ -- Begin function i2c_master_clock_config
+	.globl	i2c_master_clock_config
+	.p2align	2
+	.type	i2c_master_clock_config,%function
+	.code	16                              @ @i2c_master_clock_config
+	.thumb_func
+i2c_master_clock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	str	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #65280
+	str	r0, [r1, #16]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #16]
+	bic	r0, r0, #255
+	str	r0, [r1, #16]
+	ldr	r0, [sp, #4]
+	lsls	r0, r0, #8
+	uxth	r0, r0
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp]
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	orr.w	r2, r0, r1
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #16]
+	orrs	r0, r2
+	str	r0, [r1, #16]
+	add	sp, #12
+	bx	lr
+.Lfunc_end3:
+	.size	i2c_master_clock_config, .Lfunc_end3-i2c_master_clock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_master_addressing,"ax",%progbits
+	.hidden	i2c_master_addressing           @ -- Begin function i2c_master_addressing
+	.globl	i2c_master_addressing
+	.p2align	2
+	.type	i2c_master_addressing,%function
+	.code	16                              @ @i2c_master_addressing
+	.thumb_func
+i2c_master_addressing:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	str	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	movw	r2, #1023
+	bics	r0, r2
+	str	r0, [r1, #4]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1024
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #12
+	bx	lr
+.Lfunc_end4:
+	.size	i2c_master_addressing, .Lfunc_end4-i2c_master_addressing
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address10_header_enable,"ax",%progbits
+	.hidden	i2c_address10_header_enable     @ -- Begin function i2c_address10_header_enable
+	.globl	i2c_address10_header_enable
+	.p2align	2
+	.type	i2c_address10_header_enable,%function
+	.code	16                              @ @i2c_address10_header_enable
+	.thumb_func
+i2c_address10_header_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #4096
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	i2c_address10_header_enable, .Lfunc_end5-i2c_address10_header_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address10_header_disable,"ax",%progbits
+	.hidden	i2c_address10_header_disable    @ -- Begin function i2c_address10_header_disable
+	.globl	i2c_address10_header_disable
+	.p2align	2
+	.type	i2c_address10_header_disable,%function
+	.code	16                              @ @i2c_address10_header_disable
+	.thumb_func
+i2c_address10_header_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #4096
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	i2c_address10_header_disable, .Lfunc_end6-i2c_address10_header_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address10_enable,"ax",%progbits
+	.hidden	i2c_address10_enable            @ -- Begin function i2c_address10_enable
+	.globl	i2c_address10_enable
+	.p2align	2
+	.type	i2c_address10_enable,%function
+	.code	16                              @ @i2c_address10_enable
+	.thumb_func
+i2c_address10_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #2048
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	i2c_address10_enable, .Lfunc_end7-i2c_address10_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address10_disable,"ax",%progbits
+	.hidden	i2c_address10_disable           @ -- Begin function i2c_address10_disable
+	.globl	i2c_address10_disable
+	.p2align	2
+	.type	i2c_address10_disable,%function
+	.code	16                              @ @i2c_address10_disable
+	.thumb_func
+i2c_address10_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #2048
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	i2c_address10_disable, .Lfunc_end8-i2c_address10_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_automatic_end_enable,"ax",%progbits
+	.hidden	i2c_automatic_end_enable        @ -- Begin function i2c_automatic_end_enable
+	.globl	i2c_automatic_end_enable
+	.p2align	2
+	.type	i2c_automatic_end_enable,%function
+	.code	16                              @ @i2c_automatic_end_enable
+	.thumb_func
+i2c_automatic_end_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #33554432
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	i2c_automatic_end_enable, .Lfunc_end9-i2c_automatic_end_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_automatic_end_disable,"ax",%progbits
+	.hidden	i2c_automatic_end_disable       @ -- Begin function i2c_automatic_end_disable
+	.globl	i2c_automatic_end_disable
+	.p2align	2
+	.type	i2c_automatic_end_disable,%function
+	.code	16                              @ @i2c_automatic_end_disable
+	.thumb_func
+i2c_automatic_end_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #33554432
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	i2c_automatic_end_disable, .Lfunc_end10-i2c_automatic_end_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_response_to_gcall_enable,"ax",%progbits
+	.hidden	i2c_slave_response_to_gcall_enable @ -- Begin function i2c_slave_response_to_gcall_enable
+	.globl	i2c_slave_response_to_gcall_enable
+	.p2align	2
+	.type	i2c_slave_response_to_gcall_enable,%function
+	.code	16                              @ @i2c_slave_response_to_gcall_enable
+	.thumb_func
+i2c_slave_response_to_gcall_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #524288
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	i2c_slave_response_to_gcall_enable, .Lfunc_end11-i2c_slave_response_to_gcall_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_response_to_gcall_disable,"ax",%progbits
+	.hidden	i2c_slave_response_to_gcall_disable @ -- Begin function i2c_slave_response_to_gcall_disable
+	.globl	i2c_slave_response_to_gcall_disable
+	.p2align	2
+	.type	i2c_slave_response_to_gcall_disable,%function
+	.code	16                              @ @i2c_slave_response_to_gcall_disable
+	.thumb_func
+i2c_slave_response_to_gcall_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #524288
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end12:
+	.size	i2c_slave_response_to_gcall_disable, .Lfunc_end12-i2c_slave_response_to_gcall_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_stretch_scl_low_enable,"ax",%progbits
+	.hidden	i2c_stretch_scl_low_enable      @ -- Begin function i2c_stretch_scl_low_enable
+	.globl	i2c_stretch_scl_low_enable
+	.p2align	2
+	.type	i2c_stretch_scl_low_enable,%function
+	.code	16                              @ @i2c_stretch_scl_low_enable
+	.thumb_func
+i2c_stretch_scl_low_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #131072
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end13:
+	.size	i2c_stretch_scl_low_enable, .Lfunc_end13-i2c_stretch_scl_low_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_stretch_scl_low_disable,"ax",%progbits
+	.hidden	i2c_stretch_scl_low_disable     @ -- Begin function i2c_stretch_scl_low_disable
+	.globl	i2c_stretch_scl_low_disable
+	.p2align	2
+	.type	i2c_stretch_scl_low_disable,%function
+	.code	16                              @ @i2c_stretch_scl_low_disable
+	.thumb_func
+i2c_stretch_scl_low_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #131072
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end14:
+	.size	i2c_stretch_scl_low_disable, .Lfunc_end14-i2c_stretch_scl_low_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address_config,"ax",%progbits
+	.hidden	i2c_address_config              @ -- Begin function i2c_address_config
+	.globl	i2c_address_config
+	.p2align	2
+	.type	i2c_address_config,%function
+	.code	16                              @ @i2c_address_config
+	.thumb_func
+i2c_address_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	str	r2, [sp]
+	ldr	r0, [sp, #4]
+	bfc	r0, #10, #22
+	str	r0, [sp, #4]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	orrs	r0, r1
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #8]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #32768
+	str	r0, [r1, #8]
+	add	sp, #12
+	bx	lr
+.Lfunc_end15:
+	.size	i2c_address_config, .Lfunc_end15-i2c_address_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address_bit_compare_config,"ax",%progbits
+	.hidden	i2c_address_bit_compare_config  @ -- Begin function i2c_address_bit_compare_config
+	.globl	i2c_address_bit_compare_config
+	.p2align	2
+	.type	i2c_address_bit_compare_config,%function
+	.code	16                              @ @i2c_address_bit_compare_config
+	.thumb_func
+i2c_address_bit_compare_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #144]
+	bic	r0, r0, #65024
+	str.w	r0, [r1, #144]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #144]
+	orrs	r0, r2
+	str.w	r0, [r1, #144]
+	add	sp, #8
+	bx	lr
+.Lfunc_end16:
+	.size	i2c_address_bit_compare_config, .Lfunc_end16-i2c_address_bit_compare_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_address_disable,"ax",%progbits
+	.hidden	i2c_address_disable             @ -- Begin function i2c_address_disable
+	.globl	i2c_address_disable
+	.p2align	2
+	.type	i2c_address_disable,%function
+	.code	16                              @ @i2c_address_disable
+	.thumb_func
+i2c_address_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #32768
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	i2c_address_disable, .Lfunc_end17-i2c_address_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_second_address_config,"ax",%progbits
+	.hidden	i2c_second_address_config       @ -- Begin function i2c_second_address_config
+	.globl	i2c_second_address_config
+	.p2align	2
+	.type	i2c_second_address_config,%function
+	.code	16                              @ @i2c_second_address_config
+	.thumb_func
+i2c_second_address_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	str	r2, [sp]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #254
+	str	r0, [sp, #4]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #12]
+	orrs	r0, r2
+	str	r0, [r1, #12]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #12]
+	bic	r0, r0, #1792
+	str	r0, [r1, #12]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #12]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #12]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #12]
+	orr	r0, r0, #32768
+	str	r0, [r1, #12]
+	add	sp, #12
+	bx	lr
+.Lfunc_end18:
+	.size	i2c_second_address_config, .Lfunc_end18-i2c_second_address_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_second_address_disable,"ax",%progbits
+	.hidden	i2c_second_address_disable      @ -- Begin function i2c_second_address_disable
+	.globl	i2c_second_address_disable
+	.p2align	2
+	.type	i2c_second_address_disable,%function
+	.code	16                              @ @i2c_second_address_disable
+	.thumb_func
+i2c_second_address_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #12]
+	bic	r0, r0, #32768
+	str	r0, [r1, #12]
+	add	sp, #4
+	bx	lr
+.Lfunc_end19:
+	.size	i2c_second_address_disable, .Lfunc_end19-i2c_second_address_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_recevied_address_get,"ax",%progbits
+	.hidden	i2c_recevied_address_get        @ -- Begin function i2c_recevied_address_get
+	.globl	i2c_recevied_address_get
+	.p2align	2
+	.type	i2c_recevied_address_get,%function
+	.code	16                              @ @i2c_recevied_address_get
+	.thumb_func
+i2c_recevied_address_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #24]
+	ubfx	r0, r0, #17, #7
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	i2c_recevied_address_get, .Lfunc_end20-i2c_recevied_address_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_byte_control_enable,"ax",%progbits
+	.hidden	i2c_slave_byte_control_enable   @ -- Begin function i2c_slave_byte_control_enable
+	.globl	i2c_slave_byte_control_enable
+	.p2align	2
+	.type	i2c_slave_byte_control_enable,%function
+	.code	16                              @ @i2c_slave_byte_control_enable
+	.thumb_func
+i2c_slave_byte_control_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #65536
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end21:
+	.size	i2c_slave_byte_control_enable, .Lfunc_end21-i2c_slave_byte_control_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_slave_byte_control_disable,"ax",%progbits
+	.hidden	i2c_slave_byte_control_disable  @ -- Begin function i2c_slave_byte_control_disable
+	.globl	i2c_slave_byte_control_disable
+	.p2align	2
+	.type	i2c_slave_byte_control_disable,%function
+	.code	16                              @ @i2c_slave_byte_control_disable
+	.thumb_func
+i2c_slave_byte_control_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #65536
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end22:
+	.size	i2c_slave_byte_control_disable, .Lfunc_end22-i2c_slave_byte_control_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_nack_enable,"ax",%progbits
+	.hidden	i2c_nack_enable                 @ -- Begin function i2c_nack_enable
+	.globl	i2c_nack_enable
+	.p2align	2
+	.type	i2c_nack_enable,%function
+	.code	16                              @ @i2c_nack_enable
+	.thumb_func
+i2c_nack_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #32768
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end23:
+	.size	i2c_nack_enable, .Lfunc_end23-i2c_nack_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_nack_disable,"ax",%progbits
+	.hidden	i2c_nack_disable                @ -- Begin function i2c_nack_disable
+	.globl	i2c_nack_disable
+	.p2align	2
+	.type	i2c_nack_disable,%function
+	.code	16                              @ @i2c_nack_disable
+	.thumb_func
+i2c_nack_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #32768
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end24:
+	.size	i2c_nack_disable, .Lfunc_end24-i2c_nack_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_enable,"ax",%progbits
+	.hidden	i2c_enable                      @ -- Begin function i2c_enable
+	.globl	i2c_enable
+	.p2align	2
+	.type	i2c_enable,%function
+	.code	16                              @ @i2c_enable
+	.thumb_func
+i2c_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end25:
+	.size	i2c_enable, .Lfunc_end25-i2c_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_disable,"ax",%progbits
+	.hidden	i2c_disable                     @ -- Begin function i2c_disable
+	.globl	i2c_disable
+	.p2align	2
+	.type	i2c_disable,%function
+	.code	16                              @ @i2c_disable
+	.thumb_func
+i2c_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end26:
+	.size	i2c_disable, .Lfunc_end26-i2c_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_start_on_bus,"ax",%progbits
+	.hidden	i2c_start_on_bus                @ -- Begin function i2c_start_on_bus
+	.globl	i2c_start_on_bus
+	.p2align	2
+	.type	i2c_start_on_bus,%function
+	.code	16                              @ @i2c_start_on_bus
+	.thumb_func
+i2c_start_on_bus:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #8192
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end27:
+	.size	i2c_start_on_bus, .Lfunc_end27-i2c_start_on_bus
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_stop_on_bus,"ax",%progbits
+	.hidden	i2c_stop_on_bus                 @ -- Begin function i2c_stop_on_bus
+	.globl	i2c_stop_on_bus
+	.p2align	2
+	.type	i2c_stop_on_bus,%function
+	.code	16                              @ @i2c_stop_on_bus
+	.thumb_func
+i2c_stop_on_bus:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #16384
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end28:
+	.size	i2c_stop_on_bus, .Lfunc_end28-i2c_stop_on_bus
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_data_transmit,"ax",%progbits
+	.hidden	i2c_data_transmit               @ -- Begin function i2c_data_transmit
+	.globl	i2c_data_transmit
+	.p2align	2
+	.type	i2c_data_transmit,%function
+	.code	16                              @ @i2c_data_transmit
+	.thumb_func
+i2c_data_transmit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldrb.w	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #40]
+	add	sp, #8
+	bx	lr
+.Lfunc_end29:
+	.size	i2c_data_transmit, .Lfunc_end29-i2c_data_transmit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_data_receive,"ax",%progbits
+	.hidden	i2c_data_receive                @ -- Begin function i2c_data_receive
+	.globl	i2c_data_receive
+	.p2align	2
+	.type	i2c_data_receive,%function
+	.code	16                              @ @i2c_data_receive
+	.thumb_func
+i2c_data_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #36]
+	uxtb	r0, r0
+	add	sp, #4
+	bx	lr
+.Lfunc_end30:
+	.size	i2c_data_receive, .Lfunc_end30-i2c_data_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_reload_enable,"ax",%progbits
+	.hidden	i2c_reload_enable               @ -- Begin function i2c_reload_enable
+	.globl	i2c_reload_enable
+	.p2align	2
+	.type	i2c_reload_enable,%function
+	.code	16                              @ @i2c_reload_enable
+	.thumb_func
+i2c_reload_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #16777216
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end31:
+	.size	i2c_reload_enable, .Lfunc_end31-i2c_reload_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_reload_disable,"ax",%progbits
+	.hidden	i2c_reload_disable              @ -- Begin function i2c_reload_disable
+	.globl	i2c_reload_disable
+	.p2align	2
+	.type	i2c_reload_disable,%function
+	.code	16                              @ @i2c_reload_disable
+	.thumb_func
+i2c_reload_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16777216
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end32:
+	.size	i2c_reload_disable, .Lfunc_end32-i2c_reload_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_transfer_byte_number_config,"ax",%progbits
+	.hidden	i2c_transfer_byte_number_config @ -- Begin function i2c_transfer_byte_number_config
+	.globl	i2c_transfer_byte_number_config
+	.p2align	2
+	.type	i2c_transfer_byte_number_config,%function
+	.code	16                              @ @i2c_transfer_byte_number_config
+	.thumb_func
+i2c_transfer_byte_number_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16711680
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end33:
+	.size	i2c_transfer_byte_number_config, .Lfunc_end33-i2c_transfer_byte_number_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_dma_enable,"ax",%progbits
+	.hidden	i2c_dma_enable                  @ -- Begin function i2c_dma_enable
+	.globl	i2c_dma_enable
+	.p2align	2
+	.type	i2c_dma_enable,%function
+	.code	16                              @ @i2c_dma_enable
+	.thumb_func
+i2c_dma_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB34_2
+	b	.LBB34_1
+.LBB34_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB34_3
+.LBB34_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB34_3
+.LBB34_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end34:
+	.size	i2c_dma_enable, .Lfunc_end34-i2c_dma_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_dma_disable,"ax",%progbits
+	.hidden	i2c_dma_disable                 @ -- Begin function i2c_dma_disable
+	.globl	i2c_dma_disable
+	.p2align	2
+	.type	i2c_dma_disable,%function
+	.code	16                              @ @i2c_dma_disable
+	.thumb_func
+i2c_dma_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB35_2
+	b	.LBB35_1
+.LBB35_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB35_3
+.LBB35_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #32768
+	str	r0, [r1]
+	b	.LBB35_3
+.LBB35_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end35:
+	.size	i2c_dma_disable, .Lfunc_end35-i2c_dma_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_pec_transfer,"ax",%progbits
+	.hidden	i2c_pec_transfer                @ -- Begin function i2c_pec_transfer
+	.globl	i2c_pec_transfer
+	.p2align	2
+	.type	i2c_pec_transfer,%function
+	.code	16                              @ @i2c_pec_transfer
+	.thumb_func
+i2c_pec_transfer:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #67108864
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end36:
+	.size	i2c_pec_transfer, .Lfunc_end36-i2c_pec_transfer
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_pec_enable,"ax",%progbits
+	.hidden	i2c_pec_enable                  @ -- Begin function i2c_pec_enable
+	.globl	i2c_pec_enable
+	.p2align	2
+	.type	i2c_pec_enable,%function
+	.code	16                              @ @i2c_pec_enable
+	.thumb_func
+i2c_pec_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #8388608
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end37:
+	.size	i2c_pec_enable, .Lfunc_end37-i2c_pec_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_pec_disable,"ax",%progbits
+	.hidden	i2c_pec_disable                 @ -- Begin function i2c_pec_disable
+	.globl	i2c_pec_disable
+	.p2align	2
+	.type	i2c_pec_disable,%function
+	.code	16                              @ @i2c_pec_disable
+	.thumb_func
+i2c_pec_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #8388608
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end38:
+	.size	i2c_pec_disable, .Lfunc_end38-i2c_pec_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_pec_value_get,"ax",%progbits
+	.hidden	i2c_pec_value_get               @ -- Begin function i2c_pec_value_get
+	.globl	i2c_pec_value_get
+	.p2align	2
+	.type	i2c_pec_value_get,%function
+	.code	16                              @ @i2c_pec_value_get
+	.thumb_func
+i2c_pec_value_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #32]
+	uxtb	r0, r0
+	add	sp, #4
+	bx	lr
+.Lfunc_end39:
+	.size	i2c_pec_value_get, .Lfunc_end39-i2c_pec_value_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_alert_enable,"ax",%progbits
+	.hidden	i2c_smbus_alert_enable          @ -- Begin function i2c_smbus_alert_enable
+	.globl	i2c_smbus_alert_enable
+	.p2align	2
+	.type	i2c_smbus_alert_enable,%function
+	.code	16                              @ @i2c_smbus_alert_enable
+	.thumb_func
+i2c_smbus_alert_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #4194304
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end40:
+	.size	i2c_smbus_alert_enable, .Lfunc_end40-i2c_smbus_alert_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_alert_disable,"ax",%progbits
+	.hidden	i2c_smbus_alert_disable         @ -- Begin function i2c_smbus_alert_disable
+	.globl	i2c_smbus_alert_disable
+	.p2align	2
+	.type	i2c_smbus_alert_disable,%function
+	.code	16                              @ @i2c_smbus_alert_disable
+	.thumb_func
+i2c_smbus_alert_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #4194304
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end41:
+	.size	i2c_smbus_alert_disable, .Lfunc_end41-i2c_smbus_alert_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_default_addr_enable,"ax",%progbits
+	.hidden	i2c_smbus_default_addr_enable   @ -- Begin function i2c_smbus_default_addr_enable
+	.globl	i2c_smbus_default_addr_enable
+	.p2align	2
+	.type	i2c_smbus_default_addr_enable,%function
+	.code	16                              @ @i2c_smbus_default_addr_enable
+	.thumb_func
+i2c_smbus_default_addr_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #2097152
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end42:
+	.size	i2c_smbus_default_addr_enable, .Lfunc_end42-i2c_smbus_default_addr_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_default_addr_disable,"ax",%progbits
+	.hidden	i2c_smbus_default_addr_disable  @ -- Begin function i2c_smbus_default_addr_disable
+	.globl	i2c_smbus_default_addr_disable
+	.p2align	2
+	.type	i2c_smbus_default_addr_disable,%function
+	.code	16                              @ @i2c_smbus_default_addr_disable
+	.thumb_func
+i2c_smbus_default_addr_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #2097152
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end43:
+	.size	i2c_smbus_default_addr_disable, .Lfunc_end43-i2c_smbus_default_addr_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_host_addr_enable,"ax",%progbits
+	.hidden	i2c_smbus_host_addr_enable      @ -- Begin function i2c_smbus_host_addr_enable
+	.globl	i2c_smbus_host_addr_enable
+	.p2align	2
+	.type	i2c_smbus_host_addr_enable,%function
+	.code	16                              @ @i2c_smbus_host_addr_enable
+	.thumb_func
+i2c_smbus_host_addr_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #1048576
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end44:
+	.size	i2c_smbus_host_addr_enable, .Lfunc_end44-i2c_smbus_host_addr_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_smbus_host_addr_disable,"ax",%progbits
+	.hidden	i2c_smbus_host_addr_disable     @ -- Begin function i2c_smbus_host_addr_disable
+	.globl	i2c_smbus_host_addr_disable
+	.p2align	2
+	.type	i2c_smbus_host_addr_disable,%function
+	.code	16                              @ @i2c_smbus_host_addr_disable
+	.thumb_func
+i2c_smbus_host_addr_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1048576
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end45:
+	.size	i2c_smbus_host_addr_disable, .Lfunc_end45-i2c_smbus_host_addr_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_extented_clock_timeout_enable,"ax",%progbits
+	.hidden	i2c_extented_clock_timeout_enable @ -- Begin function i2c_extented_clock_timeout_enable
+	.globl	i2c_extented_clock_timeout_enable
+	.p2align	2
+	.type	i2c_extented_clock_timeout_enable,%function
+	.code	16                              @ @i2c_extented_clock_timeout_enable
+	.thumb_func
+i2c_extented_clock_timeout_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #20]
+	orr	r0, r0, #-2147483648
+	str	r0, [r1, #20]
+	add	sp, #4
+	bx	lr
+.Lfunc_end46:
+	.size	i2c_extented_clock_timeout_enable, .Lfunc_end46-i2c_extented_clock_timeout_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_extented_clock_timeout_disable,"ax",%progbits
+	.hidden	i2c_extented_clock_timeout_disable @ -- Begin function i2c_extented_clock_timeout_disable
+	.globl	i2c_extented_clock_timeout_disable
+	.p2align	2
+	.type	i2c_extented_clock_timeout_disable,%function
+	.code	16                              @ @i2c_extented_clock_timeout_disable
+	.thumb_func
+i2c_extented_clock_timeout_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #20]
+	bic	r0, r0, #-2147483648
+	str	r0, [r1, #20]
+	add	sp, #4
+	bx	lr
+.Lfunc_end47:
+	.size	i2c_extented_clock_timeout_disable, .Lfunc_end47-i2c_extented_clock_timeout_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_clock_timeout_enable,"ax",%progbits
+	.hidden	i2c_clock_timeout_enable        @ -- Begin function i2c_clock_timeout_enable
+	.globl	i2c_clock_timeout_enable
+	.p2align	2
+	.type	i2c_clock_timeout_enable,%function
+	.code	16                              @ @i2c_clock_timeout_enable
+	.thumb_func
+i2c_clock_timeout_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #20]
+	orr	r0, r0, #32768
+	str	r0, [r1, #20]
+	add	sp, #4
+	bx	lr
+.Lfunc_end48:
+	.size	i2c_clock_timeout_enable, .Lfunc_end48-i2c_clock_timeout_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_clock_timeout_disable,"ax",%progbits
+	.hidden	i2c_clock_timeout_disable       @ -- Begin function i2c_clock_timeout_disable
+	.globl	i2c_clock_timeout_disable
+	.p2align	2
+	.type	i2c_clock_timeout_disable,%function
+	.code	16                              @ @i2c_clock_timeout_disable
+	.thumb_func
+i2c_clock_timeout_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #20]
+	bic	r0, r0, #32768
+	str	r0, [r1, #20]
+	add	sp, #4
+	bx	lr
+.Lfunc_end49:
+	.size	i2c_clock_timeout_disable, .Lfunc_end49-i2c_clock_timeout_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_bus_timeout_b_config,"ax",%progbits
+	.hidden	i2c_bus_timeout_b_config        @ -- Begin function i2c_bus_timeout_b_config
+	.globl	i2c_bus_timeout_b_config
+	.p2align	2
+	.type	i2c_bus_timeout_b_config,%function
+	.code	16                              @ @i2c_bus_timeout_b_config
+	.thumb_func
+i2c_bus_timeout_b_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	bfc	r0, #16, #12
+	str	r0, [r1, #20]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orr.w	r0, r0, r2, lsl #16
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end50:
+	.size	i2c_bus_timeout_b_config, .Lfunc_end50-i2c_bus_timeout_b_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_bus_timeout_a_config,"ax",%progbits
+	.hidden	i2c_bus_timeout_a_config        @ -- Begin function i2c_bus_timeout_a_config
+	.globl	i2c_bus_timeout_a_config
+	.p2align	2
+	.type	i2c_bus_timeout_a_config,%function
+	.code	16                              @ @i2c_bus_timeout_a_config
+	.thumb_func
+i2c_bus_timeout_a_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	movw	r2, #4095
+	bics	r0, r2
+	str	r0, [r1, #20]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orrs	r0, r2
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end51:
+	.size	i2c_bus_timeout_a_config, .Lfunc_end51-i2c_bus_timeout_a_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_idle_clock_timeout_config,"ax",%progbits
+	.hidden	i2c_idle_clock_timeout_config   @ -- Begin function i2c_idle_clock_timeout_config
+	.globl	i2c_idle_clock_timeout_config
+	.p2align	2
+	.type	i2c_idle_clock_timeout_config,%function
+	.code	16                              @ @i2c_idle_clock_timeout_config
+	.thumb_func
+i2c_idle_clock_timeout_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	bic	r0, r0, #4096
+	str	r0, [r1, #20]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orrs	r0, r2
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end52:
+	.size	i2c_idle_clock_timeout_config, .Lfunc_end52-i2c_idle_clock_timeout_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_flag_get,"ax",%progbits
+	.hidden	i2c_flag_get                    @ -- Begin function i2c_flag_get
+	.globl	i2c_flag_get
+	.p2align	2
+	.type	i2c_flag_get,%function
+	.code	16                              @ @i2c_flag_get
+	.thumb_func
+i2c_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #24]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB53_2
+	b	.LBB53_1
+.LBB53_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB53_3
+.LBB53_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB53_3
+.LBB53_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end53:
+	.size	i2c_flag_get, .Lfunc_end53-i2c_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_flag_clear,"ax",%progbits
+	.hidden	i2c_flag_clear                  @ -- Begin function i2c_flag_clear
+	.globl	i2c_flag_clear
+	.p2align	2
+	.type	i2c_flag_clear,%function
+	.code	16                              @ @i2c_flag_clear
+	.thumb_func
+i2c_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	add	sp, #8
+	bx	lr
+.Lfunc_end54:
+	.size	i2c_flag_clear, .Lfunc_end54-i2c_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_interrupt_enable,"ax",%progbits
+	.hidden	i2c_interrupt_enable            @ -- Begin function i2c_interrupt_enable
+	.globl	i2c_interrupt_enable
+	.p2align	2
+	.type	i2c_interrupt_enable,%function
+	.code	16                              @ @i2c_interrupt_enable
+	.thumb_func
+i2c_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end55:
+	.size	i2c_interrupt_enable, .Lfunc_end55-i2c_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_interrupt_disable,"ax",%progbits
+	.hidden	i2c_interrupt_disable           @ -- Begin function i2c_interrupt_disable
+	.globl	i2c_interrupt_disable
+	.p2align	2
+	.type	i2c_interrupt_disable,%function
+	.code	16                              @ @i2c_interrupt_disable
+	.thumb_func
+i2c_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end56:
+	.size	i2c_interrupt_disable, .Lfunc_end56-i2c_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_interrupt_flag_get,"ax",%progbits
+	.hidden	i2c_interrupt_flag_get          @ -- Begin function i2c_interrupt_flag_get
+	.globl	i2c_interrupt_flag_get
+	.p2align	2
+	.type	i2c_interrupt_flag_get,%function
+	.code	16                              @ @i2c_interrupt_flag_get
+	.thumb_func
+i2c_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrh.w	r1, [sp, #8]
+	lsrs	r1, r1, #6
+	ldr	r0, [r0, r1]
+	ldr	r1, [sp, #8]
+	and	r2, r1, #31
+	movs	r1, #1
+	lsl.w	r2, r1, r2
+	ands	r0, r2
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r2, [sp, #8]
+	lsrs	r2, r2, #22
+	ldr	r0, [r0, r2]
+	ldr	r2, [sp, #8]
+	ubfx	r2, r2, #16, #5
+	lsls	r1, r2
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB57_3
+	b	.LBB57_1
+.LBB57_1:
+	ldr	r0, [sp]
+	cbz	r0, .LBB57_3
+	b	.LBB57_2
+.LBB57_2:
+	movs	r0, #1
+	strb.w	r0, [sp, #19]
+	b	.LBB57_4
+.LBB57_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #19]
+	b	.LBB57_4
+.LBB57_4:
+	ldrb.w	r0, [sp, #19]
+	add	sp, #20
+	bx	lr
+.Lfunc_end57:
+	.size	i2c_interrupt_flag_get, .Lfunc_end57-i2c_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2c_interrupt_flag_clear,"ax",%progbits
+	.hidden	i2c_interrupt_flag_clear        @ -- Begin function i2c_interrupt_flag_clear
+	.globl	i2c_interrupt_flag_clear
+	.p2align	2
+	.type	i2c_interrupt_flag_clear,%function
+	.code	16                              @ @i2c_interrupt_flag_clear
+	.thumb_func
+i2c_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ubfx	r1, r0, #16, #5
+	movs	r0, #1
+	lsl.w	r2, r0, r1
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	add	sp, #8
+	bx	lr
+.Lfunc_end58:
+	.size	i2c_interrupt_flag_clear, .Lfunc_end58-i2c_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

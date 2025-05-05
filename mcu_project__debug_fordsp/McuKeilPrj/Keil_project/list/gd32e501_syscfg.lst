@@ -1,0 +1,530 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_syscfg.c"
+	.section	.text.syscfg_deinit,"ax",%progbits
+	.hidden	syscfg_deinit                   @ -- Begin function syscfg_deinit
+	.globl	syscfg_deinit
+	.p2align	2
+	.type	syscfg_deinit,%function
+	.code	16                              @ @syscfg_deinit
+	.thumb_func
+syscfg_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #768
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	syscfg_deinit, .Lfunc_end0-syscfg_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_bootmode_config,"ax",%progbits
+	.hidden	syscfg_bootmode_config          @ -- Begin function syscfg_bootmode_config
+	.globl	syscfg_bootmode_config
+	.p2align	2
+	.type	syscfg_bootmode_config,%function
+	.code	16                              @ @syscfg_bootmode_config
+	.thumb_func
+syscfg_bootmode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	movs	r1, #0
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #3
+	str	r0, [r1]
+	ldrb.w	r2, [sp, #3]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	syscfg_bootmode_config, .Lfunc_end1-syscfg_bootmode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_dma_remap_enable,"ax",%progbits
+	.hidden	syscfg_dma_remap_enable         @ -- Begin function syscfg_dma_remap_enable
+	.globl	syscfg_dma_remap_enable
+	.p2align	2
+	.type	syscfg_dma_remap_enable,%function
+	.code	16                              @ @syscfg_dma_remap_enable
+	.thumb_func
+syscfg_dma_remap_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #0
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end2:
+	.size	syscfg_dma_remap_enable, .Lfunc_end2-syscfg_dma_remap_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_dma_remap_disable,"ax",%progbits
+	.hidden	syscfg_dma_remap_disable        @ -- Begin function syscfg_dma_remap_disable
+	.globl	syscfg_dma_remap_disable
+	.p2align	2
+	.type	syscfg_dma_remap_disable,%function
+	.code	16                              @ @syscfg_dma_remap_disable
+	.thumb_func
+syscfg_dma_remap_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #0
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	syscfg_dma_remap_disable, .Lfunc_end3-syscfg_dma_remap_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_high_current_enable,"ax",%progbits
+	.hidden	syscfg_high_current_enable      @ -- Begin function syscfg_high_current_enable
+	.globl	syscfg_high_current_enable
+	.p2align	2
+	.type	syscfg_high_current_enable,%function
+	.code	16                              @ @syscfg_high_current_enable
+	.thumb_func
+syscfg_high_current_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #0
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	syscfg_high_current_enable, .Lfunc_end4-syscfg_high_current_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_high_current_disable,"ax",%progbits
+	.hidden	syscfg_high_current_disable     @ -- Begin function syscfg_high_current_disable
+	.globl	syscfg_high_current_disable
+	.p2align	2
+	.type	syscfg_high_current_disable,%function
+	.code	16                              @ @syscfg_high_current_disable
+	.thumb_func
+syscfg_high_current_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #0
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ands	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	syscfg_high_current_disable, .Lfunc_end5-syscfg_high_current_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_vref_enable,"ax",%progbits
+	.hidden	syscfg_vref_enable              @ -- Begin function syscfg_vref_enable
+	.globl	syscfg_vref_enable
+	.p2align	2
+	.type	syscfg_vref_enable,%function
+	.code	16                              @ @syscfg_vref_enable
+	.thumb_func
+syscfg_vref_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movs	r1, #24
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orr	r0, r0, #65536
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end6:
+	.size	syscfg_vref_enable, .Lfunc_end6-syscfg_vref_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_vref_disable,"ax",%progbits
+	.hidden	syscfg_vref_disable             @ -- Begin function syscfg_vref_disable
+	.globl	syscfg_vref_disable
+	.p2align	2
+	.type	syscfg_vref_disable,%function
+	.code	16                              @ @syscfg_vref_disable
+	.thumb_func
+syscfg_vref_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movs	r1, #24
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #65536
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end7:
+	.size	syscfg_vref_disable, .Lfunc_end7-syscfg_vref_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_pin_reset_mode_config,"ax",%progbits
+	.hidden	syscfg_pin_reset_mode_config    @ -- Begin function syscfg_pin_reset_mode_config
+	.globl	syscfg_pin_reset_mode_config
+	.p2align	2
+	.type	syscfg_pin_reset_mode_config,%function
+	.code	16                              @ @syscfg_pin_reset_mode_config
+	.thumb_func
+syscfg_pin_reset_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r1, #24
+	movt	r1, #16385
+	ldr	r0, [r1]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	bic	r0, r0, #16777216
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r2, [sp, #4]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end8:
+	.size	syscfg_pin_reset_mode_config, .Lfunc_end8-syscfg_pin_reset_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_exti_line_config,"ax",%progbits
+	.hidden	syscfg_exti_line_config         @ -- Begin function syscfg_exti_line_config
+	.globl	syscfg_exti_line_config
+	.p2align	2
+	.type	syscfg_exti_line_config,%function
+	.code	16                              @ @syscfg_exti_line_config
+	.thumb_func
+syscfg_exti_line_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #15]
+	strb.w	r1, [sp, #14]
+	ldrb.w	r0, [sp, #14]
+	and	r0, r0, #3
+	lsls	r1, r0, #2
+	movs	r0, #15
+	lsls	r0, r1
+	mvns	r0, r0
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #15]
+	ldrb.w	r1, [sp, #14]
+	and	r1, r1, #3
+	lsls	r1, r1, #2
+	lsls	r0, r1
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #14]
+	lsrs	r0, r0, #2
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB9_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI9_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI9_0:
+	.byte	(.LBB9_3-(.LCPI9_0+4))/2
+	.byte	(.LBB9_4-(.LCPI9_0+4))/2
+	.byte	(.LBB9_5-(.LCPI9_0+4))/2
+	.byte	(.LBB9_6-(.LCPI9_0+4))/2
+	.p2align	1
+.LBB9_3:
+	ldr	r2, [sp, #8]
+	movs	r1, #8
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB9_8
+.LBB9_4:
+	ldr	r2, [sp, #8]
+	movs	r1, #12
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB9_8
+.LBB9_5:
+	ldr	r2, [sp, #8]
+	movs	r1, #16
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB9_8
+.LBB9_6:
+	ldr	r2, [sp, #8]
+	movs	r1, #20
+	movt	r1, #16385
+	ldr	r0, [r1]
+	ands	r0, r2
+	str	r0, [r1]
+	ldr	r2, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB9_8
+.LBB9_7:
+	b	.LBB9_8
+.LBB9_8:
+	add	sp, #16
+	bx	lr
+.Lfunc_end9:
+	.size	syscfg_exti_line_config, .Lfunc_end9-syscfg_exti_line_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_lock_config,"ax",%progbits
+	.hidden	syscfg_lock_config              @ -- Begin function syscfg_lock_config
+	.globl	syscfg_lock_config
+	.p2align	2
+	.type	syscfg_lock_config,%function
+	.code	16                              @ @syscfg_lock_config
+	.thumb_func
+syscfg_lock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #24
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	syscfg_lock_config, .Lfunc_end10-syscfg_lock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.irq_latency_set,"ax",%progbits
+	.hidden	irq_latency_set                 @ -- Begin function irq_latency_set
+	.globl	irq_latency_set
+	.p2align	2
+	.type	irq_latency_set,%function
+	.code	16                              @ @irq_latency_set
+	.thumb_func
+irq_latency_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movw	r1, #256
+	movt	r1, #16385
+	ldr	r0, [r1]
+	bic	r0, r0, #255
+	str	r0, [sp]
+	ldrb.w	r2, [sp, #7]
+	ldr	r0, [sp]
+	orrs	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	irq_latency_set, .Lfunc_end11-irq_latency_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_flag_get,"ax",%progbits
+	.hidden	syscfg_flag_get                 @ -- Begin function syscfg_flag_get
+	.globl	syscfg_flag_get
+	.p2align	2
+	.type	syscfg_flag_get,%function
+	.code	16                              @ @syscfg_flag_get
+	.thumb_func
+syscfg_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp]
+	movs	r0, #24
+	movt	r0, #16385
+	ldr	r0, [r0]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #7]
+	b	.LBB12_3
+.LBB12_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #7]
+	b	.LBB12_3
+.LBB12_3:
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	bx	lr
+.Lfunc_end12:
+	.size	syscfg_flag_get, .Lfunc_end12-syscfg_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.syscfg_flag_clear,"ax",%progbits
+	.hidden	syscfg_flag_clear               @ -- Begin function syscfg_flag_clear
+	.globl	syscfg_flag_clear
+	.p2align	2
+	.type	syscfg_flag_clear,%function
+	.code	16                              @ @syscfg_flag_clear
+	.thumb_func
+syscfg_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movs	r1, #24
+	movt	r1, #16385
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end13:
+	.size	syscfg_flag_clear, .Lfunc_end13-syscfg_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

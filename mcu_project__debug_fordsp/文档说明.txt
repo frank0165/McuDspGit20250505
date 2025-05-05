@@ -1,0 +1,64 @@
+test,
+
+开始时间：20250206
+
+修改内容：
+上位机将配置好的数据导出为二进制文件，再将二进制文件导入，mcu端将二进制文件的数据赋值给光模块默认参数。
+
+待测试
+
+20250219
+1 gn7161,gn7153，ux3326,当中的采样时延fh_delay_us()有的去掉，有的缩短
+2 修改了RSSI采样的注入组方式采样，不再与DMA方式混用。
+3 GN7161的firmware的版本控制采用了宏定义
+   FH_IC_GN7161_FIRMWARE_0Bv21_1_2_10
+FH_IC_GN7161_FIRMWARE_08v21_1_2_8
+
+20250221
+1 目录other增了trigger_interrupt_mode.c，trigger_interrupt_mode.h
+   trigger信号由sgm41282_apd移到这两个文件中了，防止sgm41282_apd被替换后，trigger触发失效。
+2 adc_dma_config_init()中dma_data_parameter.number 的个数出错，造成全局变量ddm_adc_out_val异常改写，
+   现把硬编码数值6改为 adc_number = sizeof(adc_dma_sample_value) / sizeof(adc_dma_sample_value[0]);
+
+20250225
+1 增加变量g_mcu_vars_param.g_update_process_flag，用于升级时其它ddm不做操作
+2 update_om_diagnose()函数叶，每一个函数前加上if(RESET == g_mcu_vars_param.g_update_process_flag)，
+ 3 在升级函数中update_app_write_reg_byte(),当为UPGRADE_APP_START时，g_mcu_vars_param.g_update_process_flag = SET,让update_om_diagnose()停止
+   
+20250303
+1 修改了i2c协议栈，把slave_i2c_receive_handle()放到中断slave_event_irq_handler();因为slave_i2c_receive_handle只与内存交互，速率快
+  在中断中处理不会有异常。
+2 消除代码中不必要的打印，特别是中断中不能有任何打印printf
+3 中断中slave_event_irq_handler()增加了slave_i2c_write_special_handleing(),用于处理写中断时，先停止ddm轮询
+4 timer_device_config中的定时器中断优先级降低
+5 tec_i2c_auto_ctl_reg_write没有用到，去掉
+6 升级功能中的printf绝大部分去掉了，除了malloc失败保留。printf太多会影响升级速率
+
+202503011
+1 修改i2c协议栈：
+(1）增加了master，slave的错误中断处理，这个很重要。
+(2) slave_event_irq_handler（）中，I2C_INT_FLAG_ADDSEND中断增加了writing判断处理
+2 所有的中断优先级定义了宏MCU_NIVC_IRQ_PRIORITY
+3 tec功能中去掉了废代码。
+4 增加了回读50G的EA，sgm41282的ADC。
+
+20250321
+1 sgm41296_tec_release_limit_refresh()
+对门限判断有误，但是因为不能同时达到最高和最低门限，
+所以会不断的下清除命令，以前没出错。
+2 清除冗余的宏
+3 gpio引脚全部用宏定义代替
+4 CASE_RTH_TEMP_ZERO定义由-40改为40,对应get_case_therm_temperature（）
+  vtherm += CASE_RTH_TEMP_ZERO;改为vtherm -= CASE_RTH_TEMP_ZERO;
+5 slave i2c中为中去掉了g_slave_i2c_irq_status_pre = I2C_INT_NON_STATUS;
+  这个无作用
+6 slave_i2c_receive_handle()消除冗余代码
+7 tec_control增加了tec_driver文件，驱动部分放入这个文件。
+8 新增了i2c_opt_ie_interface.h外部接口放入这个文件;增加i2c_opt_ie_data_type.h
+9 增加了adc_sample_interface.h/c, adc_sample_driver.h/c
+10 增加dac_driver.c/h
+11 增加了i2c_driver.c/h
+
+20250324
+1 i2c协议栈从GDE501_fireware移到mcu目录下，代码没做任何更改
+

@@ -1,0 +1,94 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"adc_sample_driver.c"
+	.section	.text.adc_sample_gpio_init,"ax",%progbits
+	.hidden	adc_sample_gpio_init            @ -- Begin function adc_sample_gpio_init
+	.globl	adc_sample_gpio_init
+	.p2align	2
+	.type	adc_sample_gpio_init,%function
+	.code	16                              @ @adc_sample_gpio_init
+	.thumb_func
+adc_sample_gpio_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #3
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	movs	r3, #2
+	bl	gpio_mode_set
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	movs	r3, #1
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	movw	r0, #1024
+	movt	r0, #18432
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movs	r3, #4
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	bl	gpio_mode_set
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	movs	r3, #8
+	bl	gpio_mode_set
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	mov.w	r0, #1207959552
+	bl	gpio_mode_set
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	adc_sample_gpio_init, .Lfunc_end0-adc_sample_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

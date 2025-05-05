@@ -1,0 +1,713 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_mdio.c"
+	.section	.text.mdio_deinit,"ax",%progbits
+	.hidden	mdio_deinit                     @ -- Begin function mdio_deinit
+	.globl	mdio_deinit
+	.p2align	2
+	.type	mdio_deinit,%function
+	.code	16                              @ @mdio_deinit
+	.thumb_func
+mdio_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, #1049
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	mdio_deinit, .Lfunc_end0-mdio_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_software_reset,"ax",%progbits
+	.hidden	mdio_software_reset             @ -- Begin function mdio_software_reset
+	.globl	mdio_software_reset
+	.p2align	2
+	.type	mdio_software_reset,%function
+	.code	16                              @ @mdio_software_reset
+	.thumb_func
+mdio_software_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #55296
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end1:
+	.size	mdio_software_reset, .Lfunc_end1-mdio_software_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_init,"ax",%progbits
+	.hidden	mdio_init                       @ -- Begin function mdio_init
+	.globl	mdio_init
+	.p2align	2
+	.type	mdio_init,%function
+	.code	16                              @ @mdio_init
+	.thumb_func
+mdio_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r12 killed $r3
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	strh.w	r3, [sp, #10]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	movw	r1, #55296
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	ldr	r2, [sp, #20]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	movw	r1, #55316
+	movt	r1, #16384
+	ldr	r0, [r1]
+	movw	r2, #32767
+	bics	r0, r2
+	str	r0, [r1]
+	ldr	r0, [sp, #16]
+	and	r0, r0, #31
+	ldr	r2, [sp, #12]
+	and	r2, r2, #31
+	orr.w	r0, r0, r2, lsl #5
+	ldrh.w	r2, [sp, #10]
+	and	r2, r2, #31
+	orr.w	r2, r0, r2, lsl #10
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	bl	mdio_phy_pin_read
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r2, [sp, #12]
+	bics	r0, r2
+	ldr	r1, [sp, #16]
+	ands	r1, r2
+	add	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	mdio_init, .Lfunc_end2-mdio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_phy_pin_read,"ax",%progbits
+	.hidden	mdio_phy_pin_read               @ -- Begin function mdio_phy_pin_read
+	.globl	mdio_phy_pin_read
+	.p2align	2
+	.type	mdio_phy_pin_read,%function
+	.code	16                              @ @mdio_phy_pin_read
+	.thumb_func
+mdio_phy_pin_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55328
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #31
+	bx	lr
+.Lfunc_end3:
+	.size	mdio_phy_pin_read, .Lfunc_end3-mdio_phy_pin_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_phy_length_config,"ax",%progbits
+	.hidden	mdio_phy_length_config          @ -- Begin function mdio_phy_length_config
+	.globl	mdio_phy_length_config
+	.p2align	2
+	.type	mdio_phy_length_config,%function
+	.code	16                              @ @mdio_phy_length_config
+	.thumb_func
+mdio_phy_length_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #55296
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	mdio_phy_length_config, .Lfunc_end4-mdio_phy_length_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_soft_phyadr_set,"ax",%progbits
+	.hidden	mdio_soft_phyadr_set            @ -- Begin function mdio_soft_phyadr_set
+	.globl	mdio_soft_phyadr_set
+	.p2align	2
+	.type	mdio_soft_phyadr_set,%function
+	.code	16                              @ @mdio_soft_phyadr_set
+	.thumb_func
+mdio_soft_phyadr_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #55316
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #31
+	str	r0, [r1]
+	ldr	r0, [sp]
+	and	r2, r0, #31
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	mdio_soft_phyadr_set, .Lfunc_end5-mdio_soft_phyadr_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_framefield_phyadr_config,"ax",%progbits
+	.hidden	mdio_framefield_phyadr_config   @ -- Begin function mdio_framefield_phyadr_config
+	.globl	mdio_framefield_phyadr_config
+	.p2align	2
+	.type	mdio_framefield_phyadr_config,%function
+	.code	16                              @ @mdio_framefield_phyadr_config
+	.thumb_func
+mdio_framefield_phyadr_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #55316
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #992
+	str	r0, [r1]
+	ldr	r0, [sp]
+	and	r2, r0, #31
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #5
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	mdio_framefield_phyadr_config, .Lfunc_end6-mdio_framefield_phyadr_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_framefield_devadd_config,"ax",%progbits
+	.hidden	mdio_framefield_devadd_config   @ -- Begin function mdio_framefield_devadd_config
+	.globl	mdio_framefield_devadd_config
+	.p2align	2
+	.type	mdio_framefield_devadd_config,%function
+	.code	16                              @ @mdio_framefield_devadd_config
+	.thumb_func
+mdio_framefield_devadd_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	movw	r1, #55316
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #31744
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #31
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #10
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	mdio_framefield_devadd_config, .Lfunc_end7-mdio_framefield_devadd_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_timeout_config,"ax",%progbits
+	.hidden	mdio_timeout_config             @ -- Begin function mdio_timeout_config
+	.globl	mdio_timeout_config
+	.p2align	2
+	.type	mdio_timeout_config,%function
+	.code	16                              @ @mdio_timeout_config
+	.thumb_func
+mdio_timeout_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	movw	r1, #55332
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bfc	r0, #1, #16
+	str	r0, [r1]
+	ldrh.w	r2, [sp, #2]
+	ldr	r0, [r1]
+	orr.w	r0, r0, r2, lsl #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	mdio_timeout_config, .Lfunc_end8-mdio_timeout_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_timeout_enable,"ax",%progbits
+	.hidden	mdio_timeout_enable             @ -- Begin function mdio_timeout_enable
+	.globl	mdio_timeout_enable
+	.p2align	2
+	.type	mdio_timeout_enable,%function
+	.code	16                              @ @mdio_timeout_enable
+	.thumb_func
+mdio_timeout_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #55332
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end9:
+	.size	mdio_timeout_enable, .Lfunc_end9-mdio_timeout_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_timeout_disable,"ax",%progbits
+	.hidden	mdio_timeout_disable            @ -- Begin function mdio_timeout_disable
+	.globl	mdio_timeout_disable
+	.p2align	2
+	.type	mdio_timeout_disable,%function
+	.code	16                              @ @mdio_timeout_disable
+	.thumb_func
+mdio_timeout_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #55332
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end10:
+	.size	mdio_timeout_disable, .Lfunc_end10-mdio_timeout_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_op_receive,"ax",%progbits
+	.hidden	mdio_op_receive                 @ -- Begin function mdio_op_receive
+	.globl	mdio_op_receive
+	.p2align	2
+	.type	mdio_op_receive,%function
+	.code	16                              @ @mdio_op_receive
+	.thumb_func
+mdio_op_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	and	r0, r0, #3
+	bx	lr
+.Lfunc_end11:
+	.size	mdio_op_receive, .Lfunc_end11-mdio_op_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_phyadr_receive,"ax",%progbits
+	.hidden	mdio_phyadr_receive             @ -- Begin function mdio_phyadr_receive
+	.globl	mdio_phyadr_receive
+	.p2align	2
+	.type	mdio_phyadr_receive,%function
+	.code	16                              @ @mdio_phyadr_receive
+	.thumb_func
+mdio_phyadr_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ubfx	r0, r0, #2, #5
+	bx	lr
+.Lfunc_end12:
+	.size	mdio_phyadr_receive, .Lfunc_end12-mdio_phyadr_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_devadd_receive,"ax",%progbits
+	.hidden	mdio_devadd_receive             @ -- Begin function mdio_devadd_receive
+	.globl	mdio_devadd_receive
+	.p2align	2
+	.type	mdio_devadd_receive,%function
+	.code	16                              @ @mdio_devadd_receive
+	.thumb_func
+mdio_devadd_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ubfx	r0, r0, #7, #5
+	bx	lr
+.Lfunc_end13:
+	.size	mdio_devadd_receive, .Lfunc_end13-mdio_devadd_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_ta_receive,"ax",%progbits
+	.hidden	mdio_ta_receive                 @ -- Begin function mdio_ta_receive
+	.globl	mdio_ta_receive
+	.p2align	2
+	.type	mdio_ta_receive,%function
+	.code	16                              @ @mdio_ta_receive
+	.thumb_func
+mdio_ta_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55300
+	movt	r0, #16384
+	ldr	r0, [r0]
+	ubfx	r0, r0, #12, #2
+	bx	lr
+.Lfunc_end14:
+	.size	mdio_ta_receive, .Lfunc_end14-mdio_ta_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_data_receive,"ax",%progbits
+	.hidden	mdio_data_receive               @ -- Begin function mdio_data_receive
+	.globl	mdio_data_receive
+	.p2align	2
+	.type	mdio_data_receive,%function
+	.code	16                              @ @mdio_data_receive
+	.thumb_func
+mdio_data_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55304
+	movt	r0, #16384
+	ldr	r0, [r0]
+	uxth	r0, r0
+	bx	lr
+.Lfunc_end15:
+	.size	mdio_data_receive, .Lfunc_end15-mdio_data_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_address_receive,"ax",%progbits
+	.hidden	mdio_address_receive            @ -- Begin function mdio_address_receive
+	.globl	mdio_address_receive
+	.p2align	2
+	.type	mdio_address_receive,%function
+	.code	16                              @ @mdio_address_receive
+	.thumb_func
+mdio_address_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, #55308
+	movt	r0, #16384
+	ldr	r0, [r0]
+	uxth	r0, r0
+	bx	lr
+.Lfunc_end16:
+	.size	mdio_address_receive, .Lfunc_end16-mdio_address_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_data_transmit,"ax",%progbits
+	.hidden	mdio_data_transmit              @ -- Begin function mdio_data_transmit
+	.globl	mdio_data_transmit
+	.p2align	2
+	.type	mdio_data_transmit,%function
+	.code	16                              @ @mdio_data_transmit
+	.thumb_func
+mdio_data_transmit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	movw	r1, #55312
+	movt	r1, #16384
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	mdio_data_transmit, .Lfunc_end17-mdio_data_transmit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_flag_get,"ax",%progbits
+	.hidden	mdio_flag_get                   @ -- Begin function mdio_flag_get
+	.globl	mdio_flag_get
+	.p2align	2
+	.type	mdio_flag_get,%function
+	.code	16                              @ @mdio_flag_get
+	.thumb_func
+mdio_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r0, #55320
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB18_3
+.LBB18_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB18_3
+.LBB18_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end18:
+	.size	mdio_flag_get, .Lfunc_end18-mdio_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_flag_clear,"ax",%progbits
+	.hidden	mdio_flag_clear                 @ -- Begin function mdio_flag_clear
+	.globl	mdio_flag_clear
+	.p2align	2
+	.type	mdio_flag_clear,%function
+	.code	16                              @ @mdio_flag_clear
+	.thumb_func
+mdio_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	movw	r0, #55312
+	movt	r0, #16384
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldrb.w	r0, [sp, #4]
+	lsls	r0, r0, #30
+	cmp	r0, #0
+	bpl	.LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	movw	r0, #55320
+	movt	r0, #16384
+	ldr	r0, [r0]
+	b	.LBB19_2
+.LBB19_2:
+	ldrb.w	r0, [sp, #4]
+	lsls	r0, r0, #29
+	cmp	r0, #0
+	bpl	.LBB19_4
+	b	.LBB19_3
+.LBB19_3:
+	movw	r0, #55304
+	movt	r0, #16384
+	ldr	r0, [r0]
+	b	.LBB19_4
+.LBB19_4:
+	ldrb.w	r0, [sp, #4]
+	lsls	r0, r0, #28
+	cmp	r0, #0
+	bpl	.LBB19_6
+	b	.LBB19_5
+.LBB19_5:
+	ldr	r0, [sp]
+	movw	r1, #55312
+	movt	r1, #16384
+	str	r0, [r1]
+	b	.LBB19_6
+.LBB19_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end19:
+	.size	mdio_flag_clear, .Lfunc_end19-mdio_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_interrupt_enable,"ax",%progbits
+	.hidden	mdio_interrupt_enable           @ -- Begin function mdio_interrupt_enable
+	.globl	mdio_interrupt_enable
+	.p2align	2
+	.type	mdio_interrupt_enable,%function
+	.code	16                              @ @mdio_interrupt_enable
+	.thumb_func
+mdio_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #55324
+	movt	r1, #16384
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	mdio_interrupt_enable, .Lfunc_end20-mdio_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mdio_interrupt_disable,"ax",%progbits
+	.hidden	mdio_interrupt_disable          @ -- Begin function mdio_interrupt_disable
+	.globl	mdio_interrupt_disable
+	.p2align	2
+	.type	mdio_interrupt_disable,%function
+	.code	16                              @ @mdio_interrupt_disable
+	.thumb_func
+mdio_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r2, [sp]
+	movw	r1, #55324
+	movt	r1, #16384
+	ldr	r0, [r1]
+	bics	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end21:
+	.size	mdio_interrupt_disable, .Lfunc_end21-mdio_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

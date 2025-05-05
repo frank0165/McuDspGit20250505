@@ -1,0 +1,777 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_gpio.c"
+	.section	.text.gpio_deinit,"ax",%progbits
+	.hidden	gpio_deinit                     @ -- Begin function gpio_deinit
+	.globl	gpio_deinit
+	.p2align	2
+	.type	gpio_deinit,%function
+	.code	16                              @ @gpio_deinit
+	.thumb_func
+gpio_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	ldr	r0, [sp, #28]
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	cmp.w	r0, #1207959552
+	beq	.LBB0_5
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movw	r1, #1024
+	movt	r1, #18432
+	cmp	r0, r1
+	beq	.LBB0_6
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movw	r1, #2048
+	movt	r1, #18432
+	cmp	r0, r1
+	beq	.LBB0_7
+	b	.LBB0_3
+.LBB0_3:
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movw	r1, #3072
+	movt	r1, #18432
+	cmp	r0, r1
+	beq	.LBB0_8
+	b	.LBB0_4
+.LBB0_4:
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	movw	r1, #5120
+	movt	r1, #18432
+	cmp	r0, r1
+	beq	.LBB0_9
+	b	.LBB0_10
+.LBB0_5:
+	movw	r0, #2577
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_11
+.LBB0_6:
+	movw	r0, #2578
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_11
+.LBB0_7:
+	movw	r0, #2579
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_11
+.LBB0_8:
+	movw	r0, #2580
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_11
+.LBB0_9:
+	movw	r0, #2582
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_11
+.LBB0_10:
+	b	.LBB0_11
+.LBB0_11:
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	gpio_deinit, .Lfunc_end0-gpio_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_mode_set,"ax",%progbits
+	.hidden	gpio_mode_set                   @ -- Begin function gpio_mode_set
+	.globl	gpio_mode_set
+	.p2align	2
+	.type	gpio_mode_set,%function
+	.code	16                              @ @gpio_mode_set
+	.thumb_func
+gpio_mode_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#28
+	sub	sp, #28
+	.cfi_def_cfa_offset 28
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	str	r2, [sp, #16]
+	str	r3, [sp, #12]
+	ldr	r0, [sp, #24]
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #24]
+	ldr	r0, [r0, #12]
+	str	r0, [sp]
+	movs	r0, #0
+	strh.w	r0, [sp, #10]
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #10]
+	cmp	r0, #15
+	bhi	.LBB1_6
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+	ldrh.w	r1, [sp, #10]
+	ldr	r0, [sp, #12]
+	lsrs	r0, r1
+	lsls	r0, r0, #31
+	cbz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
+	ldrh.w	r0, [sp, #10]
+	lsls	r1, r0, #1
+	movs	r0, #3
+	lsl.w	r2, r0, r1
+	ldr	r1, [sp, #4]
+	bics	r1, r2
+	str	r1, [sp, #4]
+	ldr	r1, [sp, #20]
+	ldrh.w	r2, [sp, #10]
+	lsls	r2, r2, #1
+	lsl.w	r2, r1, r2
+	ldr	r1, [sp, #4]
+	orrs	r1, r2
+	str	r1, [sp, #4]
+	ldrh.w	r1, [sp, #10]
+	lsls	r1, r1, #1
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp]
+	bics	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #16]
+	ldrh.w	r1, [sp, #10]
+	lsls	r1, r1, #1
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	b	.LBB1_4
+.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
+	b	.LBB1_5
+.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
+	ldrh.w	r0, [sp, #10]
+	adds	r0, #1
+	strh.w	r0, [sp, #10]
+	b	.LBB1_1
+.LBB1_6:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #24]
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #24]
+	str	r0, [r1, #12]
+	add	sp, #28
+	bx	lr
+.Lfunc_end1:
+	.size	gpio_mode_set, .Lfunc_end1-gpio_mode_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_output_options_set,"ax",%progbits
+	.hidden	gpio_output_options_set         @ -- Begin function gpio_output_options_set
+	.globl	gpio_output_options_set
+	.p2align	2
+	.type	gpio_output_options_set,%function
+	.code	16                              @ @gpio_output_options_set
+	.thumb_func
+gpio_output_options_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r12 killed $r1
+	str	r0, [sp, #20]
+	strb.w	r1, [sp, #19]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+	ldrb.w	r0, [sp, #19]
+	cmp	r0, #1
+	bne	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r2, [sp, #8]
+	ldr	r1, [sp, #20]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	b	.LBB2_3
+.LBB2_2:
+	ldr	r2, [sp, #8]
+	ldr	r1, [sp, #20]
+	ldr	r0, [r1, #4]
+	bics	r0, r2
+	str	r0, [r1, #4]
+	b	.LBB2_3
+.LBB2_3:
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #8]
+	str	r0, [sp]
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	b	.LBB2_4
+.LBB2_4:                                @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #6]
+	cmp	r0, #15
+	bhi	.LBB2_9
+	b	.LBB2_5
+.LBB2_5:                                @   in Loop: Header=BB2_4 Depth=1
+	ldrh.w	r1, [sp, #6]
+	ldr	r0, [sp, #8]
+	lsrs	r0, r1
+	lsls	r0, r0, #31
+	cbz	r0, .LBB2_7
+	b	.LBB2_6
+.LBB2_6:                                @   in Loop: Header=BB2_4 Depth=1
+	ldrh.w	r0, [sp, #6]
+	lsls	r1, r0, #1
+	movs	r0, #3
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp]
+	bics	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldrh.w	r1, [sp, #6]
+	lsls	r1, r1, #1
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	b	.LBB2_7
+.LBB2_7:                                @   in Loop: Header=BB2_4 Depth=1
+	b	.LBB2_8
+.LBB2_8:                                @   in Loop: Header=BB2_4 Depth=1
+	ldrh.w	r0, [sp, #6]
+	adds	r0, #1
+	strh.w	r0, [sp, #6]
+	b	.LBB2_4
+.LBB2_9:
+	ldr	r0, [sp]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #8]
+	add	sp, #24
+	bx	lr
+.Lfunc_end2:
+	.size	gpio_output_options_set, .Lfunc_end2-gpio_output_options_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_bit_set,"ax",%progbits
+	.hidden	gpio_bit_set                    @ -- Begin function gpio_bit_set
+	.globl	gpio_bit_set
+	.p2align	2
+	.type	gpio_bit_set,%function
+	.code	16                              @ @gpio_bit_set
+	.thumb_func
+gpio_bit_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #24]
+	add	sp, #8
+	bx	lr
+.Lfunc_end3:
+	.size	gpio_bit_set, .Lfunc_end3-gpio_bit_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_bit_reset,"ax",%progbits
+	.hidden	gpio_bit_reset                  @ -- Begin function gpio_bit_reset
+	.globl	gpio_bit_reset
+	.p2align	2
+	.type	gpio_bit_reset,%function
+	.code	16                              @ @gpio_bit_reset
+	.thumb_func
+gpio_bit_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #40]
+	add	sp, #8
+	bx	lr
+.Lfunc_end4:
+	.size	gpio_bit_reset, .Lfunc_end4-gpio_bit_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_bit_write,"ax",%progbits
+	.hidden	gpio_bit_write                  @ -- Begin function gpio_bit_write
+	.globl	gpio_bit_write
+	.p2align	2
+	.type	gpio_bit_write,%function
+	.code	16                              @ @gpio_bit_write
+	.thumb_func
+gpio_bit_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	strb.w	r2, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbz	r0, .LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #24]
+	b	.LBB5_3
+.LBB5_2:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #40]
+	b	.LBB5_3
+.LBB5_3:
+	add	sp, #12
+	bx	lr
+.Lfunc_end5:
+	.size	gpio_bit_write, .Lfunc_end5-gpio_bit_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_port_write,"ax",%progbits
+	.hidden	gpio_port_write                 @ -- Begin function gpio_port_write
+	.globl	gpio_port_write
+	.p2align	2
+	.type	gpio_port_write,%function
+	.code	16                              @ @gpio_port_write
+	.thumb_func
+gpio_port_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end6:
+	.size	gpio_port_write, .Lfunc_end6-gpio_port_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_input_bit_get,"ax",%progbits
+	.hidden	gpio_input_bit_get              @ -- Begin function gpio_input_bit_get
+	.globl	gpio_input_bit_get
+	.p2align	2
+	.type	gpio_input_bit_get,%function
+	.code	16                              @ @gpio_input_bit_get
+	.thumb_func
+gpio_input_bit_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #16]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB7_3
+.LBB7_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB7_3
+.LBB7_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end7:
+	.size	gpio_input_bit_get, .Lfunc_end7-gpio_input_bit_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_input_port_get,"ax",%progbits
+	.hidden	gpio_input_port_get             @ -- Begin function gpio_input_port_get
+	.globl	gpio_input_port_get
+	.p2align	2
+	.type	gpio_input_port_get,%function
+	.code	16                              @ @gpio_input_port_get
+	.thumb_func
+gpio_input_port_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #16]
+	uxth	r0, r0
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	gpio_input_port_get, .Lfunc_end8-gpio_input_port_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_output_bit_get,"ax",%progbits
+	.hidden	gpio_output_bit_get             @ -- Begin function gpio_output_bit_get
+	.globl	gpio_output_bit_get
+	.p2align	2
+	.type	gpio_output_bit_get,%function
+	.code	16                              @ @gpio_output_bit_get
+	.thumb_func
+gpio_output_bit_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #20]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB9_3
+.LBB9_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB9_3
+.LBB9_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end9:
+	.size	gpio_output_bit_get, .Lfunc_end9-gpio_output_bit_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_output_port_get,"ax",%progbits
+	.hidden	gpio_output_port_get            @ -- Begin function gpio_output_port_get
+	.globl	gpio_output_port_get
+	.p2align	2
+	.type	gpio_output_port_get,%function
+	.code	16                              @ @gpio_output_port_get
+	.thumb_func
+gpio_output_port_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #20]
+	uxth	r0, r0
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	gpio_output_port_get, .Lfunc_end10-gpio_output_port_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_af_set,"ax",%progbits
+	.hidden	gpio_af_set                     @ -- Begin function gpio_af_set
+	.globl	gpio_af_set
+	.p2align	2
+	.type	gpio_af_set,%function
+	.code	16                              @ @gpio_af_set
+	.thumb_func
+gpio_af_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #32]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #20]
+	ldr	r0, [r0, #36]
+	str	r0, [sp]
+	movs	r0, #0
+	strh.w	r0, [sp, #10]
+	b	.LBB11_1
+.LBB11_1:                               @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #10]
+	cmp	r0, #7
+	bhi	.LBB11_6
+	b	.LBB11_2
+.LBB11_2:                               @   in Loop: Header=BB11_1 Depth=1
+	ldrh.w	r1, [sp, #10]
+	ldr	r0, [sp, #12]
+	lsrs	r0, r1
+	lsls	r0, r0, #31
+	cbz	r0, .LBB11_4
+	b	.LBB11_3
+.LBB11_3:                               @   in Loop: Header=BB11_1 Depth=1
+	ldrh.w	r0, [sp, #10]
+	lsls	r1, r0, #2
+	movs	r0, #15
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp, #4]
+	bics	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #16]
+	ldrh.w	r1, [sp, #10]
+	lsls	r1, r1, #2
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	b	.LBB11_4
+.LBB11_4:                               @   in Loop: Header=BB11_1 Depth=1
+	b	.LBB11_5
+.LBB11_5:                               @   in Loop: Header=BB11_1 Depth=1
+	ldrh.w	r0, [sp, #10]
+	adds	r0, #1
+	strh.w	r0, [sp, #10]
+	b	.LBB11_1
+.LBB11_6:
+	movs	r0, #8
+	strh.w	r0, [sp, #10]
+	b	.LBB11_7
+.LBB11_7:                               @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #10]
+	cmp	r0, #15
+	bhi	.LBB11_12
+	b	.LBB11_8
+.LBB11_8:                               @   in Loop: Header=BB11_7 Depth=1
+	ldrh.w	r1, [sp, #10]
+	ldr	r0, [sp, #12]
+	lsrs	r0, r1
+	lsls	r0, r0, #31
+	cbz	r0, .LBB11_10
+	b	.LBB11_9
+.LBB11_9:                               @   in Loop: Header=BB11_7 Depth=1
+	ldrh.w	r0, [sp, #10]
+	mvn	r1, #31
+	add.w	r2, r1, r0, lsl #2
+	movs	r0, #15
+	lsl.w	r2, r0, r2
+	ldr	r0, [sp]
+	bics	r0, r2
+	str	r0, [sp]
+	ldr	r0, [sp, #16]
+	ldrh.w	r2, [sp, #10]
+	add.w	r1, r1, r2, lsl #2
+	lsl.w	r1, r0, r1
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	b	.LBB11_10
+.LBB11_10:                              @   in Loop: Header=BB11_7 Depth=1
+	b	.LBB11_11
+.LBB11_11:                              @   in Loop: Header=BB11_7 Depth=1
+	ldrh.w	r0, [sp, #10]
+	adds	r0, #1
+	strh.w	r0, [sp, #10]
+	b	.LBB11_7
+.LBB11_12:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #32]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #20]
+	str	r0, [r1, #36]
+	add	sp, #24
+	bx	lr
+.Lfunc_end11:
+	.size	gpio_af_set, .Lfunc_end11-gpio_af_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_pin_lock,"ax",%progbits
+	.hidden	gpio_pin_lock                   @ -- Begin function gpio_pin_lock
+	.globl	gpio_pin_lock
+	.p2align	2
+	.type	gpio_pin_lock,%function
+	.code	16                              @ @gpio_pin_lock
+	.thumb_func
+gpio_pin_lock:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	mov.w	r0, #65536
+	str	r0, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #28]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #8]
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #28]
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #28]
+	str	r0, [sp]
+	add	sp, #12
+	bx	lr
+.Lfunc_end12:
+	.size	gpio_pin_lock, .Lfunc_end12-gpio_pin_lock
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_bit_toggle,"ax",%progbits
+	.hidden	gpio_bit_toggle                 @ -- Begin function gpio_bit_toggle
+	.globl	gpio_bit_toggle
+	.p2align	2
+	.type	gpio_bit_toggle,%function
+	.code	16                              @ @gpio_bit_toggle
+	.thumb_func
+gpio_bit_toggle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #44]
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	gpio_bit_toggle, .Lfunc_end13-gpio_bit_toggle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.gpio_port_toggle,"ax",%progbits
+	.hidden	gpio_port_toggle                @ -- Begin function gpio_port_toggle
+	.globl	gpio_port_toggle
+	.p2align	2
+	.type	gpio_port_toggle,%function
+	.code	16                              @ @gpio_port_toggle
+	.thumb_func
+gpio_port_toggle:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movw	r0, #65535
+	str	r0, [r1, #44]
+	add	sp, #4
+	bx	lr
+.Lfunc_end14:
+	.size	gpio_port_toggle, .Lfunc_end14-gpio_port_toggle
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

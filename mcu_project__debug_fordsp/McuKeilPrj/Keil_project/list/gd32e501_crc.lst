@@ -1,0 +1,520 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_crc.c"
+	.section	.text.crc_deinit,"ax",%progbits
+	.hidden	crc_deinit                      @ -- Begin function crc_deinit
+	.globl	crc_deinit
+	.p2align	2
+	.type	crc_deinit,%function
+	.code	16                              @ @crc_deinit
+	.thumb_func
+crc_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12304
+	movt	r1, #16386
+	mov.w	r0, #-1
+	str	r0, [r1]
+	movw	r1, #12288
+	movt	r1, #16386
+	str	r0, [r1]
+	movw	r1, #12292
+	movt	r1, #16386
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, #12308
+	movt	r1, #16386
+	movw	r0, #7607
+	movt	r0, #1217
+	str	r0, [r1]
+	movw	r1, #12296
+	movt	r1, #16386
+	movs	r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end0:
+	.size	crc_deinit, .Lfunc_end0-crc_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_reverse_output_data_enable,"ax",%progbits
+	.hidden	crc_reverse_output_data_enable  @ -- Begin function crc_reverse_output_data_enable
+	.globl	crc_reverse_output_data_enable
+	.p2align	2
+	.type	crc_reverse_output_data_enable,%function
+	.code	16                              @ @crc_reverse_output_data_enable
+	.thumb_func
+crc_reverse_output_data_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12296
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end1:
+	.size	crc_reverse_output_data_enable, .Lfunc_end1-crc_reverse_output_data_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_reverse_output_data_disable,"ax",%progbits
+	.hidden	crc_reverse_output_data_disable @ -- Begin function crc_reverse_output_data_disable
+	.globl	crc_reverse_output_data_disable
+	.p2align	2
+	.type	crc_reverse_output_data_disable,%function
+	.code	16                              @ @crc_reverse_output_data_disable
+	.thumb_func
+crc_reverse_output_data_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12296
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end2:
+	.size	crc_reverse_output_data_disable, .Lfunc_end2-crc_reverse_output_data_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_data_register_reset,"ax",%progbits
+	.hidden	crc_data_register_reset         @ -- Begin function crc_data_register_reset
+	.globl	crc_data_register_reset
+	.p2align	2
+	.type	crc_data_register_reset,%function
+	.code	16                              @ @crc_data_register_reset
+	.thumb_func
+crc_data_register_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, #12296
+	movt	r1, #16386
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	bx	lr
+.Lfunc_end3:
+	.size	crc_data_register_reset, .Lfunc_end3-crc_data_register_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_data_register_read,"ax",%progbits
+	.hidden	crc_data_register_read          @ -- Begin function crc_data_register_read
+	.globl	crc_data_register_read
+	.p2align	2
+	.type	crc_data_register_read,%function
+	.code	16                              @ @crc_data_register_read
+	.thumb_func
+crc_data_register_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movw	r0, #12288
+	movt	r0, #16386
+	ldr	r0, [r0]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	crc_data_register_read, .Lfunc_end4-crc_data_register_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_free_data_register_read,"ax",%progbits
+	.hidden	crc_free_data_register_read     @ -- Begin function crc_free_data_register_read
+	.globl	crc_free_data_register_read
+	.p2align	2
+	.type	crc_free_data_register_read,%function
+	.code	16                              @ @crc_free_data_register_read
+	.thumb_func
+crc_free_data_register_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movw	r0, #12292
+	movt	r0, #16386
+	ldr	r0, [r0]
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	crc_free_data_register_read, .Lfunc_end5-crc_free_data_register_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_free_data_register_write,"ax",%progbits
+	.hidden	crc_free_data_register_write    @ -- Begin function crc_free_data_register_write
+	.globl	crc_free_data_register_write
+	.p2align	2
+	.type	crc_free_data_register_write,%function
+	.code	16                              @ @crc_free_data_register_write
+	.thumb_func
+crc_free_data_register_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	movw	r1, #12292
+	movt	r1, #16386
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	crc_free_data_register_write, .Lfunc_end6-crc_free_data_register_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_init_data_register_write,"ax",%progbits
+	.hidden	crc_init_data_register_write    @ -- Begin function crc_init_data_register_write
+	.globl	crc_init_data_register_write
+	.p2align	2
+	.type	crc_init_data_register_write,%function
+	.code	16                              @ @crc_init_data_register_write
+	.thumb_func
+crc_init_data_register_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, #12304
+	movt	r1, #16386
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	crc_init_data_register_write, .Lfunc_end7-crc_init_data_register_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_input_data_reverse_config,"ax",%progbits
+	.hidden	crc_input_data_reverse_config   @ -- Begin function crc_input_data_reverse_config
+	.globl	crc_input_data_reverse_config
+	.p2align	2
+	.type	crc_input_data_reverse_config,%function
+	.code	16                              @ @crc_input_data_reverse_config
+	.thumb_func
+crc_input_data_reverse_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #12296
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #96
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	crc_input_data_reverse_config, .Lfunc_end8-crc_input_data_reverse_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_polynomial_size_set,"ax",%progbits
+	.hidden	crc_polynomial_size_set         @ -- Begin function crc_polynomial_size_set
+	.globl	crc_polynomial_size_set
+	.p2align	2
+	.type	crc_polynomial_size_set,%function
+	.code	16                              @ @crc_polynomial_size_set
+	.thumb_func
+crc_polynomial_size_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #12296
+	movt	r1, #16386
+	ldr	r0, [r1]
+	bic	r0, r0, #24
+	str	r0, [r1]
+	ldr	r2, [sp]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	crc_polynomial_size_set, .Lfunc_end9-crc_polynomial_size_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_polynomial_set,"ax",%progbits
+	.hidden	crc_polynomial_set              @ -- Begin function crc_polynomial_set
+	.globl	crc_polynomial_set
+	.p2align	2
+	.type	crc_polynomial_set,%function
+	.code	16                              @ @crc_polynomial_set
+	.thumb_func
+crc_polynomial_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	movw	r1, #12308
+	movt	r1, #16386
+	ldr	r0, [r1]
+	movs	r0, #0
+	str	r0, [r1]
+	ldr	r0, [sp]
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	crc_polynomial_set, .Lfunc_end10-crc_polynomial_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_single_data_calculate,"ax",%progbits
+	.hidden	crc_single_data_calculate       @ -- Begin function crc_single_data_calculate
+	.globl	crc_single_data_calculate
+	.p2align	2
+	.type	crc_single_data_calculate,%function
+	.code	16                              @ @crc_single_data_calculate
+	.thumb_func
+crc_single_data_calculate:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+	ldr	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16386
+	str	r0, [r1]
+	b	.LBB11_6
+.LBB11_2:
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #1
+	bne	.LBB11_4
+	b	.LBB11_3
+.LBB11_3:
+	ldr	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16386
+	strh	r0, [r1]
+	b	.LBB11_5
+.LBB11_4:
+	ldr	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16386
+	strb	r0, [r1]
+	b	.LBB11_5
+.LBB11_5:
+	b	.LBB11_6
+.LBB11_6:
+	movw	r0, #12288
+	movt	r0, #16386
+	ldr	r0, [r0]
+	add	sp, #8
+	bx	lr
+.Lfunc_end11:
+	.size	crc_single_data_calculate, .Lfunc_end11-crc_single_data_calculate
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.crc_block_data_calculate,"ax",%progbits
+	.hidden	crc_block_data_calculate        @ -- Begin function crc_block_data_calculate
+	.globl	crc_block_data_calculate
+	.p2align	2
+	.type	crc_block_data_calculate,%function
+	.code	16                              @ @crc_block_data_calculate
+	.thumb_func
+crc_block_data_calculate:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#28
+	sub	sp, #28
+	.cfi_def_cfa_offset 28
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	strb.w	r2, [sp, #19]
+	ldrb.w	r0, [sp, #19]
+	cbnz	r0, .LBB12_6
+	b	.LBB12_1
+.LBB12_1:
+	ldr	r0, [sp, #24]
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB12_2
+.LBB12_2:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	ldr	r1, [sp, #20]
+	cmp	r0, r1
+	bhs	.LBB12_5
+	b	.LBB12_3
+.LBB12_3:                               @   in Loop: Header=BB12_2 Depth=1
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	ldr.w	r0, [r0, r1, lsl #2]
+	movw	r1, #12288
+	movt	r1, #16386
+	str	r0, [r1]
+	b	.LBB12_4
+.LBB12_4:                               @   in Loop: Header=BB12_2 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB12_2
+.LBB12_5:
+	b	.LBB12_18
+.LBB12_6:
+	ldrb.w	r0, [sp, #19]
+	cmp	r0, #1
+	bne	.LBB12_12
+	b	.LBB12_7
+.LBB12_7:
+	ldr	r0, [sp, #24]
+	str	r0, [sp, #8]
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB12_8
+.LBB12_8:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	ldr	r1, [sp, #20]
+	cmp	r0, r1
+	bhs	.LBB12_11
+	b	.LBB12_9
+.LBB12_9:                               @   in Loop: Header=BB12_8 Depth=1
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp]
+	ldrh.w	r0, [r0, r1, lsl #1]
+	movw	r1, #12288
+	movt	r1, #16386
+	strh	r0, [r1]
+	b	.LBB12_10
+.LBB12_10:                              @   in Loop: Header=BB12_8 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB12_8
+.LBB12_11:
+	b	.LBB12_17
+.LBB12_12:
+	ldr	r0, [sp, #24]
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp]
+	b	.LBB12_13
+.LBB12_13:                              @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	ldr	r1, [sp, #20]
+	cmp	r0, r1
+	bhs	.LBB12_16
+	b	.LBB12_14
+.LBB12_14:                              @   in Loop: Header=BB12_13 Depth=1
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp]
+	ldrb	r0, [r0, r1]
+	movw	r1, #12288
+	movt	r1, #16386
+	strb	r0, [r1]
+	b	.LBB12_15
+.LBB12_15:                              @   in Loop: Header=BB12_13 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB12_13
+.LBB12_16:
+	b	.LBB12_17
+.LBB12_17:
+	b	.LBB12_18
+.LBB12_18:
+	movw	r0, #12288
+	movt	r0, #16386
+	ldr	r0, [r0]
+	add	sp, #28
+	bx	lr
+.Lfunc_end12:
+	.size	crc_block_data_calculate, .Lfunc_end12-crc_block_data_calculate
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

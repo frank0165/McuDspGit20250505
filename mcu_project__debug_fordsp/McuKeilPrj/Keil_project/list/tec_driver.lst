@@ -1,0 +1,168 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"tec_driver.c"
+	.section	.text.tec_release_limit_refresh,"ax",%progbits
+	.hidden	tec_release_limit_refresh       @ -- Begin function tec_release_limit_refresh
+	.globl	tec_release_limit_refresh
+	.p2align	2
+	.type	tec_release_limit_refresh,%function
+	.code	16                              @ @tec_release_limit_refresh
+	.thumb_func
+tec_release_limit_refresh:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	sgm41296_tec_release_limit_refresh
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	tec_release_limit_refresh, .Lfunc_end0-tec_release_limit_refresh
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_set_ctl_voltage,"ax",%progbits
+	.hidden	tec_set_ctl_voltage             @ -- Begin function tec_set_ctl_voltage
+	.globl	tec_set_ctl_voltage
+	.p2align	3
+	.type	tec_set_ctl_voltage,%function
+	.code	16                              @ @tec_set_ctl_voltage
+	.thumb_func
+tec_set_ctl_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vstr	s0, [sp, #4]
+	vldr	s0, [sp, #4]
+	vmov.f32	s2, #2.000000e+00
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	mov.w	r0, #1073741824
+	str	r0, [sp, #4]
+	b	.LBB1_2
+.LBB1_2:
+	ldr	r0, [sp, #4]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI1_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmpge
+	cbnz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	movw	r0, #26214
+	movt	r0, #16102
+	str	r0, [sp, #4]
+	b	.LBB1_4
+.LBB1_4:
+	vldr	s0, [sp, #4]
+	bl	sgm41296_vtec_dac_ctl_set
+	add	sp, #8
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.5:
+.LCPI1_0:
+	.long	3435973837                      @ double 0.45000000000000001
+	.long	1071434956
+.Lfunc_end1:
+	.size	tec_set_ctl_voltage, .Lfunc_end1-tec_set_ctl_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_get_xtec_voltage,"ax",%progbits
+	.hidden	tec_get_xtec_voltage            @ -- Begin function tec_get_xtec_voltage
+	.globl	tec_get_xtec_voltage
+	.p2align	2
+	.type	tec_get_xtec_voltage,%function
+	.code	16                              @ @tec_get_xtec_voltage
+	.thumb_func
+tec_get_xtec_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	bl	sgm41296_tec_get_xtec_voltage
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	tec_get_xtec_voltage, .Lfunc_end2-tec_get_xtec_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_device_init,"ax",%progbits
+	.hidden	tec_device_init                 @ -- Begin function tec_device_init
+	.globl	tec_device_init
+	.p2align	2
+	.type	tec_device_init,%function
+	.code	16                              @ @tec_device_init
+	.thumb_func
+tec_device_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	sgm1296_tec_init
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	tec_device_init, .Lfunc_end3-tec_device_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

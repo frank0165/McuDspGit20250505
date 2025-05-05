@@ -1,0 +1,246 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"systick.c"
+	.section	.text.systick_config,"ax",%progbits
+	.hidden	systick_config                  @ -- Begin function systick_config
+	.globl	systick_config
+	.p2align	2
+	.type	systick_config,%function
+	.code	16                              @ @systick_config
+	.thumb_func
+systick_config:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, :lower16:SystemCoreClock
+	movt	r0, :upper16:SystemCoreClock
+	ldr	r0, [r0]
+	movw	r1, #19923
+	movt	r1, #4194
+	umull	r1, r0, r0, r1
+	lsrs	r0, r0, #6
+	bl	SysTick_Config
+	cbz	r0, .LBB0_3
+	b	.LBB0_1
+.LBB0_1:
+	b	.LBB0_2
+.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
+	b	.LBB0_2
+.LBB0_3:
+	mov.w	r0, #-1
+	movs	r1, #0
+	bl	__NVIC_SetPriority
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	systick_config, .Lfunc_end0-systick_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SysTick_Config,"ax",%progbits
+	.p2align	2                               @ -- Begin function SysTick_Config
+	.type	SysTick_Config,%function
+	.code	16                              @ @SysTick_Config
+	.thumb_func
+SysTick_Config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp]
+	ldr	r0, [sp]
+	subs	r0, #1
+	cmp.w	r0, #16777216
+	blo	.LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	movs	r0, #1
+	str	r0, [sp, #4]
+	b	.LBB1_3
+.LBB1_2:
+	ldr	r0, [sp]
+	subs	r0, #1
+	movw	r1, #57364
+	movt	r1, #57344
+	str	r0, [r1]
+	mov.w	r0, #-1
+	movs	r1, #3
+	bl	__NVIC_SetPriority
+	movw	r1, #57368
+	movt	r1, #57344
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r2, #57360
+	movt	r2, #57344
+	movs	r1, #7
+	str	r1, [r2]
+	str	r0, [sp, #4]
+	b	.LBB1_3
+.LBB1_3:
+	ldr	r0, [sp, #4]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	SysTick_Config, .Lfunc_end1-SysTick_Config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.__NVIC_SetPriority,"ax",%progbits
+	.p2align	2                               @ -- Begin function __NVIC_SetPriority
+	.type	__NVIC_SetPriority,%function
+	.code	16                              @ @__NVIC_SetPriority
+	.thumb_func
+__NVIC_SetPriority:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	str	r1, [sp]
+	ldrsb.w	r0, [sp, #7]
+	cmp	r0, #0
+	bmi	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r0, [sp]
+	lsls	r0, r0, #6
+	ldrsb.w	r1, [sp, #7]
+	movw	r2, #58368
+	movt	r2, #57344
+	strb	r0, [r1, r2]
+	b	.LBB2_3
+.LBB2_2:
+	ldr	r0, [sp]
+	lsls	r0, r0, #6
+	ldrb.w	r1, [sp, #7]
+	and	r1, r1, #15
+	movw	r2, #60692
+	movt	r2, #57344
+	strb	r0, [r1, r2]
+	b	.LBB2_3
+.LBB2_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	__NVIC_SetPriority, .Lfunc_end2-__NVIC_SetPriority
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.delay_1ms,"ax",%progbits
+	.hidden	delay_1ms                       @ -- Begin function delay_1ms
+	.globl	delay_1ms
+	.p2align	2
+	.type	delay_1ms,%function
+	.code	16                              @ @delay_1ms
+	.thumb_func
+delay_1ms:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, :lower16:delay
+	movt	r1, :upper16:delay
+	str	r0, [r1]
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	movw	r0, :lower16:delay
+	movt	r0, :upper16:delay
+	ldr	r0, [r0]
+	cbz	r0, .LBB3_3
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	b	.LBB3_1
+.LBB3_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	delay_1ms, .Lfunc_end3-delay_1ms
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.delay_decrement,"ax",%progbits
+	.hidden	delay_decrement                 @ -- Begin function delay_decrement
+	.globl	delay_decrement
+	.p2align	2
+	.type	delay_decrement,%function
+	.code	16                              @ @delay_decrement
+	.thumb_func
+delay_decrement:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r0, :lower16:delay
+	movt	r0, :upper16:delay
+	ldr	r0, [r0]
+	cbz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	movw	r1, :lower16:delay
+	movt	r1, :upper16:delay
+	ldr	r0, [r1]
+	subs	r0, #1
+	str	r0, [r1]
+	b	.LBB4_2
+.LBB4_2:
+	bx	lr
+.Lfunc_end4:
+	.size	delay_decrement, .Lfunc_end4-delay_decrement
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	delay,%object                   @ @delay
+	.section	.bss.delay,"aw",%nobits
+	.p2align	2, 0x0
+delay:
+	.long	0                               @ 0x0
+	.size	delay, 4
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

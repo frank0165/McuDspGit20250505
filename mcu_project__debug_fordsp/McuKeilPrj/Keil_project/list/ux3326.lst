@@ -1,0 +1,1120 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"ux3326.c"
+	.section	.text.ux3326_init,"ax",%progbits
+	.hidden	ux3326_init                     @ -- Begin function ux3326_init
+	.globl	ux3326_init
+	.p2align	2
+	.type	ux3326_init,%function
+	.code	16                              @ @ux3326_init
+	.thumb_func
+ux3326_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	ux3326_gpio_init
+	bl	ux3326_reset
+	bl	ux3326_normal_setting
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	ux3326_init, .Lfunc_end0-ux3326_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_gpio_init,"ax",%progbits
+	.hidden	ux3326_gpio_init                @ -- Begin function ux3326_gpio_init
+	.globl	ux3326_gpio_init
+	.p2align	2
+	.type	ux3326_gpio_init,%function
+	.code	16                              @ @ux3326_gpio_init
+	.thumb_func
+ux3326_gpio_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	mov.w	r0, #1207959552
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #1
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	movs	r2, #0
+	str	r2, [sp, #20]                   @ 4-byte Spill
+	movs	r3, #8
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	movs	r2, #3
+	str	r2, [sp, #24]                   @ 4-byte Spill
+	bl	gpio_output_options_set
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	ldr	r2, [sp, #20]                   @ 4-byte Reload
+	movw	r0, #2048
+	movt	r0, #18432
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	mov.w	r3, #4096
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	mov.w	r3, #8192
+	str	r3, [sp, #28]                   @ 4-byte Spill
+	bl	gpio_mode_set
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	ldr	r3, [sp, #28]                   @ 4-byte Reload
+	bl	gpio_output_options_set
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	ux3326_gpio_init, .Lfunc_end1-ux3326_gpio_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_reset,"ax",%progbits
+	.hidden	ux3326_reset                    @ -- Begin function ux3326_reset
+	.globl	ux3326_reset
+	.p2align	2
+	.type	ux3326_reset,%function
+	.code	16                              @ @ux3326_reset
+	.thumb_func
+ux3326_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	mov.w	r0, #1207959552
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #4
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	gpio_bit_reset
+	movs	r0, #10
+	bl	system_delay_ms
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	bl	gpio_bit_set
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	ux3326_reset, .Lfunc_end2-ux3326_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_soft_txdsbl_ctrl,"ax",%progbits
+	.hidden	ux3326_soft_txdsbl_ctrl         @ -- Begin function ux3326_soft_txdsbl_ctrl
+	.globl	ux3326_soft_txdsbl_ctrl
+	.p2align	2
+	.type	ux3326_soft_txdsbl_ctrl,%function
+	.code	16                              @ @ux3326_soft_txdsbl_ctrl
+	.thumb_func
+ux3326_soft_txdsbl_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	movs	r0, #0
+	strb.w	r0, [sp, #5]
+	movs	r0, #10
+	strb.w	r0, [sp, #6]
+	movs	r0, #198
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	b	.LBB3_3
+.LBB3_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #3]
+	movs	r2, #2
+	strb.w	r2, [sp, #4]
+	movs	r0, #198
+	add.w	r1, sp, #3
+	bl	master_reg_byte_write
+	b	.LBB3_3
+.LBB3_3:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	ux3326_soft_txdsbl_ctrl, .Lfunc_end3-ux3326_soft_txdsbl_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_normal_setting,"ax",%progbits
+	.hidden	ux3326_normal_setting           @ -- Begin function ux3326_normal_setting
+	.globl	ux3326_normal_setting
+	.p2align	2
+	.type	ux3326_normal_setting,%function
+	.code	16                              @ @ux3326_normal_setting
+	.thumb_func
+ux3326_normal_setting:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	b	.LBB4_1
+.LBB4_1:                                @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #6]
+	cmp	r0, #39
+	bgt	.LBB4_4
+	b	.LBB4_2
+.LBB4_2:                                @   in Loop: Header=BB4_1 Depth=1
+	ldrb.w	r0, [sp, #6]
+	strb.w	r0, [sp, #4]
+	ldrh.w	r1, [sp, #6]
+	movw	r0, :lower16:t0
+	movt	r0, :upper16:t0
+	ldrb	r0, [r0, r1]
+	strb.w	r0, [sp, #5]
+	movs	r0, #198
+	add	r1, sp, #4
+	movs	r2, #2
+	bl	master_reg_byte_write
+	b	.LBB4_3
+.LBB4_3:                                @   in Loop: Header=BB4_1 Depth=1
+	ldrh.w	r0, [sp, #6]
+	adds	r0, #1
+	strh.w	r0, [sp, #6]
+	b	.LBB4_1
+.LBB4_4:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	ux3326_normal_setting, .Lfunc_end4-ux3326_normal_setting
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_source_sink_select,"ax",%progbits
+	.hidden	ux3326_source_sink_select       @ -- Begin function ux3326_source_sink_select
+	.globl	ux3326_source_sink_select
+	.p2align	2
+	.type	ux3326_source_sink_select,%function
+	.code	16                              @ @ux3326_source_sink_select
+	.thumb_func
+ux3326_source_sink_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #97
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	cmp	r0, #1
+	bne	.LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+	movs	r0, #9
+	strb.w	r0, [sp, #6]
+	b	.LBB5_3
+.LBB5_2:
+	movs	r0, #17
+	strb.w	r0, [sp, #6]
+	b	.LBB5_3
+.LBB5_3:
+	movs	r0, #198
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	ux3326_source_sink_select, .Lfunc_end5-ux3326_source_sink_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_get_temperature,"ax",%progbits
+	.hidden	ux3326_get_temperature          @ -- Begin function ux3326_get_temperature
+	.globl	ux3326_get_temperature
+	.p2align	2
+	.type	ux3326_get_temperature,%function
+	.code	16                              @ @ux3326_get_temperature
+	.thumb_func
+ux3326_get_temperature:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	add	r1, sp, #16
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	str	r0, [sp, #28]
+	movw	r0, #49807
+	movt	r0, #16373
+	str	r0, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	strh.w	r0, [sp, #14]
+	movs	r0, #198
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #46
+	add.w	r2, sp, #26
+	movs	r3, #1
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #47
+	add.w	r2, sp, #27
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldrb.w	r2, [sp, #26]
+	ldrb.w	r1, [sp, #27]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #14]
+	vldr	s0, [r0, #4]
+	ldrh.w	r1, [sp, #14]
+	vmov	s2, r1
+	vcvt.f32.s32	s4, s2
+	vldr	s2, [r0]
+	vmul.f32	s0, s0, s4
+	vadd.f32	s0, s0, s2
+	vldr	s2, .LCPI6_0
+	vdiv.f32	s0, s0, s2
+	ldr	r0, [sp, #28]
+	vstr	s0, [r0]
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	2
+@ %bb.1:
+.LCPI6_0:
+	.long	0x43800000                      @ float 256
+.Lfunc_end6:
+	.size	ux3326_get_temperature, .Lfunc_end6-ux3326_get_temperature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_get_voltage,"ax",%progbits
+	.hidden	ux3326_get_voltage              @ -- Begin function ux3326_get_voltage
+	.globl	ux3326_get_voltage
+	.p2align	3
+	.type	ux3326_get_voltage,%function
+	.code	16                              @ @ux3326_get_voltage
+	.thumb_func
+ux3326_get_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	add	r1, sp, #16
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	str	r0, [sp, #28]
+	movw	r0, #35652
+	movt	r0, #16236
+	str	r0, [sp, #20]
+	movs	r0, #0
+	movt	r0, #17136
+	str	r0, [sp, #16]
+	movs	r0, #0
+	strh.w	r0, [sp, #14]
+	movs	r0, #198
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #48
+	add.w	r2, sp, #26
+	movs	r3, #1
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #49
+	add.w	r2, sp, #27
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldrb.w	r2, [sp, #26]
+	ldrb.w	r1, [sp, #27]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #14]
+	vldr	s0, [r0, #4]
+	ldrh.w	r1, [sp, #14]
+	vmov	s2, r1
+	vcvt.f32.s32	s4, s2
+	vldr	s2, [r0]
+	vmul.f32	s0, s0, s4
+	vadd.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI7_0
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #28]
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #18]
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI7_0:
+	.long	3944497965                      @ double 1.0E-4
+	.long	1058682594
+.Lfunc_end7:
+	.size	ux3326_get_voltage, .Lfunc_end7-ux3326_get_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_get_ld_ibias,"ax",%progbits
+	.hidden	ux3326_get_ld_ibias             @ -- Begin function ux3326_get_ld_ibias
+	.globl	ux3326_get_ld_ibias
+	.p2align	3
+	.type	ux3326_get_ld_ibias,%function
+	.code	16                              @ @ux3326_get_ld_ibias
+	.thumb_func
+ux3326_get_ld_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	movs	r0, #0
+	strh.w	r0, [sp, #16]
+	strh.w	r0, [sp, #14]
+	movs	r0, #198
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r1, #50
+	add.w	r2, sp, #18
+	movs	r3, #1
+	str	r3, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	movs	r1, #51
+	add.w	r2, sp, #19
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #18]
+	ldrb.w	r0, [sp, #19]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	vldr	s0, [r0, #140]
+	ldrh.w	r1, [sp, #14]
+	vmov	s2, r1
+	vcvt.f32.s32	s4, s2
+	vldr	s2, [r0, #144]
+	vmul.f32	s0, s0, s4
+	vadd.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI8_0
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #20]
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #20]
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI8_0:
+	.long	3539053052                      @ double 0.002
+	.long	1063281229
+.Lfunc_end8:
+	.size	ux3326_get_ld_ibias, .Lfunc_end8-ux3326_get_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_ld_ibias,"ax",%progbits
+	.hidden	ux3326_set_ld_ibias             @ -- Begin function ux3326_set_ld_ibias
+	.globl	ux3326_set_ld_ibias
+	.p2align	2
+	.type	ux3326_set_ld_ibias,%function
+	.code	16                              @ @ux3326_set_ld_ibias
+	.thumb_func
+ux3326_set_ld_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	and	r0, r0, #3
+	strb.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #14]
+	lsrs	r0, r0, #2
+	strb.w	r0, [sp, #13]
+	movs	r0, #4
+	strb.w	r0, [sp, #8]
+	movs	r0, #5
+	strb.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #13]
+	strb.w	r0, [sp, #9]
+	movs	r0, #198
+	str	r0, [sp]                        @ 4-byte Spill
+	add	r1, sp, #8
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [sp, #12]
+	strb.w	r1, [sp, #11]
+	add.w	r1, sp, #10
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end9:
+	.size	ux3326_set_ld_ibias, .Lfunc_end9-ux3326_set_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_ld_imod,"ax",%progbits
+	.hidden	ux3326_set_ld_imod              @ -- Begin function ux3326_set_ld_imod
+	.globl	ux3326_set_ld_imod
+	.p2align	3
+	.type	ux3326_set_ld_imod,%function
+	.code	16                              @ @ux3326_set_ld_imod
+	.thumb_func
+ux3326_set_ld_imod:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+	movs	r0, #6
+	strb.w	r0, [sp, #10]
+	movs	r0, #7
+	strb.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI10_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #8]
+	ldrh.w	r0, [sp, #8]
+	lsrs	r0, r0, #2
+	strb.w	r0, [sp, #11]
+	ldrh.w	r0, [sp, #8]
+	and	r0, r0, #3
+	strb.w	r0, [sp, #13]
+	movs	r0, #198
+	str	r0, [sp]                        @ 4-byte Spill
+	add.w	r1, sp, #10
+	movs	r2, #2
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	add	r1, sp, #12
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI10_0:
+	.long	824633721                       @ double 0.112
+	.long	1069329416
+.Lfunc_end10:
+	.size	ux3326_set_ld_imod, .Lfunc_end10-ux3326_set_ld_imod
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_get_mpd_ibias,"ax",%progbits
+	.hidden	ux3326_get_mpd_ibias            @ -- Begin function ux3326_get_mpd_ibias
+	.globl	ux3326_get_mpd_ibias
+	.p2align	2
+	.type	ux3326_get_mpd_ibias,%function
+	.code	16                              @ @ux3326_get_mpd_ibias
+	.thumb_func
+ux3326_get_mpd_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	movs	r0, #0
+	strh.w	r0, [sp, #8]
+	movs	r0, #198
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #52
+	add.w	r2, sp, #10
+	movs	r3, #1
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #53
+	add.w	r2, sp, #11
+	bl	master_reg_1byte_size_read
+	ldrb.w	r1, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #8]
+	ldrh.w	r0, [sp, #8]
+	vmov	s0, r0
+	vcvt.f32.u32	s0, s0
+	ldr	r0, [sp, #12]
+	vstr	s0, [r0]
+	ldrh.w	r0, [sp, #8]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #22]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end11:
+	.size	ux3326_get_mpd_ibias, .Lfunc_end11-ux3326_get_mpd_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_tx_ld_cpa,"ax",%progbits
+	.hidden	ux3326_set_tx_ld_cpa            @ -- Begin function ux3326_set_tx_ld_cpa
+	.globl	ux3326_set_tx_ld_cpa
+	.p2align	2
+	.type	ux3326_set_tx_ld_cpa,%function
+	.code	16                              @ @ux3326_set_tx_ld_cpa
+	.thumb_func
+ux3326_set_tx_ld_cpa:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #10
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movs	r0, #198
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	ux3326_set_tx_ld_cpa, .Lfunc_end12-ux3326_set_tx_ld_cpa
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_rx_swing,"ax",%progbits
+	.hidden	ux3326_set_rx_swing             @ -- Begin function ux3326_set_rx_swing
+	.globl	ux3326_set_rx_swing
+	.p2align	2
+	.type	ux3326_set_rx_swing,%function
+	.code	16                              @ @ux3326_set_rx_swing
+	.thumb_func
+ux3326_set_rx_swing:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #6]
+	movs	r0, #19
+	strb.w	r0, [sp, #4]
+	ldrb.w	r0, [sp, #6]
+	strb.w	r0, [sp, #5]
+	movs	r0, #198
+	add	r1, sp, #4
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end13:
+	.size	ux3326_set_rx_swing, .Lfunc_end13-ux3326_set_rx_swing
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_rx_los_threshold,"ax",%progbits
+	.hidden	ux3326_set_rx_los_threshold     @ -- Begin function ux3326_set_rx_los_threshold
+	.globl	ux3326_set_rx_los_threshold
+	.p2align	2
+	.type	ux3326_set_rx_los_threshold,%function
+	.code	16                              @ @ux3326_set_rx_los_threshold
+	.thumb_func
+ux3326_set_rx_los_threshold:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+	movs	r0, #28
+	strb.w	r0, [sp, #5]
+	ldrb.w	r0, [sp, #7]
+	strb.w	r0, [sp, #6]
+	movs	r0, #198
+	add.w	r1, sp, #5
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	ux3326_set_rx_los_threshold, .Lfunc_end14-ux3326_set_rx_los_threshold
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_set_rx_los_hyst,"ax",%progbits
+	.hidden	ux3326_set_rx_los_hyst          @ -- Begin function ux3326_set_rx_los_hyst
+	.globl	ux3326_set_rx_los_hyst
+	.p2align	2
+	.type	ux3326_set_rx_los_hyst,%function
+	.code	16                              @ @ux3326_set_rx_los_hyst
+	.thumb_func
+ux3326_set_rx_los_hyst:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #231
+	strb.w	r0, [sp, #11]
+	movs	r1, #20
+	strb.w	r1, [sp, #13]
+	movs	r0, #198
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	add	r2, sp, #12
+	movs	r3, #1
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [sp, #12]
+	ldrb.w	r2, [sp, #11]
+	ands	r1, r2
+	strb.w	r1, [sp, #12]
+	ldrb.w	r1, [sp, #12]
+	ldrb.w	r2, [sp, #15]
+	orr.w	r1, r1, r2, lsl #3
+	strb.w	r1, [sp, #14]
+	add.w	r1, sp, #13
+	movs	r2, #2
+	bl	master_reg_byte_write
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end15:
+	.size	ux3326_set_rx_los_hyst, .Lfunc_end15-ux3326_set_rx_los_hyst
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_temperaturel_Sample_Average,"ax",%progbits
+	.hidden	ux3326_temperaturel_Sample_Average @ -- Begin function ux3326_temperaturel_Sample_Average
+	.globl	ux3326_temperaturel_Sample_Average
+	.p2align	2
+	.type	ux3326_temperaturel_Sample_Average,%function
+	.code	16                              @ @ux3326_temperaturel_Sample_Average
+	.thumb_func
+ux3326_temperaturel_Sample_Average:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	movs	r0, #0
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	movs	r1, #3
+	strb.w	r1, [sp, #11]
+	str	r0, [sp, #4]
+	b	.LBB16_1
+.LBB16_1:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #4]
+	ldrb.w	r2, [sp, #11]
+	movs	r1, #1
+	lsls	r1, r2
+	cmp	r0, r1
+	bge	.LBB16_4
+	b	.LBB16_2
+.LBB16_2:                               @   in Loop: Header=BB16_1 Depth=1
+	add	r0, sp, #16
+	bl	ux3326_get_temperature
+	vldr	s2, [sp, #16]
+	vldr	s0, [sp, #12]
+	vadd.f32	s0, s0, s2
+	vstr	s0, [sp, #12]
+	movs	r0, #1
+	bl	system_delay_ms
+	b	.LBB16_3
+.LBB16_3:                               @   in Loop: Header=BB16_1 Depth=1
+	ldr	r0, [sp, #4]
+	adds	r0, #1
+	str	r0, [sp, #4]
+	b	.LBB16_1
+.LBB16_4:
+	vldr	s0, [sp, #12]
+	vmov.f32	s2, #8.000000e+00
+	vdiv.f32	s0, s0, s2
+	ldr	r0, [sp, #20]
+	vstr	s0, [r0]
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end16:
+	.size	ux3326_temperaturel_Sample_Average, .Lfunc_end16-ux3326_temperaturel_Sample_Average
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_apc_auto_enable_ctrl,"ax",%progbits
+	.hidden	ux3326_apc_auto_enable_ctrl     @ -- Begin function ux3326_apc_auto_enable_ctrl
+	.globl	ux3326_apc_auto_enable_ctrl
+	.p2align	2
+	.type	ux3326_apc_auto_enable_ctrl,%function
+	.code	16                              @ @ux3326_apc_auto_enable_ctrl
+	.thumb_func
+ux3326_apc_auto_enable_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #39]
+	movs	r0, #0
+	strb.w	r0, [sp, #27]
+	strb.w	r0, [sp, #26]
+	strb.w	r0, [sp, #25]
+	strh.w	r0, [sp, #36]
+	str	r0, [sp, #32]
+	str	r0, [sp, #28]
+	strb.w	r0, [sp, #25]
+	ldrb.w	r1, [sp, #25]
+	movs	r0, #198
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	add.w	r2, sp, #27
+	movs	r3, #1
+	str	r3, [sp, #20]                   @ 4-byte Spill
+	bl	master_reg_1byte_size_read
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	movs	r1, #2
+	strb.w	r1, [sp, #25]
+	ldrb.w	r1, [sp, #25]
+	add.w	r2, sp, #26
+	bl	master_reg_1byte_size_read
+	ldrb.w	r0, [sp, #27]
+	orr	r0, r0, #2
+	strb.w	r0, [sp, #27]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #1
+	bne	.LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	ldrb.w	r0, [sp, #26]
+	orr	r0, r0, #2
+	strb.w	r0, [sp, #26]
+	b	.LBB17_3
+.LBB17_2:
+	ldrb.w	r0, [sp, #26]
+	and	r0, r0, #253
+	strb.w	r0, [sp, #26]
+	b	.LBB17_3
+.LBB17_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #28]
+	ldrb.w	r0, [sp, #27]
+	strb.w	r0, [sp, #29]
+	movs	r0, #198
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	add	r1, sp, #28
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	movs	r2, #2
+	str	r2, [sp, #12]                   @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	ldr	r2, [sp, #12]                   @ 4-byte Reload
+	strb.w	r2, [sp, #28]
+	ldrb.w	r3, [sp, #26]
+	strb.w	r3, [sp, #29]
+	bl	master_reg_byte_write
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end17:
+	.size	ux3326_apc_auto_enable_ctrl, .Lfunc_end17-ux3326_apc_auto_enable_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ux3326_apc_target_voltage,"ax",%progbits
+	.hidden	ux3326_apc_target_voltage       @ -- Begin function ux3326_apc_target_voltage
+	.globl	ux3326_apc_target_voltage
+	.p2align	3
+	.type	ux3326_apc_target_voltage,%function
+	.code	16                              @ @ux3326_apc_target_voltage
+	.thumb_func
+ux3326_apc_target_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	vstr	s0, [sp, #28]
+	movs	r0, #0
+	strh.w	r0, [sp, #22]
+	str	r0, [sp, #16]
+	vldr	s0, [sp, #28]
+	vldr	s2, .LCPI18_0
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	vldr	s0, .LCPI18_0
+	vstr	s0, [sp, #12]                   @ 4-byte Spill
+	b	.LBB18_3
+.LBB18_2:
+	vldr	s0, [sp, #28]
+	vstr	s0, [sp, #12]                   @ 4-byte Spill
+	b	.LBB18_3
+.LBB18_3:
+	vldr	s0, [sp, #12]                   @ 4-byte Reload
+	vstr	s0, [sp, #16]
+	ldr	r0, [sp, #16]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_1
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	strh.w	r0, [sp, #22]
+	movs	r0, #8
+	strb.w	r0, [sp, #24]
+	movs	r0, #9
+	strb.w	r0, [sp, #26]
+	ldrh.w	r0, [sp, #22]
+	lsrs	r0, r0, #2
+	strb.w	r0, [sp, #25]
+	ldrh.w	r0, [sp, #22]
+	and	r0, r0, #3
+	strb.w	r0, [sp, #27]
+	movs	r0, #198
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	add	r1, sp, #24
+	movs	r2, #2
+	str	r2, [sp, #8]                    @ 4-byte Spill
+	bl	master_reg_byte_write
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r2, [sp, #8]                    @ 4-byte Reload
+	add.w	r1, sp, #26
+	bl	master_reg_byte_write
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.4:
+.LCPI18_1:
+	.long	2405181686                      @ double 0.78000000000000003
+	.long	1072231874
+.LCPI18_0:
+	.long	0x443b8000                      @ float 750
+.Lfunc_end18:
+	.size	ux3326_apc_target_voltage, .Lfunc_end18-ux3326_apc_target_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	t0                              @ @t0
+	.type	t0,%object
+	.section	.data.t0,"aw",%progbits
+	.globl	t0
+t0:
+	.ascii	"\002\036M\310\000\000\000\000\f\002\020\000 \037\000\000\000\000A\253\362\210@\254\000\370\204\200 \000\000\000\000\0006\017\000\000\000U"
+	.size	t0, 40
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

@@ -1,0 +1,620 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"ddm_50g_config_interface.c"
+	.section	.text.ddm_50g_set_ld_ibias,"ax",%progbits
+	.hidden	ddm_50g_set_ld_ibias            @ -- Begin function ddm_50g_set_ld_ibias
+	.globl	ddm_50g_set_ld_ibias
+	.p2align	2
+	.type	ddm_50g_set_ld_ibias,%function
+	.code	16                              @ @ddm_50g_set_ld_ibias
+	.thumb_func
+ddm_50g_set_ld_ibias:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end0:
+	.size	ddm_50g_set_ld_ibias, .Lfunc_end0-ddm_50g_set_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_get_ld_ibias,"ax",%progbits
+	.hidden	ddm_50g_get_ld_ibias            @ -- Begin function ddm_50g_get_ld_ibias
+	.globl	ddm_50g_get_ld_ibias
+	.p2align	2
+	.type	ddm_50g_get_ld_ibias,%function
+	.code	16                              @ @ddm_50g_get_ld_ibias
+	.thumb_func
+ddm_50g_get_ld_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	ddm_50g_get_ld_ibias, .Lfunc_end1-ddm_50g_get_ld_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_soa_ild,"ax",%progbits
+	.hidden	ddm_50g_set_soa_ild             @ -- Begin function ddm_50g_set_soa_ild
+	.globl	ddm_50g_set_soa_ild
+	.p2align	2
+	.type	ddm_50g_set_soa_ild,%function
+	.code	16                              @ @ddm_50g_set_soa_ild
+	.thumb_func
+ddm_50g_set_soa_ild:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	vstr	s0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end2:
+	.size	ddm_50g_set_soa_ild, .Lfunc_end2-ddm_50g_set_soa_ild
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_ea,"ax",%progbits
+	.hidden	ddm_50g_set_ea                  @ -- Begin function ddm_50g_set_ea
+	.globl	ddm_50g_set_ea
+	.p2align	2
+	.type	ddm_50g_set_ea,%function
+	.code	16                              @ @ddm_50g_set_ea
+	.thumb_func
+ddm_50g_set_ea:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vstr	s0, [sp, #4]
+	vldr	s0, [sp, #4]
+	bl	sgm2508_set_vea_50g
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	ddm_50g_set_ea, .Lfunc_end3-ddm_50g_set_ea
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_tx_ld_cpa,"ax",%progbits
+	.hidden	ddm_50g_set_tx_ld_cpa           @ -- Begin function ddm_50g_set_tx_ld_cpa
+	.globl	ddm_50g_set_tx_ld_cpa
+	.p2align	2
+	.type	ddm_50g_set_tx_ld_cpa,%function
+	.code	16                              @ @ddm_50g_set_tx_ld_cpa
+	.thumb_func
+ddm_50g_set_tx_ld_cpa:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	ddm_50g_set_tx_ld_cpa, .Lfunc_end4-ddm_50g_set_tx_ld_cpa
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_ld_imod,"ax",%progbits
+	.hidden	ddm_50g_set_ld_imod             @ -- Begin function ddm_50g_set_ld_imod
+	.globl	ddm_50g_set_ld_imod
+	.p2align	2
+	.type	ddm_50g_set_ld_imod,%function
+	.code	16                              @ @ddm_50g_set_ld_imod
+	.thumb_func
+ddm_50g_set_ld_imod:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	ddm_50g_set_ld_imod, .Lfunc_end5-ddm_50g_set_ld_imod
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_tx_ld_deempth,"ax",%progbits
+	.hidden	ddm_50g_set_tx_ld_deempth       @ -- Begin function ddm_50g_set_tx_ld_deempth
+	.globl	ddm_50g_set_tx_ld_deempth
+	.p2align	2
+	.type	ddm_50g_set_tx_ld_deempth,%function
+	.code	16                              @ @ddm_50g_set_tx_ld_deempth
+	.thumb_func
+ddm_50g_set_tx_ld_deempth:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	ddm_50g_set_tx_ld_deempth, .Lfunc_end6-ddm_50g_set_tx_ld_deempth
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_swing,"ax",%progbits
+	.hidden	ddm_50g_set_rx_swing            @ -- Begin function ddm_50g_set_rx_swing
+	.globl	ddm_50g_set_rx_swing
+	.p2align	2
+	.type	ddm_50g_set_rx_swing,%function
+	.code	16                              @ @ddm_50g_set_rx_swing
+	.thumb_func
+ddm_50g_set_rx_swing:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	ddm_50g_set_rx_swing, .Lfunc_end7-ddm_50g_set_rx_swing
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_eq_boost,"ax",%progbits
+	.hidden	ddm_50g_set_rx_eq_boost         @ -- Begin function ddm_50g_set_rx_eq_boost
+	.globl	ddm_50g_set_rx_eq_boost
+	.p2align	2
+	.type	ddm_50g_set_rx_eq_boost,%function
+	.code	16                              @ @ddm_50g_set_rx_eq_boost
+	.thumb_func
+ddm_50g_set_rx_eq_boost:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	ddm_50g_set_rx_eq_boost, .Lfunc_end8-ddm_50g_set_rx_eq_boost
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_drv_deemph,"ax",%progbits
+	.hidden	ddm_50g_set_rx_drv_deemph       @ -- Begin function ddm_50g_set_rx_drv_deemph
+	.globl	ddm_50g_set_rx_drv_deemph
+	.p2align	2
+	.type	ddm_50g_set_rx_drv_deemph,%function
+	.code	16                              @ @ddm_50g_set_rx_drv_deemph
+	.thumb_func
+ddm_50g_set_rx_drv_deemph:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	ddm_50g_set_rx_drv_deemph, .Lfunc_end9-ddm_50g_set_rx_drv_deemph
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_los_threshold,"ax",%progbits
+	.hidden	ddm_50g_set_rx_los_threshold    @ -- Begin function ddm_50g_set_rx_los_threshold
+	.globl	ddm_50g_set_rx_los_threshold
+	.p2align	2
+	.type	ddm_50g_set_rx_los_threshold,%function
+	.code	16                              @ @ddm_50g_set_rx_los_threshold
+	.thumb_func
+ddm_50g_set_rx_los_threshold:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	ddm_50g_set_rx_los_threshold, .Lfunc_end10-ddm_50g_set_rx_los_threshold
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_los_hyst,"ax",%progbits
+	.hidden	ddm_50g_set_rx_los_hyst         @ -- Begin function ddm_50g_set_rx_los_hyst
+	.globl	ddm_50g_set_rx_los_hyst
+	.p2align	2
+	.type	ddm_50g_set_rx_los_hyst,%function
+	.code	16                              @ @ddm_50g_set_rx_los_hyst
+	.thumb_func
+ddm_50g_set_rx_los_hyst:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	ddm_50g_set_rx_los_hyst, .Lfunc_end11-ddm_50g_set_rx_los_hyst
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rx_vapd,"ax",%progbits
+	.hidden	ddm_50g_set_rx_vapd             @ -- Begin function ddm_50g_set_rx_vapd
+	.globl	ddm_50g_set_rx_vapd
+	.p2align	2
+	.type	ddm_50g_set_rx_vapd,%function
+	.code	16                              @ @ddm_50g_set_rx_vapd
+	.thumb_func
+ddm_50g_set_rx_vapd:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vstr	s0, [sp, #4]
+	vldr	s0, [sp, #4]
+	movs	r0, #0
+	bl	sgm41282c_set_apd
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	ddm_50g_set_rx_vapd, .Lfunc_end12-ddm_50g_set_rx_vapd
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_apc_target_voltage,"ax",%progbits
+	.hidden	ddm_50g_apc_target_voltage      @ -- Begin function ddm_50g_apc_target_voltage
+	.globl	ddm_50g_apc_target_voltage
+	.p2align	2
+	.type	ddm_50g_apc_target_voltage,%function
+	.code	16                              @ @ddm_50g_apc_target_voltage
+	.thumb_func
+ddm_50g_apc_target_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	vstr	s0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end13:
+	.size	ddm_50g_apc_target_voltage, .Lfunc_end13-ddm_50g_apc_target_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_apc_auto_enable,"ax",%progbits
+	.hidden	ddm_50g_apc_auto_enable         @ -- Begin function ddm_50g_apc_auto_enable
+	.globl	ddm_50g_apc_auto_enable
+	.p2align	2
+	.type	ddm_50g_apc_auto_enable,%function
+	.code	16                              @ @ddm_50g_apc_auto_enable
+	.thumb_func
+ddm_50g_apc_auto_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end14:
+	.size	ddm_50g_apc_auto_enable, .Lfunc_end14-ddm_50g_apc_auto_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_soft_txdsbl_ctrl,"ax",%progbits
+	.hidden	ddm_50g_soft_txdsbl_ctrl        @ -- Begin function ddm_50g_soft_txdsbl_ctrl
+	.globl	ddm_50g_soft_txdsbl_ctrl
+	.p2align	2
+	.type	ddm_50g_soft_txdsbl_ctrl,%function
+	.code	16                              @ @ddm_50g_soft_txdsbl_ctrl
+	.thumb_func
+ddm_50g_soft_txdsbl_ctrl:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #3]
+	add	sp, #4
+	bx	lr
+.Lfunc_end15:
+	.size	ddm_50g_soft_txdsbl_ctrl, .Lfunc_end15-ddm_50g_soft_txdsbl_ctrl
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_get_voltage,"ax",%progbits
+	.hidden	ddm_50g_get_voltage             @ -- Begin function ddm_50g_get_voltage
+	.globl	ddm_50g_get_voltage
+	.p2align	2
+	.type	ddm_50g_get_voltage,%function
+	.code	16                              @ @ddm_50g_get_voltage
+	.thumb_func
+ddm_50g_get_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end16:
+	.size	ddm_50g_get_voltage, .Lfunc_end16-ddm_50g_get_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_get_mpd_ibias,"ax",%progbits
+	.hidden	ddm_50g_get_mpd_ibias           @ -- Begin function ddm_50g_get_mpd_ibias
+	.globl	ddm_50g_get_mpd_ibias
+	.p2align	2
+	.type	ddm_50g_get_mpd_ibias,%function
+	.code	16                              @ @ddm_50g_get_mpd_ibias
+	.thumb_func
+ddm_50g_get_mpd_ibias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	add	sp, #4
+	bx	lr
+.Lfunc_end17:
+	.size	ddm_50g_get_mpd_ibias, .Lfunc_end17-ddm_50g_get_mpd_ibias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_set_rssi_value,"ax",%progbits
+	.hidden	ddm_50g_set_rssi_value          @ -- Begin function ddm_50g_set_rssi_value
+	.globl	ddm_50g_set_rssi_value
+	.p2align	2
+	.type	ddm_50g_set_rssi_value,%function
+	.code	16                              @ @ddm_50g_set_rssi_value
+	.thumb_func
+ddm_50g_set_rssi_value:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	strh	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end18:
+	.size	ddm_50g_set_rssi_value, .Lfunc_end18-ddm_50g_set_rssi_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_get_rssi_value,"ax",%progbits
+	.hidden	ddm_50g_get_rssi_value          @ -- Begin function ddm_50g_get_rssi_value
+	.globl	ddm_50g_get_rssi_value
+	.p2align	2
+	.type	ddm_50g_get_rssi_value,%function
+	.code	16                              @ @ddm_50g_get_rssi_value
+	.thumb_func
+ddm_50g_get_rssi_value:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	cbnz	r0, .LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	b	.LBB19_3
+.LBB19_2:
+	movw	r0, :lower16:ddm_adc_out_val
+	movt	r0, :upper16:ddm_adc_out_val
+	ldrh	r0, [r0, #8]
+	ldr	r1, [sp]
+	strh	r0, [r1]
+	b	.LBB19_3
+.LBB19_3:
+	add	sp, #4
+	bx	lr
+.Lfunc_end19:
+	.size	ddm_50g_get_rssi_value, .Lfunc_end19-ddm_50g_get_rssi_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_rssi_start_sample_adc_action,"ax",%progbits
+	.hidden	ddm_50g_rssi_start_sample_adc_action @ -- Begin function ddm_50g_rssi_start_sample_adc_action
+	.globl	ddm_50g_rssi_start_sample_adc_action
+	.p2align	2
+	.type	ddm_50g_rssi_start_sample_adc_action,%function
+	.code	16                              @ @ddm_50g_rssi_start_sample_adc_action
+	.thumb_func
+ddm_50g_rssi_start_sample_adc_action:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	movs	r1, #12
+	bl	adc_inserted_channel_sample_average
+	mov	r1, r0
+	ldrh.w	r0, [sp, #6]
+	orrs	r0, r1
+	strh.w	r0, [sp, #6]
+	ldrh.w	r0, [sp, #6]
+	bl	ddm_50g_set_rssi_value
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end20:
+	.size	ddm_50g_rssi_start_sample_adc_action, .Lfunc_end20-ddm_50g_rssi_start_sample_adc_action
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_dev_init,"ax",%progbits
+	.hidden	ddm_50g_dev_init                @ -- Begin function ddm_50g_dev_init
+	.globl	ddm_50g_dev_init
+	.p2align	2
+	.type	ddm_50g_dev_init,%function
+	.code	16                              @ @ddm_50g_dev_init
+	.thumb_func
+ddm_50g_dev_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	dsp_fsl_init
+	bl	sgm41282c_init
+	pop	{r7, pc}
+.Lfunc_end21:
+	.size	ddm_50g_dev_init, .Lfunc_end21-ddm_50g_dev_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_50g_get_monitor_adc,"ax",%progbits
+	.hidden	ddm_50g_get_monitor_adc         @ -- Begin function ddm_50g_get_monitor_adc
+	.globl	ddm_50g_get_monitor_adc
+	.p2align	2
+	.type	ddm_50g_get_monitor_adc,%function
+	.code	16                              @ @ddm_50g_get_monitor_adc
+	.thumb_func
+ddm_50g_get_monitor_adc:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	add	sp, #4
+	bx	lr
+.Lfunc_end22:
+	.size	ddm_50g_get_monitor_adc, .Lfunc_end22-ddm_50g_get_monitor_adc
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

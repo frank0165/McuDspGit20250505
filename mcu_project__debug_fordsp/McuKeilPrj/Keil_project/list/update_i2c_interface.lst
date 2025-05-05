@@ -1,0 +1,765 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"update_i2c_interface.c"
+	.section	.text.update_app_write_reg_byte,"ax",%progbits
+	.hidden	update_app_write_reg_byte       @ -- Begin function update_app_write_reg_byte
+	.globl	update_app_write_reg_byte
+	.p2align	2
+	.type	update_app_write_reg_byte,%function
+	.code	16                              @ @update_app_write_reg_byte
+	.thumb_func
+update_app_write_reg_byte:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	str	r0, [sp, #44]
+	str	r1, [sp, #40]
+	movs	r0, #0
+	str	r0, [sp, #36]
+	str	r0, [sp, #32]
+	strb.w	r0, [sp, #31]
+	str	r0, [sp, #20]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #44]
+	cbz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #40]
+	cmp	r0, #1
+	bhi	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:
+	b	.LBB0_28
+.LBB0_3:
+	ldr	r0, [sp, #44]
+	ldr	r1, [sp, #36]
+	adds	r2, r1, #1
+	str	r2, [sp, #36]
+	ldrb	r0, [r0, r1]
+	cmp	r0, #8
+	beq	.LBB0_5
+	b	.LBB0_4
+.LBB0_4:
+	b	.LBB0_28
+.LBB0_5:
+	bl	tec_set_default_mini_status
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	strb	r0, [r1, #4]
+	strb	r0, [r1, #1]
+	strb	r0, [r1, #2]
+	strb	r0, [r1, #3]
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #0
+	bne	.LBB0_13
+	b	.LBB0_6
+.LBB0_6:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #1
+	strb	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #31]
+	ldrb.w	r0, [sp, #31]
+	cbnz	r0, .LBB0_11
+	b	.LBB0_7
+.LBB0_7:
+	bl	update_mem_malloc
+	strb.w	r0, [sp, #31]
+	ldrb.w	r0, [sp, #31]
+	cbnz	r0, .LBB0_9
+	b	.LBB0_8
+.LBB0_8:
+	b	.LBB0_10
+.LBB0_9:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB0_10
+.LBB0_10:
+	b	.LBB0_12
+.LBB0_11:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB0_12
+.LBB0_12:
+	bl	read_update_flag
+	b	.LBB0_13
+.LBB0_13:
+	ldr	r0, [sp, #36]
+	adds	r0, #1
+	str	r0, [sp, #36]
+	ldr	r0, [sp, #40]
+	ldr	r1, [sp, #36]
+	subs	r0, r0, r1
+	str	r0, [sp, #32]
+	ldr	r2, [sp, #32]
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	ldr	r0, [r1]
+	add	r0, r2
+	str	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #31]
+	ldrb.w	r0, [sp, #31]
+	cbnz	r0, .LBB0_15
+	b	.LBB0_14
+.LBB0_14:
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #3
+	strb	r0, [r1]
+	b	.LBB0_28
+.LBB0_15:
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #2
+	beq	.LBB0_17
+	b	.LBB0_16
+.LBB0_16:
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #1
+	bne	.LBB0_18
+	b	.LBB0_17
+.LBB0_17:
+	ldr	r0, [sp, #44]
+	ldr	r1, [sp, #36]
+	add	r1, r0
+	ldr	r2, [sp, #32]
+	movw	r0, #63488
+	movt	r0, #2049
+	bl	comm_update_write_mem_one_page_to_flash
+	strb.w	r0, [sp, #31]
+	b	.LBB0_18
+.LBB0_18:
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #2
+	bne	.LBB0_20
+	b	.LBB0_19
+.LBB0_19:
+	movw	r0, #63488
+	movt	r0, #2049
+	bl	comm_update_write_to_flash
+	b	.LBB0_20
+.LBB0_20:
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #3
+	bne	.LBB0_26
+	b	.LBB0_21
+.LBB0_21:
+	ldr	r0, [sp, #40]
+	cmp	r0, #6
+	blo	.LBB0_26
+	b	.LBB0_22
+.LBB0_22:
+	movs	r0, #0
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #44]
+	ldr.w	r0, [r0, #2]
+	str	r0, [sp, #24]
+	add	r0, sp, #24
+	bl	get_u32
+	str	r0, [sp, #20]
+	ldrb.w	r1, [sp, #24]
+	ldrb.w	r2, [sp, #25]
+	ldrb.w	r3, [sp, #26]
+	ldrb.w	r0, [sp, #27]
+	mov	r12, sp
+	str.w	r0, [r12]
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	printf
+	ldr	r1, [sp, #20]
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	bl	printf
+	bl	om_crc32_reset
+	bl	read_update_flag
+	movw	r0, :lower16:g_pkt_count_to_flash
+	movt	r0, :upper16:g_pkt_count_to_flash
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	ldr	r2, [r0]
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	movw	r1, #63488
+	movt	r1, #2049
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	bl	printf
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+                                        @ kill: def $r2 killed $r0
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [r1]
+	bl	om_flash_block_data_calculate_crc32
+	str	r0, [sp, #16]
+	ldr	r1, [sp, #16]
+	movw	r0, :lower16:.L.str.3
+	movt	r0, :upper16:.L.str.3
+	bl	printf
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #16]
+	cmp	r0, r1
+	beq	.LBB0_24
+	b	.LBB0_23
+.LBB0_23:
+	movw	r0, :lower16:.L.str.4
+	movt	r0, :upper16:.L.str.4
+	bl	printf
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #2
+	strb	r0, [r1]
+	b	.LBB0_25
+.LBB0_24:
+	movs	r0, #2
+	movs	r1, #0
+	bl	write_update_flag
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #1
+	strb	r0, [r1]
+	b	.LBB0_25
+.LBB0_25:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB0_27
+.LBB0_26:
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #4
+	strb	r0, [r1]
+	b	.LBB0_27
+.LBB0_27:
+	b	.LBB0_28
+.LBB0_28:
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	update_app_write_reg_byte, .Lfunc_end0-update_app_write_reg_byte
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_firmware_write_reg_byte,"ax",%progbits
+	.hidden	update_firmware_write_reg_byte  @ -- Begin function update_firmware_write_reg_byte
+	.globl	update_firmware_write_reg_byte
+	.p2align	2
+	.type	update_firmware_write_reg_byte,%function
+	.code	16                              @ @update_firmware_write_reg_byte
+	.thumb_func
+update_firmware_write_reg_byte:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #36]
+	str	r1, [sp, #32]
+	movs	r0, #0
+	str	r0, [sp, #28]
+	strb.w	r0, [sp, #27]
+	str	r0, [sp, #16]
+	str	r0, [sp, #12]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #36]
+	cbz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	ldr	r0, [sp, #32]
+	cmp	r0, #1
+	bhi	.LBB1_3
+	b	.LBB1_2
+.LBB1_2:
+	b	.LBB1_28
+.LBB1_3:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0]
+	cmp	r0, #12
+	beq	.LBB1_5
+	b	.LBB1_4
+.LBB1_4:
+	b	.LBB1_28
+.LBB1_5:
+	bl	tec_set_default_mini_status
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	strb	r0, [r1, #4]
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #0
+	bne	.LBB1_13
+	b	.LBB1_6
+.LBB1_6:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #1
+	strb	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #27]
+	ldrb.w	r0, [sp, #27]
+	cbnz	r0, .LBB1_11
+	b	.LBB1_7
+.LBB1_7:
+	bl	update_mem_malloc
+	strb.w	r0, [sp, #27]
+	ldrb.w	r0, [sp, #27]
+	cbnz	r0, .LBB1_9
+	b	.LBB1_8
+.LBB1_8:
+	movw	r0, :lower16:.L.str.5
+	movt	r0, :upper16:.L.str.5
+	bl	printf
+	b	.LBB1_10
+.LBB1_9:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB1_10
+.LBB1_10:
+	b	.LBB1_12
+.LBB1_11:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB1_12
+.LBB1_12:
+	bl	read_update_flag
+	b	.LBB1_13
+.LBB1_13:
+	ldr	r0, [sp, #32]
+	subs	r0, #2
+	str	r0, [sp, #28]
+	ldr	r2, [sp, #28]
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	ldr	r0, [r1]
+	add	r0, r2
+	str	r0, [r1]
+	bl	upate_mem_is_alloc
+	strb.w	r0, [sp, #27]
+	ldrb.w	r0, [sp, #27]
+	cbnz	r0, .LBB1_15
+	b	.LBB1_14
+.LBB1_14:
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #3
+	strb	r0, [r1]
+	b	.LBB1_28
+.LBB1_15:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #2
+	beq	.LBB1_17
+	b	.LBB1_16
+.LBB1_16:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #1
+	bne	.LBB1_18
+	b	.LBB1_17
+.LBB1_17:
+	ldr	r0, [sp, #36]
+	adds	r1, r0, #2
+	ldr	r2, [sp, #28]
+	movw	r0, #19456
+	movt	r0, #2054
+	bl	comm_update_write_mem_one_page_to_flash
+	strb.w	r0, [sp, #27]
+	b	.LBB1_18
+.LBB1_18:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #2
+	bne	.LBB1_20
+	b	.LBB1_19
+.LBB1_19:
+	movw	r0, #19456
+	movt	r0, #2054
+	bl	comm_update_write_to_flash
+	b	.LBB1_20
+.LBB1_20:
+	ldr	r0, [sp, #36]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #3
+	bne	.LBB1_26
+	b	.LBB1_21
+.LBB1_21:
+	ldr	r0, [sp, #32]
+	cmp	r0, #6
+	blo	.LBB1_26
+	b	.LBB1_22
+.LBB1_22:
+	movs	r0, #0
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #36]
+	ldr.w	r0, [r0, #2]
+	str	r0, [sp, #20]
+	add	r0, sp, #20
+	bl	get_u32
+	str	r0, [sp, #16]
+	ldr	r1, [sp, #16]
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	bl	printf
+	bl	om_crc32_reset
+	bl	read_update_flag
+	movw	r0, :lower16:g_pkt_count_to_flash
+	movt	r0, :upper16:g_pkt_count_to_flash
+	str	r0, [sp]                        @ 4-byte Spill
+	ldr	r2, [r0]
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	movw	r1, #19456
+	movt	r1, #2054
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	printf
+	ldr	r1, [sp]                        @ 4-byte Reload
+                                        @ kill: def $r2 killed $r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldr	r1, [r1]
+	bl	om_flash_block_data_calculate_crc32
+	str	r0, [sp, #12]
+	ldr	r1, [sp, #12]
+	movw	r0, :lower16:.L.str.3
+	movt	r0, :upper16:.L.str.3
+	bl	printf
+	ldr	r0, [sp, #16]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	beq	.LBB1_24
+	b	.LBB1_23
+.LBB1_23:
+	movw	r0, :lower16:.L.str.4
+	movt	r0, :upper16:.L.str.4
+	bl	printf
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #2
+	strb	r0, [r1]
+	b	.LBB1_25
+.LBB1_24:
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #1
+	strb	r0, [r1]
+	b	.LBB1_25
+.LBB1_25:
+	bl	update_mem_all_memset
+	movw	r1, :lower16:g_pkt_rx
+	movt	r1, :upper16:g_pkt_rx
+	movs	r0, #0
+	str	r0, [r1]
+	movw	r1, :lower16:g_pkt_count_to_flash
+	movt	r1, :upper16:g_pkt_count_to_flash
+	str	r0, [r1]
+	movw	r1, :lower16:g_page_idx
+	movt	r1, :upper16:g_page_idx
+	str	r0, [r1]
+	b	.LBB1_27
+.LBB1_26:
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	movs	r0, #4
+	strb	r0, [r1]
+	b	.LBB1_27
+.LBB1_27:
+	b	.LBB1_28
+.LBB1_28:
+	add	sp, #40
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	update_firmware_write_reg_byte, .Lfunc_end1-update_firmware_write_reg_byte
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.upgrade_dev_version_reg_read,"ax",%progbits
+	.hidden	upgrade_dev_version_reg_read    @ -- Begin function upgrade_dev_version_reg_read
+	.globl	upgrade_dev_version_reg_read
+	.p2align	2
+	.type	upgrade_dev_version_reg_read,%function
+	.code	16                              @ @upgrade_dev_version_reg_read
+	.thumb_func
+upgrade_dev_version_reg_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#104
+	sub	sp, #104
+	.cfi_def_cfa_offset 112
+                                        @ kill: def $r3 killed $r0
+	strb.w	r0, [sp, #103]
+	str	r1, [sp, #96]
+	str	r2, [sp, #92]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	ldrb.w	r0, [sp, #103]
+	cmp	r0, #11
+	beq	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	b	.LBB2_5
+.LBB2_2:
+	ldr	r0, [sp, #96]
+	cbnz	r0, .LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	b	.LBB2_5
+.LBB2_4:
+	add	r0, sp, #12
+	str	r0, [sp]                        @ 4-byte Spill
+	movs	r1, #80
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	__aeabi_memclr
+	ldr	r2, [sp]                        @ 4-byte Reload
+	ldr	r3, [sp, #8]
+	adds	r1, r2, r3
+	movw	r0, #24909
+	movt	r0, #8313
+	str	r0, [r2, r3]
+	movw	r0, #12848
+	movt	r0, #53
+	str	r0, [r1, #8]
+	movw	r0, #13600
+	movt	r0, #12832
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #12
+	str	r0, [sp, #8]
+	ldr	r3, [sp, #8]
+	adds	r1, r2, r3
+	movw	r0, #14129
+	movt	r0, #13626
+	str	r0, [r2, r3]
+	movs	r0, #0
+	strb	r0, [r1, #8]
+	movw	r0, #14900
+	movt	r0, #14128
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #8]
+	adds	r0, #9
+	str	r0, [sp, #8]
+	bl	read_update_flag
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movw	r1, :lower16:update_flag
+	movt	r1, :upper16:update_flag
+	ldrb	r1, [r1]
+	ldr	r2, [sp, #8]
+	strb	r1, [r0, r2]
+	ldr	r1, [sp, #8]
+	adds	r1, #1
+	str	r1, [sp, #8]
+	movw	r1, :lower16:g_crc_is_ok
+	movt	r1, :upper16:g_crc_is_ok
+	ldrb	r1, [r1]
+	ldr	r2, [sp, #8]
+	strb	r1, [r0, r2]
+	ldr	r1, [sp, #8]
+	adds	r1, #1
+	str	r1, [sp, #8]
+	ldr	r1, [sp, #8]
+	add	r0, r1
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	ldr	r1, [r1, #8]
+	bl	set_u32
+	ldr	r1, [sp]                        @ 4-byte Reload
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]
+	adds	r0, #4
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #96]
+	bl	__aeabi_memcpy
+	b	.LBB2_5
+.LBB2_5:
+	add	sp, #104
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	upgrade_dev_version_reg_read, .Lfunc_end2-upgrade_dev_version_reg_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_user_boot_write_reg_byte,"ax",%progbits
+	.hidden	update_user_boot_write_reg_byte @ -- Begin function update_user_boot_write_reg_byte
+	.globl	update_user_boot_write_reg_byte
+	.p2align	2
+	.type	update_user_boot_write_reg_byte,%function
+	.code	16                              @ @update_user_boot_write_reg_byte
+	.thumb_func
+update_user_boot_write_reg_byte:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	add	sp, #8
+	bx	lr
+.Lfunc_end3:
+	.size	update_user_boot_write_reg_byte, .Lfunc_end3-update_user_boot_write_reg_byte
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	data_str                        @ @data_str
+	.type	data_str,%object
+	.section	.data.data_str,"aw",%progbits
+	.globl	data_str
+data_str:
+	.asciz	"May  5 2025"
+	.size	data_str, 12
+
+	.hidden	time_str                        @ @time_str
+	.type	time_str,%object
+	.section	.data.time_str,"aw",%progbits
+	.globl	time_str
+time_str:
+	.asciz	"17:54:07"
+	.size	time_str, 9
+
+	.hidden	g_crc_is_ok                     @ @g_crc_is_ok
+	.type	g_crc_is_ok,%object
+	.section	.bss.g_crc_is_ok,"aw",%nobits
+	.globl	g_crc_is_ok
+g_crc_is_ok:
+	.byte	0                               @ 0x0
+	.size	g_crc_is_ok, 1
+
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"crc:%02x %02x %02x %02x\r\n"
+	.size	.L.str, 26
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"crc_receive_result:0x%x\r\n"
+	.size	.L.str.1, 26
+
+	.type	.L.str.2,%object                @ @.str.2
+.L.str.2:
+	.asciz	"write to address:0x%x, pkt_len:%u\r\n"
+	.size	.L.str.2, 36
+
+	.type	.L.str.3,%object                @ @.str.3
+.L.str.3:
+	.asciz	"crc_flash_result:0x%x\r\n"
+	.size	.L.str.3, 24
+
+	.type	.L.str.4,%object                @ @.str.4
+.L.str.4:
+	.asciz	"crc error !\r\n"
+	.size	.L.str.4, 14
+
+	.type	.L.str.5,%object                @ @.str.5
+.L.str.5:
+	.asciz	"update_mem_malloc error\r\n"
+	.size	.L.str.5, 26
+
+	.type	.L.str.6,%object                @ @.str.6
+.L.str.6:
+	.asciz	"May  5 2025"
+	.size	.L.str.6, 12
+
+	.type	.L.str.7,%object                @ @.str.7
+.L.str.7:
+	.asciz	"17:54:07"
+	.size	.L.str.7, 9
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

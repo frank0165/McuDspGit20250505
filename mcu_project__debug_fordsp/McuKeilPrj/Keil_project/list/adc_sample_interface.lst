@@ -1,0 +1,211 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"adc_sample_interface.c"
+	.section	.text.adc_sample_init,"ax",%progbits
+	.hidden	adc_sample_init                 @ -- Begin function adc_sample_init
+	.globl	adc_sample_init
+	.p2align	2
+	.type	adc_sample_init,%function
+	.code	16                              @ @adc_sample_init
+	.thumb_func
+adc_sample_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	adc_sample_gpio_init
+	bl	adc_dma_config_init
+	bl	adc_sample_function_init
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	adc_sample_init, .Lfunc_end0-adc_sample_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_inserted_channel_sample_average,"ax",%progbits
+	.hidden	adc_inserted_channel_sample_average @ -- Begin function adc_inserted_channel_sample_average
+	.globl	adc_inserted_channel_sample_average
+	.p2align	2
+	.type	adc_inserted_channel_sample_average,%function
+	.code	16                              @ @adc_inserted_channel_sample_average
+	.thumb_func
+adc_inserted_channel_sample_average:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #31]
+	strb.w	r1, [sp, #30]
+	movs	r0, #0
+	str	r0, [sp, #24]
+	str	r0, [sp, #20]
+	movs	r1, #12
+	strb.w	r1, [sp, #19]
+	str	r0, [sp, #12]
+	mov.w	r1, #4096
+	str	r1, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	ldrb.w	r1, [sp, #19]
+	cmp	r0, r1
+	bge	.LBB1_8
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+	ldrb.w	r0, [sp, #31]
+	ldrb.w	r1, [sp, #30]
+	bl	get_adc_inserted_channel_sample
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bls	.LBB1_4
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #4]
+	str	r0, [sp, #12]
+	b	.LBB1_4
+.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	cmp	r0, r1
+	bhs	.LBB1_6
+	b	.LBB1_5
+.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp, #4]
+	str	r0, [sp, #8]
+	b	.LBB1_6
+.LBB1_6:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r1, [sp, #4]
+	ldr	r0, [sp, #24]
+	add	r0, r1
+	str	r0, [sp, #24]
+	b	.LBB1_7
+.LBB1_7:                                @   in Loop: Header=BB1_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB1_1
+.LBB1_8:
+	ldr	r0, [sp, #24]
+	ldr	r1, [sp, #12]
+	subs	r0, r0, r1
+	ldr	r1, [sp, #8]
+	subs	r0, r0, r1
+	ldrb.w	r1, [sp, #19]
+	subs	r1, #2
+	udiv	r0, r0, r1
+	str	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	adc_inserted_channel_sample_average, .Lfunc_end1-adc_inserted_channel_sample_average
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.adc_dma_channel_sample_average,"ax",%progbits
+	.hidden	adc_dma_channel_sample_average  @ -- Begin function adc_dma_channel_sample_average
+	.globl	adc_dma_channel_sample_average
+	.p2align	2
+	.type	adc_dma_channel_sample_average,%function
+	.code	16                              @ @adc_dma_channel_sample_average
+	.thumb_func
+adc_dma_channel_sample_average:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	movs	r1, #3
+	strb.w	r1, [sp, #7]
+	str	r0, [sp]
+	b	.LBB2_1
+.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp]
+	ldrb.w	r2, [sp, #7]
+	movs	r1, #1
+	lsls	r1, r2
+	cmp	r0, r1
+	bge	.LBB2_4
+	b	.LBB2_2
+.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
+	ldrb.w	r0, [sp, #15]
+	bl	adc_sample_dma_regular_data_channel
+	mov	r1, r0
+	ldr	r0, [sp, #8]
+	add	r0, r1
+	str	r0, [sp, #8]
+	b	.LBB2_3
+.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB2_1
+.LBB2_4:
+	ldrb.w	r1, [sp, #7]
+	ldr	r0, [sp, #8]
+	lsrs	r0, r1
+	str	r0, [sp, #8]
+	ldrh.w	r0, [sp, #8]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end2:
+	.size	adc_dma_channel_sample_average, .Lfunc_end2-adc_dma_channel_sample_average
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

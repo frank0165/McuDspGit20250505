@@ -1,0 +1,4198 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_timer.c"
+	.section	.text.timer_deinit,"ax",%progbits
+	.hidden	timer_deinit                    @ -- Begin function timer_deinit
+	.globl	timer_deinit
+	.p2align	2
+	.type	timer_deinit,%function
+	.code	16                              @ @timer_deinit
+	.thumb_func
+timer_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	str	r0, [sp, #44]
+	ldr	r0, [sp, #44]
+	str	r0, [sp, #40]                   @ 4-byte Spill
+	cmp.w	r0, #1073741824
+	beq	.LBB0_10
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #1024
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_11
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #4096
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_12
+	b	.LBB0_3
+.LBB0_3:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #5120
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_13
+	b	.LBB0_4
+.LBB0_4:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #8192
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_14
+	b	.LBB0_5
+.LBB0_5:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB0_9
+	b	.LBB0_6
+.LBB0_6:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #16384
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB0_15
+	b	.LBB0_7
+.LBB0_7:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #17408
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB0_16
+	b	.LBB0_8
+.LBB0_8:
+	ldr	r0, [sp, #40]                   @ 4-byte Reload
+	movw	r1, #18432
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB0_17
+	b	.LBB0_18
+.LBB0_9:
+	movw	r0, #779
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_10:
+	mov.w	r0, #1024
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_11:
+	movw	r0, #1025
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_12:
+	movw	r0, #1028
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_13:
+	movw	r0, #1029
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #20]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_14:
+	mov.w	r0, #1032
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_15:
+	mov.w	r0, #784
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_16:
+	movw	r0, #785
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_17:
+	movw	r0, #786
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_19
+.LBB0_18:
+	b	.LBB0_19
+.LBB0_19:
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	timer_deinit, .Lfunc_end0-timer_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_struct_para_init,"ax",%progbits
+	.hidden	timer_struct_para_init          @ -- Begin function timer_struct_para_init
+	.globl	timer_struct_para_init
+	.p2align	2
+	.type	timer_struct_para_init,%function
+	.code	16                              @ @timer_struct_para_init
+	.thumb_func
+timer_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	strh	r0, [r1]
+	ldr	r1, [sp]
+	strh	r0, [r1, #2]
+	ldr	r1, [sp]
+	strh	r0, [r1, #4]
+	ldr	r2, [sp]
+	movw	r1, #65535
+	str	r1, [r2, #8]
+	ldr	r1, [sp]
+	strh	r0, [r1, #6]
+	ldr	r1, [sp]
+	strb	r0, [r1, #12]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	timer_struct_para_init, .Lfunc_end1-timer_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_init,"ax",%progbits
+	.hidden	timer_init                      @ -- Begin function timer_init
+	.globl	timer_init
+	.p2align	2
+	.type	timer_init,%function
+	.code	16                              @ @timer_init
+	.thumb_func
+timer_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldrh	r0, [r0]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #40]
+	ldr	r0, [sp, #4]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_3
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r0, [sp, #4]
+	cmp.w	r0, #1073741824
+	beq	.LBB2_3
+	b	.LBB2_2
+.LBB2_2:
+	ldr	r0, [sp, #4]
+	movw	r1, #1024
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #112
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldrh	r2, [r0, #4]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB2_4
+.LBB2_4:
+	ldr	r0, [sp]
+	ldr	r0, [r0, #8]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #44]
+	ldr	r0, [sp, #4]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_11
+	b	.LBB2_5
+.LBB2_5:
+	ldr	r0, [sp, #4]
+	cmp.w	r0, #1073741824
+	beq	.LBB2_11
+	b	.LBB2_6
+.LBB2_6:
+	ldr	r0, [sp, #4]
+	movw	r1, #1024
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB2_11
+	b	.LBB2_7
+.LBB2_7:
+	ldr	r0, [sp, #4]
+	movw	r1, #8192
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB2_11
+	b	.LBB2_8
+.LBB2_8:
+	ldr	r0, [sp, #4]
+	movw	r1, #16384
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_11
+	b	.LBB2_9
+.LBB2_9:
+	ldr	r0, [sp, #4]
+	movw	r1, #17408
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_11
+	b	.LBB2_10
+.LBB2_10:
+	ldr	r0, [sp, #4]
+	movw	r1, #18432
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB2_12
+	b	.LBB2_11
+.LBB2_11:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #768
+	str	r0, [r1]
+	ldr	r0, [sp]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB2_12
+.LBB2_12:
+	ldr	r0, [sp, #4]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_16
+	b	.LBB2_13
+.LBB2_13:
+	ldr	r0, [sp, #4]
+	movw	r1, #16384
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_16
+	b	.LBB2_14
+.LBB2_14:
+	ldr	r0, [sp, #4]
+	movw	r1, #17408
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_16
+	b	.LBB2_15
+.LBB2_15:
+	ldr	r0, [sp, #4]
+	movw	r1, #18432
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB2_17
+	b	.LBB2_16
+.LBB2_16:
+	ldr	r0, [sp]
+	ldrb	r0, [r0, #12]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #48]
+	b	.LBB2_17
+.LBB2_17:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orr	r0, r0, #1
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end2:
+	.size	timer_init, .Lfunc_end2-timer_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_enable,"ax",%progbits
+	.hidden	timer_enable                    @ -- Begin function timer_enable
+	.globl	timer_enable
+	.p2align	2
+	.type	timer_enable,%function
+	.code	16                              @ @timer_enable
+	.thumb_func
+timer_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	timer_enable, .Lfunc_end3-timer_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_disable,"ax",%progbits
+	.hidden	timer_disable                   @ -- Begin function timer_disable
+	.globl	timer_disable
+	.p2align	2
+	.type	timer_disable,%function
+	.code	16                              @ @timer_disable
+	.thumb_func
+timer_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #1
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	timer_disable, .Lfunc_end4-timer_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_auto_reload_shadow_enable,"ax",%progbits
+	.hidden	timer_auto_reload_shadow_enable @ -- Begin function timer_auto_reload_shadow_enable
+	.globl	timer_auto_reload_shadow_enable
+	.p2align	2
+	.type	timer_auto_reload_shadow_enable,%function
+	.code	16                              @ @timer_auto_reload_shadow_enable
+	.thumb_func
+timer_auto_reload_shadow_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #128
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end5:
+	.size	timer_auto_reload_shadow_enable, .Lfunc_end5-timer_auto_reload_shadow_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_auto_reload_shadow_disable,"ax",%progbits
+	.hidden	timer_auto_reload_shadow_disable @ -- Begin function timer_auto_reload_shadow_disable
+	.globl	timer_auto_reload_shadow_disable
+	.p2align	2
+	.type	timer_auto_reload_shadow_disable,%function
+	.code	16                              @ @timer_auto_reload_shadow_disable
+	.thumb_func
+timer_auto_reload_shadow_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #128
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end6:
+	.size	timer_auto_reload_shadow_disable, .Lfunc_end6-timer_auto_reload_shadow_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_update_event_enable,"ax",%progbits
+	.hidden	timer_update_event_enable       @ -- Begin function timer_update_event_enable
+	.globl	timer_update_event_enable
+	.p2align	2
+	.type	timer_update_event_enable,%function
+	.code	16                              @ @timer_update_event_enable
+	.thumb_func
+timer_update_event_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	timer_update_event_enable, .Lfunc_end7-timer_update_event_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_update_event_disable,"ax",%progbits
+	.hidden	timer_update_event_disable      @ -- Begin function timer_update_event_disable
+	.globl	timer_update_event_disable
+	.p2align	2
+	.type	timer_update_event_disable,%function
+	.code	16                              @ @timer_update_event_disable
+	.thumb_func
+timer_update_event_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	timer_update_event_disable, .Lfunc_end8-timer_update_event_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_counter_alignment,"ax",%progbits
+	.hidden	timer_counter_alignment         @ -- Begin function timer_counter_alignment
+	.globl	timer_counter_alignment
+	.p2align	2
+	.type	timer_counter_alignment,%function
+	.code	16                              @ @timer_counter_alignment
+	.thumb_func
+timer_counter_alignment:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #96
+	str	r0, [r1]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end9:
+	.size	timer_counter_alignment, .Lfunc_end9-timer_counter_alignment
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_counter_up_direction,"ax",%progbits
+	.hidden	timer_counter_up_direction      @ -- Begin function timer_counter_up_direction
+	.globl	timer_counter_up_direction
+	.p2align	2
+	.type	timer_counter_up_direction,%function
+	.code	16                              @ @timer_counter_up_direction
+	.thumb_func
+timer_counter_up_direction:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #16
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	timer_counter_up_direction, .Lfunc_end10-timer_counter_up_direction
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_counter_down_direction,"ax",%progbits
+	.hidden	timer_counter_down_direction    @ -- Begin function timer_counter_down_direction
+	.globl	timer_counter_down_direction
+	.p2align	2
+	.type	timer_counter_down_direction,%function
+	.code	16                              @ @timer_counter_down_direction
+	.thumb_func
+timer_counter_down_direction:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #16
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	timer_counter_down_direction, .Lfunc_end11-timer_counter_down_direction
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_prescaler_config,"ax",%progbits
+	.hidden	timer_prescaler_config          @ -- Begin function timer_prescaler_config
+	.globl	timer_prescaler_config
+	.p2align	2
+	.type	timer_prescaler_config,%function
+	.code	16                              @ @timer_prescaler_config
+	.thumb_func
+timer_prescaler_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	strb.w	r2, [sp, #1]
+	ldrh.w	r0, [sp, #2]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #40]
+	ldrb.w	r0, [sp, #1]
+	cmp	r0, #1
+	bne	.LBB12_2
+	b	.LBB12_1
+.LBB12_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orr	r0, r0, #1
+	str	r0, [r1, #20]
+	b	.LBB12_2
+.LBB12_2:
+	add	sp, #8
+	bx	lr
+.Lfunc_end12:
+	.size	timer_prescaler_config, .Lfunc_end12-timer_prescaler_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_repetition_value_config,"ax",%progbits
+	.hidden	timer_repetition_value_config   @ -- Begin function timer_repetition_value_config
+	.globl	timer_repetition_value_config
+	.p2align	2
+	.type	timer_repetition_value_config,%function
+	.code	16                              @ @timer_repetition_value_config
+	.thumb_func
+timer_repetition_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #48]
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	timer_repetition_value_config, .Lfunc_end13-timer_repetition_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_autoreload_value_config,"ax",%progbits
+	.hidden	timer_autoreload_value_config   @ -- Begin function timer_autoreload_value_config
+	.globl	timer_autoreload_value_config
+	.p2align	2
+	.type	timer_autoreload_value_config,%function
+	.code	16                              @ @timer_autoreload_value_config
+	.thumb_func
+timer_autoreload_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #44]
+	add	sp, #8
+	bx	lr
+.Lfunc_end14:
+	.size	timer_autoreload_value_config, .Lfunc_end14-timer_autoreload_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_counter_value_config,"ax",%progbits
+	.hidden	timer_counter_value_config      @ -- Begin function timer_counter_value_config
+	.globl	timer_counter_value_config
+	.p2align	2
+	.type	timer_counter_value_config,%function
+	.code	16                              @ @timer_counter_value_config
+	.thumb_func
+timer_counter_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #36]
+	add	sp, #8
+	bx	lr
+.Lfunc_end15:
+	.size	timer_counter_value_config, .Lfunc_end15-timer_counter_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_counter_read,"ax",%progbits
+	.hidden	timer_counter_read              @ -- Begin function timer_counter_read
+	.globl	timer_counter_read
+	.p2align	2
+	.type	timer_counter_read,%function
+	.code	16                              @ @timer_counter_read
+	.thumb_func
+timer_counter_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #36]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	add	sp, #8
+	bx	lr
+.Lfunc_end16:
+	.size	timer_counter_read, .Lfunc_end16-timer_counter_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_prescaler_read,"ax",%progbits
+	.hidden	timer_prescaler_read            @ -- Begin function timer_prescaler_read
+	.globl	timer_prescaler_read
+	.p2align	2
+	.type	timer_prescaler_read,%function
+	.code	16                              @ @timer_prescaler_read
+	.thumb_func
+timer_prescaler_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #40]
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end17:
+	.size	timer_prescaler_read, .Lfunc_end17-timer_prescaler_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_single_pulse_mode_config,"ax",%progbits
+	.hidden	timer_single_pulse_mode_config  @ -- Begin function timer_single_pulse_mode_config
+	.globl	timer_single_pulse_mode_config
+	.p2align	2
+	.type	timer_single_pulse_mode_config,%function
+	.code	16                              @ @timer_single_pulse_mode_config
+	.thumb_func
+timer_single_pulse_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #8
+	bne	.LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB18_6
+.LBB18_2:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB18_4
+	b	.LBB18_3
+.LBB18_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	b	.LBB18_5
+.LBB18_4:
+	b	.LBB18_5
+.LBB18_5:
+	b	.LBB18_6
+.LBB18_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end18:
+	.size	timer_single_pulse_mode_config, .Lfunc_end18-timer_single_pulse_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_update_source_config,"ax",%progbits
+	.hidden	timer_update_source_config      @ -- Begin function timer_update_source_config
+	.globl	timer_update_source_config
+	.p2align	2
+	.type	timer_update_source_config,%function
+	.code	16                              @ @timer_update_source_config
+	.thumb_func
+timer_update_source_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #4
+	bne	.LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB19_6
+.LBB19_2:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB19_4
+	b	.LBB19_3
+.LBB19_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB19_5
+.LBB19_4:
+	b	.LBB19_5
+.LBB19_5:
+	b	.LBB19_6
+.LBB19_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end19:
+	.size	timer_update_source_config, .Lfunc_end19-timer_update_source_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_ocpre_clear_source_config,"ax",%progbits
+	.hidden	timer_ocpre_clear_source_config @ -- Begin function timer_ocpre_clear_source_config
+	.globl	timer_ocpre_clear_source_config
+	.p2align	2
+	.type	timer_ocpre_clear_source_config,%function
+	.code	16                              @ @timer_ocpre_clear_source_config
+	.thumb_func
+timer_ocpre_clear_source_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #1
+	bne	.LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #8
+	str	r0, [r1, #8]
+	b	.LBB20_6
+.LBB20_2:
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB20_4
+	b	.LBB20_3
+.LBB20_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #8
+	str	r0, [r1, #8]
+	b	.LBB20_5
+.LBB20_4:
+	b	.LBB20_5
+.LBB20_5:
+	b	.LBB20_6
+.LBB20_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end20:
+	.size	timer_ocpre_clear_source_config, .Lfunc_end20-timer_ocpre_clear_source_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_dma_enable,"ax",%progbits
+	.hidden	timer_dma_enable                @ -- Begin function timer_dma_enable
+	.globl	timer_dma_enable
+	.p2align	2
+	.type	timer_dma_enable,%function
+	.code	16                              @ @timer_dma_enable
+	.thumb_func
+timer_dma_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #12]
+	orrs	r0, r2
+	str	r0, [r1, #12]
+	add	sp, #8
+	bx	lr
+.Lfunc_end21:
+	.size	timer_dma_enable, .Lfunc_end21-timer_dma_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_dma_disable,"ax",%progbits
+	.hidden	timer_dma_disable               @ -- Begin function timer_dma_disable
+	.globl	timer_dma_disable
+	.p2align	2
+	.type	timer_dma_disable,%function
+	.code	16                              @ @timer_dma_disable
+	.thumb_func
+timer_dma_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #12]
+	bics	r0, r2
+	str	r0, [r1, #12]
+	add	sp, #8
+	bx	lr
+.Lfunc_end22:
+	.size	timer_dma_disable, .Lfunc_end22-timer_dma_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_dma_request_source_select,"ax",%progbits
+	.hidden	timer_channel_dma_request_source_select @ -- Begin function timer_channel_dma_request_source_select
+	.globl	timer_channel_dma_request_source_select
+	.p2align	2
+	.type	timer_channel_dma_request_source_select,%function
+	.code	16                              @ @timer_channel_dma_request_source_select
+	.thumb_func
+timer_channel_dma_request_source_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #8
+	bne	.LBB23_2
+	b	.LBB23_1
+.LBB23_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #8
+	str	r0, [r1, #4]
+	b	.LBB23_6
+.LBB23_2:
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB23_4
+	b	.LBB23_3
+.LBB23_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #8
+	str	r0, [r1, #4]
+	b	.LBB23_5
+.LBB23_4:
+	b	.LBB23_5
+.LBB23_5:
+	b	.LBB23_6
+.LBB23_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end23:
+	.size	timer_channel_dma_request_source_select, .Lfunc_end23-timer_channel_dma_request_source_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_dma_transfer_config,"ax",%progbits
+	.hidden	timer_dma_transfer_config       @ -- Begin function timer_dma_transfer_config
+	.globl	timer_dma_transfer_config
+	.p2align	2
+	.type	timer_dma_transfer_config,%function
+	.code	16                              @ @timer_dma_transfer_config
+	.thumb_func
+timer_dma_transfer_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	str	r2, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #72]
+	movw	r2, #7967
+	bics	r0, r2
+	str	r0, [r1, #72]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	orr.w	r2, r0, r1
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #72]
+	orrs	r0, r2
+	str	r0, [r1, #72]
+	add	sp, #12
+	bx	lr
+.Lfunc_end24:
+	.size	timer_dma_transfer_config, .Lfunc_end24-timer_dma_transfer_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_event_software_generate,"ax",%progbits
+	.hidden	timer_event_software_generate   @ -- Begin function timer_event_software_generate
+	.globl	timer_event_software_generate
+	.p2align	2
+	.type	timer_event_software_generate,%function
+	.code	16                              @ @timer_event_software_generate
+	.thumb_func
+timer_event_software_generate:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #20]
+	orrs	r0, r2
+	str	r0, [r1, #20]
+	add	sp, #8
+	bx	lr
+.Lfunc_end25:
+	.size	timer_event_software_generate, .Lfunc_end25-timer_event_software_generate
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_break_struct_para_init,"ax",%progbits
+	.hidden	timer_break_struct_para_init    @ -- Begin function timer_break_struct_para_init
+	.globl	timer_break_struct_para_init
+	.p2align	2
+	.type	timer_break_struct_para_init,%function
+	.code	16                              @ @timer_break_struct_para_init
+	.thumb_func
+timer_break_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	strh	r0, [r1]
+	ldr	r1, [sp]
+	strh	r0, [r1, #2]
+	ldr	r1, [sp]
+	strh	r0, [r1, #4]
+	ldr	r1, [sp]
+	strh	r0, [r1, #6]
+	ldr	r1, [sp]
+	strh	r0, [r1, #8]
+	ldr	r1, [sp]
+	strh	r0, [r1, #10]
+	ldr	r1, [sp]
+	strh	r0, [r1, #12]
+	add	sp, #4
+	bx	lr
+.Lfunc_end26:
+	.size	timer_break_struct_para_init, .Lfunc_end26-timer_break_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_break_config,"ax",%progbits
+	.hidden	timer_break_config              @ -- Begin function timer_break_config
+	.globl	timer_break_config
+	.p2align	2
+	.type	timer_break_config,%function
+	.code	16                              @ @timer_break_config
+	.thumb_func
+timer_break_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp]
+	ldrh	r0, [r1]
+	ldrh	r2, [r1, #2]
+	orrs	r0, r2
+	ldrh	r2, [r1, #4]
+	orrs	r0, r2
+	ldrh	r2, [r1, #6]
+	orrs	r0, r2
+	ldrh	r2, [r1, #8]
+	orrs	r0, r2
+	ldrh	r2, [r1, #10]
+	orrs	r0, r2
+	ldrh	r1, [r1, #12]
+	orrs	r0, r1
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #68]
+	add	sp, #8
+	bx	lr
+.Lfunc_end27:
+	.size	timer_break_config, .Lfunc_end27-timer_break_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_break_enable,"ax",%progbits
+	.hidden	timer_break_enable              @ -- Begin function timer_break_enable
+	.globl	timer_break_enable
+	.p2align	2
+	.type	timer_break_enable,%function
+	.code	16                              @ @timer_break_enable
+	.thumb_func
+timer_break_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #68]
+	orr	r0, r0, #4096
+	str	r0, [r1, #68]
+	add	sp, #4
+	bx	lr
+.Lfunc_end28:
+	.size	timer_break_enable, .Lfunc_end28-timer_break_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_break_disable,"ax",%progbits
+	.hidden	timer_break_disable             @ -- Begin function timer_break_disable
+	.globl	timer_break_disable
+	.p2align	2
+	.type	timer_break_disable,%function
+	.code	16                              @ @timer_break_disable
+	.thumb_func
+timer_break_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #68]
+	bic	r0, r0, #4096
+	str	r0, [r1, #68]
+	add	sp, #4
+	bx	lr
+.Lfunc_end29:
+	.size	timer_break_disable, .Lfunc_end29-timer_break_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_automatic_output_enable,"ax",%progbits
+	.hidden	timer_automatic_output_enable   @ -- Begin function timer_automatic_output_enable
+	.globl	timer_automatic_output_enable
+	.p2align	2
+	.type	timer_automatic_output_enable,%function
+	.code	16                              @ @timer_automatic_output_enable
+	.thumb_func
+timer_automatic_output_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #68]
+	orr	r0, r0, #16384
+	str	r0, [r1, #68]
+	add	sp, #4
+	bx	lr
+.Lfunc_end30:
+	.size	timer_automatic_output_enable, .Lfunc_end30-timer_automatic_output_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_automatic_output_disable,"ax",%progbits
+	.hidden	timer_automatic_output_disable  @ -- Begin function timer_automatic_output_disable
+	.globl	timer_automatic_output_disable
+	.p2align	2
+	.type	timer_automatic_output_disable,%function
+	.code	16                              @ @timer_automatic_output_disable
+	.thumb_func
+timer_automatic_output_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #68]
+	bic	r0, r0, #16384
+	str	r0, [r1, #68]
+	add	sp, #4
+	bx	lr
+.Lfunc_end31:
+	.size	timer_automatic_output_disable, .Lfunc_end31-timer_automatic_output_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_primary_output_config,"ax",%progbits
+	.hidden	timer_primary_output_config     @ -- Begin function timer_primary_output_config
+	.globl	timer_primary_output_config
+	.p2align	2
+	.type	timer_primary_output_config,%function
+	.code	16                              @ @timer_primary_output_config
+	.thumb_func
+timer_primary_output_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #1
+	bne	.LBB32_2
+	b	.LBB32_1
+.LBB32_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #68]
+	orr	r0, r0, #32768
+	str	r0, [r1, #68]
+	b	.LBB32_3
+.LBB32_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #68]
+	bic	r0, r0, #32768
+	str	r0, [r1, #68]
+	b	.LBB32_3
+.LBB32_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end32:
+	.size	timer_primary_output_config, .Lfunc_end32-timer_primary_output_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_control_shadow_config,"ax",%progbits
+	.hidden	timer_channel_control_shadow_config @ -- Begin function timer_channel_control_shadow_config
+	.globl	timer_channel_control_shadow_config
+	.p2align	2
+	.type	timer_channel_control_shadow_config,%function
+	.code	16                              @ @timer_channel_control_shadow_config
+	.thumb_func
+timer_channel_control_shadow_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #1
+	bne	.LBB33_2
+	b	.LBB33_1
+.LBB33_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB33_3
+.LBB33_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB33_3
+.LBB33_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end33:
+	.size	timer_channel_control_shadow_config, .Lfunc_end33-timer_channel_control_shadow_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_control_shadow_update_config,"ax",%progbits
+	.hidden	timer_channel_control_shadow_update_config @ -- Begin function timer_channel_control_shadow_update_config
+	.globl	timer_channel_control_shadow_update_config
+	.p2align	2
+	.type	timer_channel_control_shadow_update_config,%function
+	.code	16                              @ @timer_channel_control_shadow_update_config
+	.thumb_func
+timer_channel_control_shadow_update_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB34_2
+	b	.LBB34_1
+.LBB34_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #4
+	str	r0, [r1, #4]
+	b	.LBB34_6
+.LBB34_2:
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #4
+	bne	.LBB34_4
+	b	.LBB34_3
+.LBB34_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #4
+	str	r0, [r1, #4]
+	b	.LBB34_5
+.LBB34_4:
+	b	.LBB34_5
+.LBB34_5:
+	b	.LBB34_6
+.LBB34_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end34:
+	.size	timer_channel_control_shadow_update_config, .Lfunc_end34-timer_channel_control_shadow_update_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_struct_para_init,"ax",%progbits
+	.hidden	timer_channel_output_struct_para_init @ -- Begin function timer_channel_output_struct_para_init
+	.globl	timer_channel_output_struct_para_init
+	.p2align	2
+	.type	timer_channel_output_struct_para_init,%function
+	.code	16                              @ @timer_channel_output_struct_para_init
+	.thumb_func
+timer_channel_output_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	strh	r0, [r1]
+	ldr	r1, [sp]
+	strh	r0, [r1, #2]
+	ldr	r1, [sp]
+	strh	r0, [r1, #4]
+	ldr	r1, [sp]
+	strh	r0, [r1, #6]
+	ldr	r1, [sp]
+	strh	r0, [r1, #8]
+	ldr	r1, [sp]
+	strh	r0, [r1, #10]
+	add	sp, #4
+	bx	lr
+.Lfunc_end35:
+	.size	timer_channel_output_struct_para_init, .Lfunc_end35-timer_channel_output_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_config,"ax",%progbits
+	.hidden	timer_channel_output_config     @ -- Begin function timer_channel_output_config
+	.globl	timer_channel_output_config
+	.p2align	2
+	.type	timer_channel_output_config,%function
+	.code	16                              @ @timer_channel_output_config
+	.thumb_func
+timer_channel_output_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	str	r2, [sp, #4]
+	ldrh.w	r0, [sp, #10]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi.w	.LBB36_20
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI36_0:
+	tbh	[pc, r1, lsl #1]
+@ %bb.2:
+.LJTI36_0:
+	.short	(.LBB36_3-(.LCPI36_0+4))/2
+	.short	(.LBB36_9-(.LCPI36_0+4))/2
+	.short	(.LBB36_14-(.LCPI36_0+4))/2
+	.short	(.LBB36_17-(.LCPI36_0+4))/2
+	.p2align	1
+.LBB36_3:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #2
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB36_7
+	b	.LBB36_4
+.LBB36_4:
+	ldr	r0, [sp, #12]
+	movw	r1, #16384
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB36_7
+	b	.LBB36_5
+.LBB36_5:
+	ldr	r0, [sp, #12]
+	movw	r1, #17408
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB36_7
+	b	.LBB36_6
+.LBB36_6:
+	ldr	r0, [sp, #12]
+	movw	r1, #18432
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB36_8
+	b	.LBB36_7
+.LBB36_7:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #4
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #8
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #256
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #512
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #10]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	b	.LBB36_8
+.LBB36_8:
+	b	.LBB36_21
+.LBB36_9:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #768
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #32
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB36_11
+	b	.LBB36_10
+.LBB36_10:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #64
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #128
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1024
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #2
+	str	r0, [r1, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #2048
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #10]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #2
+	str	r0, [r1, #4]
+	b	.LBB36_11
+.LBB36_11:
+	ldr	r0, [sp, #12]
+	movw	r1, #16384
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB36_13
+	b	.LBB36_12
+.LBB36_12:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1024
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #2
+	str	r0, [r1, #4]
+	b	.LBB36_13
+.LBB36_13:
+	b	.LBB36_21
+.LBB36_14:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #256
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #3
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #512
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB36_16
+	b	.LBB36_15
+.LBB36_15:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1024
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #2048
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #4096
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #8192
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #10]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #4]
+	b	.LBB36_16
+.LBB36_16:
+	b	.LBB36_21
+.LBB36_17:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #4096
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #768
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #8192
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	movw	r1, #11264
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB36_19
+	b	.LBB36_18
+.LBB36_18:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16384
+	str	r0, [r1, #4]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #4]
+	orr.w	r0, r0, r2, lsl #6
+	str	r0, [r1, #4]
+	b	.LBB36_19
+.LBB36_19:
+	b	.LBB36_21
+.LBB36_20:
+	b	.LBB36_21
+.LBB36_21:
+	add	sp, #16
+	bx	lr
+.Lfunc_end36:
+	.size	timer_channel_output_config, .Lfunc_end36-timer_channel_output_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_mode_config,"ax",%progbits
+	.hidden	timer_channel_output_mode_config @ -- Begin function timer_channel_output_mode_config
+	.globl	timer_channel_output_mode_config
+	.p2align	2
+	.type	timer_channel_output_mode_config,%function
+	.code	16                              @ @timer_channel_output_mode_config
+	.thumb_func
+timer_channel_output_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB37_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI37_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI37_0:
+	.byte	(.LBB37_3-(.LCPI37_0+4))/2
+	.byte	(.LBB37_4-(.LCPI37_0+4))/2
+	.byte	(.LBB37_5-(.LCPI37_0+4))/2
+	.byte	(.LBB37_6-(.LCPI37_0+4))/2
+	.p2align	1
+.LBB37_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #112
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	b	.LBB37_8
+.LBB37_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #28672
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	b	.LBB37_8
+.LBB37_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #112
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	b	.LBB37_8
+.LBB37_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #28672
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	b	.LBB37_8
+.LBB37_7:
+	b	.LBB37_8
+.LBB37_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end37:
+	.size	timer_channel_output_mode_config, .Lfunc_end37-timer_channel_output_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_pulse_value_config,"ax",%progbits
+	.hidden	timer_channel_output_pulse_value_config @ -- Begin function timer_channel_output_pulse_value_config
+	.globl	timer_channel_output_pulse_value_config
+	.p2align	2
+	.type	timer_channel_output_pulse_value_config,%function
+	.code	16                              @ @timer_channel_output_pulse_value_config
+	.thumb_func
+timer_channel_output_pulse_value_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	str	r2, [sp, #4]
+	ldrh.w	r0, [sp, #10]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB38_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI38_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI38_0:
+	.byte	(.LBB38_3-(.LCPI38_0+4))/2
+	.byte	(.LBB38_4-(.LCPI38_0+4))/2
+	.byte	(.LBB38_5-(.LCPI38_0+4))/2
+	.byte	(.LBB38_6-(.LCPI38_0+4))/2
+	.p2align	1
+.LBB38_3:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	str	r0, [r1, #52]
+	b	.LBB38_8
+.LBB38_4:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	str	r0, [r1, #56]
+	b	.LBB38_8
+.LBB38_5:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	str	r0, [r1, #60]
+	b	.LBB38_8
+.LBB38_6:
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #12]
+	str	r0, [r1, #64]
+	b	.LBB38_8
+.LBB38_7:
+	b	.LBB38_8
+.LBB38_8:
+	add	sp, #16
+	bx	lr
+.Lfunc_end38:
+	.size	timer_channel_output_pulse_value_config, .Lfunc_end38-timer_channel_output_pulse_value_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_shadow_config,"ax",%progbits
+	.hidden	timer_channel_output_shadow_config @ -- Begin function timer_channel_output_shadow_config
+	.globl	timer_channel_output_shadow_config
+	.p2align	2
+	.type	timer_channel_output_shadow_config,%function
+	.code	16                              @ @timer_channel_output_shadow_config
+	.thumb_func
+timer_channel_output_shadow_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB39_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI39_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI39_0:
+	.byte	(.LBB39_3-(.LCPI39_0+4))/2
+	.byte	(.LBB39_4-(.LCPI39_0+4))/2
+	.byte	(.LBB39_5-(.LCPI39_0+4))/2
+	.byte	(.LBB39_6-(.LCPI39_0+4))/2
+	.p2align	1
+.LBB39_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #8
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	b	.LBB39_8
+.LBB39_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #2048
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	b	.LBB39_8
+.LBB39_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #8
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	b	.LBB39_8
+.LBB39_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #2048
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	b	.LBB39_8
+.LBB39_7:
+	b	.LBB39_8
+.LBB39_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end39:
+	.size	timer_channel_output_shadow_config, .Lfunc_end39-timer_channel_output_shadow_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_fast_config,"ax",%progbits
+	.hidden	timer_channel_output_fast_config @ -- Begin function timer_channel_output_fast_config
+	.globl	timer_channel_output_fast_config
+	.p2align	2
+	.type	timer_channel_output_fast_config,%function
+	.code	16                              @ @timer_channel_output_fast_config
+	.thumb_func
+timer_channel_output_fast_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB40_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI40_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI40_0:
+	.byte	(.LBB40_3-(.LCPI40_0+4))/2
+	.byte	(.LBB40_4-(.LCPI40_0+4))/2
+	.byte	(.LBB40_5-(.LCPI40_0+4))/2
+	.byte	(.LBB40_6-(.LCPI40_0+4))/2
+	.p2align	1
+.LBB40_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #4
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	b	.LBB40_8
+.LBB40_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #1024
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	b	.LBB40_8
+.LBB40_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #4
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	b	.LBB40_8
+.LBB40_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #1024
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	b	.LBB40_8
+.LBB40_7:
+	b	.LBB40_8
+.LBB40_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end40:
+	.size	timer_channel_output_fast_config, .Lfunc_end40-timer_channel_output_fast_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_clear_config,"ax",%progbits
+	.hidden	timer_channel_output_clear_config @ -- Begin function timer_channel_output_clear_config
+	.globl	timer_channel_output_clear_config
+	.p2align	2
+	.type	timer_channel_output_clear_config,%function
+	.code	16                              @ @timer_channel_output_clear_config
+	.thumb_func
+timer_channel_output_clear_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB41_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI41_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI41_0:
+	.byte	(.LBB41_3-(.LCPI41_0+4))/2
+	.byte	(.LBB41_4-(.LCPI41_0+4))/2
+	.byte	(.LBB41_5-(.LCPI41_0+4))/2
+	.byte	(.LBB41_6-(.LCPI41_0+4))/2
+	.p2align	1
+.LBB41_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #128
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	b	.LBB41_8
+.LBB41_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #32768
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	b	.LBB41_8
+.LBB41_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #128
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	b	.LBB41_8
+.LBB41_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #32768
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	b	.LBB41_8
+.LBB41_7:
+	b	.LBB41_8
+.LBB41_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end41:
+	.size	timer_channel_output_clear_config, .Lfunc_end41-timer_channel_output_clear_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_polarity_config,"ax",%progbits
+	.hidden	timer_channel_output_polarity_config @ -- Begin function timer_channel_output_polarity_config
+	.globl	timer_channel_output_polarity_config
+	.p2align	2
+	.type	timer_channel_output_polarity_config,%function
+	.code	16                              @ @timer_channel_output_polarity_config
+	.thumb_func
+timer_channel_output_polarity_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB42_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI42_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI42_0:
+	.byte	(.LBB42_3-(.LCPI42_0+4))/2
+	.byte	(.LBB42_4-(.LCPI42_0+4))/2
+	.byte	(.LBB42_5-(.LCPI42_0+4))/2
+	.byte	(.LBB42_6-(.LCPI42_0+4))/2
+	.p2align	1
+.LBB42_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #2
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	b	.LBB42_8
+.LBB42_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #32
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	b	.LBB42_8
+.LBB42_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #512
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	b	.LBB42_8
+.LBB42_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #8192
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	b	.LBB42_8
+.LBB42_7:
+	b	.LBB42_8
+.LBB42_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end42:
+	.size	timer_channel_output_polarity_config, .Lfunc_end42-timer_channel_output_polarity_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_complementary_output_polarity_config,"ax",%progbits
+	.hidden	timer_channel_complementary_output_polarity_config @ -- Begin function timer_channel_complementary_output_polarity_config
+	.globl	timer_channel_complementary_output_polarity_config
+	.p2align	2
+	.type	timer_channel_complementary_output_polarity_config,%function
+	.code	16                              @ @timer_channel_complementary_output_polarity_config
+	.thumb_func
+timer_channel_complementary_output_polarity_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB43_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI43_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI43_0:
+	.byte	(.LBB43_3-(.LCPI43_0+4))/2
+	.byte	(.LBB43_4-(.LCPI43_0+4))/2
+	.byte	(.LBB43_5-(.LCPI43_0+4))/2
+	.byte	(.LBB43_6-(.LCPI43_0+4))/2
+	.p2align	1
+.LBB43_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #8
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	b	.LBB43_8
+.LBB43_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #128
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	b	.LBB43_8
+.LBB43_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #2048
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	b	.LBB43_8
+.LBB43_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #32768
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	b	.LBB43_8
+.LBB43_7:
+	b	.LBB43_8
+.LBB43_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end43:
+	.size	timer_channel_complementary_output_polarity_config, .Lfunc_end43-timer_channel_complementary_output_polarity_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_output_state_config,"ax",%progbits
+	.hidden	timer_channel_output_state_config @ -- Begin function timer_channel_output_state_config
+	.globl	timer_channel_output_state_config
+	.p2align	2
+	.type	timer_channel_output_state_config,%function
+	.code	16                              @ @timer_channel_output_state_config
+	.thumb_func
+timer_channel_output_state_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	str	r2, [sp, #4]
+	ldrh.w	r0, [sp, #10]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB44_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI44_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI44_0:
+	.byte	(.LBB44_3-(.LCPI44_0+4))/2
+	.byte	(.LBB44_4-(.LCPI44_0+4))/2
+	.byte	(.LBB44_5-(.LCPI44_0+4))/2
+	.byte	(.LBB44_6-(.LCPI44_0+4))/2
+	.p2align	1
+.LBB44_3:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	b	.LBB44_8
+.LBB44_4:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	b	.LBB44_8
+.LBB44_5:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #256
+	str	r0, [r1, #32]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	b	.LBB44_8
+.LBB44_6:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #4096
+	str	r0, [r1, #32]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	b	.LBB44_8
+.LBB44_7:
+	b	.LBB44_8
+.LBB44_8:
+	add	sp, #16
+	bx	lr
+.Lfunc_end44:
+	.size	timer_channel_output_state_config, .Lfunc_end44-timer_channel_output_state_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_complementary_output_state_config,"ax",%progbits
+	.hidden	timer_channel_complementary_output_state_config @ -- Begin function timer_channel_complementary_output_state_config
+	.globl	timer_channel_complementary_output_state_config
+	.p2align	2
+	.type	timer_channel_complementary_output_state_config,%function
+	.code	16                              @ @timer_channel_complementary_output_state_config
+	.thumb_func
+timer_channel_complementary_output_state_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cbz	r0, .LBB45_3
+	b	.LBB45_1
+.LBB45_1:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB45_4
+	b	.LBB45_2
+.LBB45_2:
+	ldr	r0, [sp]                        @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB45_5
+	b	.LBB45_6
+.LBB45_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #4
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	b	.LBB45_7
+.LBB45_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #64
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	b	.LBB45_7
+.LBB45_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1024
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	b	.LBB45_7
+.LBB45_6:
+	b	.LBB45_7
+.LBB45_7:
+	add	sp, #12
+	bx	lr
+.Lfunc_end45:
+	.size	timer_channel_complementary_output_state_config, .Lfunc_end45-timer_channel_complementary_output_state_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_input_struct_para_init,"ax",%progbits
+	.hidden	timer_channel_input_struct_para_init @ -- Begin function timer_channel_input_struct_para_init
+	.globl	timer_channel_input_struct_para_init
+	.p2align	2
+	.type	timer_channel_input_struct_para_init,%function
+	.code	16                              @ @timer_channel_input_struct_para_init
+	.thumb_func
+timer_channel_input_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	strh	r0, [r1]
+	ldr	r2, [sp]
+	movs	r1, #1
+	strh	r1, [r2, #2]
+	ldr	r1, [sp]
+	strh	r0, [r1, #4]
+	ldr	r1, [sp]
+	strh	r0, [r1, #6]
+	add	sp, #4
+	bx	lr
+.Lfunc_end46:
+	.size	timer_channel_input_struct_para_init, .Lfunc_end46-timer_channel_input_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_input_capture_config,"ax",%progbits
+	.hidden	timer_input_capture_config      @ -- Begin function timer_input_capture_config
+	.globl	timer_input_capture_config
+	.p2align	2
+	.type	timer_input_capture_config,%function
+	.code	16                              @ @timer_input_capture_config
+	.thumb_func
+timer_input_capture_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	str	r2, [sp, #4]
+	ldrh.w	r0, [sp, #10]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi.w	.LBB47_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI47_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI47_0:
+	.byte	(.LBB47_3-(.LCPI47_0+4))/2
+	.byte	(.LBB47_4-(.LCPI47_0+4))/2
+	.byte	(.LBB47_5-(.LCPI47_0+4))/2
+	.byte	(.LBB47_6-(.LCPI47_0+4))/2
+	.p2align	1
+.LBB47_3:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #10
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #240
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #1
+	str	r0, [r1, #32]
+	b	.LBB47_8
+.LBB47_4:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #160
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #768
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #61440
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #16
+	str	r0, [r1, #32]
+	b	.LBB47_8
+.LBB47_5:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #256
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #2560
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #3
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #240
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #28]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #256
+	str	r0, [r1, #32]
+	b	.LBB47_8
+.LBB47_6:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #4096
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #40960
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #768
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #61440
+	str	r0, [r1, #28]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #28]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #4096
+	str	r0, [r1, #32]
+	b	.LBB47_8
+.LBB47_7:
+	b	.LBB47_8
+.LBB47_8:
+	ldr	r0, [sp, #12]
+	ldrh.w	r1, [sp, #10]
+	ldr	r2, [sp, #4]
+	ldrh	r2, [r2, #4]
+	bl	timer_channel_input_capture_prescaler_config
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end47:
+	.size	timer_input_capture_config, .Lfunc_end47-timer_input_capture_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_input_capture_prescaler_config,"ax",%progbits
+	.hidden	timer_channel_input_capture_prescaler_config @ -- Begin function timer_channel_input_capture_prescaler_config
+	.globl	timer_channel_input_capture_prescaler_config
+	.p2align	2
+	.type	timer_channel_input_capture_prescaler_config,%function
+	.code	16                              @ @timer_channel_input_capture_prescaler_config
+	.thumb_func
+timer_channel_input_capture_prescaler_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r3 killed $r2
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #8]
+	strh.w	r1, [sp, #6]
+	strh.w	r2, [sp, #4]
+	ldrh.w	r0, [sp, #6]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB48_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI48_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI48_0:
+	.byte	(.LBB48_3-(.LCPI48_0+4))/2
+	.byte	(.LBB48_4-(.LCPI48_0+4))/2
+	.byte	(.LBB48_5-(.LCPI48_0+4))/2
+	.byte	(.LBB48_6-(.LCPI48_0+4))/2
+	.p2align	1
+.LBB48_3:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #12
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	b	.LBB48_8
+.LBB48_4:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3072
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	b	.LBB48_8
+.LBB48_5:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #12
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	b	.LBB48_8
+.LBB48_6:
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #3072
+	str	r0, [r1, #28]
+	ldrh.w	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #28]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #28]
+	b	.LBB48_8
+.LBB48_7:
+	b	.LBB48_8
+.LBB48_8:
+	add	sp, #12
+	bx	lr
+.Lfunc_end48:
+	.size	timer_channel_input_capture_prescaler_config, .Lfunc_end48-timer_channel_input_capture_prescaler_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_capture_value_register_read,"ax",%progbits
+	.hidden	timer_channel_capture_value_register_read @ -- Begin function timer_channel_capture_value_register_read
+	.globl	timer_channel_capture_value_register_read
+	.p2align	2
+	.type	timer_channel_capture_value_register_read,%function
+	.code	16                              @ @timer_channel_capture_value_register_read
+	.thumb_func
+timer_channel_capture_value_register_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	movs	r0, #0
+	str	r0, [sp, #4]
+	ldrh.w	r0, [sp, #10]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #3
+	bhi	.LBB49_7
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI49_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI49_0:
+	.byte	(.LBB49_3-(.LCPI49_0+4))/2
+	.byte	(.LBB49_4-(.LCPI49_0+4))/2
+	.byte	(.LBB49_5-(.LCPI49_0+4))/2
+	.byte	(.LBB49_6-(.LCPI49_0+4))/2
+	.p2align	1
+.LBB49_3:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #52]
+	str	r0, [sp, #4]
+	b	.LBB49_8
+.LBB49_4:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #56]
+	str	r0, [sp, #4]
+	b	.LBB49_8
+.LBB49_5:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #60]
+	str	r0, [sp, #4]
+	b	.LBB49_8
+.LBB49_6:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #64]
+	str	r0, [sp, #4]
+	b	.LBB49_8
+.LBB49_7:
+	b	.LBB49_8
+.LBB49_8:
+	ldr	r0, [sp, #4]
+	add	sp, #16
+	bx	lr
+.Lfunc_end49:
+	.size	timer_channel_capture_value_register_read, .Lfunc_end49-timer_channel_capture_value_register_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_input_pwm_capture_config,"ax",%progbits
+	.hidden	timer_input_pwm_capture_config  @ -- Begin function timer_input_pwm_capture_config
+	.globl	timer_input_pwm_capture_config
+	.p2align	2
+	.type	timer_input_pwm_capture_config,%function
+	.code	16                              @ @timer_input_pwm_capture_config
+	.thumb_func
+timer_input_pwm_capture_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	str	r2, [sp, #4]
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	strh.w	r0, [sp]
+	ldr	r0, [sp, #4]
+	ldrh	r0, [r0]
+	cbnz	r0, .LBB50_2
+	b	.LBB50_1
+.LBB50_1:
+	movs	r0, #2
+	strh.w	r0, [sp, #2]
+	b	.LBB50_3
+.LBB50_2:
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	b	.LBB50_3
+.LBB50_3:
+	ldr	r0, [sp, #4]
+	ldrh	r0, [r0, #2]
+	cmp	r0, #1
+	bne	.LBB50_5
+	b	.LBB50_4
+.LBB50_4:
+	movs	r0, #2
+	strh.w	r0, [sp]
+	b	.LBB50_6
+.LBB50_5:
+	movs	r0, #1
+	strh.w	r0, [sp]
+	b	.LBB50_6
+.LBB50_6:
+	ldrh.w	r0, [sp, #10]
+	cmp	r0, #0
+	bne	.LBB50_8
+	b	.LBB50_7
+.LBB50_7:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #10
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #240
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	ldrh	r2, [r1, #4]
+	movs	r1, #0
+	bl	timer_channel_input_capture_prescaler_config
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #160
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #768
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #61440
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	ldrh	r2, [r1, #4]
+	movs	r1, #1
+	bl	timer_channel_input_capture_prescaler_config
+	b	.LBB50_9
+.LBB50_8:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #160
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #768
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #61440
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	ldrh	r2, [r1, #4]
+	movs	r1, #1
+	bl	timer_channel_input_capture_prescaler_config
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #10
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3
+	str	r0, [r1, #24]
+	ldrh.w	r2, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #240
+	str	r0, [r1, #24]
+	ldr	r0, [sp, #4]
+	ldrh	r2, [r0, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #4]
+	ldrh	r2, [r1, #4]
+	movs	r1, #0
+	bl	timer_channel_input_capture_prescaler_config
+	b	.LBB50_9
+.LBB50_9:
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end50:
+	.size	timer_input_pwm_capture_config, .Lfunc_end50-timer_input_pwm_capture_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_hall_mode_config,"ax",%progbits
+	.hidden	timer_hall_mode_config          @ -- Begin function timer_hall_mode_config
+	.globl	timer_hall_mode_config
+	.p2align	2
+	.type	timer_hall_mode_config,%function
+	.code	16                              @ @timer_hall_mode_config
+	.thumb_func
+timer_hall_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #128
+	bne	.LBB51_2
+	b	.LBB51_1
+.LBB51_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #128
+	str	r0, [r1, #4]
+	b	.LBB51_6
+.LBB51_2:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB51_4
+	b	.LBB51_3
+.LBB51_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #128
+	str	r0, [r1, #4]
+	b	.LBB51_5
+.LBB51_4:
+	b	.LBB51_5
+.LBB51_5:
+	b	.LBB51_6
+.LBB51_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end51:
+	.size	timer_hall_mode_config, .Lfunc_end51-timer_hall_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_input_trigger_source_select,"ax",%progbits
+	.hidden	timer_input_trigger_source_select @ -- Begin function timer_input_trigger_source_select
+	.globl	timer_input_trigger_source_select
+	.p2align	2
+	.type	timer_input_trigger_source_select,%function
+	.code	16                              @ @timer_input_trigger_source_select
+	.thumb_func
+timer_input_trigger_source_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #112
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end52:
+	.size	timer_input_trigger_source_select, .Lfunc_end52-timer_input_trigger_source_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_master_output_trigger_source_select,"ax",%progbits
+	.hidden	timer_master_output_trigger_source_select @ -- Begin function timer_master_output_trigger_source_select
+	.globl	timer_master_output_trigger_source_select
+	.p2align	2
+	.type	timer_master_output_trigger_source_select,%function
+	.code	16                              @ @timer_master_output_trigger_source_select
+	.thumb_func
+timer_master_output_trigger_source_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #112
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end53:
+	.size	timer_master_output_trigger_source_select, .Lfunc_end53-timer_master_output_trigger_source_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_slave_mode_select,"ax",%progbits
+	.hidden	timer_slave_mode_select         @ -- Begin function timer_slave_mode_select
+	.globl	timer_slave_mode_select
+	.p2align	2
+	.type	timer_slave_mode_select,%function
+	.code	16                              @ @timer_slave_mode_select
+	.thumb_func
+timer_slave_mode_select:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #7
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	add	sp, #8
+	bx	lr
+.Lfunc_end54:
+	.size	timer_slave_mode_select, .Lfunc_end54-timer_slave_mode_select
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_master_slave_mode_config,"ax",%progbits
+	.hidden	timer_master_slave_mode_config  @ -- Begin function timer_master_slave_mode_config
+	.globl	timer_master_slave_mode_config
+	.p2align	2
+	.type	timer_master_slave_mode_config,%function
+	.code	16                              @ @timer_master_slave_mode_config
+	.thumb_func
+timer_master_slave_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	cmp	r0, #128
+	bne	.LBB55_2
+	b	.LBB55_1
+.LBB55_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #128
+	str	r0, [r1, #8]
+	b	.LBB55_6
+.LBB55_2:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB55_4
+	b	.LBB55_3
+.LBB55_3:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #128
+	str	r0, [r1, #8]
+	b	.LBB55_5
+.LBB55_4:
+	b	.LBB55_5
+.LBB55_5:
+	b	.LBB55_6
+.LBB55_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end55:
+	.size	timer_master_slave_mode_config, .Lfunc_end55-timer_master_slave_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_external_trigger_config,"ax",%progbits
+	.hidden	timer_external_trigger_config   @ -- Begin function timer_external_trigger_config
+	.globl	timer_external_trigger_config
+	.p2align	2
+	.type	timer_external_trigger_config,%function
+	.code	16                              @ @timer_external_trigger_config
+	.thumb_func
+timer_external_trigger_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #48896
+	str	r0, [r1, #8]
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #4]
+	orr.w	r2, r0, r1
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	orr.w	r0, r0, r2, lsl #8
+	str	r0, [r1, #8]
+	add	sp, #16
+	bx	lr
+.Lfunc_end56:
+	.size	timer_external_trigger_config, .Lfunc_end56-timer_external_trigger_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_quadrature_decoder_mode_config,"ax",%progbits
+	.hidden	timer_quadrature_decoder_mode_config @ -- Begin function timer_quadrature_decoder_mode_config
+	.globl	timer_quadrature_decoder_mode_config
+	.p2align	2
+	.type	timer_quadrature_decoder_mode_config,%function
+	.code	16                              @ @timer_quadrature_decoder_mode_config
+	.thumb_func
+timer_quadrature_decoder_mode_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r12 killed $r3
+                                        @ kill: def $r12 killed $r2
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	strh.w	r2, [sp, #2]
+	strh.w	r3, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #7
+	str	r0, [r1, #8]
+	ldr	r2, [sp, #4]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #8]
+	orrs	r0, r2
+	str	r0, [r1, #8]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	movw	r2, #771
+	bics	r0, r2
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #24]
+	movw	r2, #257
+	orrs	r0, r2
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #10
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #160
+	str	r0, [r1, #32]
+	ldrh.w	r0, [sp, #2]
+	ldrh.w	r1, [sp]
+	orr.w	r2, r0, r1, lsl #4
+	ldr	r1, [sp, #8]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	add	sp, #12
+	bx	lr
+.Lfunc_end57:
+	.size	timer_quadrature_decoder_mode_config, .Lfunc_end57-timer_quadrature_decoder_mode_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_internal_clock_config,"ax",%progbits
+	.hidden	timer_internal_clock_config     @ -- Begin function timer_internal_clock_config
+	.globl	timer_internal_clock_config
+	.p2align	2
+	.type	timer_internal_clock_config,%function
+	.code	16                              @ @timer_internal_clock_config
+	.thumb_func
+timer_internal_clock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #7
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end58:
+	.size	timer_internal_clock_config, .Lfunc_end58-timer_internal_clock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_internal_trigger_as_external_clock_config,"ax",%progbits
+	.hidden	timer_internal_trigger_as_external_clock_config @ -- Begin function timer_internal_trigger_as_external_clock_config
+	.globl	timer_internal_trigger_as_external_clock_config
+	.p2align	2
+	.type	timer_internal_trigger_as_external_clock_config,%function
+	.code	16                              @ @timer_internal_trigger_as_external_clock_config
+	.thumb_func
+timer_internal_trigger_as_external_clock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp]
+	bl	timer_input_trigger_source_select
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #7
+	str	r0, [r1, #8]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #7
+	str	r0, [r1, #8]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end59:
+	.size	timer_internal_trigger_as_external_clock_config, .Lfunc_end59-timer_internal_trigger_as_external_clock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_external_trigger_as_external_clock_config,"ax",%progbits
+	.hidden	timer_external_trigger_as_external_clock_config @ -- Begin function timer_external_trigger_as_external_clock_config
+	.globl	timer_external_trigger_as_external_clock_config
+	.p2align	2
+	.type	timer_external_trigger_as_external_clock_config,%function
+	.code	16                              @ @timer_external_trigger_as_external_clock_config
+	.thumb_func
+timer_external_trigger_as_external_clock_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r12 killed $r2
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	strh.w	r2, [sp, #6]
+	str	r3, [sp]
+	ldr	r0, [sp, #8]
+	cmp	r0, #96
+	bne	.LBB60_2
+	b	.LBB60_1
+.LBB60_1:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #16
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #160
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #768
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr	r0, r0, #256
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #61440
+	str	r0, [r1, #24]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #12
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #16
+	str	r0, [r1, #32]
+	b	.LBB60_3
+.LBB60_2:
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #1
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	bic	r0, r0, #10
+	str	r0, [r1, #32]
+	ldrh.w	r2, [sp, #6]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orrs	r0, r2
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #3
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr	r0, r0, #1
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	bic	r0, r0, #240
+	str	r0, [r1, #24]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #24]
+	orr.w	r0, r0, r2, lsl #4
+	str	r0, [r1, #24]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #32]
+	orr	r0, r0, #1
+	str	r0, [r1, #32]
+	b	.LBB60_3
+.LBB60_3:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	bl	timer_input_trigger_source_select
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #7
+	str	r0, [r1, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #7
+	str	r0, [r1, #8]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end60:
+	.size	timer_external_trigger_as_external_clock_config, .Lfunc_end60-timer_external_trigger_as_external_clock_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_external_clock_mode0_config,"ax",%progbits
+	.hidden	timer_external_clock_mode0_config @ -- Begin function timer_external_clock_mode0_config
+	.globl	timer_external_clock_mode0_config
+	.p2align	2
+	.type	timer_external_clock_mode0_config,%function
+	.code	16                              @ @timer_external_clock_mode0_config
+	.thumb_func
+timer_external_clock_mode0_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	ldr	r3, [sp]
+	bl	timer_external_trigger_config
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #119
+	str	r0, [r1, #8]
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #119
+	str	r0, [r1, #8]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end61:
+	.size	timer_external_clock_mode0_config, .Lfunc_end61-timer_external_clock_mode0_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_external_clock_mode1_config,"ax",%progbits
+	.hidden	timer_external_clock_mode1_config @ -- Begin function timer_external_clock_mode1_config
+	.globl	timer_external_clock_mode1_config
+	.p2align	2
+	.type	timer_external_clock_mode1_config,%function
+	.code	16                              @ @timer_external_clock_mode1_config
+	.thumb_func
+timer_external_clock_mode1_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+	str	r3, [sp]
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	ldr	r2, [sp, #4]
+	ldr	r3, [sp]
+	bl	timer_external_trigger_config
+	ldr	r1, [sp, #12]
+	ldr	r0, [r1, #8]
+	orr	r0, r0, #16384
+	str	r0, [r1, #8]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end62:
+	.size	timer_external_clock_mode1_config, .Lfunc_end62-timer_external_clock_mode1_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_external_clock_mode1_disable,"ax",%progbits
+	.hidden	timer_external_clock_mode1_disable @ -- Begin function timer_external_clock_mode1_disable
+	.globl	timer_external_clock_mode1_disable
+	.p2align	2
+	.type	timer_external_clock_mode1_disable,%function
+	.code	16                              @ @timer_external_clock_mode1_disable
+	.thumb_func
+timer_external_clock_mode1_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #16384
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end63:
+	.size	timer_external_clock_mode1_disable, .Lfunc_end63-timer_external_clock_mode1_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_channel_remap_config,"ax",%progbits
+	.hidden	timer_channel_remap_config      @ -- Begin function timer_channel_remap_config
+	.globl	timer_channel_remap_config
+	.p2align	2
+	.type	timer_channel_remap_config,%function
+	.code	16                              @ @timer_channel_remap_config
+	.thumb_func
+timer_channel_remap_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #80]
+	add	sp, #8
+	bx	lr
+.Lfunc_end64:
+	.size	timer_channel_remap_config, .Lfunc_end64-timer_channel_remap_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_write_chxval_register_config,"ax",%progbits
+	.hidden	timer_write_chxval_register_config @ -- Begin function timer_write_chxval_register_config
+	.globl	timer_write_chxval_register_config
+	.p2align	2
+	.type	timer_write_chxval_register_config,%function
+	.code	16                              @ @timer_write_chxval_register_config
+	.thumb_func
+timer_write_chxval_register_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	cmp	r0, #1
+	bne	.LBB65_2
+	b	.LBB65_1
+.LBB65_1:
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #252]
+	orr	r0, r0, #2
+	str.w	r0, [r1, #252]
+	b	.LBB65_6
+.LBB65_2:
+	ldrh.w	r0, [sp, #2]
+	cbnz	r0, .LBB65_4
+	b	.LBB65_3
+.LBB65_3:
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #252]
+	bic	r0, r0, #2
+	str.w	r0, [r1, #252]
+	b	.LBB65_5
+.LBB65_4:
+	b	.LBB65_5
+.LBB65_5:
+	b	.LBB65_6
+.LBB65_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end65:
+	.size	timer_write_chxval_register_config, .Lfunc_end65-timer_write_chxval_register_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_output_value_selection_config,"ax",%progbits
+	.hidden	timer_output_value_selection_config @ -- Begin function timer_output_value_selection_config
+	.globl	timer_output_value_selection_config
+	.p2align	2
+	.type	timer_output_value_selection_config,%function
+	.code	16                              @ @timer_output_value_selection_config
+	.thumb_func
+timer_output_value_selection_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	cmp	r0, #1
+	bne	.LBB66_2
+	b	.LBB66_1
+.LBB66_1:
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #252]
+	orr	r0, r0, #1
+	str.w	r0, [r1, #252]
+	b	.LBB66_6
+.LBB66_2:
+	ldrh.w	r0, [sp, #2]
+	cbnz	r0, .LBB66_4
+	b	.LBB66_3
+.LBB66_3:
+	ldr	r1, [sp, #4]
+	ldr.w	r0, [r1, #252]
+	bic	r0, r0, #1
+	str.w	r0, [r1, #252]
+	b	.LBB66_5
+.LBB66_4:
+	b	.LBB66_5
+.LBB66_5:
+	b	.LBB66_6
+.LBB66_6:
+	add	sp, #8
+	bx	lr
+.Lfunc_end66:
+	.size	timer_output_value_selection_config, .Lfunc_end66-timer_output_value_selection_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_interrupt_enable,"ax",%progbits
+	.hidden	timer_interrupt_enable          @ -- Begin function timer_interrupt_enable
+	.globl	timer_interrupt_enable
+	.p2align	2
+	.type	timer_interrupt_enable,%function
+	.code	16                              @ @timer_interrupt_enable
+	.thumb_func
+timer_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #12]
+	orrs	r0, r2
+	str	r0, [r1, #12]
+	add	sp, #8
+	bx	lr
+.Lfunc_end67:
+	.size	timer_interrupt_enable, .Lfunc_end67-timer_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_interrupt_disable,"ax",%progbits
+	.hidden	timer_interrupt_disable         @ -- Begin function timer_interrupt_disable
+	.globl	timer_interrupt_disable
+	.p2align	2
+	.type	timer_interrupt_disable,%function
+	.code	16                              @ @timer_interrupt_disable
+	.thumb_func
+timer_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r2, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #12]
+	bics	r0, r2
+	str	r0, [r1, #12]
+	add	sp, #8
+	bx	lr
+.Lfunc_end68:
+	.size	timer_interrupt_disable, .Lfunc_end68-timer_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_interrupt_flag_get,"ax",%progbits
+	.hidden	timer_interrupt_flag_get        @ -- Begin function timer_interrupt_flag_get
+	.globl	timer_interrupt_flag_get
+	.p2align	2
+	.type	timer_interrupt_flag_get,%function
+	.code	16                              @ @timer_interrupt_flag_get
+	.thumb_func
+timer_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #12]
+	ldr	r1, [sp, #4]
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #16]
+	ldr	r1, [sp, #4]
+	tst	r0, r1
+	beq	.LBB69_3
+	b	.LBB69_1
+.LBB69_1:
+	ldr	r0, [sp]
+	cbz	r0, .LBB69_3
+	b	.LBB69_2
+.LBB69_2:
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB69_4
+.LBB69_3:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB69_4
+.LBB69_4:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	bx	lr
+.Lfunc_end69:
+	.size	timer_interrupt_flag_get, .Lfunc_end69-timer_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_interrupt_flag_clear,"ax",%progbits
+	.hidden	timer_interrupt_flag_clear      @ -- Begin function timer_interrupt_flag_clear
+	.globl	timer_interrupt_flag_clear
+	.p2align	2
+	.type	timer_interrupt_flag_clear,%function
+	.code	16                              @ @timer_interrupt_flag_clear
+	.thumb_func
+timer_interrupt_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	mvns	r0, r0
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #16]
+	add	sp, #8
+	bx	lr
+.Lfunc_end70:
+	.size	timer_interrupt_flag_clear, .Lfunc_end70-timer_interrupt_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_flag_get,"ax",%progbits
+	.hidden	timer_flag_get                  @ -- Begin function timer_flag_get
+	.globl	timer_flag_get
+	.p2align	2
+	.type	timer_flag_get,%function
+	.code	16                              @ @timer_flag_get
+	.thumb_func
+timer_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #16]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB71_2
+	b	.LBB71_1
+.LBB71_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB71_3
+.LBB71_2:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB71_3
+.LBB71_3:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end71:
+	.size	timer_flag_get, .Lfunc_end71-timer_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.timer_flag_clear,"ax",%progbits
+	.hidden	timer_flag_clear                @ -- Begin function timer_flag_clear
+	.globl	timer_flag_clear
+	.p2align	2
+	.type	timer_flag_clear,%function
+	.code	16                              @ @timer_flag_clear
+	.thumb_func
+timer_flag_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	mvns	r0, r0
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #16]
+	add	sp, #8
+	bx	lr
+.Lfunc_end72:
+	.size	timer_flag_clear, .Lfunc_end72-timer_flag_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

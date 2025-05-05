@@ -1,0 +1,1887 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"gd32e501_spi.c"
+	.section	.text.spi_i2s_deinit,"ax",%progbits
+	.hidden	spi_i2s_deinit                  @ -- Begin function spi_i2s_deinit
+	.globl	spi_i2s_deinit
+	.p2align	2
+	.type	spi_i2s_deinit,%function
+	.code	16                              @ @spi_i2s_deinit
+	.thumb_func
+spi_i2s_deinit:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #20]
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	movw	r1, #14336
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_4
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #15360
+	movt	r1, #16384
+	cmp	r0, r1
+	beq	.LBB0_5
+	b	.LBB0_2
+.LBB0_2:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	movw	r1, #12288
+	movt	r1, #16385
+	cmp	r0, r1
+	bne	.LBB0_6
+	b	.LBB0_3
+.LBB0_3:
+	mov.w	r0, #780
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_4:
+	movw	r0, #1038
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_5:
+	movw	r0, #1039
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rcu_periph_reset_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	rcu_periph_reset_disable
+	b	.LBB0_7
+.LBB0_6:
+	b	.LBB0_7
+.LBB0_7:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end0:
+	.size	spi_i2s_deinit, .Lfunc_end0-spi_i2s_deinit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_struct_para_init,"ax",%progbits
+	.hidden	spi_struct_para_init            @ -- Begin function spi_struct_para_init
+	.globl	spi_struct_para_init
+	.p2align	2
+	.type	spi_struct_para_init,%function
+	.code	16                              @ @spi_struct_para_init
+	.thumb_func
+spi_struct_para_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	movs	r0, #0
+	str	r0, [r1]
+	ldr	r1, [sp]
+	str	r0, [r1, #4]
+	ldr	r2, [sp]
+	mov.w	r1, #1792
+	str	r1, [r2, #8]
+	ldr	r1, [sp]
+	str	r0, [r1, #12]
+	ldr	r1, [sp]
+	str	r0, [r1, #16]
+	ldr	r1, [sp]
+	str	r0, [r1, #20]
+	ldr	r1, [sp]
+	str	r0, [r1, #24]
+	add	sp, #4
+	bx	lr
+.Lfunc_end1:
+	.size	spi_struct_para_init, .Lfunc_end1-spi_struct_para_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_init,"ax",%progbits
+	.hidden	spi_init                        @ -- Begin function spi_init
+	.globl	spi_init
+	.p2align	2
+	.type	spi_init,%function
+	.code	16                              @ @spi_init
+	.thumb_func
+spi_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	and	r0, r0, #12352
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0]
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #14400
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0, #4]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, #61695
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp, #16]
+	movw	r1, #12288
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r0, [sp, #16]
+	movw	r1, #15360
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB2_7
+	b	.LBB2_2
+.LBB2_2:
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #4]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #12]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #16]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #20]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #24]
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #8]
+	cmp.w	r0, #1792
+	beq	.LBB2_5
+	b	.LBB2_3
+.LBB2_3:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #8]
+	cmp.w	r0, #3840
+	beq	.LBB2_5
+	b	.LBB2_4
+.LBB2_4:
+	movs	r0, #0
+	strb.w	r0, [sp, #23]
+	b	.LBB2_9
+.LBB2_5:
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #8]
+	and	r1, r0, #2048
+	ldr	r0, [sp, #8]
+	orrs	r0, r1
+	str	r0, [sp, #8]
+	b	.LBB2_6
+.LBB2_6:
+	ldr	r0, [sp, #8]
+	ldr	r1, [sp, #16]
+	str	r0, [r1]
+	b	.LBB2_8
+.LBB2_7:
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #4]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #12]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #16]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #20]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #24]
+	ldr	r0, [sp, #4]
+	orrs	r0, r1
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #16]
+	str	r0, [r1]
+	ldr	r0, [sp, #12]
+	ldr	r1, [r0, #8]
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #4]
+	b	.LBB2_8
+.LBB2_8:
+	ldr	r1, [sp, #16]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #2048
+	str	r0, [r1, #28]
+	movs	r0, #1
+	strb.w	r0, [sp, #23]
+	b	.LBB2_9
+.LBB2_9:
+	ldrb.w	r0, [sp, #23]
+	add	sp, #24
+	bx	lr
+.Lfunc_end2:
+	.size	spi_init, .Lfunc_end2-spi_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_enable,"ax",%progbits
+	.hidden	spi_enable                      @ -- Begin function spi_enable
+	.globl	spi_enable
+	.p2align	2
+	.type	spi_enable,%function
+	.code	16                              @ @spi_enable
+	.thumb_func
+spi_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #64
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end3:
+	.size	spi_enable, .Lfunc_end3-spi_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_disable,"ax",%progbits
+	.hidden	spi_disable                     @ -- Begin function spi_disable
+	.globl	spi_disable
+	.p2align	2
+	.type	spi_disable,%function
+	.code	16                              @ @spi_disable
+	.thumb_func
+spi_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #64
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end4:
+	.size	spi_disable, .Lfunc_end4-spi_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2s_init,"ax",%progbits
+	.hidden	i2s_init                        @ -- Begin function i2s_init
+	.globl	i2s_init
+	.p2align	2
+	.type	i2s_init,%function
+	.code	16                              @ @i2s_init
+	.thumb_func
+i2s_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	str	r2, [sp, #8]
+	str	r3, [sp, #4]
+	movs	r0, #0
+	str	r0, [sp]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0, #28]
+	str	r0, [sp]
+	ldr	r0, [sp]
+	movw	r1, #61511
+	ands	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	orr	r0, r0, #2048
+	str	r0, [sp]
+	ldr	r1, [sp, #12]
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	ldr	r1, [sp, #8]
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	ldr	r1, [sp, #4]
+	ldr	r0, [sp]
+	orrs	r0, r1
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r1, [sp, #16]
+	str	r0, [r1, #28]
+	add	sp, #20
+	bx	lr
+.Lfunc_end5:
+	.size	i2s_init, .Lfunc_end5-i2s_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2s_psc_config,"ax",%progbits
+	.hidden	i2s_psc_config                  @ -- Begin function i2s_psc_config
+	.globl	i2s_psc_config
+	.p2align	2
+	.type	i2s_psc_config,%function
+	.code	16                              @ @i2s_psc_config
+	.thumb_func
+i2s_psc_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	str	r2, [sp, #20]
+	str	r3, [sp, #16]
+	movs	r1, #2
+	str	r1, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r2, [sp, #28]
+	str	r1, [r2, #32]
+	bl	rcu_clock_freq_get
+	str	r0, [sp]
+	ldr	r0, [sp, #16]
+	cmp.w	r0, #512
+	bne	.LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	ldr	r0, [sp]
+	lsrs	r0, r0, #8
+	add.w	r0, r0, r0, lsl #2
+	lsls	r0, r0, #1
+	ldr	r1, [sp, #24]
+	udiv	r0, r0, r1
+	str	r0, [sp, #4]
+	b	.LBB6_6
+.LBB6_2:
+	ldr	r0, [sp, #20]
+	cbnz	r0, .LBB6_4
+	b	.LBB6_3
+.LBB6_3:
+	ldr	r0, [sp]
+	lsrs	r0, r0, #5
+	add.w	r0, r0, r0, lsl #2
+	lsls	r0, r0, #1
+	ldr	r1, [sp, #24]
+	udiv	r0, r0, r1
+	str	r0, [sp, #4]
+	b	.LBB6_5
+.LBB6_4:
+	ldr	r0, [sp]
+	lsrs	r0, r0, #6
+	add.w	r0, r0, r0, lsl #2
+	lsls	r0, r0, #1
+	ldr	r1, [sp, #24]
+	udiv	r0, r0, r1
+	str	r0, [sp, #4]
+	b	.LBB6_5
+.LBB6_5:
+	b	.LBB6_6
+.LBB6_6:
+	ldr	r0, [sp, #4]
+	adds	r0, #5
+	movw	r1, #52429
+	movt	r1, #52428
+	umull	r1, r0, r0, r1
+	lsrs	r0, r0, #3
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	ldr	r1, [sp, #8]
+	subs	r0, r0, r1
+	lsrs	r0, r0, #1
+	str	r0, [sp, #12]
+	ldr	r0, [sp, #8]
+	lsls	r0, r0, #8
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #12]
+	cmp	r0, #2
+	blo	.LBB6_8
+	b	.LBB6_7
+.LBB6_7:
+	ldr	r0, [sp, #12]
+	cmp.w	r0, #256
+	blo	.LBB6_9
+	b	.LBB6_8
+.LBB6_8:
+	movs	r0, #2
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #8]
+	b	.LBB6_9
+.LBB6_9:
+	ldr	r0, [sp, #12]
+	ldr	r1, [sp, #8]
+	orrs	r0, r1
+	ldr	r1, [sp, #16]
+	orrs	r0, r1
+	ldr	r1, [sp, #28]
+	str	r0, [r1, #32]
+	ldr	r1, [sp, #28]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #7
+	str	r0, [r1, #28]
+	ldr	r2, [sp, #20]
+	ldr	r1, [sp, #28]
+	ldr	r0, [r1, #28]
+	orrs	r0, r2
+	str	r0, [r1, #28]
+	add	sp, #32
+	pop	{r7, pc}
+.Lfunc_end6:
+	.size	i2s_psc_config, .Lfunc_end6-i2s_psc_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2s_enable,"ax",%progbits
+	.hidden	i2s_enable                      @ -- Begin function i2s_enable
+	.globl	i2s_enable
+	.p2align	2
+	.type	i2s_enable,%function
+	.code	16                              @ @i2s_enable
+	.thumb_func
+i2s_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #28]
+	orr	r0, r0, #1024
+	str	r0, [r1, #28]
+	add	sp, #4
+	bx	lr
+.Lfunc_end7:
+	.size	i2s_enable, .Lfunc_end7-i2s_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.i2s_disable,"ax",%progbits
+	.hidden	i2s_disable                     @ -- Begin function i2s_disable
+	.globl	i2s_disable
+	.p2align	2
+	.type	i2s_disable,%function
+	.code	16                              @ @i2s_disable
+	.thumb_func
+i2s_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #28]
+	bic	r0, r0, #1024
+	str	r0, [r1, #28]
+	add	sp, #4
+	bx	lr
+.Lfunc_end8:
+	.size	i2s_disable, .Lfunc_end8-i2s_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nss_output_enable,"ax",%progbits
+	.hidden	spi_nss_output_enable           @ -- Begin function spi_nss_output_enable
+	.globl	spi_nss_output_enable
+	.p2align	2
+	.type	spi_nss_output_enable,%function
+	.code	16                              @ @spi_nss_output_enable
+	.thumb_func
+spi_nss_output_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #4
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end9:
+	.size	spi_nss_output_enable, .Lfunc_end9-spi_nss_output_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nss_output_disable,"ax",%progbits
+	.hidden	spi_nss_output_disable          @ -- Begin function spi_nss_output_disable
+	.globl	spi_nss_output_disable
+	.p2align	2
+	.type	spi_nss_output_disable,%function
+	.code	16                              @ @spi_nss_output_disable
+	.thumb_func
+spi_nss_output_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #4
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end10:
+	.size	spi_nss_output_disable, .Lfunc_end10-spi_nss_output_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nss_internal_high,"ax",%progbits
+	.hidden	spi_nss_internal_high           @ -- Begin function spi_nss_internal_high
+	.globl	spi_nss_internal_high
+	.p2align	2
+	.type	spi_nss_internal_high,%function
+	.code	16                              @ @spi_nss_internal_high
+	.thumb_func
+spi_nss_internal_high:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #256
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end11:
+	.size	spi_nss_internal_high, .Lfunc_end11-spi_nss_internal_high
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nss_internal_low,"ax",%progbits
+	.hidden	spi_nss_internal_low            @ -- Begin function spi_nss_internal_low
+	.globl	spi_nss_internal_low
+	.p2align	2
+	.type	spi_nss_internal_low,%function
+	.code	16                              @ @spi_nss_internal_low
+	.thumb_func
+spi_nss_internal_low:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #256
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end12:
+	.size	spi_nss_internal_low, .Lfunc_end12-spi_nss_internal_low
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_dma_enable,"ax",%progbits
+	.hidden	spi_dma_enable                  @ -- Begin function spi_dma_enable
+	.globl	spi_dma_enable
+	.p2align	2
+	.type	spi_dma_enable,%function
+	.code	16                              @ @spi_dma_enable
+	.thumb_func
+spi_dma_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB13_2
+	b	.LBB13_1
+.LBB13_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #2
+	str	r0, [r1, #4]
+	b	.LBB13_3
+.LBB13_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB13_3
+.LBB13_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end13:
+	.size	spi_dma_enable, .Lfunc_end13-spi_dma_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_dma_disable,"ax",%progbits
+	.hidden	spi_dma_disable                 @ -- Begin function spi_dma_disable
+	.globl	spi_dma_disable
+	.p2align	2
+	.type	spi_dma_disable,%function
+	.code	16                              @ @spi_dma_disable
+	.thumb_func
+spi_dma_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB14_2
+	b	.LBB14_1
+.LBB14_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #2
+	str	r0, [r1, #4]
+	b	.LBB14_3
+.LBB14_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #1
+	str	r0, [r1, #4]
+	b	.LBB14_3
+.LBB14_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end14:
+	.size	spi_dma_disable, .Lfunc_end14-spi_dma_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_data_frame_format_config,"ax",%progbits
+	.hidden	spi_data_frame_format_config    @ -- Begin function spi_data_frame_format_config
+	.globl	spi_data_frame_format_config
+	.p2align	2
+	.type	spi_data_frame_format_config,%function
+	.code	16                              @ @spi_data_frame_format_config
+	.thumb_func
+spi_data_frame_format_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r0, [sp, #4]
+	movw	r1, #12288
+	movt	r1, #16385
+	cmp	r0, r1
+	beq	.LBB15_2
+	b	.LBB15_1
+.LBB15_1:
+	ldr	r0, [sp, #4]
+	movw	r1, #15360
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB15_7
+	b	.LBB15_2
+.LBB15_2:
+	ldrh.w	r0, [sp, #2]
+	cmp.w	r0, #1792
+	beq	.LBB15_5
+	b	.LBB15_3
+.LBB15_3:
+	ldrh.w	r0, [sp, #2]
+	cmp.w	r0, #3840
+	beq	.LBB15_5
+	b	.LBB15_4
+.LBB15_4:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB15_9
+.LBB15_5:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #2]
+	and	r2, r0, #2048
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	b	.LBB15_6
+.LBB15_6:
+	b	.LBB15_8
+.LBB15_7:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #3840
+	str	r0, [r1, #4]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	b	.LBB15_8
+.LBB15_8:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB15_9
+.LBB15_9:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end15:
+	.size	spi_data_frame_format_config, .Lfunc_end15-spi_data_frame_format_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_data_transmit,"ax",%progbits
+	.hidden	spi_i2s_data_transmit           @ -- Begin function spi_i2s_data_transmit
+	.globl	spi_i2s_data_transmit
+	.p2align	2
+	.type	spi_i2s_data_transmit,%function
+	.code	16                              @ @spi_i2s_data_transmit
+	.thumb_func
+spi_i2s_data_transmit:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #12]
+	strh.w	r1, [sp, #10]
+	ldr	r0, [sp, #12]
+	adds	r0, #12
+	str	r0, [sp]
+	ldr	r0, [sp, #12]
+	ldr	r0, [r0, #4]
+	and	r0, r0, #4096
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	ldrb.w	r0, [sp, #10]
+	ldr	r1, [sp]
+	strb	r0, [r1]
+	b	.LBB16_3
+.LBB16_2:
+	ldrh.w	r0, [sp, #10]
+	ldr	r1, [sp, #12]
+	str	r0, [r1, #12]
+	b	.LBB16_3
+.LBB16_3:
+	add	sp, #16
+	bx	lr
+.Lfunc_end16:
+	.size	spi_i2s_data_transmit, .Lfunc_end16-spi_i2s_data_transmit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_data_receive,"ax",%progbits
+	.hidden	spi_i2s_data_receive            @ -- Begin function spi_i2s_data_receive
+	.globl	spi_i2s_data_receive
+	.p2align	2
+	.type	spi_i2s_data_receive,%function
+	.code	16                              @ @spi_i2s_data_receive
+	.thumb_func
+spi_i2s_data_receive:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #8]
+	adds	r0, #12
+	str	r0, [sp]
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #4]
+	and	r0, r0, #4096
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	ldr	r0, [sp]
+	ldrb	r0, [r0]
+	strh.w	r0, [sp, #14]
+	b	.LBB17_3
+.LBB17_2:
+	ldr	r0, [sp, #8]
+	ldr	r0, [r0, #12]
+	strh.w	r0, [sp, #14]
+	b	.LBB17_3
+.LBB17_3:
+	ldrh.w	r0, [sp, #14]
+	add	sp, #16
+	bx	lr
+.Lfunc_end17:
+	.size	spi_i2s_data_receive, .Lfunc_end17-spi_i2s_data_receive
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_bidirectional_transfer_config,"ax",%progbits
+	.hidden	spi_bidirectional_transfer_config @ -- Begin function spi_bidirectional_transfer_config
+	.globl	spi_bidirectional_transfer_config
+	.p2align	2
+	.type	spi_bidirectional_transfer_config,%function
+	.code	16                              @ @spi_bidirectional_transfer_config
+	.thumb_func
+spi_bidirectional_transfer_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp]
+	cmp.w	r0, #16384
+	bne	.LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_2:
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #16384
+	str	r0, [r1]
+	b	.LBB18_3
+.LBB18_3:
+	add	sp, #8
+	bx	lr
+.Lfunc_end18:
+	.size	spi_bidirectional_transfer_config, .Lfunc_end18-spi_bidirectional_transfer_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_polynomial_set,"ax",%progbits
+	.hidden	spi_crc_polynomial_set          @ -- Begin function spi_crc_polynomial_set
+	.globl	spi_crc_polynomial_set
+	.p2align	2
+	.type	spi_crc_polynomial_set,%function
+	.code	16                              @ @spi_crc_polynomial_set
+	.thumb_func
+spi_crc_polynomial_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orr	r0, r0, #8192
+	str	r0, [r1]
+	ldrh.w	r0, [sp, #2]
+	ldr	r1, [sp, #4]
+	str	r0, [r1, #16]
+	add	sp, #8
+	bx	lr
+.Lfunc_end19:
+	.size	spi_crc_polynomial_set, .Lfunc_end19-spi_crc_polynomial_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_polynomial_get,"ax",%progbits
+	.hidden	spi_crc_polynomial_get          @ -- Begin function spi_crc_polynomial_get
+	.globl	spi_crc_polynomial_get
+	.p2align	2
+	.type	spi_crc_polynomial_get,%function
+	.code	16                              @ @spi_crc_polynomial_get
+	.thumb_func
+spi_crc_polynomial_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r0, [sp]
+	ldr	r0, [r0, #16]
+	uxth	r0, r0
+	add	sp, #4
+	bx	lr
+.Lfunc_end20:
+	.size	spi_crc_polynomial_get, .Lfunc_end20-spi_crc_polynomial_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_on,"ax",%progbits
+	.hidden	spi_crc_on                      @ -- Begin function spi_crc_on
+	.globl	spi_crc_on
+	.p2align	2
+	.type	spi_crc_on,%function
+	.code	16                              @ @spi_crc_on
+	.thumb_func
+spi_crc_on:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #8192
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end21:
+	.size	spi_crc_on, .Lfunc_end21-spi_crc_on
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_off,"ax",%progbits
+	.hidden	spi_crc_off                     @ -- Begin function spi_crc_off
+	.globl	spi_crc_off
+	.p2align	2
+	.type	spi_crc_off,%function
+	.code	16                              @ @spi_crc_off
+	.thumb_func
+spi_crc_off:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	bic	r0, r0, #8192
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end22:
+	.size	spi_crc_off, .Lfunc_end22-spi_crc_off
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_next,"ax",%progbits
+	.hidden	spi_crc_next                    @ -- Begin function spi_crc_next
+	.globl	spi_crc_next
+	.p2align	2
+	.type	spi_crc_next,%function
+	.code	16                              @ @spi_crc_next
+	.thumb_func
+spi_crc_next:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1]
+	orr	r0, r0, #4096
+	str	r0, [r1]
+	add	sp, #4
+	bx	lr
+.Lfunc_end23:
+	.size	spi_crc_next, .Lfunc_end23-spi_crc_next
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_get,"ax",%progbits
+	.hidden	spi_crc_get                     @ -- Begin function spi_crc_get
+	.globl	spi_crc_get
+	.p2align	2
+	.type	spi_crc_get,%function
+	.code	16                              @ @spi_crc_get
+	.thumb_func
+spi_crc_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cbnz	r0, .LBB24_2
+	b	.LBB24_1
+.LBB24_1:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #24]
+	strh.w	r0, [sp, #10]
+	b	.LBB24_3
+.LBB24_2:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #20]
+	strh.w	r0, [sp, #10]
+	b	.LBB24_3
+.LBB24_3:
+	ldrh.w	r0, [sp, #10]
+	add	sp, #12
+	bx	lr
+.Lfunc_end24:
+	.size	spi_crc_get, .Lfunc_end24-spi_crc_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_ti_mode_enable,"ax",%progbits
+	.hidden	spi_ti_mode_enable              @ -- Begin function spi_ti_mode_enable
+	.globl	spi_ti_mode_enable
+	.p2align	2
+	.type	spi_ti_mode_enable,%function
+	.code	16                              @ @spi_ti_mode_enable
+	.thumb_func
+spi_ti_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #16
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end25:
+	.size	spi_ti_mode_enable, .Lfunc_end25-spi_ti_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_ti_mode_disable,"ax",%progbits
+	.hidden	spi_ti_mode_disable             @ -- Begin function spi_ti_mode_disable
+	.globl	spi_ti_mode_disable
+	.p2align	2
+	.type	spi_ti_mode_disable,%function
+	.code	16                              @ @spi_ti_mode_disable
+	.thumb_func
+spi_ti_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end26:
+	.size	spi_ti_mode_disable, .Lfunc_end26-spi_ti_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nssp_mode_enable,"ax",%progbits
+	.hidden	spi_nssp_mode_enable            @ -- Begin function spi_nssp_mode_enable
+	.globl	spi_nssp_mode_enable
+	.p2align	2
+	.type	spi_nssp_mode_enable,%function
+	.code	16                              @ @spi_nssp_mode_enable
+	.thumb_func
+spi_nssp_mode_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	orr	r0, r0, #8
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end27:
+	.size	spi_nssp_mode_enable, .Lfunc_end27-spi_nssp_mode_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_nssp_mode_disable,"ax",%progbits
+	.hidden	spi_nssp_mode_disable           @ -- Begin function spi_nssp_mode_disable
+	.globl	spi_nssp_mode_disable
+	.p2align	2
+	.type	spi_nssp_mode_disable,%function
+	.code	16                              @ @spi_nssp_mode_disable
+	.thumb_func
+spi_nssp_mode_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #8
+	str	r0, [r1, #4]
+	add	sp, #4
+	bx	lr
+.Lfunc_end28:
+	.size	spi_nssp_mode_disable, .Lfunc_end28-spi_nssp_mode_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_enable,"ax",%progbits
+	.hidden	qspi_enable                     @ -- Begin function qspi_enable
+	.globl	qspi_enable
+	.p2align	2
+	.type	qspi_enable,%function
+	.code	16                              @ @qspi_enable
+	.thumb_func
+qspi_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	orr	r0, r0, #1
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end29:
+	.size	qspi_enable, .Lfunc_end29-qspi_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_disable,"ax",%progbits
+	.hidden	qspi_disable                    @ -- Begin function qspi_disable
+	.globl	qspi_disable
+	.p2align	2
+	.type	qspi_disable,%function
+	.code	16                              @ @qspi_disable
+	.thumb_func
+qspi_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	bic	r0, r0, #1
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end30:
+	.size	qspi_disable, .Lfunc_end30-qspi_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_write_enable,"ax",%progbits
+	.hidden	qspi_write_enable               @ -- Begin function qspi_write_enable
+	.globl	qspi_write_enable
+	.p2align	2
+	.type	qspi_write_enable,%function
+	.code	16                              @ @qspi_write_enable
+	.thumb_func
+qspi_write_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	bic	r0, r0, #2
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end31:
+	.size	qspi_write_enable, .Lfunc_end31-qspi_write_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_read_enable,"ax",%progbits
+	.hidden	qspi_read_enable                @ -- Begin function qspi_read_enable
+	.globl	qspi_read_enable
+	.p2align	2
+	.type	qspi_read_enable,%function
+	.code	16                              @ @qspi_read_enable
+	.thumb_func
+qspi_read_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	orr	r0, r0, #2
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end32:
+	.size	qspi_read_enable, .Lfunc_end32-qspi_read_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_io23_output_enable,"ax",%progbits
+	.hidden	qspi_io23_output_enable         @ -- Begin function qspi_io23_output_enable
+	.globl	qspi_io23_output_enable
+	.p2align	2
+	.type	qspi_io23_output_enable,%function
+	.code	16                              @ @qspi_io23_output_enable
+	.thumb_func
+qspi_io23_output_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	orr	r0, r0, #4
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end33:
+	.size	qspi_io23_output_enable, .Lfunc_end33-qspi_io23_output_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.qspi_io23_output_disable,"ax",%progbits
+	.hidden	qspi_io23_output_disable        @ -- Begin function qspi_io23_output_disable
+	.globl	qspi_io23_output_disable
+	.p2align	2
+	.type	qspi_io23_output_disable,%function
+	.code	16                              @ @qspi_io23_output_disable
+	.thumb_func
+qspi_io23_output_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr.w	r0, [r1, #128]
+	bic	r0, r0, #4
+	str.w	r0, [r1, #128]
+	add	sp, #4
+	bx	lr
+.Lfunc_end34:
+	.size	qspi_io23_output_disable, .Lfunc_end34-qspi_io23_output_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_fifo_access_size_config,"ax",%progbits
+	.hidden	spi_fifo_access_size_config     @ -- Begin function spi_fifo_access_size_config
+	.globl	spi_fifo_access_size_config
+	.p2align	2
+	.type	spi_fifo_access_size_config,%function
+	.code	16                              @ @spi_fifo_access_size_config
+	.thumb_func
+spi_fifo_access_size_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #4096
+	str	r0, [r1, #4]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end35:
+	.size	spi_fifo_access_size_config, .Lfunc_end35-spi_fifo_access_size_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_transmit_odd_config,"ax",%progbits
+	.hidden	spi_transmit_odd_config         @ -- Begin function spi_transmit_odd_config
+	.globl	spi_transmit_odd_config
+	.p2align	2
+	.type	spi_transmit_odd_config,%function
+	.code	16                              @ @spi_transmit_odd_config
+	.thumb_func
+spi_transmit_odd_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #16384
+	str	r0, [r1, #4]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end36:
+	.size	spi_transmit_odd_config, .Lfunc_end36-spi_transmit_odd_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_receive_odd_config,"ax",%progbits
+	.hidden	spi_receive_odd_config          @ -- Begin function spi_receive_odd_config
+	.globl	spi_receive_odd_config
+	.p2align	2
+	.type	spi_receive_odd_config,%function
+	.code	16                              @ @spi_receive_odd_config
+	.thumb_func
+spi_receive_odd_config:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bic	r0, r0, #8192
+	str	r0, [r1, #4]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end37:
+	.size	spi_receive_odd_config, .Lfunc_end37-spi_receive_odd_config
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_length_set,"ax",%progbits
+	.hidden	spi_crc_length_set              @ -- Begin function spi_crc_length_set
+	.globl	spi_crc_length_set
+	.p2align	2
+	.type	spi_crc_length_set,%function
+	.code	16                              @ @spi_crc_length_set
+	.thumb_func
+spi_crc_length_set:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strh.w	r1, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	bic	r0, r0, #2048
+	str	r0, [r1]
+	ldrh.w	r2, [sp, #2]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1]
+	orrs	r0, r2
+	str	r0, [r1]
+	add	sp, #8
+	bx	lr
+.Lfunc_end38:
+	.size	spi_crc_length_set, .Lfunc_end38-spi_crc_length_set
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_interrupt_enable,"ax",%progbits
+	.hidden	spi_i2s_interrupt_enable        @ -- Begin function spi_i2s_interrupt_enable
+	.globl	spi_i2s_interrupt_enable
+	.p2align	2
+	.type	spi_i2s_interrupt_enable,%function
+	.code	16                              @ @spi_i2s_interrupt_enable
+	.thumb_func
+spi_i2s_interrupt_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	orrs	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end39:
+	.size	spi_i2s_interrupt_enable, .Lfunc_end39-spi_i2s_interrupt_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_interrupt_disable,"ax",%progbits
+	.hidden	spi_i2s_interrupt_disable       @ -- Begin function spi_i2s_interrupt_disable
+	.globl	spi_i2s_interrupt_disable
+	.p2align	2
+	.type	spi_i2s_interrupt_disable,%function
+	.code	16                              @ @spi_i2s_interrupt_disable
+	.thumb_func
+spi_i2s_interrupt_disable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+	ldrb.w	r2, [sp, #3]
+	ldr	r1, [sp, #4]
+	ldr	r0, [r1, #4]
+	bics	r0, r2
+	str	r0, [r1, #4]
+	add	sp, #8
+	bx	lr
+.Lfunc_end40:
+	.size	spi_i2s_interrupt_disable, .Lfunc_end40-spi_i2s_interrupt_disable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_interrupt_flag_get,"ax",%progbits
+	.hidden	spi_i2s_interrupt_flag_get      @ -- Begin function spi_i2s_interrupt_flag_get
+	.globl	spi_i2s_interrupt_flag_get
+	.p2align	2
+	.type	spi_i2s_interrupt_flag_get,%function
+	.code	16                              @ @spi_i2s_interrupt_flag_get
+	.thumb_func
+spi_i2s_interrupt_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #16]
+	strb.w	r1, [sp, #15]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0, #8]
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0, #4]
+	str	r0, [sp, #4]
+	ldrb.w	r0, [sp, #15]
+	mov	r1, r0
+	str	r1, [sp]                        @ 4-byte Spill
+	cmp	r0, #6
+	bhi	.LBB41_10
+@ %bb.1:
+	ldr	r1, [sp]                        @ 4-byte Reload
+.LCPI41_0:
+	tbb	[pc, r1]
+@ %bb.2:
+.LJTI41_0:
+	.byte	(.LBB41_3-(.LCPI41_0+4))/2
+	.byte	(.LBB41_4-(.LCPI41_0+4))/2
+	.byte	(.LBB41_5-(.LCPI41_0+4))/2
+	.byte	(.LBB41_6-(.LCPI41_0+4))/2
+	.byte	(.LBB41_7-(.LCPI41_0+4))/2
+	.byte	(.LBB41_8-(.LCPI41_0+4))/2
+	.byte	(.LBB41_9-(.LCPI41_0+4))/2
+	.p2align	1
+.LBB41_3:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #2
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #128
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_4:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #1
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #64
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_5:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #64
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_6:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #32
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_7:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #16
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_8:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #8
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_9:
+	ldr	r0, [sp, #8]
+	and	r0, r0, #256
+	str	r0, [sp, #8]
+	ldr	r0, [sp, #4]
+	and	r0, r0, #32
+	str	r0, [sp, #4]
+	b	.LBB41_11
+.LBB41_10:
+	b	.LBB41_11
+.LBB41_11:
+	ldr	r0, [sp, #8]
+	cbz	r0, .LBB41_14
+	b	.LBB41_12
+.LBB41_12:
+	ldr	r0, [sp, #4]
+	cbz	r0, .LBB41_14
+	b	.LBB41_13
+.LBB41_13:
+	movs	r0, #1
+	strb.w	r0, [sp, #23]
+	b	.LBB41_15
+.LBB41_14:
+	movs	r0, #0
+	strb.w	r0, [sp, #23]
+	b	.LBB41_15
+.LBB41_15:
+	ldrb.w	r0, [sp, #23]
+	add	sp, #24
+	bx	lr
+.Lfunc_end41:
+	.size	spi_i2s_interrupt_flag_get, .Lfunc_end41-spi_i2s_interrupt_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_i2s_flag_get,"ax",%progbits
+	.hidden	spi_i2s_flag_get                @ -- Begin function spi_i2s_flag_get
+	.globl	spi_i2s_flag_get
+	.p2align	2
+	.type	spi_i2s_flag_get,%function
+	.code	16                              @ @spi_i2s_flag_get
+	.thumb_func
+spi_i2s_flag_get:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	str	r0, [sp, #4]
+	str	r1, [sp]
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #8]
+	ldr	r1, [sp]
+	tst	r0, r1
+	beq	.LBB42_2
+	b	.LBB42_1
+.LBB42_1:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_2:
+	ldr	r0, [sp, #4]
+	movw	r1, #14336
+	movt	r1, #16384
+	cmp	r0, r1
+	bne	.LBB42_12
+	b	.LBB42_3
+.LBB42_3:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB42_7
+	b	.LBB42_4
+.LBB42_4:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #8]
+	tst.w	r0, #6144
+	beq	.LBB42_6
+	b	.LBB42_5
+.LBB42_5:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_6:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_7:
+	ldr	r0, [sp]
+	cbnz	r0, .LBB42_11
+	b	.LBB42_8
+.LBB42_8:
+	ldr	r0, [sp, #4]
+	ldr	r0, [r0, #8]
+	tst.w	r0, #1536
+	beq	.LBB42_10
+	b	.LBB42_9
+.LBB42_9:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_10:
+	movs	r0, #1
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_11:
+	b	.LBB42_12
+.LBB42_12:
+	movs	r0, #0
+	strb.w	r0, [sp, #11]
+	b	.LBB42_13
+.LBB42_13:
+	ldrb.w	r0, [sp, #11]
+	add	sp, #12
+	bx	lr
+.Lfunc_end42:
+	.size	spi_i2s_flag_get, .Lfunc_end42-spi_i2s_flag_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.spi_crc_error_clear,"ax",%progbits
+	.hidden	spi_crc_error_clear             @ -- Begin function spi_crc_error_clear
+	.globl	spi_crc_error_clear
+	.p2align	2
+	.type	spi_crc_error_clear,%function
+	.code	16                              @ @spi_crc_error_clear
+	.thumb_func
+spi_crc_error_clear:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+	ldr	r1, [sp]
+	ldr	r0, [r1, #8]
+	bic	r0, r0, #16
+	str	r0, [r1, #8]
+	add	sp, #4
+	bx	lr
+.Lfunc_end43:
+	.size	spi_crc_error_clear, .Lfunc_end43-spi_crc_error_clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

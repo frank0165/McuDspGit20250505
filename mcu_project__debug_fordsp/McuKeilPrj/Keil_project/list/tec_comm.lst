@@ -1,0 +1,592 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"tec_comm.c"
+	.section	.text.tec_global_vars_init,"ax",%progbits
+	.hidden	tec_global_vars_init            @ -- Begin function tec_global_vars_init
+	.globl	tec_global_vars_init
+	.p2align	2
+	.type	tec_global_vars_init,%function
+	.code	16                              @ @tec_global_vars_init
+	.thumb_func
+tec_global_vars_init:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	movs	r0, #0
+	strb	r0, [r1, #4]
+	movs	r0, #0
+	movt	r0, #16288
+	str	r0, [r1]
+	movs	r0, #1
+	strb	r0, [r1, #5]
+	movw	r0, #5000
+	strh	r0, [r1, #6]
+	bx	lr
+.Lfunc_end0:
+	.size	tec_global_vars_init, .Lfunc_end0-tec_global_vars_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_config_init,"ax",%progbits
+	.hidden	tec_config_init                 @ -- Begin function tec_config_init
+	.globl	tec_config_init
+	.p2align	2
+	.type	tec_config_init,%function
+	.code	16                              @ @tec_config_init
+	.thumb_func
+tec_config_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	tec_global_vars_init
+	bl	tec_device_init
+	pop	{r7, pc}
+.Lfunc_end1:
+	.size	tec_config_init, .Lfunc_end1-tec_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_calc_auto_rth_temp,"ax",%progbits
+	.hidden	tec_calc_auto_rth_temp          @ -- Begin function tec_calc_auto_rth_temp
+	.globl	tec_calc_auto_rth_temp
+	.p2align	3
+	.type	tec_calc_auto_rth_temp,%function
+	.code	16                              @ @tec_calc_auto_rth_temp
+	.thumb_func
+tec_calc_auto_rth_temp:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+	movs	r0, #0
+	str	r0, [sp, #60]
+	str	r0, [sp, #56]
+	strh.w	r0, [sp, #54]
+	str	r0, [sp, #48]
+	add	r0, sp, #60
+	bl	get_tec_therm_temperature
+	vldr	s0, [sp, #60]
+	vldr	s2, .LCPI2_0
+	vadd.f32	s0, s0, s2
+	vldr	s2, .LCPI2_1
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #54]
+	ldrh.w	r0, [sp, #54]
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	ldrh	r1, [r1, #6]
+	movw	r2, #4100
+	add	r1, r2
+	cmp	r0, r1
+	ble.w	.LBB2_5
+	b	.LBB2_1
+.LBB2_1:
+	ldrh.w	r0, [sp, #54]
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	ldrh	r1, [r1, #6]
+	subs	r0, r0, r1
+	sub.w	r0, r0, #4000
+	vmov	s0, r0
+	vcvt.f32.s32	s0, s0
+	vstr	s0, [sp, #56]
+	vldr	s0, [sp, #56]
+	vldr	s2, .LCPI2_1
+	vmul.f32	s0, s0, s2
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI2_2
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	str	r0, [sp, #48]
+	ldr	r0, [sp, #48]
+	cmp	r0, #11
+	blo	.LBB2_3
+	b	.LBB2_2
+.LBB2_2:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	str	r0, [sp, #44]                   @ 4-byte Spill
+	ldr	r0, [r0]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI2_5
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #44]                   @ 4-byte Reload
+	str	r0, [r1]
+	b	.LBB2_4
+.LBB2_3:
+	vldr	s0, [sp, #56]
+	vldr	s2, .LCPI2_4
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #24]                   @ 8-byte Spill
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	str	r0, [sp, #40]                   @ 4-byte Spill
+	ldr	r0, [r0]
+	bl	__aeabi_f2d
+	vldr	d0, [sp, #24]                   @ 8-byte Reload
+	vmov	d1, r0, r1
+	vstr	d1, [sp, #32]                   @ 8-byte Spill
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI2_2
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vldr	d0, [sp, #32]                   @ 8-byte Reload
+	vmov	d1, r0, r1
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #40]                   @ 4-byte Reload
+	str	r0, [r1]
+	b	.LBB2_4
+.LBB2_4:
+	b	.LBB2_11
+.LBB2_5:
+	ldrh.w	r0, [sp, #54]
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	ldrh	r1, [r1, #6]
+	movw	r2, #4100
+	add	r1, r2
+	cmp	r0, r1
+	bge.w	.LBB2_10
+	b	.LBB2_6
+.LBB2_6:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	ldrh	r0, [r0, #6]
+	ldrh.w	r1, [sp, #54]
+	subs	r0, r0, r1
+	add.w	r0, r0, #4000
+	vmov	s0, r0
+	vcvt.f32.s32	s0, s0
+	vstr	s0, [sp, #56]
+	vldr	s0, [sp, #56]
+	vldr	s2, .LCPI2_1
+	vmul.f32	s0, s0, s2
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI2_2
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2uiz
+	str	r0, [sp, #48]
+	ldr	r0, [sp, #48]
+	cmp	r0, #11
+	blo	.LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	ldr	r0, [r0]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI2_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	str	r0, [r1]
+	b	.LBB2_9
+.LBB2_8:
+	vldr	s0, [sp, #56]
+	vldr	s2, .LCPI2_1
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vstr	d0, [sp]                        @ 8-byte Spill
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	ldr	r0, [r0]
+	bl	__aeabi_f2d
+	vldr	d0, [sp]                        @ 8-byte Reload
+	vmov	d1, r0, r1
+	vstr	d1, [sp, #8]                    @ 8-byte Spill
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI2_2
+	vmov	r2, r3, d0
+	bl	__aeabi_dmul
+	vldr	d0, [sp, #8]                    @ 8-byte Reload
+	vmov	d1, r0, r1
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	str	r0, [r1]
+	b	.LBB2_9
+.LBB2_9:
+	b	.LBB2_10
+.LBB2_10:
+	b	.LBB2_11
+.LBB2_11:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	vldr	s0, [r0]
+	vmov.f32	s2, #2.000000e+00
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB2_13
+	b	.LBB2_12
+.LBB2_12:
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	mov.w	r0, #1073741824
+	str	r0, [r1]
+	b	.LBB2_16
+.LBB2_13:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	ldr	r0, [r0]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI2_6
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmpge
+	cbnz	r0, .LBB2_15
+	b	.LBB2_14
+.LBB2_14:
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	movw	r0, #26214
+	movt	r0, #16102
+	str	r0, [r1]
+	b	.LBB2_15
+.LBB2_15:
+	b	.LBB2_16
+.LBB2_16:
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	vldr	s0, [r0]
+	bl	tec_set_ctl_voltage
+	add	sp, #64
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.17:
+.LCPI2_2:
+	.long	1202590843                      @ double 0.01
+	.long	1065646817
+.LCPI2_3:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI2_5:
+	.long	2576980378                      @ double -0.10000000000000001
+	.long	3216611737
+.LCPI2_6:
+	.long	3435973837                      @ double 0.45000000000000001
+	.long	1071434956
+.LCPI2_0:
+	.long	0x42200000                      @ float 40
+.LCPI2_1:
+	.long	0x42c80000                      @ float 100
+.LCPI2_4:
+	.long	0xc2c80000                      @ float -100
+.Lfunc_end2:
+	.size	tec_calc_auto_rth_temp, .Lfunc_end2-tec_calc_auto_rth_temp
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_save_ctl_temperature_value,"ax",%progbits
+	.hidden	tec_save_ctl_temperature_value  @ -- Begin function tec_save_ctl_temperature_value
+	.globl	tec_save_ctl_temperature_value
+	.p2align	2
+	.type	tec_save_ctl_temperature_value,%function
+	.code	16                              @ @tec_save_ctl_temperature_value
+	.thumb_func
+tec_save_ctl_temperature_value:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #6]
+	ldrh.w	r0, [sp, #6]
+	cmp.w	r0, #4000
+	bge	.LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	mov.w	r0, #4000
+	strh.w	r0, [sp, #6]
+	b	.LBB3_2
+.LBB3_2:
+	ldrh.w	r0, [sp, #6]
+	movw	r1, #5501
+	cmp	r0, r1
+	blt	.LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+	movw	r0, #5500
+	strh.w	r0, [sp, #6]
+	b	.LBB3_4
+.LBB3_4:
+	ldrh.w	r1, [sp, #6]
+	add	r0, sp, #4
+	bl	set_u16
+	ldrb.w	r0, [sp, #4]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, #24]
+	ldrb.w	r0, [sp, #5]
+	strb	r0, [r1, #25]
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end3:
+	.size	tec_save_ctl_temperature_value, .Lfunc_end3-tec_save_ctl_temperature_value
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_process,"ax",%progbits
+	.hidden	tec_process                     @ -- Begin function tec_process
+	.globl	tec_process
+	.p2align	2
+	.type	tec_process,%function
+	.code	16                              @ @tec_process
+	.thumb_func
+tec_process:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, :lower16:g_tec_vars_param
+	movt	r0, :upper16:g_tec_vars_param
+	ldrb	r0, [r0, #5]
+	cmp	r0, #1
+	bne	.LBB4_4
+	b	.LBB4_1
+.LBB4_1:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #16]
+	cmp.w	r0, #1000
+	bls	.LBB4_3
+	b	.LBB4_2
+.LBB4_2:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	str	r0, [r1, #16]
+	bl	tec_pid_calc_auto
+	b	.LBB4_3
+.LBB4_3:
+	b	.LBB4_4
+.LBB4_4:
+	pop	{r7, pc}
+.Lfunc_end4:
+	.size	tec_process, .Lfunc_end4-tec_process
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_pid_calc_auto,"ax",%progbits
+	.hidden	tec_pid_calc_auto               @ -- Begin function tec_pid_calc_auto
+	.globl	tec_pid_calc_auto
+	.p2align	2
+	.type	tec_pid_calc_auto,%function
+	.code	16                              @ @tec_pid_calc_auto
+	.thumb_func
+tec_pid_calc_auto:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	tec_calc_auto_rth_temp
+	bl	tec_release_limit_refresh
+	pop	{r7, pc}
+.Lfunc_end5:
+	.size	tec_pid_calc_auto, .Lfunc_end5-tec_pid_calc_auto
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_start_auto_adjust,"ax",%progbits
+	.hidden	tec_start_auto_adjust           @ -- Begin function tec_start_auto_adjust
+	.globl	tec_start_auto_adjust
+	.p2align	2
+	.type	tec_start_auto_adjust,%function
+	.code	16                              @ @tec_start_auto_adjust
+	.thumb_func
+tec_start_auto_adjust:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	movs	r0, #1
+	strb	r0, [r1, #5]
+	bx	lr
+.Lfunc_end6:
+	.size	tec_start_auto_adjust, .Lfunc_end6-tec_start_auto_adjust
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_set_default_mini_status,"ax",%progbits
+	.hidden	tec_set_default_mini_status     @ -- Begin function tec_set_default_mini_status
+	.globl	tec_set_default_mini_status
+	.p2align	2
+	.type	tec_set_default_mini_status,%function
+	.code	16                              @ @tec_set_default_mini_status
+	.thumb_func
+tec_set_default_mini_status:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	movs	r0, #1
+	strb	r0, [r1, #5]
+	strb	r0, [r1, #4]
+	vmov.f32	s0, #1.250000e+00
+	bl	sgm41296_vtec_dac_ctl_set
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	tec_set_default_mini_status, .Lfunc_end7-tec_set_default_mini_status
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.tec_set_ctrl_temperature_obj,"ax",%progbits
+	.hidden	tec_set_ctrl_temperature_obj    @ -- Begin function tec_set_ctrl_temperature_obj
+	.globl	tec_set_ctrl_temperature_obj
+	.p2align	2
+	.type	tec_set_ctrl_temperature_obj,%function
+	.code	16                              @ @tec_set_ctrl_temperature_obj
+	.thumb_func
+tec_set_ctrl_temperature_obj:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	add	r0, sp, #4
+	vstr	s0, [r0]
+	vldr	s0, [r0]
+	vldr	s2, .LCPI8_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #2]
+	ldrh.w	r0, [sp, #2]
+	movw	r1, :lower16:g_tec_vars_param
+	movt	r1, :upper16:g_tec_vars_param
+	strh	r0, [r1, #6]
+	add	sp, #8
+	bx	lr
+	.p2align	2
+@ %bb.1:
+.LCPI8_0:
+	.long	0x42c80000                      @ float 100
+.Lfunc_end8:
+	.size	tec_set_ctrl_temperature_obj, .Lfunc_end8-tec_set_ctrl_temperature_obj
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	g_tec_vars_param                @ @g_tec_vars_param
+	.type	g_tec_vars_param,%object
+	.section	.bss.g_tec_vars_param,"aw",%nobits
+	.globl	g_tec_vars_param
+	.p2align	2, 0x0
+g_tec_vars_param:
+	.zero	8
+	.size	g_tec_vars_param, 8
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba

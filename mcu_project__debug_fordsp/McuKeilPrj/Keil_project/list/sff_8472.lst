@@ -1,0 +1,7714 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m33
+	.eabi_attribute	6, 17	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-sp-d16
+	.eabi_attribute	27, 1	@ Tag_ABI_HardFP_use
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"sff_8472.c"
+	.section	.text.update_om_temperature,"ax",%progbits
+	.hidden	update_om_temperature           @ -- Begin function update_om_temperature
+	.globl	update_om_temperature
+	.p2align	3
+	.type	update_om_temperature,%function
+	.code	16                              @ @update_om_temperature
+	.thumb_func
+update_om_temperature:
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	add	r0, sp, #12
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r0, #0
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	add	r0, sp, #12
+	bl	get_case_therm_temperature
+	ldr	r0, [sp, #12]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI0_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmple
+	cbnz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI0_3
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	b	.LBB0_6
+.LBB0_2:
+	ldr	r0, [sp, #12]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI0_1
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmpge
+	cbnz	r0, .LBB0_4
+	b	.LBB0_3
+.LBB0_3:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI0_2
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #10]
+	b	.LBB0_5
+.LBB0_4:
+	movs	r0, #0
+	strh.w	r0, [sp, #10]
+	b	.LBB0_5
+.LBB0_5:
+	b	.LBB0_6
+.LBB0_6:
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	strb.w	r0, [r1, #96]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #97]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	strb.w	r0, [r1, #96]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #97]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	strb.w	r0, [r1, #96]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #97]
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.7:
+.LCPI0_0:
+	.long	1202590843                      @ double 0.01
+	.long	1065646817
+.LCPI0_1:
+	.long	1202590843                      @ double -0.01
+	.long	3213130465
+.LCPI0_2:
+	.long	0xc3800000                      @ float -256
+.LCPI0_3:
+	.long	0x43800000                      @ float 256
+.Lfunc_end0:
+	.size	update_om_temperature, .Lfunc_end0-update_om_temperature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_voltage,"ax",%progbits
+	.hidden	update_om_voltage               @ -- Begin function update_om_voltage
+	.globl	update_om_voltage
+	.p2align	2
+	.type	update_om_voltage,%function
+	.code	16                              @ @update_om_voltage
+	.thumb_func
+update_om_voltage:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	add	r0, sp, #12
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r0, #0
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+	add	r0, sp, #12
+	bl	ddm_50g_get_voltage
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI1_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	strb.w	r0, [r1, #98]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #99]
+	b	.LBB1_2
+.LBB1_2:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	add	r0, sp, #12
+	bl	ddm_10g_get_voltage
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI1_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	strb.w	r0, [r1, #98]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #99]
+	b	.LBB1_4
+.LBB1_4:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB1_6
+	b	.LBB1_5
+.LBB1_5:
+	add	r0, sp, #12
+	bl	ddm_1g_get_voltage
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI1_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	strb.w	r0, [r1, #98]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #99]
+	b	.LBB1_6
+.LBB1_6:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	2
+@ %bb.7:
+.LCPI1_0:
+	.long	0x461c4000                      @ float 1.0E+4
+.Lfunc_end1:
+	.size	update_om_voltage, .Lfunc_end1-update_om_voltage
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_bias,"ax",%progbits
+	.hidden	update_om_bias                  @ -- Begin function update_om_bias
+	.globl	update_om_bias
+	.p2align	2
+	.type	update_om_bias,%function
+	.code	16                              @ @update_om_bias
+	.thumb_func
+update_om_bias:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	add	r0, sp, #12
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	movs	r0, #0
+	str	r0, [sp, #12]
+	strh.w	r0, [sp, #10]
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB2_2
+	b	.LBB2_1
+.LBB2_1:
+	add	r0, sp, #12
+	bl	ddm_50g_get_ld_ibias
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI2_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	strb.w	r0, [r1, #100]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #101]
+	b	.LBB2_2
+.LBB2_2:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	add	r0, sp, #12
+	bl	ddm_10g_get_ld_ibias
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI2_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	strb.w	r0, [r1, #100]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #101]
+	b	.LBB2_4
+.LBB2_4:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB2_6
+	b	.LBB2_5
+.LBB2_5:
+	add	r0, sp, #12
+	bl	ddm_1g_get_ld_ibias
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0]
+	vldr	s2, .LCPI2_0
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	ldrb.w	r0, [sp, #11]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	strb.w	r0, [r1, #100]
+	ldrb.w	r0, [sp, #10]
+	strb.w	r0, [r1, #101]
+	b	.LBB2_6
+.LBB2_6:
+	add	sp, #16
+	pop	{r7, pc}
+	.p2align	2
+@ %bb.7:
+.LCPI2_0:
+	.long	0x42fa0000                      @ float 125
+.Lfunc_end2:
+	.size	update_om_bias, .Lfunc_end2-update_om_bias
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_tx_power,"ax",%progbits
+	.hidden	update_om_tx_power              @ -- Begin function update_om_tx_power
+	.globl	update_om_tx_power
+	.p2align	3
+	.type	update_om_tx_power,%function
+	.code	16                              @ @update_om_tx_power
+	.thumb_func
+update_om_tx_power:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	add	r0, sp, #16
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+	movs	r0, #0
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	calculate_om_tx_power
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	vstr	s0, [r0, #28]
+	vldr	s0, [r0, #28]
+	vmov.f32	s2, #1.000000e+01
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d1, r0, r1
+	vldr	d0, .LCPI3_0
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	mov	r2, r0
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r2, [sp, #40]
+	strh.w	r1, [sp, #38]
+	vldr	s0, [r0, #24]
+	vldr	s2, .LCPI3_1
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #38]
+	ldrb.w	r0, [sp, #39]
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	strb.w	r0, [r1, #102]
+	ldrb.w	r0, [sp, #38]
+	strb.w	r0, [r1, #103]
+	b	.LBB3_2
+.LBB3_2:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+	movs	r0, #1
+	bl	calculate_om_tx_power
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	vstr	s0, [r0, #16]
+	vldr	s0, [r0, #16]
+	vmov.f32	s2, #1.000000e+01
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d1, r0, r1
+	vldr	d0, .LCPI3_0
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r1, [sp, #28]
+	movs	r1, #0
+	strh.w	r1, [sp, #26]
+	vldr	s0, [r0, #12]
+	vldr	s2, .LCPI3_1
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #26]
+	ldrb.w	r0, [sp, #27]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	strb.w	r0, [r1, #102]
+	ldrb.w	r0, [sp, #26]
+	strb.w	r0, [r1, #103]
+	b	.LBB3_4
+.LBB3_4:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cbz	r0, .LBB3_6
+	b	.LBB3_5
+.LBB3_5:
+	movs	r0, #2
+	bl	calculate_om_tx_power
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vmov.f32	s2, #1.000000e+01
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d1, r0, r1
+	vldr	d0, .LCPI3_0
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r1, [sp, #16]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	vldr	s0, [r0]
+	vldr	s2, .LCPI3_1
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #14]
+	ldrb.w	r0, [sp, #15]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	strb.w	r0, [r1, #102]
+	ldrb.w	r0, [sp, #14]
+	strb.w	r0, [r1, #103]
+	b	.LBB3_6
+.LBB3_6:
+	add	sp, #48
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.7:
+.LCPI3_0:
+	.long	0                               @ double 10
+	.long	1076101120
+.LCPI3_1:
+	.long	0x449c4000                      @ float 1250
+.Lfunc_end3:
+	.size	update_om_tx_power, .Lfunc_end3-update_om_tx_power
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calculate_om_tx_power,"ax",%progbits
+	.hidden	calculate_om_tx_power           @ -- Begin function calculate_om_tx_power
+	.globl	calculate_om_tx_power
+	.p2align	3
+	.type	calculate_om_tx_power,%function
+	.code	16                              @ @calculate_om_tx_power
+	.thumb_func
+calculate_om_tx_power:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #55]
+	movs	r0, #0
+	str	r0, [sp, #48]
+	str	r0, [sp, #44]
+	str	r0, [sp, #40]
+	str	r0, [sp, #36]
+	str	r0, [sp, #28]
+	str	r0, [sp, #24]
+	ldrb.w	r0, [sp, #55]
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr	r1, [r0, #44]
+	str	r1, [sp, #40]
+	ldr	r0, [r0, #48]
+	str	r0, [sp, #36]
+	add	r0, sp, #48
+	bl	ddm_50g_get_mpd_ibias
+	movw	r0, :lower16:ddm_adc_out_val
+	movt	r0, :upper16:ddm_adc_out_val
+	ldrh	r0, [r0, #6]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI4_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI4_1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #24]
+	b	.LBB4_8
+.LBB4_2:
+	ldrb.w	r0, [sp, #55]
+	cmp	r0, #1
+	bne	.LBB4_4
+	b	.LBB4_3
+.LBB4_3:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr	r1, [r0, #100]
+	str	r1, [sp, #40]
+	ldr	r0, [r0, #104]
+	str	r0, [sp, #36]
+	add	r0, sp, #48
+	bl	ddm_10g_get_mpd_ibias
+	movw	r0, :lower16:ddm_adc_out_val
+	movt	r0, :upper16:ddm_adc_out_val
+	ldrh	r0, [r0, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI4_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI4_1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #24]
+	b	.LBB4_7
+.LBB4_4:
+	ldrb.w	r0, [sp, #55]
+	cmp	r0, #2
+	bne	.LBB4_6
+	b	.LBB4_5
+.LBB4_5:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr.w	r1, [r0, #148]
+	str	r1, [sp, #40]
+	ldr.w	r0, [r0, #152]
+	str	r0, [sp, #36]
+	add	r0, sp, #48
+	bl	ddm_1g_get_mpd_ibias
+	movw	r0, :lower16:ddm_adc_out_val
+	movt	r0, :upper16:ddm_adc_out_val
+	ldrh	r0, [r0, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI4_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI4_1
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #24]
+	b	.LBB4_6
+.LBB4_6:
+	b	.LBB4_7
+.LBB4_7:
+	b	.LBB4_8
+.LBB4_8:
+	ldr	r0, [sp, #40]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #8]                    @ 8-byte Spill
+	vldr	d0, [sp, #24]
+	vstr	d0, [sp]                        @ 8-byte Spill
+	ldr	r0, [sp, #36]
+	bl	__aeabi_f2d
+	vldr	d1, [sp]                        @ 8-byte Reload
+	vldr	d0, [sp, #8]                    @ 8-byte Reload
+	vmov	d2, r0, r1
+	vstr	d2, [sp, #16]                   @ 8-byte Spill
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vldr	d0, [sp, #16]                   @ 8-byte Reload
+	vmov	d1, r0, r1
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #44]
+	vldr	s0, [sp, #44]
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bgt	.LBB4_10
+	b	.LBB4_9
+.LBB4_9:
+	movw	r0, #46871
+	movt	r0, #14545
+	str	r0, [sp, #44]
+	b	.LBB4_10
+.LBB4_10:
+	ldr	r0, [sp, #44]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	bl	__hardfp_log10
+	vldr	d1, .LCPI4_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #44]
+	vldr	s0, [sp, #44]
+	add	sp, #56
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI4_0:
+	.long	0                               @ double 100
+	.long	1079574528
+.LCPI4_1:
+	.long	0                               @ double 65535
+	.long	1089470432
+.LCPI4_2:
+	.long	0                               @ double 10
+	.long	1076101120
+.Lfunc_end4:
+	.size	calculate_om_tx_power, .Lfunc_end4-calculate_om_tx_power
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_rx_power,"ax",%progbits
+	.hidden	update_om_rx_power              @ -- Begin function update_om_rx_power
+	.globl	update_om_rx_power
+	.p2align	3
+	.type	update_om_rx_power,%function
+	.code	16                              @ @update_om_rx_power
+	.thumb_func
+update_om_rx_power:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	add	r0, sp, #32
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	movs	r0, #0
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	calculate_om_rx_power
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vmov.f32	s2, #1.000000e+01
+	vstr	s2, [sp, #4]                    @ 4-byte Spill
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d1, r0, r1
+	vldr	d0, .LCPI5_0
+	vstr	d0, [sp, #8]                    @ 8-byte Spill
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	mov	r2, r0
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	str	r2, [sp, #32]
+	strh.w	r1, [sp, #30]
+	vldr	s0, [r0]
+	vldr	s2, .LCPI5_1
+	vstr	s2, [sp, #20]                   @ 4-byte Spill
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #30]
+	ldrb.w	r0, [sp, #31]
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	strb.w	r0, [r1, #104]
+	ldrb.w	r0, [sp, #30]
+	strb.w	r0, [r1, #105]
+	movs	r0, #1
+	bl	calculate_om_rx_power
+	vldr	s2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vldr	d0, [sp, #8]                    @ 8-byte Reload
+	vmov	d1, r0, r1
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	vldr	s2, [sp, #20]                   @ 4-byte Reload
+	mov	r2, r0
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	str	r2, [sp, #32]
+	strh.w	r1, [sp, #30]
+	vldr	s0, [r0]
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #30]
+	ldrb.w	r0, [sp, #31]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	strb.w	r0, [r1, #104]
+	ldrb.w	r0, [sp, #30]
+	strb.w	r0, [r1, #105]
+	movs	r0, #2
+	bl	calculate_om_rx_power
+	vldr	s2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vldr	d0, [sp, #8]                    @ 8-byte Reload
+	vmov	d1, r0, r1
+	bl	__hardfp_pow
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	vldr	s2, [sp, #20]                   @ 4-byte Reload
+	mov	r2, r0
+	ldr	r0, [sp, #24]                   @ 4-byte Reload
+	str	r2, [sp, #32]
+	strh.w	r1, [sp, #30]
+	vldr	s0, [r0]
+	vmul.f32	s0, s0, s2
+	vcvt.s32.f32	s0, s0
+	vmov	r0, s0
+	strh.w	r0, [sp, #30]
+	ldrb.w	r0, [sp, #31]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	strb.w	r0, [r1, #104]
+	ldrb.w	r0, [sp, #30]
+	strb.w	r0, [r1, #105]
+	add	sp, #40
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.1:
+.LCPI5_0:
+	.long	0                               @ double 10
+	.long	1076101120
+.LCPI5_1:
+	.long	0x461c4000                      @ float 1.0E+4
+.Lfunc_end5:
+	.size	update_om_rx_power, .Lfunc_end5-update_om_rx_power
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calculate_om_rx_power,"ax",%progbits
+	.hidden	calculate_om_rx_power           @ -- Begin function calculate_om_rx_power
+	.globl	calculate_om_rx_power
+	.p2align	3
+	.type	calculate_om_rx_power,%function
+	.code	16                              @ @calculate_om_rx_power
+	.thumb_func
+calculate_om_rx_power:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #55]
+	movs	r0, #0
+	strh.w	r0, [sp, #52]
+	ldrb.w	r0, [sp, #55]
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr	r1, [r0, #52]
+	str	r1, [sp, #48]
+	ldr	r1, [r0, #56]
+	str	r1, [sp, #44]
+	ldr	r0, [r0, #60]
+	str	r0, [sp, #40]
+	add	r0, sp, #52
+	bl	ddm_50g_get_rssi_value
+	b	.LBB6_8
+.LBB6_2:
+	ldrb.w	r0, [sp, #55]
+	cmp	r0, #1
+	bne	.LBB6_4
+	b	.LBB6_3
+.LBB6_3:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr	r1, [r0, #108]
+	str	r1, [sp, #48]
+	ldr	r1, [r0, #112]
+	str	r1, [sp, #44]
+	ldr	r0, [r0, #116]
+	str	r0, [sp, #40]
+	add	r0, sp, #52
+	bl	ddm_10g_get_rssi_value
+	b	.LBB6_7
+.LBB6_4:
+	ldrb.w	r0, [sp, #55]
+	cmp	r0, #2
+	bne	.LBB6_6
+	b	.LBB6_5
+.LBB6_5:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldr.w	r1, [r0, #156]
+	str	r1, [sp, #48]
+	ldr.w	r1, [r0, #160]
+	str	r1, [sp, #44]
+	ldr.w	r0, [r0, #164]
+	str	r0, [sp, #40]
+	add	r0, sp, #52
+	bl	ddm_1g_get_rssi_value
+	b	.LBB6_6
+.LBB6_6:
+	b	.LBB6_7
+.LBB6_7:
+	b	.LBB6_8
+.LBB6_8:
+	ldrh.w	r0, [sp, #52]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI6_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #36]
+	ldr	r0, [sp, #48]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vstr	d0, [sp, #8]                    @ 8-byte Spill
+	vldr	s0, [sp, #36]
+	vldr	s2, [sp, #44]
+	vdiv.f32	s0, s0, s2
+	vmov	r0, s0
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	bl	__hardfp_exp
+	vstr	d0, [sp]                        @ 8-byte Spill
+	ldr	r0, [sp, #40]
+	bl	__aeabi_f2d
+	vldr	d1, [sp]                        @ 8-byte Reload
+	vldr	d0, [sp, #8]                    @ 8-byte Reload
+	vmov	d2, r0, r1
+	vstr	d2, [sp, #16]                   @ 8-byte Spill
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vldr	d0, [sp, #16]                   @ 8-byte Reload
+	vmov	d1, r0, r1
+	vmov	r0, r1, d1
+	vmov	r2, r3, d0
+	bl	__aeabi_dadd
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #32]
+	vldr	s0, [sp, #32]
+	vldr	s2, .LCPI6_1
+	vdiv.f32	s0, s0, s2
+	vstr	s0, [sp, #28]
+	ldr	r0, [sp, #28]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI6_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dcmpge
+	cbnz	r0, .LBB6_10
+	b	.LBB6_9
+.LBB6_9:
+	movw	r0, #46871
+	movt	r0, #14545
+	str	r0, [sp, #28]
+	b	.LBB6_10
+.LBB6_10:
+	ldr	r0, [sp, #28]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	bl	__hardfp_log10
+	vldr	d1, .LCPI6_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #24]
+	vldr	s0, [sp, #24]
+	add	sp, #56
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.11:
+.LCPI6_0:
+	.long	0                               @ double 160
+	.long	1080295424
+.LCPI6_2:
+	.long	3944497965                      @ double 1.0E-4
+	.long	1058682594
+.LCPI6_3:
+	.long	0                               @ double 10
+	.long	1076101120
+.LCPI6_1:
+	.long	0x42c80000                      @ float 100
+.Lfunc_end6:
+	.size	calculate_om_rx_power, .Lfunc_end6-calculate_om_rx_power
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_diagnose,"ax",%progbits
+	.hidden	update_om_diagnose              @ -- Begin function update_om_diagnose
+	.globl	update_om_diagnose
+	.p2align	2
+	.type	update_om_diagnose,%function
+	.code	16                              @ @update_om_diagnose
+	.thumb_func
+update_om_diagnose:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_2
+	b	.LBB7_1
+.LBB7_1:
+	bl	update_om_temperature
+	b	.LBB7_2
+.LBB7_2:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_4
+	b	.LBB7_3
+.LBB7_3:
+	bl	update_om_voltage
+	b	.LBB7_4
+.LBB7_4:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_6
+	b	.LBB7_5
+.LBB7_5:
+	bl	update_om_bias
+	b	.LBB7_6
+.LBB7_6:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_8
+	b	.LBB7_7
+.LBB7_7:
+	bl	update_om_tx_power
+	b	.LBB7_8
+.LBB7_8:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0]
+	cbnz	r0, .LBB7_10
+	b	.LBB7_9
+.LBB7_9:
+	bl	update_om_rx_power
+	b	.LBB7_10
+.LBB7_10:
+	pop	{r7, pc}
+.Lfunc_end7:
+	.size	update_om_diagnose, .Lfunc_end7-update_om_diagnose
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.update_om_warning,"ax",%progbits
+	.hidden	update_om_warning               @ -- Begin function update_om_warning
+	.globl	update_om_warning
+	.p2align	2
+	.type	update_om_warning,%function
+	.code	16                              @ @update_om_warning
+	.thumb_func
+update_om_warning:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#188
+	sub	sp, #188
+	.cfi_def_cfa_offset 188
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	str	r0, [sp, #48]                   @ 4-byte Spill
+	movs	r1, #0
+	str	r1, [sp, #52]                   @ 4-byte Spill
+	strb.w	r1, [r0, #112]
+	strb.w	r1, [r0, #113]
+	strb.w	r1, [r0, #116]
+	strb.w	r1, [r0, #117]
+	movw	r2, :lower16:b2
+	movt	r2, :upper16:b2
+	strb.w	r1, [r2, #112]
+	strb.w	r1, [r2, #113]
+	strb.w	r1, [r2, #116]
+	strb.w	r1, [r2, #117]
+	movw	r2, :lower16:c2
+	movt	r2, :upper16:c2
+	strb.w	r1, [r2, #112]
+	strb.w	r1, [r2, #113]
+	strb.w	r1, [r2, #116]
+	strb.w	r1, [r2, #117]
+	ldrb	r2, [r0]
+	ldrb	r1, [r0, #1]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #186]
+	ldrb	r2, [r0, #2]
+	ldrb	r1, [r0, #3]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #184]
+	ldrb	r2, [r0, #4]
+	ldrb	r1, [r0, #5]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #182]
+	ldrb	r2, [r0, #6]
+	ldrb	r1, [r0, #7]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #180]
+	ldrb.w	r2, [r0, #96]
+	ldrb.w	r1, [r0, #97]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #178]
+	ldrb.w	r0, [r0, #96]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB8_7
+	b	.LBB8_1
+.LBB8_1:
+	ldrh.w	r0, [sp, #178]
+	ldrh.w	r1, [sp, #184]
+	cmp	r0, r1
+	bge	.LBB8_3
+	b	.LBB8_2
+.LBB8_2:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #112]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #112]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #191
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #128
+	strb.w	r0, [r1, #112]
+	b	.LBB8_6
+.LBB8_3:
+	ldrh.w	r0, [sp, #178]
+	ldrh.w	r1, [sp, #180]
+	cmp	r0, r1
+	bge	.LBB8_5
+	b	.LBB8_4
+.LBB8_4:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #116]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #116]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #116]
+	b	.LBB8_5
+.LBB8_5:
+	b	.LBB8_6
+.LBB8_6:
+	b	.LBB8_13
+.LBB8_7:
+	ldrh.w	r0, [sp, #178]
+	ldrh.w	r1, [sp, #186]
+	cmp	r0, r1
+	ble	.LBB8_9
+	b	.LBB8_8
+.LBB8_8:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #112]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #112]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #112]
+	b	.LBB8_12
+.LBB8_9:
+	ldrh.w	r0, [sp, #178]
+	ldrh.w	r1, [sp, #182]
+	cmp	r0, r1
+	ble	.LBB8_11
+	b	.LBB8_10
+.LBB8_10:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #116]
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #116]
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #116]
+	b	.LBB8_11
+.LBB8_11:
+	b	.LBB8_12
+.LBB8_12:
+	b	.LBB8_13
+.LBB8_13:
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cmp	r0, #0
+	beq.w	.LBB8_55
+	b	.LBB8_14
+.LBB8_14:
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	str	r0, [sp, #44]                   @ 4-byte Spill
+	ldrb	r2, [r0, #8]
+	ldrb	r1, [r0, #9]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #176]
+	ldrb	r2, [r0, #10]
+	ldrb	r1, [r0, #11]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #174]
+	ldrb	r2, [r0, #12]
+	ldrb	r1, [r0, #13]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #172]
+	ldrb	r2, [r0, #14]
+	ldrb	r1, [r0, #15]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #170]
+	ldrb.w	r1, [r0, #98]
+	ldrb.w	r0, [r0, #99]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #168]
+	ldrh.w	r0, [sp, #168]
+	ldrh.w	r1, [sp, #176]
+	cmp	r0, r1
+	ble	.LBB8_16
+	b	.LBB8_15
+.LBB8_15:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #112]
+	b	.LBB8_19
+.LBB8_16:
+	ldrh.w	r0, [sp, #168]
+	ldrh.w	r1, [sp, #172]
+	cmp	r0, r1
+	ble	.LBB8_18
+	b	.LBB8_17
+.LBB8_17:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #116]
+	b	.LBB8_18
+.LBB8_18:
+	b	.LBB8_19
+.LBB8_19:
+	ldrh.w	r0, [sp, #168]
+	ldrh.w	r1, [sp, #174]
+	cmp	r0, r1
+	bge	.LBB8_21
+	b	.LBB8_20
+.LBB8_20:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #112]
+	b	.LBB8_24
+.LBB8_21:
+	ldrh.w	r0, [sp, #168]
+	ldrh.w	r1, [sp, #170]
+	cmp	r0, r1
+	bge	.LBB8_23
+	b	.LBB8_22
+.LBB8_22:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #116]
+	b	.LBB8_23
+.LBB8_23:
+	b	.LBB8_24
+.LBB8_24:
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	str	r0, [sp, #40]                   @ 4-byte Spill
+	ldrb	r2, [r0, #16]
+	ldrb	r1, [r0, #17]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #166]
+	ldrb	r2, [r0, #18]
+	ldrb	r1, [r0, #19]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #164]
+	ldrb	r2, [r0, #20]
+	ldrb	r1, [r0, #21]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #162]
+	ldrb	r2, [r0, #22]
+	ldrb	r1, [r0, #23]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #160]
+	ldrb.w	r1, [r0, #100]
+	ldrb.w	r0, [r0, #101]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #158]
+	ldrh.w	r0, [sp, #158]
+	ldrh.w	r1, [sp, #166]
+	cmp	r0, r1
+	ble	.LBB8_26
+	b	.LBB8_25
+.LBB8_25:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #112]
+	b	.LBB8_29
+.LBB8_26:
+	ldrh.w	r0, [sp, #158]
+	ldrh.w	r1, [sp, #162]
+	cmp	r0, r1
+	ble	.LBB8_28
+	b	.LBB8_27
+.LBB8_27:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #116]
+	b	.LBB8_28
+.LBB8_28:
+	b	.LBB8_29
+.LBB8_29:
+	ldrh.w	r0, [sp, #158]
+	ldrh.w	r1, [sp, #164]
+	cmp	r0, r1
+	bge	.LBB8_31
+	b	.LBB8_30
+.LBB8_30:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #112]
+	b	.LBB8_34
+.LBB8_31:
+	ldrh.w	r0, [sp, #158]
+	ldrh.w	r1, [sp, #160]
+	cmp	r0, r1
+	bge	.LBB8_33
+	b	.LBB8_32
+.LBB8_32:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #116]
+	b	.LBB8_33
+.LBB8_33:
+	b	.LBB8_34
+.LBB8_34:
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	ldrb	r2, [r0, #24]
+	ldrb	r1, [r0, #25]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #156]
+	ldrb	r2, [r0, #26]
+	ldrb	r1, [r0, #27]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #154]
+	ldrb	r2, [r0, #28]
+	ldrb	r1, [r0, #29]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #152]
+	ldrb	r2, [r0, #30]
+	ldrb	r1, [r0, #31]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #150]
+	ldrb.w	r1, [r0, #102]
+	ldrb.w	r0, [r0, #103]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #148]
+	ldrh.w	r0, [sp, #148]
+	ldrh.w	r1, [sp, #156]
+	cmp	r0, r1
+	ble	.LBB8_36
+	b	.LBB8_35
+.LBB8_35:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #112]
+	b	.LBB8_39
+.LBB8_36:
+	ldrh.w	r0, [sp, #148]
+	ldrh.w	r1, [sp, #152]
+	cmp	r0, r1
+	ble	.LBB8_38
+	b	.LBB8_37
+.LBB8_37:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #116]
+	b	.LBB8_38
+.LBB8_38:
+	b	.LBB8_39
+.LBB8_39:
+	ldrh.w	r0, [sp, #148]
+	ldrh.w	r1, [sp, #154]
+	cmp	r0, r1
+	bge	.LBB8_41
+	b	.LBB8_40
+.LBB8_40:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #112]
+	b	.LBB8_44
+.LBB8_41:
+	ldrh.w	r0, [sp, #148]
+	ldrh.w	r1, [sp, #150]
+	cmp	r0, r1
+	bge	.LBB8_43
+	b	.LBB8_42
+.LBB8_42:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #116]
+	b	.LBB8_43
+.LBB8_43:
+	b	.LBB8_44
+.LBB8_44:
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	ldrb.w	r2, [r0, #32]
+	ldrb.w	r1, [r0, #33]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #146]
+	ldrb.w	r2, [r0, #34]
+	ldrb.w	r1, [r0, #35]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #144]
+	ldrb.w	r2, [r0, #36]
+	ldrb.w	r1, [r0, #37]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #142]
+	ldrb.w	r2, [r0, #38]
+	ldrb.w	r1, [r0, #39]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #140]
+	ldrb.w	r1, [r0, #104]
+	ldrb.w	r0, [r0, #105]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #138]
+	ldrh.w	r0, [sp, #138]
+	ldrh.w	r1, [sp, #146]
+	cmp	r0, r1
+	ble	.LBB8_46
+	b	.LBB8_45
+.LBB8_45:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #113]
+	b	.LBB8_49
+.LBB8_46:
+	ldrh.w	r0, [sp, #138]
+	ldrh.w	r1, [sp, #142]
+	cmp	r0, r1
+	ble	.LBB8_48
+	b	.LBB8_47
+.LBB8_47:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #117]
+	b	.LBB8_48
+.LBB8_48:
+	b	.LBB8_49
+.LBB8_49:
+	ldrh.w	r0, [sp, #138]
+	ldrh.w	r1, [sp, #144]
+	cmp	r0, r1
+	bge	.LBB8_51
+	b	.LBB8_50
+.LBB8_50:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #113]
+	b	.LBB8_54
+.LBB8_51:
+	ldrh.w	r0, [sp, #138]
+	ldrh.w	r1, [sp, #140]
+	cmp	r0, r1
+	bge	.LBB8_53
+	b	.LBB8_52
+.LBB8_52:
+	movw	r1, :lower16:a2
+	movt	r1, :upper16:a2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #117]
+	b	.LBB8_53
+.LBB8_53:
+	b	.LBB8_54
+.LBB8_54:
+	b	.LBB8_55
+.LBB8_55:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cmp	r0, #0
+	beq.w	.LBB8_97
+	b	.LBB8_56
+.LBB8_56:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	ldrb	r2, [r0, #8]
+	ldrb	r1, [r0, #9]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #136]
+	ldrb	r2, [r0, #10]
+	ldrb	r1, [r0, #11]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #134]
+	ldrb	r2, [r0, #12]
+	ldrb	r1, [r0, #13]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #132]
+	ldrb	r2, [r0, #14]
+	ldrb	r1, [r0, #15]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #130]
+	ldrb.w	r1, [r0, #98]
+	ldrb.w	r0, [r0, #99]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #128]
+	ldrh.w	r0, [sp, #128]
+	ldrh.w	r1, [sp, #136]
+	cmp	r0, r1
+	ble	.LBB8_58
+	b	.LBB8_57
+.LBB8_57:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #112]
+	b	.LBB8_61
+.LBB8_58:
+	ldrh.w	r0, [sp, #128]
+	ldrh.w	r1, [sp, #132]
+	cmp	r0, r1
+	ble	.LBB8_60
+	b	.LBB8_59
+.LBB8_59:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #116]
+	b	.LBB8_60
+.LBB8_60:
+	b	.LBB8_61
+.LBB8_61:
+	ldrh.w	r0, [sp, #128]
+	ldrh.w	r1, [sp, #134]
+	cmp	r0, r1
+	bge	.LBB8_63
+	b	.LBB8_62
+.LBB8_62:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #112]
+	b	.LBB8_66
+.LBB8_63:
+	ldrh.w	r0, [sp, #128]
+	ldrh.w	r1, [sp, #130]
+	cmp	r0, r1
+	bge	.LBB8_65
+	b	.LBB8_64
+.LBB8_64:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #116]
+	b	.LBB8_65
+.LBB8_65:
+	b	.LBB8_66
+.LBB8_66:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	ldrb	r2, [r0, #16]
+	ldrb	r1, [r0, #17]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #126]
+	ldrb	r2, [r0, #18]
+	ldrb	r1, [r0, #19]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #124]
+	ldrb	r2, [r0, #20]
+	ldrb	r1, [r0, #21]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #122]
+	ldrb	r2, [r0, #22]
+	ldrb	r1, [r0, #23]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #120]
+	ldrb.w	r1, [r0, #100]
+	ldrb.w	r0, [r0, #101]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #118]
+	ldrh.w	r0, [sp, #118]
+	ldrh.w	r1, [sp, #126]
+	cmp	r0, r1
+	ble	.LBB8_68
+	b	.LBB8_67
+.LBB8_67:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #112]
+	b	.LBB8_71
+.LBB8_68:
+	ldrh.w	r0, [sp, #118]
+	ldrh.w	r1, [sp, #122]
+	cmp	r0, r1
+	ble	.LBB8_70
+	b	.LBB8_69
+.LBB8_69:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #116]
+	b	.LBB8_70
+.LBB8_70:
+	b	.LBB8_71
+.LBB8_71:
+	ldrh.w	r0, [sp, #118]
+	ldrh.w	r1, [sp, #124]
+	cmp	r0, r1
+	bge	.LBB8_73
+	b	.LBB8_72
+.LBB8_72:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #112]
+	b	.LBB8_76
+.LBB8_73:
+	ldrh.w	r0, [sp, #118]
+	ldrh.w	r1, [sp, #120]
+	cmp	r0, r1
+	bge	.LBB8_75
+	b	.LBB8_74
+.LBB8_74:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #116]
+	b	.LBB8_75
+.LBB8_75:
+	b	.LBB8_76
+.LBB8_76:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	ldrb	r2, [r0, #24]
+	ldrb	r1, [r0, #25]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #116]
+	ldrb	r2, [r0, #26]
+	ldrb	r1, [r0, #27]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #114]
+	ldrb	r2, [r0, #28]
+	ldrb	r1, [r0, #29]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #112]
+	ldrb	r2, [r0, #30]
+	ldrb	r1, [r0, #31]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #110]
+	ldrb.w	r1, [r0, #102]
+	ldrb.w	r0, [r0, #103]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #108]
+	ldrh.w	r0, [sp, #108]
+	ldrh.w	r1, [sp, #116]
+	cmp	r0, r1
+	ble	.LBB8_78
+	b	.LBB8_77
+.LBB8_77:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #112]
+	b	.LBB8_81
+.LBB8_78:
+	ldrh.w	r0, [sp, #108]
+	ldrh.w	r1, [sp, #112]
+	cmp	r0, r1
+	ble	.LBB8_80
+	b	.LBB8_79
+.LBB8_79:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #116]
+	b	.LBB8_80
+.LBB8_80:
+	b	.LBB8_81
+.LBB8_81:
+	ldrh.w	r0, [sp, #108]
+	ldrh.w	r1, [sp, #114]
+	cmp	r0, r1
+	bge	.LBB8_83
+	b	.LBB8_82
+.LBB8_82:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #112]
+	b	.LBB8_86
+.LBB8_83:
+	ldrh.w	r0, [sp, #108]
+	ldrh.w	r1, [sp, #110]
+	cmp	r0, r1
+	bge	.LBB8_85
+	b	.LBB8_84
+.LBB8_84:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #116]
+	b	.LBB8_85
+.LBB8_85:
+	b	.LBB8_86
+.LBB8_86:
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	ldrb.w	r2, [r0, #32]
+	ldrb.w	r1, [r0, #33]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #106]
+	ldrb.w	r2, [r0, #34]
+	ldrb.w	r1, [r0, #35]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #104]
+	ldrb.w	r2, [r0, #36]
+	ldrb.w	r1, [r0, #37]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #102]
+	ldrb.w	r2, [r0, #38]
+	ldrb.w	r1, [r0, #39]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #100]
+	ldrb.w	r1, [r0, #104]
+	ldrb.w	r0, [r0, #105]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #98]
+	ldrh.w	r0, [sp, #98]
+	ldrh.w	r1, [sp, #106]
+	cmp	r0, r1
+	ble	.LBB8_88
+	b	.LBB8_87
+.LBB8_87:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #113]
+	b	.LBB8_91
+.LBB8_88:
+	ldrh.w	r0, [sp, #98]
+	ldrh.w	r1, [sp, #102]
+	cmp	r0, r1
+	ble	.LBB8_90
+	b	.LBB8_89
+.LBB8_89:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #117]
+	b	.LBB8_90
+.LBB8_90:
+	b	.LBB8_91
+.LBB8_91:
+	ldrh.w	r0, [sp, #98]
+	ldrh.w	r1, [sp, #104]
+	cmp	r0, r1
+	bge	.LBB8_93
+	b	.LBB8_92
+.LBB8_92:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #113]
+	b	.LBB8_96
+.LBB8_93:
+	ldrh.w	r0, [sp, #98]
+	ldrh.w	r1, [sp, #100]
+	cmp	r0, r1
+	bge	.LBB8_95
+	b	.LBB8_94
+.LBB8_94:
+	movw	r1, :lower16:b2
+	movt	r1, :upper16:b2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #117]
+	b	.LBB8_95
+.LBB8_95:
+	b	.LBB8_96
+.LBB8_96:
+	b	.LBB8_97
+.LBB8_97:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	ldrb.w	r0, [r0, #110]
+	and	r0, r0, #64
+	adds	r0, #1
+	cmp	r0, #0
+	beq.w	.LBB8_139
+	b	.LBB8_98
+.LBB8_98:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	ldrb	r2, [r0, #8]
+	ldrb	r1, [r0, #9]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #96]
+	ldrb	r2, [r0, #10]
+	ldrb	r1, [r0, #11]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #94]
+	ldrb	r2, [r0, #12]
+	ldrb	r1, [r0, #13]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #92]
+	ldrb	r2, [r0, #14]
+	ldrb	r1, [r0, #15]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #90]
+	ldrb.w	r1, [r0, #98]
+	ldrb.w	r0, [r0, #99]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #88]
+	ldrh.w	r0, [sp, #88]
+	ldrh.w	r1, [sp, #96]
+	cmp	r0, r1
+	ble	.LBB8_100
+	b	.LBB8_99
+.LBB8_99:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #112]
+	b	.LBB8_103
+.LBB8_100:
+	ldrh.w	r0, [sp, #88]
+	ldrh.w	r1, [sp, #92]
+	cmp	r0, r1
+	ble	.LBB8_102
+	b	.LBB8_101
+.LBB8_101:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #239
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #32
+	strb.w	r0, [r1, #116]
+	b	.LBB8_102
+.LBB8_102:
+	b	.LBB8_103
+.LBB8_103:
+	ldrh.w	r0, [sp, #88]
+	ldrh.w	r1, [sp, #94]
+	cmp	r0, r1
+	bge	.LBB8_105
+	b	.LBB8_104
+.LBB8_104:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #112]
+	b	.LBB8_108
+.LBB8_105:
+	ldrh.w	r0, [sp, #88]
+	ldrh.w	r1, [sp, #90]
+	cmp	r0, r1
+	bge	.LBB8_107
+	b	.LBB8_106
+.LBB8_106:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #223
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #16
+	strb.w	r0, [r1, #116]
+	b	.LBB8_107
+.LBB8_107:
+	b	.LBB8_108
+.LBB8_108:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	ldrb	r2, [r0, #16]
+	ldrb	r1, [r0, #17]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #86]
+	ldrb	r2, [r0, #18]
+	ldrb	r1, [r0, #19]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #84]
+	ldrb	r2, [r0, #20]
+	ldrb	r1, [r0, #21]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #82]
+	ldrb	r2, [r0, #22]
+	ldrb	r1, [r0, #23]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #80]
+	ldrb.w	r1, [r0, #100]
+	ldrb.w	r0, [r0, #101]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #78]
+	ldrh.w	r0, [sp, #78]
+	ldrh.w	r1, [sp, #86]
+	cmp	r0, r1
+	ble	.LBB8_110
+	b	.LBB8_109
+.LBB8_109:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #112]
+	b	.LBB8_113
+.LBB8_110:
+	ldrh.w	r0, [sp, #78]
+	ldrh.w	r1, [sp, #82]
+	cmp	r0, r1
+	ble	.LBB8_112
+	b	.LBB8_111
+.LBB8_111:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #251
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #8
+	strb.w	r0, [r1, #116]
+	b	.LBB8_112
+.LBB8_112:
+	b	.LBB8_113
+.LBB8_113:
+	ldrh.w	r0, [sp, #78]
+	ldrh.w	r1, [sp, #84]
+	cmp	r0, r1
+	bge	.LBB8_115
+	b	.LBB8_114
+.LBB8_114:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #112]
+	b	.LBB8_118
+.LBB8_115:
+	ldrh.w	r0, [sp, #78]
+	ldrh.w	r1, [sp, #80]
+	cmp	r0, r1
+	bge	.LBB8_117
+	b	.LBB8_116
+.LBB8_116:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #247
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #4
+	strb.w	r0, [r1, #116]
+	b	.LBB8_117
+.LBB8_117:
+	b	.LBB8_118
+.LBB8_118:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	ldrb	r2, [r0, #24]
+	ldrb	r1, [r0, #25]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #76]
+	ldrb	r2, [r0, #26]
+	ldrb	r1, [r0, #27]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #74]
+	ldrb	r2, [r0, #28]
+	ldrb	r1, [r0, #29]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #72]
+	ldrb	r2, [r0, #30]
+	ldrb	r1, [r0, #31]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #70]
+	ldrb.w	r1, [r0, #102]
+	ldrb.w	r0, [r0, #103]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #68]
+	ldrh.w	r0, [sp, #68]
+	ldrh.w	r1, [sp, #76]
+	cmp	r0, r1
+	ble	.LBB8_120
+	b	.LBB8_119
+.LBB8_119:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #112]
+	b	.LBB8_123
+.LBB8_120:
+	ldrh.w	r0, [sp, #68]
+	ldrh.w	r1, [sp, #72]
+	cmp	r0, r1
+	ble	.LBB8_122
+	b	.LBB8_121
+.LBB8_121:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #254
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #2
+	strb.w	r0, [r1, #116]
+	b	.LBB8_122
+.LBB8_122:
+	b	.LBB8_123
+.LBB8_123:
+	ldrh.w	r0, [sp, #68]
+	ldrh.w	r1, [sp, #74]
+	cmp	r0, r1
+	bge	.LBB8_125
+	b	.LBB8_124
+.LBB8_124:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #112]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #112]
+	ldrb.w	r0, [r1, #112]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #112]
+	b	.LBB8_128
+.LBB8_125:
+	ldrh.w	r0, [sp, #68]
+	ldrh.w	r1, [sp, #70]
+	cmp	r0, r1
+	bge	.LBB8_127
+	b	.LBB8_126
+.LBB8_126:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #116]
+	and	r0, r0, #253
+	strb.w	r0, [r1, #116]
+	ldrb.w	r0, [r1, #116]
+	orr	r0, r0, #1
+	strb.w	r0, [r1, #116]
+	b	.LBB8_127
+.LBB8_127:
+	b	.LBB8_128
+.LBB8_128:
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	str	r0, [sp]                        @ 4-byte Spill
+	ldrb.w	r2, [r0, #32]
+	ldrb.w	r1, [r0, #33]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #66]
+	ldrb.w	r2, [r0, #34]
+	ldrb.w	r1, [r0, #35]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #64]
+	ldrb.w	r2, [r0, #36]
+	ldrb.w	r1, [r0, #37]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #62]
+	ldrb.w	r2, [r0, #38]
+	ldrb.w	r1, [r0, #39]
+	orr.w	r1, r1, r2, lsl #8
+	strh.w	r1, [sp, #60]
+	ldrb.w	r1, [r0, #104]
+	ldrb.w	r0, [r0, #105]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #58]
+	ldrh.w	r0, [sp, #58]
+	ldrh.w	r1, [sp, #66]
+	cmp	r0, r1
+	ble	.LBB8_130
+	b	.LBB8_129
+.LBB8_129:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #113]
+	b	.LBB8_133
+.LBB8_130:
+	ldrh.w	r0, [sp, #58]
+	ldrh.w	r1, [sp, #62]
+	cmp	r0, r1
+	ble	.LBB8_132
+	b	.LBB8_131
+.LBB8_131:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #191
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #128
+	strb.w	r0, [r1, #117]
+	b	.LBB8_132
+.LBB8_132:
+	b	.LBB8_133
+.LBB8_133:
+	ldrh.w	r0, [sp, #58]
+	ldrh.w	r1, [sp, #64]
+	cmp	r0, r1
+	bge	.LBB8_135
+	b	.LBB8_134
+.LBB8_134:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #113]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #113]
+	ldrb.w	r0, [r1, #113]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #113]
+	b	.LBB8_138
+.LBB8_135:
+	ldrh.w	r0, [sp, #58]
+	ldrh.w	r1, [sp, #60]
+	cmp	r0, r1
+	bge	.LBB8_137
+	b	.LBB8_136
+.LBB8_136:
+	movw	r1, :lower16:c2
+	movt	r1, :upper16:c2
+	ldrb.w	r0, [r1, #117]
+	and	r0, r0, #127
+	strb.w	r0, [r1, #117]
+	ldrb.w	r0, [r1, #117]
+	orr	r0, r0, #64
+	strb.w	r0, [r1, #117]
+	b	.LBB8_137
+.LBB8_137:
+	b	.LBB8_138
+.LBB8_138:
+	b	.LBB8_139
+.LBB8_139:
+	add	sp, #188
+	bx	lr
+.Lfunc_end8:
+	.size	update_om_warning, .Lfunc_end8-update_om_warning
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_default_config_flash_read,"ax",%progbits
+	.hidden	om_default_config_flash_read    @ -- Begin function om_default_config_flash_read
+	.globl	om_default_config_flash_read
+	.p2align	2
+	.type	om_default_config_flash_read,%function
+	.code	16                              @ @om_default_config_flash_read
+	.thumb_func
+om_default_config_flash_read:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movs	r0, #0
+	str	r0, [sp, #8]
+	strh.w	r0, [sp, #6]
+	strh.w	r0, [sp, #4]
+	strb.w	r0, [sp, #3]
+	movw	r1, #18432
+	movt	r1, #2054
+	str	r1, [sp, #8]
+	strh.w	r0, [sp, #6]
+	b	.LBB9_1
+.LBB9_1:                                @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #6]
+	cmp	r0, #119
+	bgt	.LBB9_6
+	b	.LBB9_2
+.LBB9_2:                                @   in Loop: Header=BB9_1 Depth=1
+	ldr	r0, [sp, #8]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	cmp	r0, #255
+	bne	.LBB9_4
+	b	.LBB9_3
+.LBB9_3:                                @   in Loop: Header=BB9_1 Depth=1
+	ldrh.w	r0, [sp, #4]
+	adds	r0, #1
+	strh.w	r0, [sp, #4]
+	b	.LBB9_4
+.LBB9_4:                                @   in Loop: Header=BB9_1 Depth=1
+	ldr	r0, [sp, #8]
+	adds	r0, #1
+	str	r0, [sp, #8]
+	b	.LBB9_5
+.LBB9_5:                                @   in Loop: Header=BB9_1 Depth=1
+	ldrh.w	r0, [sp, #6]
+	adds	r0, #1
+	strh.w	r0, [sp, #6]
+	b	.LBB9_1
+.LBB9_6:
+	ldrh.w	r0, [sp, #4]
+	cmp	r0, #120
+	beq	.LBB9_12
+	b	.LBB9_7
+.LBB9_7:
+	movw	r0, #18432
+	movt	r0, #2054
+	str	r0, [sp, #8]
+	movs	r0, #0
+	strh.w	r0, [sp, #6]
+	b	.LBB9_8
+.LBB9_8:                                @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #6]
+	cmp	r0, #119
+	bgt	.LBB9_11
+	b	.LBB9_9
+.LBB9_9:                                @   in Loop: Header=BB9_8 Depth=1
+	ldr	r0, [sp, #8]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #3]
+	ldrb.w	r0, [sp, #3]
+	ldrh.w	r2, [sp, #6]
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	strb	r0, [r1, r2]
+	ldr	r0, [sp, #8]
+	adds	r0, #1
+	str	r0, [sp, #8]
+	b	.LBB9_10
+.LBB9_10:                               @   in Loop: Header=BB9_8 Depth=1
+	ldrh.w	r0, [sp, #6]
+	adds	r0, #1
+	strh.w	r0, [sp, #6]
+	b	.LBB9_8
+.LBB9_11:
+	bl	om_default_config_flash_read_50g
+	bl	om_default_config_flash_read_10g
+	bl	om_default_config_flash_read_1g
+	movs	r0, #1
+	strb.w	r0, [sp, #15]
+	b	.LBB9_13
+.LBB9_12:
+	movs	r0, #0
+	strb.w	r0, [sp, #15]
+	b	.LBB9_13
+.LBB9_13:
+	ldrb.w	r0, [sp, #15]
+	add	sp, #16
+	pop	{r7, pc}
+.Lfunc_end9:
+	.size	om_default_config_flash_read, .Lfunc_end9-om_default_config_flash_read
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_default_config_flash_init,"ax",%progbits
+	.hidden	om_default_config_flash_init    @ -- Begin function om_default_config_flash_init
+	.globl	om_default_config_flash_init
+	.p2align	2
+	.type	om_default_config_flash_init,%function
+	.code	16                              @ @om_default_config_flash_init
+	.thumb_func
+om_default_config_flash_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	movs	r1, #120
+	movs	r2, #255
+	bl	__aeabi_memset
+	bl	om_default_config_flash_read
+	cmp	r0, #1
+	bne.w	.LBB10_2
+	b	.LBB10_1
+.LBB10_1:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	vldr	s0, [r0, #24]
+	bl	ddm_50g_set_rx_vapd
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #16]
+	bl	ddm_50g_set_soa_ild
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #20]
+	bl	ddm_50g_set_ea
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [r0, #32]
+	movs	r0, #0
+	bl	default_config_apc_auto_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r0, [r0, #6]
+	bl	ddm_50g_set_ld_imod
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb	r0, [r0, #3]
+	bl	ddm_50g_set_tx_ld_cpa
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r0, [r0, #8]
+	bl	ddm_50g_set_tx_ld_deempth
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r0, [r0, #10]
+	bl	ddm_50g_set_rx_eq_boost
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r0, [r0, #12]
+	bl	ddm_50g_set_rx_swing
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb	r0, [r0]
+	bl	ddm_50g_set_rx_drv_deemph
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb	r0, [r0, #1]
+	bl	ddm_50g_set_rx_los_threshold
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb	r0, [r0, #2]
+	bl	ddm_50g_set_rx_los_hyst
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #28]
+	bl	tec_set_ctrl_temperature_obj
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #84]
+	bl	ddm_10g_set_rx_vapd
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #80]
+	bl	ddm_10g_set_ea
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [r0, #88]
+	movs	r0, #1
+	bl	default_config_apc_auto_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #70]
+	bl	ddm_10g_set_ld_imod
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #67]
+	bl	ddm_10g_set_tx_ld_cpa
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #72]
+	bl	ddm_10g_set_tx_ld_deempth
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #74]
+	bl	ddm_10g_set_rx_eq_boost
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #76]
+	bl	ddm_10g_set_rx_swing
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #64]
+	bl	ddm_10g_set_rx_drv_deemph
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #65]
+	bl	ddm_10g_set_rx_los_threshold
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #66]
+	bl	ddm_10g_set_rx_los_hyst
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #132]
+	bl	ddm_1g_set_rx_vapd
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [r0, #136]
+	movs	r0, #2
+	bl	default_config_apc_auto_enable
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #126]
+	bl	ddm_1g_set_ld_imod
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #122]
+	bl	ddm_1g_set_tx_ld_cpa
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r0, [r0, #128]
+	bl	ddm_1g_set_rx_swing
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #120]
+	bl	ddm_1g_set_rx_los_threshold
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r0, [r0, #121]
+	bl	ddm_1g_set_rx_los_hyst
+	b	.LBB10_2
+.LBB10_2:
+	add	sp, #8
+	pop	{r7, pc}
+.Lfunc_end10:
+	.size	om_default_config_flash_init, .Lfunc_end10-om_default_config_flash_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.default_config_apc_auto_enable,"ax",%progbits
+	.hidden	default_config_apc_auto_enable  @ -- Begin function default_config_apc_auto_enable
+	.globl	default_config_apc_auto_enable
+	.p2align	2
+	.type	default_config_apc_auto_enable,%function
+	.code	16                              @ @default_config_apc_auto_enable
+	.thumb_func
+default_config_apc_auto_enable:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	add	r2, sp, #12
+	str	r2, [sp, #4]                    @ 4-byte Spill
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #23]
+	strb.w	r1, [sp, #22]
+	ldrb.w	r0, [sp, #22]
+	cmp	r0, #1
+	bne	.LBB11_8
+	b	.LBB11_1
+.LBB11_1:
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB11_3
+	b	.LBB11_2
+.LBB11_2:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	ldrh	r1, [r1, #34]
+	vmov	s0, r1
+	vcvt.f32.u32	s0, s0
+	vstr	s0, [r0, #4]
+	vldr	s0, [r0, #4]
+	bl	ddm_50g_apc_target_voltage
+	ldrb.w	r0, [sp, #22]
+	bl	ddm_50g_apc_auto_enable
+	b	.LBB11_7
+.LBB11_3:
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #1
+	bne	.LBB11_5
+	b	.LBB11_4
+.LBB11_4:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	ldrh.w	r1, [r1, #90]
+	vmov	s0, r1
+	vcvt.f32.u32	s0, s0
+	vstr	s0, [r0]
+	vldr	s0, [r0]
+	bl	ddm_10g_apc_target_voltage
+	ldrb.w	r0, [sp, #22]
+	bl	ddm_10g_apc_auto_enable
+	b	.LBB11_6
+.LBB11_5:
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldrh.w	r0, [r0, #138]
+	strh.w	r0, [sp, #10]
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	vcvt.f32.u32	s0, s0
+	bl	ddm_1g_apc_target_voltage
+	ldrb.w	r0, [sp, #22]
+	bl	ddm_1g_apc_auto_enable
+	b	.LBB11_6
+.LBB11_6:
+	b	.LBB11_7
+.LBB11_7:
+	b	.LBB11_15
+.LBB11_8:
+	ldrb.w	r0, [sp, #23]
+	cbnz	r0, .LBB11_10
+	b	.LBB11_9
+.LBB11_9:
+	movs	r0, #0
+	bl	ddm_50g_apc_auto_enable
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldrh	r0, [r0, #4]
+	bl	ddm_50g_set_ld_ibias
+	b	.LBB11_14
+.LBB11_10:
+	ldrb.w	r0, [sp, #23]
+	cmp	r0, #1
+	bne	.LBB11_12
+	b	.LBB11_11
+.LBB11_11:
+	movs	r0, #0
+	bl	ddm_10g_apc_auto_enable
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldrh.w	r0, [r0, #68]
+	bl	ddm_10g_set_ld_ibias
+	b	.LBB11_13
+.LBB11_12:
+	movs	r0, #0
+	bl	ddm_1g_apc_auto_enable
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	ldrh.w	r0, [r0, #124]
+	bl	ddm_1g_set_ld_ibias
+	b	.LBB11_13
+.LBB11_13:
+	b	.LBB11_14
+.LBB11_14:
+	b	.LBB11_15
+.LBB11_15:
+	add	sp, #24
+	pop	{r7, pc}
+.Lfunc_end11:
+	.size	default_config_apc_auto_enable, .Lfunc_end11-default_config_apc_auto_enable
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_crc32_reset,"ax",%progbits
+	.hidden	om_crc32_reset                  @ -- Begin function om_crc32_reset
+	.globl	om_crc32_reset
+	.p2align	2
+	.type	om_crc32_reset,%function
+	.code	16                              @ @om_crc32_reset
+	.thumb_func
+om_crc32_reset:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	bl	crc_deinit
+	movs	r0, #0
+	bl	crc_polynomial_size_set
+	bl	crc_reverse_output_data_enable
+	movs	r0, #96
+	bl	crc_input_data_reverse_config
+	pop	{r7, pc}
+.Lfunc_end12:
+	.size	om_crc32_reset, .Lfunc_end12-om_crc32_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_flash_block_data_calculate_crc32,"ax",%progbits
+	.hidden	om_flash_block_data_calculate_crc32 @ -- Begin function om_flash_block_data_calculate_crc32
+	.globl	om_flash_block_data_calculate_crc32
+	.p2align	2
+	.type	om_flash_block_data_calculate_crc32,%function
+	.code	16                              @ @om_flash_block_data_calculate_crc32
+	.thumb_func
+om_flash_block_data_calculate_crc32:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#36
+	sub	sp, #36
+	.cfi_def_cfa_offset 36
+	str	r0, [sp, #32]
+	str	r1, [sp, #28]
+	movs	r0, #0
+	str	r0, [sp, #12]
+	ldr	r1, [sp, #28]
+	lsrs	r1, r1, #10
+	str	r1, [sp, #8]
+	ldr	r1, [sp, #28]
+	bfc	r1, #10, #22
+	str	r1, [sp, #4]
+	str	r0, [sp]
+	str	r0, [sp]
+	b	.LBB13_1
+.LBB13_1:                               @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB13_3 Depth 2
+	ldr	r0, [sp]
+	ldr	r1, [sp, #8]
+	cmp	r0, r1
+	bhs	.LBB13_8
+	b	.LBB13_2
+.LBB13_2:                               @   in Loop: Header=BB13_1 Depth=1
+	mov.w	r0, #256
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #20]
+	b	.LBB13_3
+.LBB13_3:                               @   Parent Loop BB13_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bhs	.LBB13_6
+	b	.LBB13_4
+.LBB13_4:                               @   in Loop: Header=BB13_3 Depth=2
+	ldr	r0, [sp, #32]
+	ldr	r1, [sp]
+	add.w	r0, r0, r1, lsl #10
+	ldr	r1, [sp, #20]
+	add.w	r0, r0, r1, lsl #2
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0]
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #24]
+	movw	r1, #12288
+	movt	r1, #16386
+	str	r0, [r1]
+	b	.LBB13_5
+.LBB13_5:                               @   in Loop: Header=BB13_3 Depth=2
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	b	.LBB13_3
+.LBB13_6:                               @   in Loop: Header=BB13_1 Depth=1
+	b	.LBB13_7
+.LBB13_7:                               @   in Loop: Header=BB13_1 Depth=1
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	b	.LBB13_1
+.LBB13_8:
+	ldr	r0, [sp, #4]
+	lsrs	r0, r0, #2
+	str	r0, [sp, #12]
+	movs	r0, #0
+	str	r0, [sp, #20]
+	b	.LBB13_9
+.LBB13_9:                               @ =>This Inner Loop Header: Depth=1
+	ldr	r0, [sp, #20]
+	ldr	r1, [sp, #12]
+	cmp	r0, r1
+	bhs	.LBB13_12
+	b	.LBB13_10
+.LBB13_10:                              @   in Loop: Header=BB13_9 Depth=1
+	ldr	r0, [sp, #32]
+	ldr	r1, [sp, #8]
+	add.w	r0, r0, r1, lsl #10
+	ldr	r1, [sp, #20]
+	add.w	r0, r0, r1, lsl #2
+	str	r0, [sp, #16]
+	ldr	r0, [sp, #16]
+	ldr	r0, [r0]
+	str	r0, [sp, #24]
+	ldr	r0, [sp, #24]
+	movw	r1, #12288
+	movt	r1, #16386
+	str	r0, [r1]
+	b	.LBB13_11
+.LBB13_11:                              @   in Loop: Header=BB13_9 Depth=1
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	b	.LBB13_9
+.LBB13_12:
+	movw	r0, #12288
+	movt	r0, #16386
+	ldr	r0, [r0]
+	add	sp, #36
+	bx	lr
+.Lfunc_end13:
+	.size	om_flash_block_data_calculate_crc32, .Lfunc_end13-om_flash_block_data_calculate_crc32
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ddm_process,"ax",%progbits
+	.hidden	ddm_process                     @ -- Begin function ddm_process
+	.globl	ddm_process
+	.p2align	2
+	.type	ddm_process,%function
+	.code	16                              @ @ddm_process
+	.thumb_func
+ddm_process:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0, #1]
+	cmp	r0, #1
+	beq	.LBB14_3
+	b	.LBB14_1
+.LBB14_1:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0, #2]
+	cmp	r0, #1
+	beq	.LBB14_3
+	b	.LBB14_2
+.LBB14_2:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldrb	r0, [r0, #3]
+	cmp	r0, #1
+	bne	.LBB14_6
+	b	.LBB14_3
+.LBB14_3:
+	movw	r0, :lower16:g_mcu_vars_param
+	movt	r0, :upper16:g_mcu_vars_param
+	ldr	r0, [r0, #20]
+	cmp.w	r0, #1000
+	bls	.LBB14_5
+	b	.LBB14_4
+.LBB14_4:
+	movw	r1, :lower16:g_mcu_vars_param
+	movt	r1, :upper16:g_mcu_vars_param
+	movs	r0, #0
+	str	r0, [r1, #20]
+	bl	update_om_diagnose
+	bl	update_om_warning
+	b	.LBB14_5
+.LBB14_5:
+	b	.LBB14_6
+.LBB14_6:
+	pop	{r7, pc}
+.Lfunc_end14:
+	.size	ddm_process, .Lfunc_end14-ddm_process
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.flash_config_init,"ax",%progbits
+	.hidden	flash_config_init               @ -- Begin function flash_config_init
+	.globl	flash_config_init
+	.p2align	2
+	.type	flash_config_init,%function
+	.code	16                              @ @flash_config_init
+	.thumb_func
+flash_config_init:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	movw	r1, :lower16:ddm_adc_out_val
+	movt	r1, :upper16:ddm_adc_out_val
+	movs	r0, #0
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	strh	r0, [r1, #24]
+	str	r0, [r1, #20]
+	str	r0, [r1, #16]
+	str	r0, [r1, #12]
+	str	r0, [r1, #8]
+	str	r0, [r1, #4]
+	str	r0, [r1]
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r0, [sp, #28]                   @ 4-byte Spill
+	movs	r1, #168
+	bl	__aeabi_memclr4
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	movw	r2, #629
+	movt	r2, #15962
+	str	r2, [r1, #36]
+	movw	r2, #38273
+	movt	r2, #16067
+	str	r2, [r1, #40]
+	movw	r2, #5243
+	movt	r2, #16982
+	str	r2, [r1, #44]
+	movw	r2, #1049
+	movt	r2, #49094
+	str	r2, [r1, #48]
+	movw	r2, #49045
+	movt	r2, #13398
+	str	r2, [r1, #52]
+	movw	r2, #46871
+	movt	r2, #47313
+	str	r2, [r1, #56]
+	movw	r2, #53897
+	movt	r2, #15454
+	str	r2, [r1, #60]
+	movw	r2, #54631
+	movt	r2, #15911
+	str	r2, [r1, #92]
+	movw	r2, #5243
+	movt	r2, #16110
+	str	r2, [r1, #96]
+	movw	r2, #62390
+	movt	r2, #17005
+	str	r2, [r1, #100]
+	movw	r2, #11429
+	movt	r2, #49179
+	str	r2, [r1, #104]
+	str	r0, [r1, #108]
+	str	r0, [r1, #112]
+	str	r0, [r1, #116]
+	movw	r2, #22125
+	movt	r2, #16221
+	str.w	r2, [r1, #140]
+	str.w	r0, [r1, #144]
+	movw	r2, #46871
+	movt	r2, #15057
+	str.w	r2, [r1, #148]
+	movw	r2, #18140
+	movt	r2, #48515
+	str.w	r2, [r1, #152]
+	str.w	r0, [r1, #156]
+	str.w	r0, [r1, #160]
+	str.w	r0, [r1, #164]
+	str	r0, [sp, #44]
+	strh.w	r0, [sp, #42]
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	movw	r1, #64512
+	movt	r1, #2055
+	str	r1, [sp, #44]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_1
+.LBB15_1:                               @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_7
+	b	.LBB15_2
+.LBB15_2:                               @   in Loop: Header=BB15_1 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_4
+	b	.LBB15_3
+.LBB15_3:                               @   in Loop: Header=BB15_1 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_5
+	b	.LBB15_4
+.LBB15_4:                               @   in Loop: Header=BB15_1 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_5
+.LBB15_5:                               @   in Loop: Header=BB15_1 Depth=1
+	b	.LBB15_6
+.LBB15_6:                               @   in Loop: Header=BB15_1 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_1
+.LBB15_7:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_9
+	b	.LBB15_8
+.LBB15_8:
+	movw	r0, #64512
+	movt	r0, #2055
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #24]                   @ 4-byte Reload
+	movw	r0, :lower16:a0
+	movt	r0, :upper16:a0
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_9
+.LBB15_9:
+	movw	r0, #63488
+	movt	r0, #2055
+	str	r0, [sp, #44]
+	movs	r0, #0
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_10
+.LBB15_10:                              @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_16
+	b	.LBB15_11
+.LBB15_11:                              @   in Loop: Header=BB15_10 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_13
+	b	.LBB15_12
+.LBB15_12:                              @   in Loop: Header=BB15_10 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_14
+	b	.LBB15_13
+.LBB15_13:                              @   in Loop: Header=BB15_10 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_14
+.LBB15_14:                              @   in Loop: Header=BB15_10 Depth=1
+	b	.LBB15_15
+.LBB15_15:                              @   in Loop: Header=BB15_10 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_10
+.LBB15_16:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_18
+	b	.LBB15_17
+.LBB15_17:
+	movw	r0, #63488
+	movt	r0, #2055
+	str	r0, [sp, #20]                   @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	movw	r0, :lower16:a2
+	movt	r0, :upper16:a2
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_18
+.LBB15_18:
+	movw	r0, #62464
+	movt	r0, #2055
+	str	r0, [sp, #44]
+	movs	r0, #0
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_19
+.LBB15_19:                              @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_25
+	b	.LBB15_20
+.LBB15_20:                              @   in Loop: Header=BB15_19 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_22
+	b	.LBB15_21
+.LBB15_21:                              @   in Loop: Header=BB15_19 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_23
+	b	.LBB15_22
+.LBB15_22:                              @   in Loop: Header=BB15_19 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_23
+.LBB15_23:                              @   in Loop: Header=BB15_19 Depth=1
+	b	.LBB15_24
+.LBB15_24:                              @   in Loop: Header=BB15_19 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_19
+.LBB15_25:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_27
+	b	.LBB15_26
+.LBB15_26:
+	movw	r0, #62464
+	movt	r0, #2055
+	str	r0, [sp, #16]                   @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #16]                   @ 4-byte Reload
+	movw	r0, :lower16:b0
+	movt	r0, :upper16:b0
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_27
+.LBB15_27:
+	movw	r0, #61440
+	movt	r0, #2055
+	str	r0, [sp, #44]
+	movs	r0, #0
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_28
+.LBB15_28:                              @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_34
+	b	.LBB15_29
+.LBB15_29:                              @   in Loop: Header=BB15_28 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_31
+	b	.LBB15_30
+.LBB15_30:                              @   in Loop: Header=BB15_28 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_32
+	b	.LBB15_31
+.LBB15_31:                              @   in Loop: Header=BB15_28 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_32
+.LBB15_32:                              @   in Loop: Header=BB15_28 Depth=1
+	b	.LBB15_33
+.LBB15_33:                              @   in Loop: Header=BB15_28 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_28
+.LBB15_34:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_36
+	b	.LBB15_35
+.LBB15_35:
+	movw	r0, #61440
+	movt	r0, #2055
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	movw	r0, :lower16:b2
+	movt	r0, :upper16:b2
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_36
+.LBB15_36:
+	movw	r0, #60416
+	movt	r0, #2055
+	str	r0, [sp, #44]
+	movs	r0, #0
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_37
+.LBB15_37:                              @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_43
+	b	.LBB15_38
+.LBB15_38:                              @   in Loop: Header=BB15_37 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_40
+	b	.LBB15_39
+.LBB15_39:                              @   in Loop: Header=BB15_37 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_41
+	b	.LBB15_40
+.LBB15_40:                              @   in Loop: Header=BB15_37 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_41
+.LBB15_41:                              @   in Loop: Header=BB15_37 Depth=1
+	b	.LBB15_42
+.LBB15_42:                              @   in Loop: Header=BB15_37 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_37
+.LBB15_43:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_45
+	b	.LBB15_44
+.LBB15_44:
+	movw	r0, #60416
+	movt	r0, #2055
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	movw	r0, :lower16:c0
+	movt	r0, :upper16:c0
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_45
+.LBB15_45:
+	movw	r0, #59392
+	movt	r0, #2055
+	str	r0, [sp, #44]
+	movs	r0, #0
+	strh.w	r0, [sp, #40]
+	strb.w	r0, [sp, #39]
+	strh.w	r0, [sp, #42]
+	b	.LBB15_46
+.LBB15_46:                              @ =>This Inner Loop Header: Depth=1
+	ldrh.w	r0, [sp, #42]
+	cmp	r0, #255
+	bgt	.LBB15_52
+	b	.LBB15_47
+.LBB15_47:                              @   in Loop: Header=BB15_46 Depth=1
+	ldr	r0, [sp, #44]
+	ldrb	r0, [r0]
+	strb.w	r0, [sp, #39]
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	ldrb.w	r0, [sp, #39]
+	cmp	r0, #255
+	beq	.LBB15_49
+	b	.LBB15_48
+.LBB15_48:                              @   in Loop: Header=BB15_46 Depth=1
+	ldrb.w	r0, [sp, #39]
+	cbnz	r0, .LBB15_50
+	b	.LBB15_49
+.LBB15_49:                              @   in Loop: Header=BB15_46 Depth=1
+	ldrh.w	r0, [sp, #40]
+	adds	r0, #1
+	strh.w	r0, [sp, #40]
+	b	.LBB15_50
+.LBB15_50:                              @   in Loop: Header=BB15_46 Depth=1
+	b	.LBB15_51
+.LBB15_51:                              @   in Loop: Header=BB15_46 Depth=1
+	ldrh.w	r0, [sp, #42]
+	adds	r0, #1
+	strh.w	r0, [sp, #42]
+	b	.LBB15_46
+.LBB15_52:
+	ldrh.w	r0, [sp, #40]
+	cmp.w	r0, #256
+	bne	.LBB15_54
+	b	.LBB15_53
+.LBB15_53:
+	movw	r0, #59392
+	movt	r0, #2055
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	fmc_erase_single_page
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	movw	r0, :lower16:c2
+	movt	r0, :upper16:c2
+	mov.w	r2, #256
+	bl	flash_write
+	b	.LBB15_54
+.LBB15_54:
+	add	sp, #48
+	pop	{r7, pc}
+.Lfunc_end15:
+	.size	flash_config_init, .Lfunc_end15-flash_config_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_i_50g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_i_50g_reg_write  @ -- Begin function calibration_tx_i_50g_reg_write
+	.globl	calibration_tx_i_50g_reg_write
+	.p2align	3
+	.type	calibration_tx_i_50g_reg_write,%function
+	.code	16                              @ @calibration_tx_i_50g_reg_write
+	.thumb_func
+calibration_tx_i_50g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB16_2
+	b	.LBB16_1
+.LBB16_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB16_3
+	b	.LBB16_2
+.LBB16_2:
+	b	.LBB16_13
+.LBB16_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #5
+	bne	.LBB16_5
+	b	.LBB16_4
+.LBB16_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB16_6
+	b	.LBB16_5
+.LBB16_5:
+	b	.LBB16_13
+.LBB16_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #71]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #72]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #73]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #74]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #71]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB16_8
+	b	.LBB16_7
+.LBB16_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #71]
+	ldrb.w	r0, [r0, #72]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI16_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB16_9
+.LBB16_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #71]
+	ldrb.w	r0, [r0, #72]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI16_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB16_9
+.LBB16_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #73]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB16_11
+	b	.LBB16_10
+.LBB16_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #73]
+	ldrb.w	r0, [r0, #74]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI16_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB16_12
+.LBB16_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #73]
+	ldrb.w	r0, [r0, #74]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI16_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB16_12
+.LBB16_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #36]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #40]
+	b	.LBB16_13
+.LBB16_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI16_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end16:
+	.size	calibration_tx_i_50g_reg_write, .Lfunc_end16-calibration_tx_i_50g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_i_10g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_i_10g_reg_write  @ -- Begin function calibration_tx_i_10g_reg_write
+	.globl	calibration_tx_i_10g_reg_write
+	.p2align	3
+	.type	calibration_tx_i_10g_reg_write,%function
+	.code	16                              @ @calibration_tx_i_10g_reg_write
+	.thumb_func
+calibration_tx_i_10g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB17_2
+	b	.LBB17_1
+.LBB17_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB17_3
+	b	.LBB17_2
+.LBB17_2:
+	b	.LBB17_13
+.LBB17_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #8
+	bne	.LBB17_5
+	b	.LBB17_4
+.LBB17_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB17_6
+	b	.LBB17_5
+.LBB17_5:
+	b	.LBB17_13
+.LBB17_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #85]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #86]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #87]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #88]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #85]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB17_8
+	b	.LBB17_7
+.LBB17_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #85]
+	ldrb.w	r0, [r0, #86]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI17_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB17_9
+.LBB17_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #85]
+	ldrb.w	r0, [r0, #86]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI17_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB17_9
+.LBB17_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #87]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB17_11
+	b	.LBB17_10
+.LBB17_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #87]
+	ldrb.w	r0, [r0, #88]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI17_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB17_12
+.LBB17_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #87]
+	ldrb.w	r0, [r0, #88]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI17_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB17_12
+.LBB17_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #92]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #96]
+	b	.LBB17_13
+.LBB17_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI17_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end17:
+	.size	calibration_tx_i_10g_reg_write, .Lfunc_end17-calibration_tx_i_10g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_i_1g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_i_1g_reg_write   @ -- Begin function calibration_tx_i_1g_reg_write
+	.globl	calibration_tx_i_1g_reg_write
+	.p2align	3
+	.type	calibration_tx_i_1g_reg_write,%function
+	.code	16                              @ @calibration_tx_i_1g_reg_write
+	.thumb_func
+calibration_tx_i_1g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB18_2
+	b	.LBB18_1
+.LBB18_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB18_3
+	b	.LBB18_2
+.LBB18_2:
+	b	.LBB18_13
+.LBB18_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #11
+	bne	.LBB18_5
+	b	.LBB18_4
+.LBB18_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB18_6
+	b	.LBB18_5
+.LBB18_5:
+	b	.LBB18_13
+.LBB18_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #99]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #100]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #101]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #102]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #99]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB18_8
+	b	.LBB18_7
+.LBB18_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #99]
+	ldrb.w	r0, [r0, #100]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB18_9
+.LBB18_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #99]
+	ldrb.w	r0, [r0, #100]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB18_9
+.LBB18_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #101]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB18_11
+	b	.LBB18_10
+.LBB18_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #101]
+	ldrb.w	r0, [r0, #102]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB18_12
+.LBB18_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #101]
+	ldrb.w	r0, [r0, #102]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI18_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB18_12
+.LBB18_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #140]
+	ldr	r0, [sp, #4]
+	str.w	r0, [r1, #144]
+	b	.LBB18_13
+.LBB18_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI18_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end18:
+	.size	calibration_tx_i_1g_reg_write, .Lfunc_end18-calibration_tx_i_1g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_pwr_50g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_pwr_50g_reg_write @ -- Begin function calibration_tx_pwr_50g_reg_write
+	.globl	calibration_tx_pwr_50g_reg_write
+	.p2align	3
+	.type	calibration_tx_pwr_50g_reg_write,%function
+	.code	16                              @ @calibration_tx_pwr_50g_reg_write
+	.thumb_func
+calibration_tx_pwr_50g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB19_2
+	b	.LBB19_1
+.LBB19_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB19_3
+	b	.LBB19_2
+.LBB19_2:
+	b	.LBB19_13
+.LBB19_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #6
+	bne	.LBB19_5
+	b	.LBB19_4
+.LBB19_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB19_6
+	b	.LBB19_5
+.LBB19_5:
+	b	.LBB19_13
+.LBB19_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #75]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #76]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #77]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #78]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #75]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB19_8
+	b	.LBB19_7
+.LBB19_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #75]
+	ldrb.w	r0, [r0, #76]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI19_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB19_9
+.LBB19_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #75]
+	ldrb.w	r0, [r0, #76]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI19_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB19_9
+.LBB19_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #77]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB19_11
+	b	.LBB19_10
+.LBB19_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #77]
+	ldrb.w	r0, [r0, #78]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI19_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB19_12
+.LBB19_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #77]
+	ldrb.w	r0, [r0, #78]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI19_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB19_12
+.LBB19_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #44]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #48]
+	b	.LBB19_13
+.LBB19_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI19_0:
+	.long	0                               @ double 100
+	.long	1079574528
+.Lfunc_end19:
+	.size	calibration_tx_pwr_50g_reg_write, .Lfunc_end19-calibration_tx_pwr_50g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_pwr_10g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_pwr_10g_reg_write @ -- Begin function calibration_tx_pwr_10g_reg_write
+	.globl	calibration_tx_pwr_10g_reg_write
+	.p2align	3
+	.type	calibration_tx_pwr_10g_reg_write,%function
+	.code	16                              @ @calibration_tx_pwr_10g_reg_write
+	.thumb_func
+calibration_tx_pwr_10g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB20_3
+	b	.LBB20_2
+.LBB20_2:
+	b	.LBB20_13
+.LBB20_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #9
+	bne	.LBB20_5
+	b	.LBB20_4
+.LBB20_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB20_6
+	b	.LBB20_5
+.LBB20_5:
+	b	.LBB20_13
+.LBB20_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #89]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #90]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #91]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #92]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #89]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB20_8
+	b	.LBB20_7
+.LBB20_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #89]
+	ldrb.w	r0, [r0, #90]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI20_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB20_9
+.LBB20_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #89]
+	ldrb.w	r0, [r0, #90]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI20_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB20_9
+.LBB20_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #91]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB20_11
+	b	.LBB20_10
+.LBB20_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #91]
+	ldrb.w	r0, [r0, #92]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI20_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB20_12
+.LBB20_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #91]
+	ldrb.w	r0, [r0, #92]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI20_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB20_12
+.LBB20_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #100]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #104]
+	b	.LBB20_13
+.LBB20_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI20_0:
+	.long	0                               @ double 100
+	.long	1079574528
+.Lfunc_end20:
+	.size	calibration_tx_pwr_10g_reg_write, .Lfunc_end20-calibration_tx_pwr_10g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_tx_pwr_1g_reg_write,"ax",%progbits
+	.hidden	calibration_tx_pwr_1g_reg_write @ -- Begin function calibration_tx_pwr_1g_reg_write
+	.globl	calibration_tx_pwr_1g_reg_write
+	.p2align	3
+	.type	calibration_tx_pwr_1g_reg_write,%function
+	.code	16                              @ @calibration_tx_pwr_1g_reg_write
+	.thumb_func
+calibration_tx_pwr_1g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	ldr	r0, [sp, #20]
+	cbz	r0, .LBB21_2
+	b	.LBB21_1
+.LBB21_1:
+	ldr	r0, [sp, #16]
+	cmp	r0, #5
+	bhi	.LBB21_3
+	b	.LBB21_2
+.LBB21_2:
+	b	.LBB21_13
+.LBB21_3:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #12
+	bne	.LBB21_5
+	b	.LBB21_4
+.LBB21_4:
+	ldr	r0, [sp, #20]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB21_6
+	b	.LBB21_5
+.LBB21_5:
+	b	.LBB21_13
+.LBB21_6:
+	ldr	r0, [sp, #20]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #103]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #104]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #105]
+	ldr	r1, [sp, #20]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #106]
+	movs	r1, #0
+	strh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #12]
+	ldrb.w	r0, [r0, #103]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB21_8
+	b	.LBB21_7
+.LBB21_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #103]
+	ldrb.w	r0, [r0, #104]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI21_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB21_9
+.LBB21_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #103]
+	ldrb.w	r0, [r0, #104]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI21_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB21_9
+.LBB21_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #105]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB21_11
+	b	.LBB21_10
+.LBB21_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #105]
+	ldrb.w	r0, [r0, #106]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI21_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB21_12
+.LBB21_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #105]
+	ldrb.w	r0, [r0, #106]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #12]
+	ldrh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI21_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB21_12
+.LBB21_12:
+	ldr	r0, [sp, #8]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #148]
+	ldr	r0, [sp, #4]
+	str.w	r0, [r1, #152]
+	b	.LBB21_13
+.LBB21_13:
+	add	sp, #24
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.14:
+.LCPI21_0:
+	.long	0                               @ double 100
+	.long	1079574528
+.Lfunc_end21:
+	.size	calibration_tx_pwr_1g_reg_write, .Lfunc_end21-calibration_tx_pwr_1g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_rx_pwr_50g_reg_write,"ax",%progbits
+	.hidden	calibration_rx_pwr_50g_reg_write @ -- Begin function calibration_rx_pwr_50g_reg_write
+	.globl	calibration_rx_pwr_50g_reg_write
+	.p2align	3
+	.type	calibration_rx_pwr_50g_reg_write,%function
+	.code	16                              @ @calibration_rx_pwr_50g_reg_write
+	.thumb_func
+calibration_rx_pwr_50g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	ldr	r0, [sp, #28]
+	cbz	r0, .LBB22_2
+	b	.LBB22_1
+.LBB22_1:
+	ldr	r0, [sp, #24]
+	cmp	r0, #7
+	bhi	.LBB22_3
+	b	.LBB22_2
+.LBB22_2:
+	b	.LBB22_16
+.LBB22_3:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #7
+	bne	.LBB22_5
+	b	.LBB22_4
+.LBB22_4:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB22_6
+	b	.LBB22_5
+.LBB22_5:
+	b	.LBB22_16
+.LBB22_6:
+	ldr	r0, [sp, #28]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #79]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #80]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #81]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #82]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #6]
+	strb.w	r1, [r0, #83]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #7]
+	strb.w	r1, [r0, #84]
+	movs	r1, #0
+	strh.w	r1, [sp, #22]
+	strh.w	r1, [sp, #20]
+	strh.w	r1, [sp, #18]
+	ldrb.w	r0, [r0, #79]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB22_8
+	b	.LBB22_7
+.LBB22_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #79]
+	ldrb.w	r0, [r0, #80]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB22_9
+.LBB22_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #79]
+	ldrb.w	r0, [r0, #80]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB22_9
+.LBB22_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #81]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB22_11
+	b	.LBB22_10
+.LBB22_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #81]
+	ldrb.w	r0, [r0, #82]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB22_12
+.LBB22_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #81]
+	ldrb.w	r0, [r0, #82]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB22_12
+.LBB22_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #83]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB22_14
+	b	.LBB22_13
+.LBB22_13:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #83]
+	ldrb.w	r0, [r0, #84]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB22_15
+.LBB22_14:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #83]
+	ldrb.w	r0, [r0, #84]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI22_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB22_15
+.LBB22_15:
+	ldr	r0, [sp, #12]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #52]
+	ldr	r0, [sp, #8]
+	str	r0, [r1, #56]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #60]
+	b	.LBB22_16
+.LBB22_16:
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.17:
+.LCPI22_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end22:
+	.size	calibration_rx_pwr_50g_reg_write, .Lfunc_end22-calibration_rx_pwr_50g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_rx_pwr_10g_reg_write,"ax",%progbits
+	.hidden	calibration_rx_pwr_10g_reg_write @ -- Begin function calibration_rx_pwr_10g_reg_write
+	.globl	calibration_rx_pwr_10g_reg_write
+	.p2align	3
+	.type	calibration_rx_pwr_10g_reg_write,%function
+	.code	16                              @ @calibration_rx_pwr_10g_reg_write
+	.thumb_func
+calibration_rx_pwr_10g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	ldr	r0, [sp, #28]
+	cbz	r0, .LBB23_2
+	b	.LBB23_1
+.LBB23_1:
+	ldr	r0, [sp, #24]
+	cmp	r0, #7
+	bhi	.LBB23_3
+	b	.LBB23_2
+.LBB23_2:
+	b	.LBB23_16
+.LBB23_3:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #10
+	bne	.LBB23_5
+	b	.LBB23_4
+.LBB23_4:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB23_6
+	b	.LBB23_5
+.LBB23_5:
+	b	.LBB23_16
+.LBB23_6:
+	ldr	r0, [sp, #28]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #93]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #94]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #95]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #96]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #6]
+	strb.w	r1, [r0, #97]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #7]
+	strb.w	r1, [r0, #98]
+	movs	r1, #0
+	strh.w	r1, [sp, #22]
+	strh.w	r1, [sp, #20]
+	strh.w	r1, [sp, #18]
+	ldrb.w	r0, [r0, #93]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB23_8
+	b	.LBB23_7
+.LBB23_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #93]
+	ldrb.w	r0, [r0, #94]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB23_9
+.LBB23_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #93]
+	ldrb.w	r0, [r0, #94]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB23_9
+.LBB23_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #95]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB23_11
+	b	.LBB23_10
+.LBB23_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #95]
+	ldrb.w	r0, [r0, #96]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB23_12
+.LBB23_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #95]
+	ldrb.w	r0, [r0, #96]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB23_12
+.LBB23_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #97]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB23_14
+	b	.LBB23_13
+.LBB23_13:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #97]
+	ldrb.w	r0, [r0, #98]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB23_15
+.LBB23_14:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #97]
+	ldrb.w	r0, [r0, #98]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI23_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB23_15
+.LBB23_15:
+	ldr	r0, [sp, #12]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #108]
+	ldr	r0, [sp, #8]
+	str	r0, [r1, #112]
+	ldr	r0, [sp, #4]
+	str	r0, [r1, #116]
+	b	.LBB23_16
+.LBB23_16:
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.17:
+.LCPI23_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end23:
+	.size	calibration_rx_pwr_10g_reg_write, .Lfunc_end23-calibration_rx_pwr_10g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.calibration_rx_pwr_1g_reg_write,"ax",%progbits
+	.hidden	calibration_rx_pwr_1g_reg_write @ -- Begin function calibration_rx_pwr_1g_reg_write
+	.globl	calibration_rx_pwr_1g_reg_write
+	.p2align	3
+	.type	calibration_rx_pwr_1g_reg_write,%function
+	.code	16                              @ @calibration_rx_pwr_1g_reg_write
+	.thumb_func
+calibration_rx_pwr_1g_reg_write:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	ldr	r0, [sp, #28]
+	cbz	r0, .LBB24_2
+	b	.LBB24_1
+.LBB24_1:
+	ldr	r0, [sp, #24]
+	cmp	r0, #7
+	bhi	.LBB24_3
+	b	.LBB24_2
+.LBB24_2:
+	b	.LBB24_16
+.LBB24_3:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0, #1]
+	cmp	r0, #13
+	bne	.LBB24_5
+	b	.LBB24_4
+.LBB24_4:
+	ldr	r0, [sp, #28]
+	ldrb	r0, [r0]
+	cmp	r0, #28
+	beq	.LBB24_6
+	b	.LBB24_5
+.LBB24_5:
+	b	.LBB24_16
+.LBB24_6:
+	ldr	r0, [sp, #28]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	strb.w	r1, [r0, #107]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #3]
+	strb.w	r1, [r0, #108]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #4]
+	strb.w	r1, [r0, #109]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #5]
+	strb.w	r1, [r0, #110]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #6]
+	strb.w	r1, [r0, #111]
+	ldr	r1, [sp, #28]
+	ldrb	r1, [r1, #7]
+	strb.w	r1, [r0, #112]
+	movs	r1, #0
+	strh.w	r1, [sp, #22]
+	strh.w	r1, [sp, #20]
+	strh.w	r1, [sp, #18]
+	ldrb.w	r0, [r0, #107]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB24_8
+	b	.LBB24_7
+.LBB24_7:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #107]
+	ldrb.w	r0, [r0, #108]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB24_9
+.LBB24_8:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #107]
+	ldrb.w	r0, [r0, #108]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #12]
+	b	.LBB24_9
+.LBB24_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #109]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB24_11
+	b	.LBB24_10
+.LBB24_10:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #109]
+	ldrb.w	r0, [r0, #110]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB24_12
+.LBB24_11:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #109]
+	ldrb.w	r0, [r0, #110]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #8]
+	b	.LBB24_12
+.LBB24_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #111]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB24_14
+	b	.LBB24_13
+.LBB24_13:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #111]
+	ldrb.w	r0, [r0, #112]
+	orr.w	r0, r0, r1, lsl #8
+	rsbs	r0, r0, #0
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	rsbs	r0, r0, #0
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB24_15
+.LBB24_14:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #111]
+	ldrb.w	r0, [r0, #112]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI24_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	str	r0, [sp, #4]
+	b	.LBB24_15
+.LBB24_15:
+	ldr	r0, [sp, #12]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #156]
+	ldr	r0, [sp, #8]
+	str.w	r0, [r1, #160]
+	ldr	r0, [sp, #4]
+	str.w	r0, [r1, #164]
+	b	.LBB24_16
+.LBB24_16:
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.17:
+.LCPI24_0:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end24:
+	.size	calibration_rx_pwr_1g_reg_write, .Lfunc_end24-calibration_rx_pwr_1g_reg_write
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_default_config_flash_read_50g,"ax",%progbits
+	.hidden	om_default_config_flash_read_50g @ -- Begin function om_default_config_flash_read_50g
+	.globl	om_default_config_flash_read_50g
+	.p2align	3
+	.type	om_default_config_flash_read_50g,%function
+	.code	16                              @ @om_default_config_flash_read_50g
+	.thumb_func
+om_default_config_flash_read_50g:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #62]
+	cmp	r0, #1
+	bne	.LBB25_2
+	b	.LBB25_1
+.LBB25_1:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #62]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #32]
+	b	.LBB25_3
+.LBB25_2:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strb.w	r0, [r1, #32]
+	b	.LBB25_3
+.LBB25_3:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #63]
+	ldrb.w	r0, [r0, #64]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #46]
+	ldrh.w	r0, [sp, #46]
+	movw	r1, #10000
+	cmp	r0, r1
+	bgt	.LBB25_5
+	b	.LBB25_4
+.LBB25_4:
+	ldrh.w	r0, [sp, #46]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh	r0, [r1, #34]
+	b	.LBB25_6
+.LBB25_5:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh	r0, [r1, #34]
+	b	.LBB25_6
+.LBB25_6:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0]
+	ldrb	r0, [r0, #1]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #44]
+	ldrh.w	r0, [sp, #44]
+	cmp.w	r0, #1200
+	bgt	.LBB25_8
+	b	.LBB25_7
+.LBB25_7:
+	ldrh.w	r0, [sp, #44]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI25_5
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh	r1, [r0, #4]
+	ldrh	r1, [r0, #4]
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	printf
+	b	.LBB25_9
+.LBB25_8:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh	r0, [r1, #4]
+	b	.LBB25_9
+.LBB25_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #2]
+	ldrb	r0, [r0, #3]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #42]
+	ldrh.w	r0, [sp, #42]
+	cmp.w	r0, #1000
+	bgt	.LBB25_11
+	b	.LBB25_10
+.LBB25_10:
+	ldrh.w	r0, [sp, #42]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r1, [r0, #16]
+	ldr	r0, [r0, #16]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r2, r3, d0
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	bl	printf
+	b	.LBB25_12
+.LBB25_11:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	str	r0, [r1, #16]
+	b	.LBB25_12
+.LBB25_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #4]
+	ldrb	r0, [r0, #5]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #40]
+	ldrh.w	r0, [sp, #40]
+	cmp	r0, #200
+	bgt	.LBB25_14
+	b	.LBB25_13
+.LBB25_13:
+	ldrh.w	r0, [sp, #40]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_6
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r1, [r0, #20]
+	ldr	r0, [r0, #20]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r2, r3, d0
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	bl	printf
+	b	.LBB25_15
+.LBB25_14:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	str	r0, [r1, #20]
+	b	.LBB25_15
+.LBB25_15:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #6]
+	ldrb	r0, [r0, #7]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #38]
+	ldrh.w	r0, [sp, #38]
+	movw	r1, #7000
+	cmp	r0, r1
+	bgt	.LBB25_17
+	b	.LBB25_16
+.LBB25_16:
+	ldrh.w	r0, [sp, #38]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh	r1, [r0, #6]
+	ldrh	r1, [r0, #6]
+	movw	r0, :lower16:.L.str.3
+	movt	r0, :upper16:.L.str.3
+	bl	printf
+	b	.LBB25_18
+.LBB25_17:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	mov.w	r0, #580
+	strh	r0, [r1, #6]
+	b	.LBB25_18
+.LBB25_18:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #8]
+	ldrb	r0, [r0, #9]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #36]
+	ldrh.w	r0, [sp, #36]
+	cmp.w	r0, #310
+	bgt	.LBB25_20
+	b	.LBB25_19
+.LBB25_19:
+	ldrh.w	r0, [sp, #36]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strb	r1, [r0, #3]
+	ldrb	r1, [r0, #3]
+	movw	r0, :lower16:.L.str.4
+	movt	r0, :upper16:.L.str.4
+	bl	printf
+	b	.LBB25_21
+.LBB25_20:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #19
+	strb	r0, [r1, #3]
+	b	.LBB25_21
+.LBB25_21:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #10]
+	ldrb	r0, [r0, #11]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #34]
+	ldrh.w	r0, [sp, #34]
+	movw	r1, #10230
+	cmp	r0, r1
+	bgt	.LBB25_23
+	b	.LBB25_22
+.LBB25_22:
+	ldrh.w	r0, [sp, #34]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh	r1, [r0, #8]
+	ldrh	r1, [r0, #8]
+	movw	r0, :lower16:.L.str.5
+	movt	r0, :upper16:.L.str.5
+	bl	printf
+	b	.LBB25_24
+.LBB25_23:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh	r0, [r1, #8]
+	b	.LBB25_24
+.LBB25_24:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #12]
+	ldrb	r0, [r0, #13]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #32]
+	ldrh.w	r0, [sp, #32]
+	cmp.w	r0, #350
+	bgt	.LBB25_26
+	b	.LBB25_25
+.LBB25_25:
+	ldrh.w	r0, [sp, #32]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r1, [r0, #24]
+	ldr	r0, [r0, #24]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r2, r3, d0
+	movw	r0, :lower16:.L.str.6
+	movt	r0, :upper16:.L.str.6
+	bl	printf
+	b	.LBB25_27
+.LBB25_26:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	movt	r0, #16776
+	str	r0, [r1, #24]
+	b	.LBB25_27
+.LBB25_27:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #14]
+	ldrb	r0, [r0, #15]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #30]
+	ldrh.w	r0, [sp, #30]
+	movw	r1, #1270
+	cmp	r0, r1
+	bgt	.LBB25_32
+	b	.LBB25_31
+	.p2align	3
+@ %bb.28:
+.LCPI25_4:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+	.p2align	3
+@ %bb.29:
+.LCPI25_5:
+	.long	1305670058                      @ double 0.188
+	.long	1070076002
+	.p2align	3
+@ %bb.30:
+.LCPI25_6:
+	.long	1202590843                      @ double 0.01
+	.long	1065646817
+	.p2align	1
+.LBB25_31:
+	ldrh.w	r0, [sp, #30]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh	r1, [r0, #10]
+	ldrh	r1, [r0, #10]
+	movw	r0, :lower16:.L.str.7
+	movt	r0, :upper16:.L.str.7
+	bl	printf
+	b	.LBB25_33
+.LBB25_32:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #40
+	strh	r0, [r1, #10]
+	b	.LBB25_33
+.LBB25_33:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #16]
+	ldrb	r0, [r0, #17]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #28]
+	ldrh.w	r0, [sp, #28]
+	cmp.w	r0, #1800
+	bgt	.LBB25_35
+	b	.LBB25_34
+.LBB25_34:
+	ldrh.w	r0, [sp, #28]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh	r1, [r0, #12]
+	ldrh	r1, [r0, #12]
+	movw	r0, :lower16:.L.str.8
+	movt	r0, :upper16:.L.str.8
+	bl	printf
+	b	.LBB25_36
+.LBB25_35:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #100
+	strh	r0, [r1, #12]
+	b	.LBB25_36
+.LBB25_36:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #18]
+	ldrb	r0, [r0, #19]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #26]
+	ldrh.w	r0, [sp, #26]
+	cmp	r0, #150
+	bgt	.LBB25_38
+	b	.LBB25_37
+.LBB25_37:
+	ldrh.w	r0, [sp, #26]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strb	r1, [r0]
+	ldrb	r1, [r0]
+	movw	r0, :lower16:.L.str.9
+	movt	r0, :upper16:.L.str.9
+	bl	printf
+	b	.LBB25_39
+.LBB25_38:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strb	r0, [r1]
+	b	.LBB25_39
+.LBB25_39:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #20]
+	ldrb	r0, [r0, #21]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #24]
+	ldrh.w	r0, [sp, #24]
+	movw	r1, #630
+	cmp	r0, r1
+	bgt	.LBB25_41
+	b	.LBB25_40
+.LBB25_40:
+	ldrh.w	r0, [sp, #24]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strb	r1, [r0, #1]
+	ldrb	r1, [r0, #1]
+	movw	r0, :lower16:.L.str.10
+	movt	r0, :upper16:.L.str.10
+	bl	printf
+	b	.LBB25_42
+.LBB25_41:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #20
+	strb	r0, [r1, #1]
+	b	.LBB25_42
+.LBB25_42:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #22]
+	ldrb	r0, [r0, #23]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	cmp.w	r0, #310
+	bgt	.LBB25_44
+	b	.LBB25_43
+.LBB25_43:
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_4
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strb	r1, [r0, #2]
+	ldrb	r1, [r0, #2]
+	movw	r0, :lower16:.L.str.11
+	movt	r0, :upper16:.L.str.11
+	bl	printf
+	b	.LBB25_45
+.LBB25_44:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #3
+	strb	r0, [r1, #2]
+	b	.LBB25_45
+.LBB25_45:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #24]
+	ldrb	r0, [r0, #25]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	movw	r1, #5500
+	cmp	r0, r1
+	bgt	.LBB25_47
+	b	.LBB25_46
+.LBB25_46:
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #28]
+	b	.LBB25_48
+.LBB25_47:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	movt	r0, #16968
+	str	r0, [r1, #28]
+	b	.LBB25_48
+.LBB25_48:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #71]
+	ldrb.w	r0, [r0, #72]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_50
+	b	.LBB25_49
+.LBB25_49:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #71]
+	ldrb.w	r1, [r1, #72]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #16]
+	ldrsh.w	r0, [sp, #16]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #36]
+	b	.LBB25_50
+.LBB25_50:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #73]
+	ldrb.w	r0, [r0, #74]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_52
+	b	.LBB25_51
+.LBB25_51:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #73]
+	ldrb.w	r1, [r1, #74]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #14]
+	ldrsh.w	r0, [sp, #14]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #40]
+	b	.LBB25_52
+.LBB25_52:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #75]
+	ldrb.w	r0, [r0, #76]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_54
+	b	.LBB25_53
+.LBB25_53:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #75]
+	ldrb.w	r1, [r1, #76]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #12]
+	ldrsh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #44]
+	b	.LBB25_54
+.LBB25_54:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #77]
+	ldrb.w	r0, [r0, #78]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_56
+	b	.LBB25_55
+.LBB25_55:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #77]
+	ldrb.w	r1, [r1, #78]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #10]
+	ldrsh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #48]
+	b	.LBB25_56
+.LBB25_56:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #79]
+	ldrb.w	r0, [r0, #80]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_58
+	b	.LBB25_57
+.LBB25_57:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #79]
+	ldrb.w	r1, [r1, #80]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #8]
+	ldrsh.w	r0, [sp, #8]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #52]
+	b	.LBB25_58
+.LBB25_58:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #81]
+	ldrb.w	r0, [r0, #82]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_60
+	b	.LBB25_59
+.LBB25_59:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #81]
+	ldrb.w	r1, [r1, #82]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #6]
+	ldrsh.w	r0, [sp, #6]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #56]
+	b	.LBB25_60
+.LBB25_60:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #83]
+	ldrb.w	r0, [r0, #84]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB25_62
+	b	.LBB25_61
+.LBB25_61:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #83]
+	ldrb.w	r1, [r1, #84]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #4]
+	ldrsh.w	r0, [sp, #4]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI25_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #60]
+	b	.LBB25_62
+.LBB25_62:
+	add	sp, #48
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.63:
+.LCPI25_2:
+	.long	1202590843                      @ double 0.01
+	.long	1065646817
+.LCPI25_3:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end25:
+	.size	om_default_config_flash_read_50g, .Lfunc_end25-om_default_config_flash_read_50g
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.convert_2byte_to_int,"ax",%progbits
+	.hidden	convert_2byte_to_int            @ -- Begin function convert_2byte_to_int
+	.globl	convert_2byte_to_int
+	.p2align	2
+	.type	convert_2byte_to_int,%function
+	.code	16                              @ @convert_2byte_to_int
+	.thumb_func
+convert_2byte_to_int:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+	ldrb.w	r1, [sp, #7]
+	ldrb.w	r0, [sp, #6]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #4]
+	movs	r0, #0
+	strh.w	r0, [sp, #2]
+	ldrb.w	r0, [sp, #7]
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB26_2
+	b	.LBB26_1
+.LBB26_1:
+	ldrh.w	r0, [sp, #4]
+	strh.w	r0, [sp, #2]
+	b	.LBB26_3
+.LBB26_2:
+	ldrh.w	r0, [sp, #4]
+	strh.w	r0, [sp, #2]
+	b	.LBB26_3
+.LBB26_3:
+	ldrsh.w	r0, [sp, #2]
+	add	sp, #8
+	bx	lr
+.Lfunc_end26:
+	.size	convert_2byte_to_int, .Lfunc_end26-convert_2byte_to_int
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_default_config_flash_read_10g,"ax",%progbits
+	.hidden	om_default_config_flash_read_10g @ -- Begin function om_default_config_flash_read_10g
+	.globl	om_default_config_flash_read_10g
+	.p2align	3
+	.type	om_default_config_flash_read_10g,%function
+	.code	16                              @ @om_default_config_flash_read_10g
+	.thumb_func
+om_default_config_flash_read_10g:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #65]
+	cmp	r0, #1
+	bne	.LBB27_2
+	b	.LBB27_1
+.LBB27_1:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #65]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #88]
+	b	.LBB27_3
+.LBB27_2:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strb.w	r0, [r1, #88]
+	b	.LBB27_3
+.LBB27_3:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #66]
+	ldrb.w	r0, [r0, #67]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #38]
+	ldrh.w	r0, [sp, #38]
+	movw	r1, #10000
+	cmp	r0, r1
+	bgt	.LBB27_5
+	b	.LBB27_4
+.LBB27_4:
+	ldrh.w	r0, [sp, #38]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #90]
+	b	.LBB27_6
+.LBB27_5:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #90]
+	b	.LBB27_6
+.LBB27_6:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #26]
+	ldrb	r0, [r0, #27]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #36]
+	ldrh.w	r0, [sp, #36]
+	cmp.w	r0, #1200
+	bgt	.LBB27_8
+	b	.LBB27_7
+.LBB27_7:
+	ldrh.w	r0, [sp, #36]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI27_4
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh.w	r1, [r0, #68]
+	ldrh.w	r1, [r0, #68]
+	movw	r0, :lower16:.L.str.12
+	movt	r0, :upper16:.L.str.12
+	bl	printf
+	b	.LBB27_9
+.LBB27_8:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #68]
+	b	.LBB27_9
+.LBB27_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #28]
+	ldrb	r0, [r0, #29]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #34]
+	ldrh.w	r0, [sp, #34]
+	cmp	r0, #20
+	bgt	.LBB27_11
+	b	.LBB27_10
+.LBB27_10:
+	ldrh.w	r0, [sp, #34]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	str	r1, [r0, #80]
+	ldr	r0, [r0, #80]
+	bl	__aeabi_f2d
+	vmov	d0, r0, r1
+	vmov	r2, r3, d0
+	movw	r0, :lower16:.L.str.13
+	movt	r0, :upper16:.L.str.13
+	bl	printf
+	b	.LBB27_12
+.LBB27_11:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	str	r0, [r1, #80]
+	b	.LBB27_12
+.LBB27_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb	r1, [r0, #30]
+	ldrb	r0, [r0, #31]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #32]
+	ldrh.w	r0, [sp, #32]
+	movw	r1, #25000
+	cmp	r0, r1
+	bgt	.LBB27_14
+	b	.LBB27_13
+.LBB27_13:
+	ldrh.w	r0, [sp, #32]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh.w	r1, [r0, #70]
+	ldrh.w	r1, [r0, #70]
+	movw	r0, :lower16:.L.str.14
+	movt	r0, :upper16:.L.str.14
+	bl	printf
+	b	.LBB27_15
+.LBB27_14:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #70]
+	b	.LBB27_15
+.LBB27_15:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #32]
+	ldrb.w	r0, [r0, #33]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #30]
+	ldrh.w	r0, [sp, #30]
+	movw	r1, #630
+	cmp	r0, r1
+	bgt	.LBB27_17
+	b	.LBB27_16
+.LBB27_16:
+	ldrh.w	r0, [sp, #30]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strb.w	r1, [r0, #67]
+	ldrb.w	r1, [r0, #67]
+	movw	r0, :lower16:.L.str.15
+	movt	r0, :upper16:.L.str.15
+	bl	printf
+	b	.LBB27_18
+.LBB27_17:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #31
+	strb.w	r0, [r1, #67]
+	b	.LBB27_18
+.LBB27_18:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #34]
+	ldrb.w	r0, [r0, #35]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #28]
+	ldrh.w	r0, [sp, #28]
+	cmp.w	r0, #310
+	bgt	.LBB27_20
+	b	.LBB27_19
+.LBB27_19:
+	ldrh.w	r0, [sp, #28]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	mov	r1, r0
+	movw	r0, :lower16:om_default_config
+	movt	r0, :upper16:om_default_config
+	strh.w	r1, [r0, #72]
+	ldrh.w	r1, [r0, #72]
+	movw	r0, :lower16:.L.str.16
+	movt	r0, :upper16:.L.str.16
+	bl	printf
+	b	.LBB27_21
+.LBB27_20:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #72]
+	b	.LBB27_21
+.LBB27_21:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #36]
+	ldrb.w	r0, [r0, #37]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #26]
+	ldrh.w	r0, [sp, #26]
+	cmp.w	r0, #400
+	bgt	.LBB27_23
+	b	.LBB27_22
+.LBB27_22:
+	ldrh.w	r0, [sp, #26]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #84]
+	b	.LBB27_24
+.LBB27_23:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	str	r0, [r1, #84]
+	b	.LBB27_24
+.LBB27_24:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #38]
+	ldrb.w	r0, [r0, #39]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #24]
+	ldrh.w	r0, [sp, #24]
+	cmp.w	r0, #310
+	bgt	.LBB27_26
+	b	.LBB27_25
+.LBB27_25:
+	ldrh.w	r0, [sp, #24]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #74]
+	b	.LBB27_27
+.LBB27_26:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #74]
+	b	.LBB27_27
+.LBB27_27:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #40]
+	ldrb.w	r0, [r0, #41]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	cmp	r0, #150
+	bgt	.LBB27_31
+	b	.LBB27_30
+	.p2align	3
+@ %bb.28:
+.LCPI27_3:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+	.p2align	3
+@ %bb.29:
+.LCPI27_4:
+	.long	2714419331                      @ double 0.154
+	.long	1069790789
+	.p2align	1
+.LBB27_30:
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #76]
+	b	.LBB27_32
+.LBB27_31:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #9
+	strh.w	r0, [r1, #76]
+	b	.LBB27_32
+.LBB27_32:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #42]
+	ldrb.w	r0, [r0, #43]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	cmp	r0, #150
+	bgt	.LBB27_34
+	b	.LBB27_33
+.LBB27_33:
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #64]
+	b	.LBB27_35
+.LBB27_34:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strb.w	r0, [r1, #64]
+	b	.LBB27_35
+.LBB27_35:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #44]
+	ldrb.w	r0, [r0, #45]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #630
+	cmp	r0, r1
+	bgt	.LBB27_37
+	b	.LBB27_36
+.LBB27_36:
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #65]
+	b	.LBB27_38
+.LBB27_37:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #19
+	strb.w	r0, [r1, #65]
+	b	.LBB27_38
+.LBB27_38:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #46]
+	ldrb.w	r0, [r0, #47]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #16]
+	ldrh.w	r0, [sp, #16]
+	cmp.w	r0, #310
+	bgt	.LBB27_40
+	b	.LBB27_39
+.LBB27_39:
+	ldrh.w	r0, [sp, #16]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #66]
+	b	.LBB27_41
+.LBB27_40:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #1
+	strb.w	r0, [r1, #66]
+	b	.LBB27_41
+.LBB27_41:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #85]
+	ldrb.w	r0, [r0, #86]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_43
+	b	.LBB27_42
+.LBB27_42:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #85]
+	ldrb.w	r1, [r1, #86]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #12]
+	ldrsh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #92]
+	b	.LBB27_43
+.LBB27_43:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #87]
+	ldrb.w	r0, [r0, #88]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_45
+	b	.LBB27_44
+.LBB27_44:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #87]
+	ldrb.w	r1, [r1, #88]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #10]
+	ldrsh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #96]
+	b	.LBB27_45
+.LBB27_45:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #89]
+	ldrb.w	r0, [r0, #90]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_47
+	b	.LBB27_46
+.LBB27_46:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #89]
+	ldrb.w	r1, [r1, #90]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #8]
+	ldrsh.w	r0, [sp, #8]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #100]
+	b	.LBB27_47
+.LBB27_47:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #91]
+	ldrb.w	r0, [r0, #92]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_49
+	b	.LBB27_48
+.LBB27_48:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #91]
+	ldrb.w	r1, [r1, #92]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #6]
+	ldrsh.w	r0, [sp, #6]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #104]
+	b	.LBB27_49
+.LBB27_49:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #93]
+	ldrb.w	r0, [r0, #94]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_51
+	b	.LBB27_50
+.LBB27_50:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #93]
+	ldrb.w	r1, [r1, #94]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #4]
+	ldrsh.w	r0, [sp, #4]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #108]
+	b	.LBB27_51
+.LBB27_51:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #95]
+	ldrb.w	r0, [r0, #96]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_53
+	b	.LBB27_52
+.LBB27_52:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #95]
+	ldrb.w	r1, [r1, #96]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #2]
+	ldrsh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #112]
+	b	.LBB27_53
+.LBB27_53:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #97]
+	ldrb.w	r0, [r0, #98]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB27_55
+	b	.LBB27_54
+.LBB27_54:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #97]
+	ldrb.w	r1, [r1, #98]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp]
+	ldrsh.w	r0, [sp]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI27_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str	r0, [r1, #116]
+	b	.LBB27_55
+.LBB27_55:
+	add	sp, #40
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.56:
+.LCPI27_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI27_2:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end27:
+	.size	om_default_config_flash_read_10g, .Lfunc_end27-om_default_config_flash_read_10g
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.om_default_config_flash_read_1g,"ax",%progbits
+	.hidden	om_default_config_flash_read_1g @ -- Begin function om_default_config_flash_read_1g
+	.globl	om_default_config_flash_read_1g
+	.p2align	3
+	.type	om_default_config_flash_read_1g,%function
+	.code	16                              @ @om_default_config_flash_read_1g
+	.thumb_func
+om_default_config_flash_read_1g:
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #68]
+	cmp	r0, #1
+	bne	.LBB28_2
+	b	.LBB28_1
+.LBB28_1:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r0, [r0, #68]
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #136]
+	b	.LBB28_3
+.LBB28_2:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strb.w	r0, [r1, #136]
+	b	.LBB28_3
+.LBB28_3:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #69]
+	ldrb.w	r0, [r0, #70]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #30]
+	ldrh.w	r0, [sp, #30]
+	movw	r1, #7500
+	cmp	r0, r1
+	bgt	.LBB28_5
+	b	.LBB28_4
+.LBB28_4:
+	ldrh.w	r0, [sp, #30]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #138]
+	b	.LBB28_6
+.LBB28_5:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #138]
+	b	.LBB28_6
+.LBB28_6:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #48]
+	ldrb.w	r0, [r0, #49]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #28]
+	ldrh.w	r0, [sp, #28]
+	cmp.w	r0, #1000
+	bgt	.LBB28_8
+	b	.LBB28_7
+.LBB28_7:
+	ldrh.w	r0, [sp, #28]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	vldr	d0, .LCPI28_4
+	vmov	r2, r3, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #124]
+	b	.LBB28_9
+.LBB28_8:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #124]
+	b	.LBB28_9
+.LBB28_9:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #50]
+	ldrb.w	r0, [r0, #51]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #26]
+	ldrh.w	r0, [sp, #26]
+	cmp.w	r0, #1000
+	bgt	.LBB28_11
+	b	.LBB28_10
+.LBB28_10:
+	ldrh.w	r0, [sp, #26]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #126]
+	b	.LBB28_12
+.LBB28_11:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	strh.w	r0, [r1, #126]
+	b	.LBB28_12
+.LBB28_12:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #52]
+	ldrb.w	r0, [r0, #53]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #24]
+	ldrh.w	r0, [sp, #24]
+	movw	r1, #2550
+	cmp	r0, r1
+	bgt	.LBB28_14
+	b	.LBB28_13
+.LBB28_13:
+	ldrh.w	r0, [sp, #24]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #122]
+	b	.LBB28_15
+.LBB28_14:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #16
+	strb.w	r0, [r1, #122]
+	b	.LBB28_15
+.LBB28_15:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #54]
+	ldrb.w	r0, [r0, #55]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #22]
+	ldrh.w	r0, [sp, #22]
+	cmp.w	r0, #500
+	bgt	.LBB28_17
+	b	.LBB28_16
+.LBB28_16:
+	ldrh.w	r0, [sp, #22]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #132]
+	b	.LBB28_18
+.LBB28_17:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #0
+	str.w	r0, [r1, #132]
+	b	.LBB28_18
+.LBB28_18:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #56]
+	ldrb.w	r0, [r0, #57]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #20]
+	ldrh.w	r0, [sp, #20]
+	movw	r1, #1710
+	cmp	r0, r1
+	bgt	.LBB28_20
+	b	.LBB28_19
+.LBB28_19:
+	ldrh.w	r0, [sp, #20]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strh.w	r0, [r1, #128]
+	b	.LBB28_21
+.LBB28_20:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #171
+	strh.w	r0, [r1, #128]
+	b	.LBB28_21
+.LBB28_21:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #58]
+	ldrb.w	r0, [r0, #59]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #18]
+	ldrh.w	r0, [sp, #18]
+	movw	r1, #2550
+	cmp	r0, r1
+	bgt	.LBB28_23
+	b	.LBB28_22
+.LBB28_22:
+	ldrh.w	r0, [sp, #18]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_3
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #120]
+	b	.LBB28_24
+.LBB28_23:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #32
+	strb.w	r0, [r1, #120]
+	b	.LBB28_24
+.LBB28_24:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #60]
+	ldrb.w	r0, [r0, #61]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #16]
+	ldrh.w	r0, [sp, #16]
+	cmp	r0, #30
+	bgt	.LBB28_26
+	b	.LBB28_25
+.LBB28_25:
+	ldrh.w	r0, [sp, #16]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_0
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_dmul
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2iz
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	strb.w	r0, [r1, #121]
+	b	.LBB28_27
+.LBB28_26:
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	movs	r0, #2
+	strb.w	r0, [r1, #121]
+	b	.LBB28_27
+.LBB28_27:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #99]
+	ldrb.w	r0, [r0, #100]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_31
+	b	.LBB28_30
+	.p2align	3
+@ %bb.28:
+.LCPI28_3:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+	.p2align	3
+@ %bb.29:
+.LCPI28_4:
+	.long	3367254360                      @ double 0.124
+	.long	1069530742
+	.p2align	1
+.LBB28_30:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #99]
+	ldrb.w	r1, [r1, #100]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #12]
+	ldrsh.w	r0, [sp, #12]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #140]
+	b	.LBB28_31
+.LBB28_31:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #101]
+	ldrb.w	r0, [r0, #102]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_33
+	b	.LBB28_32
+.LBB28_32:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #101]
+	ldrb.w	r1, [r1, #102]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #10]
+	ldrsh.w	r0, [sp, #10]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #144]
+	b	.LBB28_33
+.LBB28_33:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #103]
+	ldrb.w	r0, [r0, #104]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_35
+	b	.LBB28_34
+.LBB28_34:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #103]
+	ldrb.w	r1, [r1, #104]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #8]
+	ldrsh.w	r0, [sp, #8]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #148]
+	b	.LBB28_35
+.LBB28_35:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #105]
+	ldrb.w	r0, [r0, #106]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_37
+	b	.LBB28_36
+.LBB28_36:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #105]
+	ldrb.w	r1, [r1, #106]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #6]
+	ldrsh.w	r0, [sp, #6]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #152]
+	b	.LBB28_37
+.LBB28_37:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #107]
+	ldrb.w	r0, [r0, #108]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_39
+	b	.LBB28_38
+.LBB28_38:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #107]
+	ldrb.w	r1, [r1, #108]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #4]
+	ldrsh.w	r0, [sp, #4]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #156]
+	b	.LBB28_39
+.LBB28_39:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #109]
+	ldrb.w	r0, [r0, #110]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_41
+	b	.LBB28_40
+.LBB28_40:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #109]
+	ldrb.w	r1, [r1, #110]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp, #2]
+	ldrsh.w	r0, [sp, #2]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #160]
+	b	.LBB28_41
+.LBB28_41:
+	movw	r0, :lower16:default_config_value
+	movt	r0, :upper16:default_config_value
+	ldrb.w	r1, [r0, #111]
+	ldrb.w	r0, [r0, #112]
+	orr.w	r0, r0, r1, lsl #8
+	strh.w	r0, [sp, #14]
+	ldrh.w	r0, [sp, #14]
+	movw	r1, #65535
+	cmp	r0, r1
+	beq	.LBB28_43
+	b	.LBB28_42
+.LBB28_42:
+	movw	r1, :lower16:default_config_value
+	movt	r1, :upper16:default_config_value
+	ldrb.w	r0, [r1, #111]
+	ldrb.w	r1, [r1, #112]
+	bl	convert_2byte_to_int
+	strh.w	r0, [sp]
+	ldrsh.w	r0, [sp]
+	bl	__aeabi_i2d
+	vmov	d0, r0, r1
+	vldr	d1, .LCPI28_2
+	vmov	r2, r3, d1
+	vmov	r0, r1, d0
+	bl	__aeabi_ddiv
+	vmov	d0, r0, r1
+	vmov	r0, r1, d0
+	bl	__aeabi_d2f
+	movw	r1, :lower16:om_default_config
+	movt	r1, :upper16:om_default_config
+	str.w	r0, [r1, #164]
+	b	.LBB28_43
+.LBB28_43:
+	add	sp, #32
+	pop	{r7, pc}
+	.p2align	3
+@ %bb.44:
+.LCPI28_0:
+	.long	2576980378                      @ double 0.10000000000000001
+	.long	1069128089
+.LCPI28_2:
+	.long	0                               @ double 1000
+	.long	1083129856
+.Lfunc_end28:
+	.size	om_default_config_flash_read_1g, .Lfunc_end28-om_default_config_flash_read_1g
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	a0                              @ @a0
+	.type	a0,%object
+	.section	.data.a0,"aw",%progbits
+	.globl	a0
+a0:
+	.ascii	"\000\f\001\000\000\000\000\000\000\000\000\003\377\371\024\310\000\000\000\000FiberHome       \000\000\000\000FH7106A301      A   \206\200\000\000\004<\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000240101\000\000h\240\t\000FHNA"
+	.zero	156
+	.size	a0, 256
+
+	.hidden	a2                              @ @a2
+	.type	a2,%object
+	.section	.data.a2,"aw",%progbits
+	.globl	a2
+a2:
+	.ascii	"P\000\361\000K\000\370\000\215\314t\004\207\214zD\377\377\377\377\377\377\377\377\302c\025\317\232h\033u\t\317\000\013\007\313\000\016\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\000\000\000\000\000\000\000\000\000\000\000\000?\200\000\000\000\000\000\000\000\001\000\000\000\001\000\000\000\001\000\000\000\001\000\000\377\377\377\377\377\377\377\377\000\000\000\000\000\000\377\377\377\377\000\000\000\000\377\377"
+	.zero	140
+	.size	a2, 256
+
+	.hidden	b0                              @ @b0
+	.type	b0,%object
+	.section	.data.b0,"aw",%progbits
+	.globl	b0
+b0:
+	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\003cc\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\235\177"
+	.zero	194
+	.size	b0, 256
+
+	.hidden	b2                              @ @b2
+	.type	b2,%object
+	.section	.data.b2,"aw",%progbits
+	.globl	b2
+b2:
+	.ascii	"P\000\361\000K\000\370\000\215\314t\004\207\214zD\377\377\377\377\377\377\377\3770\324\t\276&\311\fC\t\317\000\007\007\313\000\n\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000?\200\000\000\000\000\000\000\000\001\000\000\000\001\000\000\000\001\000\000\000\001\000\000\000\000\000\000\377\377\377\377"
+	.zero	156
+	.size	b2, 256
+
+	.hidden	c0                              @ @c0
+	.type	c0,%object
+	.section	.data.c0,"aw",%progbits
+	.globl	c0
+c0:
+	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\003\031\f\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\225\203"
+	.zero	194
+	.size	c0, 256
+
+	.hidden	c2                              @ @c2
+	.type	c2,%object
+	.section	.data.c2,"aw",%progbits
+	.globl	c2
+c2:
+	.ascii	"P\000\361\000K\000\370\000\215\314t\004\207\214zD\377\377\377\377\377\377\377\3770\324\006%&\311\007\275\003\350\000\003\003\032\000\005\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000?\200\000\000\000\000\000\000\000\001\000\000\000\001\000\000\000\001\000\000\000\001\000\000\000\000\000\000\377\377\377\377"
+	.zero	156
+	.size	c2, 256
+
+	.hidden	rssi_to_rxpower_50g             @ @rssi_to_rxpower_50g
+	.type	rssi_to_rxpower_50g,%object
+	.section	.rodata.rssi_to_rxpower_50g,"a",%progbits
+	.globl	rssi_to_rxpower_50g
+	.p2align	2, 0x0
+rssi_to_rxpower_50g:
+	.short	226                             @ 0xe2
+	.zero	2
+	.long	0xc205999a                      @ float -33.4000015
+	.short	231                             @ 0xe7
+	.zero	2
+	.long	0xc2013333                      @ float -32.2999992
+	.short	233                             @ 0xe9
+	.zero	2
+	.long	0xc1f33333                      @ float -30.3999996
+	.short	237                             @ 0xed
+	.zero	2
+	.long	0xc1ea6666                      @ float -29.2999992
+	.short	245                             @ 0xf5
+	.zero	2
+	.long	0xc1e00000                      @ float -28
+	.short	255                             @ 0xff
+	.zero	2
+	.long	0xc1d40000                      @ float -26.5
+	.short	284                             @ 0x11c
+	.zero	2
+	.long	0xc1c00000                      @ float -24
+	.short	312                             @ 0x138
+	.zero	2
+	.long	0xc1b1999a                      @ float -22.2000008
+	.short	355                             @ 0x163
+	.zero	2
+	.long	0xc1a26666                      @ float -20.2999992
+	.short	430                             @ 0x1ae
+	.zero	2
+	.long	0xc1940000                      @ float -18.5
+	.short	527                             @ 0x20f
+	.zero	2
+	.long	0xc184cccd                      @ float -16.6000004
+	.short	678                             @ 0x2a6
+	.zero	2
+	.long	0xc169999a                      @ float -14.6000004
+	.short	884                             @ 0x374
+	.zero	2
+	.long	0xc149999a                      @ float -12.6000004
+	.short	1182                            @ 0x49e
+	.zero	2
+	.long	0xc12ccccd                      @ float -10.8000002
+	.short	1365                            @ 0x555
+	.zero	2
+	.long	0xc10ccccd                      @ float -8.80000019
+	.short	1410                            @ 0x582
+	.zero	2
+	.long	0xc0dccccd                      @ float -6.9000001
+	.size	rssi_to_rxpower_50g, 128
+
+	.hidden	rssi_to_rxpower_10g             @ @rssi_to_rxpower_10g
+	.type	rssi_to_rxpower_10g,%object
+	.section	.rodata.rssi_to_rxpower_10g,"a",%progbits
+	.globl	rssi_to_rxpower_10g
+	.p2align	2, 0x0
+rssi_to_rxpower_10g:
+	.short	235                             @ 0xeb
+	.zero	2
+	.long	0xc1f9999a                      @ float -31.2000008
+	.short	238                             @ 0xee
+	.zero	2
+	.long	0xc1eccccd                      @ float -29.6000004
+	.short	253                             @ 0xfd
+	.zero	2
+	.long	0xc1e0cccd                      @ float -28.1000004
+	.short	494                             @ 0x1ee
+	.zero	2
+	.long	0xc1d40000                      @ float -26.5
+	.short	507                             @ 0x1fb
+	.zero	2
+	.long	0xc1c66666                      @ float -24.7999992
+	.short	509                             @ 0x1fd
+	.zero	2
+	.long	0xc1b80000                      @ float -23
+	.short	510                             @ 0x1fe
+	.zero	2
+	.long	0xc1a8cccd                      @ float -21.1000004
+	.short	741                             @ 0x2e5
+	.zero	2
+	.long	0xc199999a                      @ float -19.2000008
+	.short	767                             @ 0x2ff
+	.zero	2
+	.long	0xc18a6666                      @ float -17.2999992
+	.short	1022                            @ 0x3fe
+	.zero	2
+	.long	0xc1766666                      @ float -15.3999996
+	.short	1262                            @ 0x4ee
+	.zero	2
+	.long	0xc1566666                      @ float -13.3999996
+	.short	1524                            @ 0x5f4
+	.zero	2
+	.long	0xc1380000                      @ float -11.5
+	.short	1532                            @ 0x5fc
+	.zero	2
+	.long	0xc119999a                      @ float -9.60000038
+	.short	1535                            @ 0x5ff
+	.zero	2
+	.long	0xc0f66666                      @ float -7.6999998
+	.short	1536                            @ 0x600
+	.zero	2
+	.long	0xc0d66666                      @ float -6.6999998
+	.short	1537                            @ 0x601
+	.zero	2
+	.long	0xc0c33333                      @ float -6.0999999
+	.size	rssi_to_rxpower_10g, 128
+
+	.hidden	rssi_to_rxpower_1g              @ @rssi_to_rxpower_1g
+	.type	rssi_to_rxpower_1g,%object
+	.section	.rodata.rssi_to_rxpower_1g,"a",%progbits
+	.globl	rssi_to_rxpower_1g
+	.p2align	2, 0x0
+rssi_to_rxpower_1g:
+	.short	251                             @ 0xfb
+	.zero	2
+	.long	0xc2066666                      @ float -33.5999985
+	.short	255                             @ 0xff
+	.zero	2
+	.long	0xc2000000                      @ float -32
+	.short	300                             @ 0x12c
+	.zero	2
+	.long	0xc1fb3333                      @ float -31.3999996
+	.short	507                             @ 0x1fb
+	.zero	2
+	.long	0xc1f66666                      @ float -30.7999992
+	.short	509                             @ 0x1fd
+	.zero	2
+	.long	0xc1e80000                      @ float -29
+	.short	511                             @ 0x1ff
+	.zero	2
+	.long	0xc1dccccd                      @ float -27.6000004
+	.short	513                             @ 0x201
+	.zero	2
+	.long	0xc1d00000                      @ float -26
+	.short	514                             @ 0x202
+	.zero	2
+	.long	0xc1c26666                      @ float -24.2999992
+	.short	515                             @ 0x203
+	.zero	2
+	.long	0xc1af3333                      @ float -21.8999996
+	.short	765                             @ 0x2fd
+	.zero	2
+	.long	0xc1a1999a                      @ float -20.2000008
+	.short	767                             @ 0x2ff
+	.zero	2
+	.long	0xc194cccd                      @ float -18.6000004
+	.short	768                             @ 0x300
+	.zero	2
+	.long	0xc185999a                      @ float -16.7000008
+	.short	1019                            @ 0x3fb
+	.zero	2
+	.long	0xc1766666                      @ float -15.3999996
+	.short	1073                            @ 0x431
+	.zero	2
+	.long	0xc161999a                      @ float -14.1000004
+	.short	1279                            @ 0x4ff
+	.zero	2
+	.long	0xc13ccccd                      @ float -11.8000002
+	.short	1535                            @ 0x5ff
+	.zero	2
+	.long	0xc11e6666                      @ float -9.89999961
+	.size	rssi_to_rxpower_1g, 128
+
+	.hidden	om_default_config               @ @om_default_config
+	.type	om_default_config,%object
+	.section	.bss.om_default_config,"aw",%nobits
+	.globl	om_default_config
+	.p2align	2, 0x0
+om_default_config:
+	.zero	168
+	.size	om_default_config, 168
+
+	.hidden	ddm_adc_out_val                 @ @ddm_adc_out_val
+	.type	ddm_adc_out_val,%object
+	.section	.bss.ddm_adc_out_val,"aw",%nobits
+	.globl	ddm_adc_out_val
+	.p2align	1, 0x0
+ddm_adc_out_val:
+	.zero	26
+	.size	ddm_adc_out_val, 26
+
+	.hidden	default_config_value            @ @default_config_value
+	.type	default_config_value,%object
+	.section	.bss.default_config_value,"aw",%nobits
+	.globl	default_config_value
+default_config_value:
+	.zero	120
+	.size	default_config_value, 120
+
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"om_default_config.tx_ibias_0 = %d\n"
+	.size	.L.str, 35
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"om_default_config.tx_soa_0 = %f\n"
+	.size	.L.str.1, 33
+
+	.type	.L.str.2,%object                @ @.str.2
+.L.str.2:
+	.asciz	"om_default_config.tx_vea_0 = %f\n"
+	.size	.L.str.2, 33
+
+	.type	.L.str.3,%object                @ @.str.3
+.L.str.3:
+	.asciz	"om_default_config.tx_imod_0 = %d\n"
+	.size	.L.str.3, 34
+
+	.type	.L.str.4,%object                @ @.str.4
+.L.str.4:
+	.asciz	"om_default_config.tx_cpa_0 = %d\n"
+	.size	.L.str.4, 33
+
+	.type	.L.str.5,%object                @ @.str.5
+.L.str.5:
+	.asciz	"om_default_config.tx_deemph_0 = %d\n"
+	.size	.L.str.5, 36
+
+	.type	.L.str.6,%object                @ @.str.6
+.L.str.6:
+	.asciz	"om_default_config.rx_vapd_0 = %f\n"
+	.size	.L.str.6, 34
+
+	.type	.L.str.7,%object                @ @.str.7
+.L.str.7:
+	.asciz	"om_default_config.rx_eq_0 = %d\n"
+	.size	.L.str.7, 32
+
+	.type	.L.str.8,%object                @ @.str.8
+.L.str.8:
+	.asciz	"om_default_config.rx_swing_0 = %d\n"
+	.size	.L.str.8, 35
+
+	.type	.L.str.9,%object                @ @.str.9
+.L.str.9:
+	.asciz	"om_default_config.rx_deemph_0 = %d\n"
+	.size	.L.str.9, 36
+
+	.type	.L.str.10,%object               @ @.str.10
+.L.str.10:
+	.asciz	"om_default_config.rx_los_threshold_0 = %d\n"
+	.size	.L.str.10, 43
+
+	.type	.L.str.11,%object               @ @.str.11
+.L.str.11:
+	.asciz	"om_default_config.rx_los_hyst_0 = %d\n"
+	.size	.L.str.11, 38
+
+	.type	.L.str.12,%object               @ @.str.12
+.L.str.12:
+	.asciz	"om_default_config.tx_ibias_1 = %d\n"
+	.size	.L.str.12, 35
+
+	.type	.L.str.13,%object               @ @.str.13
+.L.str.13:
+	.asciz	"om_default_config.tx_vea_1 = %f\n"
+	.size	.L.str.13, 33
+
+	.type	.L.str.14,%object               @ @.str.14
+.L.str.14:
+	.asciz	"om_default_config.tx_imod_1 = %d\n"
+	.size	.L.str.14, 34
+
+	.type	.L.str.15,%object               @ @.str.15
+.L.str.15:
+	.asciz	"om_default_config.tx_cpa_1 = %d\n"
+	.size	.L.str.15, 33
+
+	.type	.L.str.16,%object               @ @.str.16
+.L.str.16:
+	.asciz	"om_default_config.tx_deemph_1 = %d\n"
+	.size	.L.str.16, 36
+
+	.hidden	sff_module_type                 @ @sff_module_type
+	.type	sff_module_type,%object
+	.section	.bss.sff_module_type,"aw",%nobits
+	.globl	sff_module_type
+sff_module_type:
+	.byte	0                               @ 0x0
+	.size	sff_module_type, 1
+
+	.ident	"Component: Arm Compiler for Embedded 6.19 Tool: armclang [5e73cb00]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
